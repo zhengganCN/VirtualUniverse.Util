@@ -1,0 +1,146 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Util</name>
+    </assembly>
+    <members>
+        <member name="M:Util.Extend.EnumExtend.GetDescription(System.Enum)">
+            <summary>
+            获取枚举描述
+            </summary>
+            <param name="value">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Math.MathException.RandomRangeException">
+            <summary>
+            随机数范围异常
+            </summary>
+        </member>
+        <member name="T:Util.Math.RandomNumber">
+            <summary>
+            随机数
+            </summary>
+        </member>
+        <member name="M:Util.Math.RandomNumber.GenerateRandom(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            生成整型随机数
+            </summary>
+            <param name="minValue"></param>
+            <param name="maxValue"></param>
+            <param name="isContainerMinValue"></param>
+            <param name="isContainerMaxValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Math.RandomNumber.CheckRandomRange(System.Int32,System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            验证minValue和maxValue的取值范围是否符合规范
+            </summary>
+            <param name="minValue"></param>
+            <param name="maxValue"></param>
+            <param name="isContainerMinValue"></param>
+            <param name="isContainerMaxValue"></param>
+        </member>
+        <member name="M:Util.Math.RandomNumber.RandomRangeExceptionInfoFormat(System.Int32,System.Int32,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            格式化异常信息
+            </summary>
+            <param name="minValue"></param>
+            <param name="maxValue"></param>
+            <param name="isContainerMinValue"></param>
+            <param name="isContainerMaxValue"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Math.RandomNumber.GenerateRandom(System.Double,System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            随机生成双精度浮点数
+            </summary>
+            <param name="minValue"></param>
+            <param name="maxValue"></param>
+            <param name="isContainerMinValue"></param>
+            <param name="isContainerMaxValue"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Math.RandomNumber.CheckRandomRange(System.Double,System.Double,System.Boolean,System.Boolean)">
+            <summary>
+            验证minValue和maxValue的取值范围是否符合规范
+            </summary>
+            <param name="minValue"></param>
+            <param name="maxValue"></param>
+            <param name="isContainerMinValue"></param>
+            <param name="isContainerMaxValue"></param>
+        </member>
+        <member name="M:Util.Math.RandomNumber.RandomRangeExceptionInfoFormat(System.Double,System.Double,System.Boolean,System.Boolean,System.String)">
+            <summary>
+            格式化异常信息
+            </summary>
+            <param name="minValue"></param>
+            <param name="maxValue"></param>
+            <param name="isContainerMinValue"></param>
+            <param name="isContainerMaxValue"></param>
+            <param name="operation"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Util.ModelResult.ModelResult`1.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.ModelResult`1.Pagination">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.ModelResult`1.Message">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.ModelResult`1.Code">
+            <summary>
+            成功/错误代码
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.ModelResult`1.Success">
+            <summary>
+            成功标识,操作执行是否成功
+            </summary>
+        </member>
+        <member name="M:Util.ModelResult.ModelResult`1.SuccessResult(`0,System.Enum,Util.ModelResult.Pagination)">
+            <summary>
+            返回成功时调用
+            </summary>
+            <param name="data">数据</param>
+            <param name="codes">成功代码</param>
+            <param name="pagination">分页信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.ModelResult.ModelResult`1.FailedResult(System.Enum)">
+            <summary>
+            返回失败时调用
+            </summary>
+            <param name="codes">错误代码</param>
+            <returns></returns>
+        </member>
+        <member name="P:Util.ModelResult.Pagination.PageIndex">
+            <summary>
+            页面索引
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.Pagination.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.Pagination.Count">
+            <summary>
+            项总数
+            </summary>
+        </member>
+        <member name="P:Util.ModelResult.Pagination.PageCount">
+            <summary>
+            页面总数
+            </summary>
+        </member>
+    </members>
+</doc>
