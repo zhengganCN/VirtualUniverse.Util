@@ -10,11 +10,11 @@ namespace UtilTest.DataTest.MongoDBTest
     {
         public override MongoClient MongoClientConfiguration()
         {
-            return new MongoClient("");
+            return new MongoClient("mongodb://sa:hyy5201314@localhost");
         }
         public override IMongoDatabase MongoDatabaseConfiguration()
         {
-            return MongoClientConfiguration().GetDatabase("");
+            return MongoClientConfiguration().GetDatabase("test");
         }
     }
 }

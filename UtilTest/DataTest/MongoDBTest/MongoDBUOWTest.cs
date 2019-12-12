@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MongoDB.Bson;
 using NUnit.Framework;
 using Util.Data.Repository.MongoDBRepository;
 using Util.Math;
@@ -13,7 +14,10 @@ namespace UtilTest.DataTest.MongoDBTest
     {
         private Repository<Student> repository;
         [SetUp]
-        public void SetUp() { }
+        public void SetUp() 
+        {
+            repository = new Repository<Student>(new MongoDBContext());
+        }
         #region Insert
         [Test]
         public void InsertTest()
@@ -519,7 +523,7 @@ namespace UtilTest.DataTest.MongoDBTest
         {
             var student = new Student()
             {
-                Id = Guid.NewGuid(),
+                Id = new ObjectId(),
                 CreateTime = DateTime.Now,
                 DeleteTime = DateTime.Now,
                 IsDeleted = false,
@@ -580,11 +584,11 @@ namespace UtilTest.DataTest.MongoDBTest
         }
         #endregion
     }
-    public class Student : Entity<Guid>
+    public class Student : Entity<ObjectId>
     {
         public string StudentName { get; set; }
     }
-    public class Score : Entity<Guid>
+    public class Score : Entity<ObjectId>
     {
         public double MathScore { get; set; }
     }

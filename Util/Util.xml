@@ -298,7 +298,24 @@
             <param name="entities"></param>
             <returns></returns>
         </member>
+        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoClientConfiguration">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoDatabaseConfiguration">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Util.Data.UOW.MongoDBUOW.UnitOfWork">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Commit">
             <summary>
             
             </summary>
@@ -306,6 +323,11 @@
         <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Rollback">
             <summary>
             释放与事务有关的资源
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Transaction">
+            <summary>
+            
             </summary>
         </member>
         <member name="T:Util.Data.UOW.SQLServerUOW.UnitOfWork">
