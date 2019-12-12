@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Util.Extend
 {
+    /// <summary>
+    /// 枚举扩展类
+    /// </summary>
     public static class EnumExtend
     {
         /// <summary>

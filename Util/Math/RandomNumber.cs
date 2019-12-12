@@ -11,10 +11,14 @@ namespace Util.Math
     public class RandomNumber
     {
         private readonly Random random;
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public RandomNumber()
         {
            random= new Random();
         }
+        
         /// <summary>
         /// 生成整型随机数
         /// </summary>
@@ -44,6 +48,7 @@ namespace Util.Math
             }
             return -1;
         }
+        
         /// <summary>
         /// 验证minValue和maxValue的取值范围是否符合规范
         /// </summary>
@@ -82,6 +87,7 @@ namespace Util.Math
                 }
             }
         }
+        
         /// <summary>
         /// 格式化异常信息
         /// </summary>
@@ -104,6 +110,7 @@ namespace Util.Math
                 nameof(maxValue)
             );
         }
+        
         /// <summary>
         /// 随机生成双精度浮点数
         /// </summary>
@@ -118,6 +125,7 @@ namespace Util.Math
             var number = random.NextDouble();
             return number * (maxValue - minValue) + minValue;
         }
+        
         /// <summary>
         /// 验证minValue和maxValue的取值范围是否符合规范
         /// </summary>
@@ -156,6 +164,7 @@ namespace Util.Math
                 }
             }
         }
+        
         /// <summary>
         /// 格式化异常信息
         /// </summary>
@@ -177,8 +186,6 @@ namespace Util.Math
                 operation,
                 nameof(maxValue)
             );
-        }
-    
-        
+        }       
     }
 }

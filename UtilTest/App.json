@@ -1,0 +1,15 @@
+{
+  "TestString": "hello world",
+  "TestArray": [ 1, 2, 3 ],
+  "TestObject": {
+    "ColorRed": "red",
+    "Order": [ 2, 3, 6 ],
+    "Command": [ "a", "b" ],
+    "DF": {
+      "D": "dd",
+      "F": "ff"
+    }
+  },
+  "Database": "SQLServer", //Oracle,MySQL,MongoDB,DB2,Redis,
+  "DatabaseConnectString": ""
+}

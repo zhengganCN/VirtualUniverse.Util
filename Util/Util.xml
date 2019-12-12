@@ -4,6 +4,320 @@
         <name>Util</name>
     </assembly>
     <members>
+        <member name="T:Util.Configuration.JsonConfiguration">
+            <summary>
+            Json配置文件操作类
+            </summary>
+        </member>
+        <member name="M:Util.Configuration.JsonConfiguration.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="configFilePath">配置文件路径</param>
+        </member>
+        <member name="M:Util.Configuration.JsonConfiguration.GetValue(System.String)">
+            <summary>
+            获取值，如果在json文件中没有key，则放回空字符串
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Configuration.JsonConfiguration.GetObject``1">
+            <summary>
+            把整个json文件转换成实例对象
+            </summary>
+            <typeparam name="T">json文件实例化后的类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Configuration.JsonConfiguration.SetValue(System.String,System.String)">
+            <summary>
+            根据key设置value
+            无效方法，暂未实现
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:Util.Configuration.JsonConfiguration.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:Util.Data.Repository.MongoDBRepository.Entity`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.Id">
+            <summary>
+            泛型主键
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:Util.Data.Repository.MongoDBRepository.Repository`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="T:Util.Data.Repository.SQLServerRepository.Entity`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.Id">
+            <summary>
+            泛型主键
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:Util.Data.Repository.SQLServerRepository.Repository`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Delete(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.DeleteAsync(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Find(System.Object[])">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="predicate"></param>
+            <param name="keySelector"></param>
+            <param name="asc"></param>
+            <param name="pageIndex"></param>
+            <param name="pageSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAsync(System.Object[])">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Insert(`0)">
+            <summary>
+            插入实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
+            <summary>
+            插入实体集
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.InsertAsync(`0)">
+            <summary>
+            异步插入实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步插入实体集
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDelete(`0)">
+            <summary>
+            修改实体的删除标识改为true
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改实体集的删除标识改为true
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDeleteAsync(`0)">
+            <summary>
+            异步修改实体的删除标识改为true
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改实体的删除标识改为true
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDelete(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDeleteAsync(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Update(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Update(System.Collections.Generic.IList{`0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UpdateAsync(`0)">
+            <summary>
+            
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.UOW.MongoDBUOW.UnitOfWork">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Rollback">
+            <summary>
+            释放与事务有关的资源
+            </summary>
+        </member>
+        <member name="T:Util.Data.UOW.SQLServerUOW.UnitOfWork">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Util.Extend.EnumExtend">
+            <summary>
+            枚举扩展类
+            </summary>
+        </member>
         <member name="M:Util.Extend.EnumExtend.GetDescription(System.Enum)">
             <summary>
             获取枚举描述
@@ -19,6 +333,11 @@
         <member name="T:Util.Math.RandomNumber">
             <summary>
             随机数
+            </summary>
+        </member>
+        <member name="M:Util.Math.RandomNumber.#ctor">
+            <summary>
+            构造函数
             </summary>
         </member>
         <member name="M:Util.Math.RandomNumber.GenerateRandom(System.Int32,System.Int32,System.Boolean,System.Boolean)">
@@ -80,6 +399,12 @@
             <param name="isContainerMaxValue"></param>
             <param name="operation"></param>
             <returns></returns>
+        </member>
+        <member name="T:Util.ModelResult.ModelResult`1">
+            <summary>
+            返回的视图模型以及结果信息
+            </summary>
+            <typeparam name="T"></typeparam>
         </member>
         <member name="P:Util.ModelResult.ModelResult`1.Data">
             <summary>
