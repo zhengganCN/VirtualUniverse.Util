@@ -6,6 +6,7 @@ using System.Linq;
 using NUnit.Framework;
 using Util.Data.Repository.SQLServerRepository;
 using Util.Math;
+using Util.Data.Repository;
 
 namespace UtilTest.SQLServerTest.DataTest
 {
