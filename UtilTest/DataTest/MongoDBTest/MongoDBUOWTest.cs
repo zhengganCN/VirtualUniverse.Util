@@ -96,7 +96,7 @@ namespace UtilTest.DataTest.MongoDBTest
             var result = await repository.InsertAsync(students);
             Assert.AreEqual(students.Count, result);
         }
-#endregion
+        #endregion
         #region MarkDelete
         [Test]
         public void MarkDeleteTest()
@@ -464,11 +464,57 @@ namespace UtilTest.DataTest.MongoDBTest
             }
         }
         [Test]
+        public void FindOrderByDesc()
+        {
+            while (true)
+            {
+                var students = repository.Find(o => o.Id != null, o => o.Id,false);
+                if (students.Count <= 0)
+                {
+                    repository.Insert(new Student()
+                    {
+                        CreateTime = DateTime.Now,
+                        IsDeleted = false,
+                        StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                    });
+                }
+                else
+                {
+                    var student = repository.Find(students.First().Id);
+                    Assert.IsNotNull(student);
+                    return;
+                }
+            }
+        }
+        [Test]
+        public void FindAllOrderByDesc()
+        {
+            while (true)
+            {
+                var students = repository.FindAll(o => o.Id != null, o => o.Id, false);
+                if (students.Count <= 0)
+                {
+                    repository.Insert(new Student()
+                    {
+                        CreateTime = DateTime.Now,
+                        IsDeleted = false,
+                        StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                    });
+                }
+                else
+                {
+                    var student = repository.Find(students.First().Id);
+                    Assert.IsNotNull(student);
+                    return;
+                }
+            }
+        }
+        [Test]
         public async Task FindAsync()
         {
             while (true)
             {
-                var students = repository.Find(o => o.Id != null, o => o.Id);
+                var students =await repository.FindAsync(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -485,13 +531,13 @@ namespace UtilTest.DataTest.MongoDBTest
                     return;
                 }
             }
-        }
+        }       
         #endregion
         #region Count
         [Test]
         public void Count()
         {
-            var students= repository.Find(o => o.Id != null, o => o.Id);
+            var students= repository.FindAll(o => o.Id != null, o => o.Id);
             repository.Delete(students);
             var newStudents = new List<Student>()
             {
@@ -521,7 +567,7 @@ namespace UtilTest.DataTest.MongoDBTest
         [Test]
         public async Task CountAsync()
         {
-            var students = repository.Find(o => o.Id != null, o => o.Id);
+            var students =await repository.FindAllAsync(o => o.Id != null, o => o.Id);
             repository.Delete(students);
             var newStudents = new List<Student>()
             {
@@ -614,6 +660,15 @@ namespace UtilTest.DataTest.MongoDBTest
             Assert.IsFalse(result);
         }
         #endregion
+        [Test]
+        public void UOWNullExecptionVerifyTest()
+        {
+            Assert.Throws(typeof(ArgumentNullException),UOWNullExecptionTest);
+        }
+        public void UOWNullExecptionTest()
+        {
+            repository.GetMongoCollection<Student>(null);
+        }
     }
     public class Student : Entity<ObjectId>
     {

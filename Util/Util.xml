@@ -79,6 +79,17 @@
             </summary>
             <typeparam name="TEntity"></typeparam>
         </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="predicate">查询条件表达式</param>
+            <param name="keySelector">按某个关键字排序</param>
+            <param name="asc">排序方式，true表示按asc排序，false表示按desc排序</param>
+            <param name="pageIndex">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
         <member name="T:Util.Data.Repository.SQLServerRepository.Entity`1">
             <summary>
             
@@ -169,6 +180,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAsync(System.Object[])">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean,System.Int32,System.Int32)">
             <summary>
             
@@ -178,12 +195,6 @@
             <param name="asc"></param>
             <param name="pageIndex"></param>
             <param name="pageSize"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAsync(System.Object[])">
-            <summary>
-            
-            </summary>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Insert(`0)">

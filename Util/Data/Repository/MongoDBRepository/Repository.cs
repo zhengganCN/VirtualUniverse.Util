@@ -25,7 +25,7 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             if (uow == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException();
             }
             var s= typeof(TEntity).Name;
             return uow.database.GetCollection<TEntity>(typeof(TEntity).Name);
@@ -96,17 +96,6 @@ namespace Util.Data.Repository.MongoDBRepository
             }
             return GetMongoCollection<TEntity>(uow).Find(Builders<TEntity>.Filter.And(filters)).Single();
         }
-
-        public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
-        {
-            var uow = new UnitOfWork(context);
-            var query = GetMongoCollection<TEntity>(uow).AsQueryable()
-                 .Where(predicate)
-                 .Skip((pageIndex - 1) * pageSize)
-                 .Take(pageSize);
-            return asc ? query.OrderBy(keySelector).ToList() : query.OrderByDescending(keySelector).ToList();
-        }
-
         public virtual async Task<TEntity> FindAsync(params object[] primaryKey)
         {
             var uow = new UnitOfWork(context);
@@ -119,7 +108,46 @@ namespace Util.Data.Repository.MongoDBRepository
             }
             return (await GetMongoCollection<TEntity>(uow).FindAsync(Builders<TEntity>.Filter.And(filters))).Single();
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="predicate">查询条件表达式</param>
+        /// <param name="keySelector">按某个关键字排序</param>
+        /// <param name="asc">排序方式，true表示按asc排序，false表示按desc排序</param>
+        /// <param name="pageIndex">分页索引</param>
+        /// <param name="pageSize">分页大小</param>
+        /// <returns></returns>
+        public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetMongoCollection<TEntity>(uow).AsQueryable()
+                 .Where(predicate)
+                 .Skip((pageIndex - 1) * pageSize)
+                 .Take(pageSize);
+            return asc ? query.OrderBy(keySelector).ToList() : query.OrderByDescending(keySelector).ToList();
+        }
 
+        public virtual async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetMongoCollection<TEntity>(uow).AsQueryable()
+                 .Where(predicate)
+                 .Skip((pageIndex - 1) * pageSize)
+                 .Take(pageSize);
+            return asc ? await query.OrderBy(keySelector).ToListAsync() :await query.OrderByDescending(keySelector).ToListAsync();
+        }
+        public virtual IList<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetMongoCollection<TEntity>(uow).AsQueryable().Where(predicate);
+            return asc ? query.OrderBy(keySelector).ToList() : query.OrderByDescending(keySelector).ToList();
+        }
+        public virtual async Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetMongoCollection<TEntity>(uow).AsQueryable().Where(predicate);
+            return  asc ? await query.OrderBy(keySelector).ToListAsync() : await query.OrderByDescending(keySelector).ToListAsync();
+        }
         public virtual int Insert(TEntity entity)
         {
             var uow = new UnitOfWork(context);
@@ -152,9 +180,10 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
+            var s = GetMongoCollection<TEntity>(uow).Find(filter).FirstOrDefault();
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
 
@@ -162,8 +191,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             int count = 0;
             foreach (var entity in entities)
             {
@@ -178,8 +207,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             var result = await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update);
             return (int)result.ModifiedCount;
         }
@@ -188,8 +217,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             int count = 0;
             foreach (var entity in entities)
             {
@@ -204,8 +233,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity,DateTime?>("DeleteTime", null);
             return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
 
@@ -213,8 +242,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity, DateTime?>("DeleteTime", null);
             int count = 0;
             foreach (var entity in entities)
             {
@@ -229,8 +258,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity, DateTime?>("DeleteTime", null);
             return (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
         }
 
@@ -238,8 +267,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity, DateTime?>("DeleteTime", null);
             int count = 0;
             foreach (var entity in entities)
             {

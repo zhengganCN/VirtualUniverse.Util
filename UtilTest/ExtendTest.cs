@@ -14,7 +14,7 @@ namespace UtilTest
         {
 
         }
-
+        [Test]
         public void TestEnumExtend()
         {
             if (TestEnum.Monday.GetDescription()== "星期一")
