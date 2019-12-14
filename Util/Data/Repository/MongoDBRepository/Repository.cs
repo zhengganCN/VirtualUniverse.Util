@@ -21,25 +21,26 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             this.context = context;
         }
-        public virtual IMongoCollection<TEntity> GetMongoCollection(UnitOfWork uow)
+        public virtual IMongoCollection<TEntity> GetMongoCollection<TEntity>(UnitOfWork uow)
         {
             if (uow == null)
             {
                 throw new NullReferenceException();
             }
-            return uow.database.GetCollection<TEntity>(nameof(TEntity));
+            var s= typeof(TEntity).Name;
+            return uow.database.GetCollection<TEntity>(typeof(TEntity).Name);
         }
         public virtual int Count(Expression<Func<TEntity, bool>> predicate)
         {
             var uow = new UnitOfWork(context);
-            var result = GetMongoCollection(uow).AsQueryable().Count(predicate);
+            var result = GetMongoCollection<TEntity>(uow).AsQueryable().Count(predicate);
             return result;
         }
 
         public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
         {
             var uow = new UnitOfWork(context);
-            var result =await GetMongoCollection(uow).AsQueryable().CountAsync(predicate);
+            var result =await GetMongoCollection<TEntity>(uow).AsQueryable().CountAsync(predicate);
             return result;
         }
 
@@ -47,7 +48,7 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            var result = GetMongoCollection(uow).DeleteOne(filter);
+            var result = GetMongoCollection<TEntity>(uow).DeleteOne(filter);
             return (int)result.DeletedCount;
         }
 
@@ -59,7 +60,7 @@ namespace Util.Data.Repository.MongoDBRepository
             {
                 filters.Add(Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity)));
             }
-            var result = GetMongoCollection(uow).DeleteMany(Builders<TEntity>.Filter.Or(filters));
+            var result = GetMongoCollection<TEntity>(uow).DeleteMany(Builders<TEntity>.Filter.Or(filters));
             return (int)result.DeletedCount;
         }
 
@@ -67,7 +68,7 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            var result =await GetMongoCollection(uow).DeleteOneAsync(filter);
+            var result =await GetMongoCollection<TEntity>(uow).DeleteOneAsync(filter);
             return (int)result.DeletedCount;
         }
 
@@ -79,7 +80,7 @@ namespace Util.Data.Repository.MongoDBRepository
             {
                 filters.Add(Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity)));
             }
-            var result =await GetMongoCollection(uow).DeleteManyAsync(Builders<TEntity>.Filter.Or(filters));
+            var result =await GetMongoCollection<TEntity>(uow).DeleteManyAsync(Builders<TEntity>.Filter.Or(filters));
             return (int)result.DeletedCount;
         }
 
@@ -89,18 +90,17 @@ namespace Util.Data.Repository.MongoDBRepository
             var filters = new List<FilterDefinition<TEntity>>();
             foreach (var key in primaryKey)
             {
-                //var filter = Builders<TEntity>.Filter
-                //    .Eq(key.GetType().getva.Name,
-                //        key.GetType().GetProperty().GetValue(key).ToString();
-                //filters.Add(filter);
+                var filter = Builders<TEntity>.Filter
+                    .Eq("Id", key);
+                filters.Add(filter);
             }
-            return GetMongoCollection(uow).Find(Builders<TEntity>.Filter.And(filters)).Single();
+            return GetMongoCollection<TEntity>(uow).Find(Builders<TEntity>.Filter.And(filters)).Single();
         }
 
         public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
         {
             var uow = new UnitOfWork(context);
-            var query = GetMongoCollection(uow).AsQueryable()
+            var query = GetMongoCollection<TEntity>(uow).AsQueryable()
                  .Where(predicate)
                  .Skip((pageIndex - 1) * pageSize)
                  .Take(pageSize);
@@ -113,39 +113,38 @@ namespace Util.Data.Repository.MongoDBRepository
             var filters = new List<FilterDefinition<TEntity>>();
             foreach (var key in primaryKey)
             {
-                //var filter = Builders<TEntity>.Filter
-                //    .Eq(key.GetType().getva.Name,
-                //        key.GetType().GetProperty().GetValue(key).ToString();
-                //filters.Add(filter);
+                var filter = Builders<TEntity>.Filter
+                    .Eq("Id",key);
+                filters.Add(filter);
             }
-            return (await GetMongoCollection(uow).FindAsync(Builders<TEntity>.Filter.And(filters))).Single();
+            return (await GetMongoCollection<TEntity>(uow).FindAsync(Builders<TEntity>.Filter.And(filters))).Single();
         }
 
         public virtual int Insert(TEntity entity)
         {
             var uow = new UnitOfWork(context);
-            GetMongoCollection(uow).InsertOne(entity);
+            GetMongoCollection<TEntity>(uow).InsertOne(entity);
             return 1;
         }
 
         public virtual int Insert(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
-            GetMongoCollection(uow).InsertMany(entities);
+            GetMongoCollection<TEntity>(uow).InsertMany(entities);
             return entities.Count;
         }
 
         public virtual async Task<int> InsertAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
-            await GetMongoCollection(uow).InsertOneAsync(entity);
+            await GetMongoCollection<TEntity>(uow).InsertOneAsync(entity);
             return 1;
         }
 
         public virtual async Task<int> InsertAsync(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
-            await GetMongoCollection(uow).InsertManyAsync(entities);
+            await GetMongoCollection<TEntity>(uow).InsertManyAsync(entities);
             return entities.Count;
         }
 
@@ -156,7 +155,7 @@ namespace Util.Data.Repository.MongoDBRepository
             var update = Builders<TEntity>.Update
                 .AddToSet("IsDeleted", true)
                 .AddToSet("DeleteTime", DateTime.Now);
-            return (int)GetMongoCollection(uow).UpdateOne(filter, update).ModifiedCount;
+            return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
 
         public virtual int MarkDelete(IList<TEntity> entities)
@@ -169,7 +168,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter= Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count+=(int)GetMongoCollection(uow).UpdateOne(filter, update).ModifiedCount;
+                count+=(int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
             }
             return count;
         }
@@ -181,7 +180,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var update = Builders<TEntity>.Update
                 .AddToSet("IsDeleted", true)
                 .AddToSet("DeleteTime", DateTime.Now);
-            return (int)(await GetMongoCollection(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+            var result = await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update);
+            return (int)result.ModifiedCount;
         }
 
         public virtual async Task<int> MarkDeleteAsync(IList<TEntity> entities)
@@ -194,7 +194,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)(await GetMongoCollection(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+                count += (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
             }
             return count;
         }
@@ -206,7 +206,7 @@ namespace Util.Data.Repository.MongoDBRepository
             var update = Builders<TEntity>.Update
                 .AddToSet("IsDeleted", false)
                 .AddToSet("DeleteTime", "");
-            return (int)GetMongoCollection(uow).UpdateOne(filter, update).ModifiedCount;
+            return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
 
         public virtual int UnmarkDelete(IList<TEntity> entities)
@@ -219,7 +219,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)GetMongoCollection(uow).UpdateOne(filter, update).ModifiedCount;
+                count += (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
             }
             return count;
         }
@@ -231,7 +231,7 @@ namespace Util.Data.Repository.MongoDBRepository
             var update = Builders<TEntity>.Update
                 .AddToSet("IsDeleted", false)
                 .AddToSet("DeleteTime", "");
-            return (int)(await GetMongoCollection(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+            return (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
         }
 
         public virtual async Task<int> UnmarkDeleteAsync(IList<TEntity> entities)
@@ -244,7 +244,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)(await GetMongoCollection(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+                count += (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
             }
             return count;
         }
@@ -253,7 +253,7 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            return (int)GetMongoCollection(uow).ReplaceOne(filter, entity).ModifiedCount;
+            return (int)GetMongoCollection<TEntity>(uow).ReplaceOne(filter, entity).ModifiedCount;
         }
 
         public virtual int Update(IList<TEntity> entities)
@@ -263,7 +263,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)GetMongoCollection(uow).ReplaceOne(filter, entity).ModifiedCount;
+                count += (int)GetMongoCollection<TEntity>(uow).ReplaceOne(filter, entity).ModifiedCount;
             }
             return count;
         }
@@ -272,7 +272,7 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            return (int)(await GetMongoCollection(uow).ReplaceOneAsync(filter, entity)).ModifiedCount;
+            return (int)(await GetMongoCollection<TEntity>(uow).ReplaceOneAsync(filter, entity)).ModifiedCount;
         }
 
         public virtual async Task<int> UpdateAsync(IList<TEntity> entities)
@@ -282,7 +282,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)(await GetMongoCollection(uow).ReplaceOneAsync(filter, entity)).ModifiedCount;
+                count += (int)(await GetMongoCollection<TEntity>(uow).ReplaceOneAsync(filter, entity)).ModifiedCount;
             }
             return count;
         }

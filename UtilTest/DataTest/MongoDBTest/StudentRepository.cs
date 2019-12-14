@@ -15,16 +15,6 @@ namespace UtilTest.DataTest.MongoDBTest
             this.context = context;
         }
 
-        public override IMongoCollection<Student> GetMongoCollection(UnitOfWork uow)
-        {
-            return base.GetMongoCollection(uow);
-        }
-
-        private IMongoCollection<Score> GetScoreCollection(UnitOfWork uow)
-        {
-            return uow.database.GetCollection<Score>(nameof(Score));
-        }
-
         /// <summary>
         /// 修改学生成绩(仅为了模拟事务操作)
         /// </summary>
@@ -39,12 +29,12 @@ namespace UtilTest.DataTest.MongoDBTest
             {
                 uow = new UnitOfWork(context);
                 uow.Transaction();
-                GetMongoCollection(uow).InsertOne(student);
+                GetMongoCollection<Student>(uow).InsertOne(student);
                 if (triggerException)
                 {
                     throw new Exception();
                 }
-                GetScoreCollection(uow).InsertOne(score);
+                GetMongoCollection<Score>(uow).InsertOne(score);
                 uow.Commit();
             }
             catch (Exception)
@@ -54,5 +44,7 @@ namespace UtilTest.DataTest.MongoDBTest
             }
             return true;
         }
+
+        
     }
 }
