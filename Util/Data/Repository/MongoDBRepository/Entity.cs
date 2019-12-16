@@ -5,7 +5,7 @@ using System.Text;
 namespace Util.Data.Repository.MongoDBRepository
 {
     /// <summary>
-    /// 
+    /// 实体基类
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public class Entity<T>
