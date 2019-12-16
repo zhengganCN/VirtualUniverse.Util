@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Util.Data.Repository.MongoDBRepository
+namespace Util.Data.Repository
 {
     /// <summary>
     /// 实体基类

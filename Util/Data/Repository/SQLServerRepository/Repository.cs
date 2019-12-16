@@ -105,13 +105,22 @@ namespace Util.Data.Repository.SQLServerRepository
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        public virtual async Task<TEntity> FindAsync(params object[] primaryKey)
+        {
+            var uow = new UnitOfWork(context);
+            return await GetEntity(uow).FindAsync(primaryKey);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="predicate"></param>
         /// <param name="keySelector"></param>
         /// <param name="asc"></param>
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <returns></returns>
-        public IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector,bool asc=true, int pageIndex = 1, int pageSize = 10)
+        public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector,bool asc=true, int pageIndex = 1, int pageSize = 10)
         {
             var uow = new UnitOfWork(context);
             var query = GetEntity(uow)
@@ -120,14 +129,30 @@ namespace Util.Data.Repository.SQLServerRepository
                  .Take(pageSize);
             return asc ?query.OrderBy(keySelector).ToList():query.OrderByDescending(keySelector).ToList();
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public virtual async Task<TEntity> FindAsync(params object[] primaryKey)
+        public virtual async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
         {
             var uow = new UnitOfWork(context);
-            return await GetEntity(uow).FindAsync(primaryKey);
+            var query = GetEntity(uow)
+                 .Where(predicate)
+                 .Skip((pageIndex - 1) * pageSize)
+                 .Take(pageSize);
+            return asc ?await query.OrderBy(keySelector).ToListAsync() :await query.OrderByDescending(keySelector).ToListAsync();
+        }
+        
+        public virtual IList<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetEntity(uow)
+                 .Where(predicate);
+            return asc ? query.OrderBy(keySelector).ToList() : query.OrderByDescending(keySelector).ToList();
+        }
+
+        public virtual async Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetEntity(uow)
+                 .Where(predicate);
+            return asc ? await query.OrderBy(keySelector).ToListAsync() : await query.OrderByDescending(keySelector).ToListAsync();
         }
         /// <summary>
         /// 插入实体
@@ -333,5 +358,7 @@ namespace Util.Data.Repository.SQLServerRepository
             GetEntity(uow).UpdateRange(entities);
             return await uow.DbContext.SaveChangesAsync();
         }
+
+        
     }
 }

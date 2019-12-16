@@ -6,6 +6,7 @@ using System.Linq;
 using NUnit.Framework;
 using Util.Data.Repository.SQLServerRepository;
 using Util.Math;
+using Util.Data.Repository;
 
 namespace UtilTest.SQLServerTest.DataTest
 {
@@ -115,8 +116,8 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 else
                 {
-                    var result= repository.MarkDelete(students[0]);
-                    var compareStudent= repository.Find(students[0].Id);                 
+                    var result = repository.MarkDelete(students[0]);
+                    var compareStudent = repository.Find(students[0].Id);
                     Assert.AreEqual(1, result);
                     Assert.AreEqual(true, compareStudent.IsDeleted);
                     return;
@@ -124,12 +125,11 @@ namespace UtilTest.SQLServerTest.DataTest
             }
         }
         [Test]
-        public async Task MarkDeleteAsyncTestAsync() 
+        public async Task MarkDeleteAsyncTestAsync()
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == false, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == false, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -141,7 +141,7 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 else
                 {
-                    var result =await repository.MarkDeleteAsync(students[0]);
+                    var result = await repository.MarkDeleteAsync(students[0]);
                     var compareStudent = repository.Find(students[0].Id);
                     Assert.AreEqual(1, result);
                     Assert.AreEqual(true, compareStudent.IsDeleted);
@@ -150,12 +150,11 @@ namespace UtilTest.SQLServerTest.DataTest
             }
         }
         [Test]
-        public void MarkDeleteManyTest() 
+        public void MarkDeleteManyTest()
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == false, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == false, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -176,12 +175,11 @@ namespace UtilTest.SQLServerTest.DataTest
             }
         }
         [Test]
-        public async Task MarkDeleteManyAsyncTestAsync() 
+        public async Task MarkDeleteManyAsyncTestAsync()
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == false, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == false, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -193,7 +191,7 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 else
                 {
-                    var result =await repository.MarkDeleteAsync(students);
+                    var result = await repository.MarkDeleteAsync(students);
                     var compareStudent = repository.Find(students[0].Id);
                     Assert.AreEqual(students.Count, result);
                     Assert.AreEqual(true, compareStudent.IsDeleted);
@@ -208,8 +206,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -234,8 +231,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -260,8 +256,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -286,8 +281,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null && o.IsDeleted == true, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -312,28 +306,25 @@ namespace UtilTest.SQLServerTest.DataTest
         [Test]
         public void Update()
         {
-            var query = repository.Find(o=>o.Id!=null,o=>o.Id);
-            var student = query.ToList()[0];
+            var student = repository.Find(o => o.Id != null, o => o.Id).First();
             student.UpdateTime = DateTime.Now;
-            var result= repository.Update(student);
+            var result = repository.Update(student);
             Assert.AreEqual(1, result);
         }
 
         [Test]
         public async Task UpdateAsync()
         {
-            var query = repository.Find(o => o.Id != null, o => o.Id);
-            var student = query.ToList()[0];
+            var student = repository.Find(o => o.Id != null, o => o.Id).First();
             student.UpdateTime = DateTime.Now;
-            var result =await repository.UpdateAsync(student);
+            var result = await repository.UpdateAsync(student);
             Assert.AreEqual(1, result);
         }
 
         [Test]
         public void UpdateMany()
         {
-            var query = repository.Find(o => o.Id != null, o => o.Id);
-            var students = query.ToList();
+            var students = repository.Find(o => o.Id != null, o => o.Id);
             foreach (var student in students)
             {
                 student.UpdateTime = DateTime.Now;
@@ -345,13 +336,12 @@ namespace UtilTest.SQLServerTest.DataTest
         [Test]
         public async Task UpdateManyAsync()
         {
-            var query = repository.Find(o => o.Id != null, o => o.Id);
-            var students = query.ToList();
+            var students = repository.Find(o => o.Id != null, o => o.Id);
             foreach (var student in students)
             {
                 student.UpdateTime = DateTime.Now;
             }
-            var result =await repository.UpdateAsync(students);
+            var result = await repository.UpdateAsync(students);
             Assert.AreEqual(students.Count, result);
         }
         #endregion
@@ -361,8 +351,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -385,8 +374,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -409,8 +397,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -433,8 +420,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -446,7 +432,7 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 else
                 {
-                    int result =await repository.DeleteAsync(students);
+                    int result = await repository.DeleteAsync(students);
                     Assert.AreEqual(students.Count, result);
                     return;
                 }
@@ -459,8 +445,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null, o => o.Id);
-                var students = query.ToList();
+                var students = repository.Find(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -472,7 +457,53 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 else
                 {
-                    var student= repository.Find(students[0].Id);
+                    var student = repository.Find(students.First().Id);
+                    Assert.IsNotNull(student);
+                    return;
+                }
+            }
+        }
+        [Test]
+        public void FindOrderByDesc()
+        {
+            while (true)
+            {
+                var students = repository.Find(o => o.Id != null, o => o.Id, false);
+                if (students.Count <= 0)
+                {
+                    repository.Insert(new Student()
+                    {
+                        CreateTime = DateTime.Now,
+                        IsDeleted = false,
+                        StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                    });
+                }
+                else
+                {
+                    var student = repository.Find(students.First().Id);
+                    Assert.IsNotNull(student);
+                    return;
+                }
+            }
+        }
+        [Test]
+        public void FindAllOrderByDesc()
+        {
+            while (true)
+            {
+                var students = repository.FindAll(o => o.Id != null, o => o.Id, false);
+                if (students.Count <= 0)
+                {
+                    repository.Insert(new Student()
+                    {
+                        CreateTime = DateTime.Now,
+                        IsDeleted = false,
+                        StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                    });
+                }
+                else
+                {
+                    var student = repository.Find(students.First().Id);
                     Assert.IsNotNull(student);
                     return;
                 }
@@ -483,8 +514,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var query = repository.Find(o => o.Id != null, o => o.Id);
-                var students = query.ToList();
+                var students = await repository.FindAsync(o => o.Id != null, o => o.Id);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -496,7 +526,7 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 else
                 {
-                    var student =await repository.FindAsync(students[0].Id);
+                    var student = await repository.FindAsync(students.First().Id);
                     Assert.IsNotNull(student);
                     return;
                 }
@@ -507,14 +537,62 @@ namespace UtilTest.SQLServerTest.DataTest
         [Test]
         public void Count()
         {
+            var students = repository.FindAll(o => o.Id != null, o => o.Id);
+            repository.Delete(students);
+            var newStudents = new List<Student>()
+            {
+                new Student()
+                {
+                    CreateTime = DateTime.Now,
+                    IsDeleted = false,
+                    StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                },
+                new Student()
+                {
+                    CreateTime = DateTime.Now,
+                    IsDeleted = false,
+                    StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                },
+                new Student()
+                {
+                    CreateTime = DateTime.Now,
+                    IsDeleted = false,
+                    StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                }
+            };
+            var insertResult = repository.Insert(newStudents);
             var result = repository.Count(o => o.Id != null);
-            Assert.IsTrue(result >= 0);
+            Assert.IsTrue(result == insertResult);
         }
         [Test]
         public async Task CountAsync()
         {
-            var result =await repository.CountAsync(o => o.Id != null);
-            Assert.IsTrue(result >= 0);
+            var students = await repository.FindAllAsync(o => o.Id != null, o => o.Id);
+            repository.Delete(students);
+            var newStudents = new List<Student>()
+            {
+                new Student()
+                {
+                    CreateTime = DateTime.Now,
+                    IsDeleted = false,
+                    StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                },
+                new Student()
+                {
+                    CreateTime = DateTime.Now,
+                    IsDeleted = false,
+                    StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                },
+                new Student()
+                {
+                    CreateTime = DateTime.Now,
+                    IsDeleted = false,
+                    StudentName = new RandomNumber().GenerateRandom(10000000, 99999999).ToString()
+                }
+            };
+            var insertResult = repository.Insert(newStudents);
+            var result = await repository.CountAsync(o => o.Id != null);
+            Assert.IsTrue(result == insertResult);
         }
         #endregion
         [Test]

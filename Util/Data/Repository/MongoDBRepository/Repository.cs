@@ -35,7 +35,7 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             if (uow == null)
             {
-                throw new NullReferenceException();
+                throw new ArgumentNullException();
             }
             return uow.database.GetCollection<TEntity>(typeof(TEntity).Name);
         }
@@ -221,9 +221,10 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
+            var s = GetMongoCollection<TEntity>(uow).Find(filter).FirstOrDefault();
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
         /// <summary>
@@ -235,8 +236,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             int count = 0;
             foreach (var entity in entities)
             {
@@ -255,8 +256,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             var result = await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update);
             return (int)result.ModifiedCount;
         }
@@ -269,8 +270,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", true)
-                .AddToSet("DeleteTime", DateTime.Now);
+                .Set("IsDeleted", true)
+                .Set("DeleteTime", DateTime.Now);
             int count = 0;
             foreach (var entity in entities)
             {
@@ -289,8 +290,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity,DateTime?>("DeleteTime", null);
             return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
         /// <summary>
@@ -302,8 +303,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity, DateTime?>("DeleteTime", null);
             int count = 0;
             foreach (var entity in entities)
             {
@@ -322,8 +323,8 @@ namespace Util.Data.Repository.MongoDBRepository
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity, DateTime?>("DeleteTime", null);
             return (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
         }
         /// <summary>
@@ -335,8 +336,8 @@ namespace Util.Data.Repository.MongoDBRepository
         {
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
-                .AddToSet("IsDeleted", false)
-                .AddToSet("DeleteTime", "");
+                .Set("IsDeleted", false)
+                .Set<TEntity, DateTime?>("DeleteTime", null);
             int count = 0;
             foreach (var entity in entities)
             {
