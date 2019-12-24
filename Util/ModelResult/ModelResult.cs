@@ -24,6 +24,10 @@ namespace Util.ModelResult
         /// </summary>
         public string Message { get; private set; }
         /// <summary>
+        /// 错误信息
+        /// </summary>
+        public string ErrorInfo { get; private set; }
+        /// <summary>
         /// 成功/错误代码
         /// </summary>
         public int? Code { get; private set; }
@@ -44,7 +48,7 @@ namespace Util.ModelResult
             return new ModelResult<T>
             {
                 Data = data,
-                Code = (int)codes.GetType().GetEnumValues().GetValue(0),
+                Code = codes == null ? null : (int?)codes.GetType().GetEnumValues().GetValue(0),
                 Message = codes.GetDescription(),
                 Success = true,
                 Pagination = pagination
@@ -54,13 +58,15 @@ namespace Util.ModelResult
         /// 返回失败时调用
         /// </summary>
         /// <param name="codes">错误代码</param>
+        /// <param name="errorInfo">错误信息</param>
         /// <returns></returns>
-        public ModelResult<T> FailedResult(Enum codes)
+        public ModelResult<T> FailedResult(Enum codes,string errorInfo="")
         {
             return new ModelResult<T>
             {
-                Code = (int)codes.GetType().GetEnumValues().GetValue(0),
+                Code = codes == null ? null : (int?)codes.GetType().GetEnumValues().GetValue(0),
                 Message = codes.GetDescription(),
+                ErrorInfo = errorInfo,
                 Success = false
             };
         }

@@ -11,199 +11,262 @@ using Util.Data.UOW.SQLServerUOW;
 namespace Util.Data.Repository.SQLServerRepository
 {
     /// <summary>
-    /// 
+    /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
     {
         private readonly DbContext context;
-        public virtual DbSet<TEntity> GetEntity(UnitOfWork uow)
-        {
-            return uow.DbContext.Set<TEntity>();
-        }
         /// <summary>
-        /// 
+        /// 构造函数，初始化上下文
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">SQLServer数据库上下文</param>
         public Repository(DbContext context)
         {
             this.context = context;
         }
         /// <summary>
-        /// 
+        /// 获取实体
         /// </summary>
-        /// <param name="expression"></param>
+        /// <param name="uow">SQLServer工作单元</param>
         /// <returns></returns>
-        public virtual int Count(Expression<Func<TEntity, bool>> expression)
+        public DbSet<TEntity> GetEntity(UnitOfWork uow)
+        {
+            if (uow == null)
+            {
+                throw new ArgumentNullException(nameof(uow));
+            }
+            return uow.DbContext.Set<TEntity>();
+        }
+        /// <summary>
+        /// 统计
+        /// </summary>
+        /// <param name="condition">条件表达式</param>
+        /// <returns></returns>
+        public int Count(Expression<Func<TEntity, bool>> condition)
         {
             var uow = new UnitOfWork(context);
-            return GetEntity(uow).Count(expression);
+            return GetEntity(uow).Count(condition);
 
         }
         /// <summary>
-        /// 
+        /// 异步统计
         /// </summary>
+        /// <param name="condition">条件表达式</param>
         /// <returns></returns>
-        public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> expression)
+        public async Task<int> CountAsync(Expression<Func<TEntity, bool>> condition)
         {
-            var uow = new UnitOfWork(context);           
-            return await GetEntity(uow).CountAsync(expression);
+            var uow = new UnitOfWork(context);
+            return await GetEntity(uow).CountAsync(condition).ConfigureAwait(true);
         }
         /// <summary>
-        /// 
+        /// 删除一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int Delete(TEntity entity)
+        public int Delete(TEntity entity)
         {
-            var uow = new UnitOfWork(context);          
+            var uow = new UnitOfWork(context);
             GetEntity(uow).Remove(entity);
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 
+        /// 删除多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">实体</param>
         /// <returns></returns>
-        public virtual int Delete(IList<TEntity> entities)
+        public int Delete(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).RemoveRange(entities);
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 
+        /// 异步删除一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> DeleteAsync(TEntity entity)
+        public async Task<int> DeleteAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).RemoveRange(entity);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 
+        /// 异步删除多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> DeleteAsync(IList<TEntity> entities)
+        public async Task<int> DeleteAsync(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).RemoveRange(entities);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public virtual TEntity Find(params object[] primaryKey)
+        ///// <summary>
+        ///// 查询一条实体
+        ///// </summary>
+        ///// <returns></returns>
+        public TEntity Find(params object[] primaryKey)
         {
             var uow = new UnitOfWork(context);
             return GetEntity(uow).Find(primaryKey);
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public virtual async Task<TEntity> FindAsync(params object[] primaryKey)
+        ///// <summary>
+        ///// 异步查询一条实体
+        ///// </summary>
+        ///// <returns></returns>
+        public async Task<TEntity> FindAsync(params object[] primaryKey)
         {
             var uow = new UnitOfWork(context);
             return await GetEntity(uow).FindAsync(primaryKey);
         }
         /// <summary>
-        /// 
+        /// 异步查询多条实体
         /// </summary>
-        /// <param name="predicate"></param>
-        /// <param name="keySelector"></param>
-        /// <param name="asc"></param>
-        /// <param name="pageIndex"></param>
-        /// <param name="pageSize"></param>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <param name="pageIndex">页面索引</param>
+        /// <param name="pageSize">页面大小</param>
         /// <returns></returns>
-        public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector,bool asc=true, int pageIndex = 1, int pageSize = 10)
+        public IList<TEntity> Find(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending, int pageIndex = 1, int pageSize = 10)
         {
             var uow = new UnitOfWork(context);
             var query = GetEntity(uow)
-                 .Where(predicate)
+                 .Where(condition)
                  .Skip((pageIndex - 1) * pageSize)
                  .Take(pageSize);
-            return asc ?query.OrderBy(keySelector).ToList():query.OrderByDescending(keySelector).ToList();
-        }
-        public virtual async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
-        {
-            var uow = new UnitOfWork(context);
-            var query = GetEntity(uow)
-                 .Where(predicate)
-                 .Skip((pageIndex - 1) * pageSize)
-                 .Take(pageSize);
-            return asc ?await query.OrderBy(keySelector).ToListAsync() :await query.OrderByDescending(keySelector).ToListAsync();
-        }
-        
-        public virtual IList<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true)
-        {
-            var uow = new UnitOfWork(context);
-            var query = GetEntity(uow)
-                 .Where(predicate);
-            return asc ? query.OrderBy(keySelector).ToList() : query.OrderByDescending(keySelector).ToList();
-        }
-
-        public virtual async Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true)
-        {
-            var uow = new UnitOfWork(context);
-            var query = GetEntity(uow)
-                 .Where(predicate);
-            return asc ? await query.OrderBy(keySelector).ToListAsync() : await query.OrderByDescending(keySelector).ToListAsync();
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return query.OrderBy(keySelector).ToList();
+                case SortMode.Descending:
+                    return query.OrderByDescending(keySelector).ToList();
+                default:
+                    return null;
+            };
         }
         /// <summary>
-        /// 插入实体
+        /// 异步查询多条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <param name="pageIndex">页面索引</param>
+        /// <param name="pageSize">页面大小</param>
         /// <returns></returns>
-        public virtual int Insert(TEntity entity)
+        public async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending, int pageIndex = 1, int pageSize = 10)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetEntity(uow)
+                 .Where(condition)
+                 .Skip((pageIndex - 1) * pageSize)
+                 .Take(pageSize);
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return await query.OrderBy(keySelector).ToListAsync().ConfigureAwait(true);
+                case SortMode.Descending:
+                    return await query.OrderByDescending(keySelector).ToListAsync().ConfigureAwait(true);
+                default:
+                    return null;
+            };
+        }
+        /// <summary>
+        /// 查询所有的实体
+        /// </summary>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <returns></returns>
+        public IList<TEntity> FindAll(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetEntity(uow)
+                 .Where(condition);
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return query.OrderBy(keySelector).ToList();
+                case SortMode.Descending:
+                    return query.OrderByDescending(keySelector).ToList();
+                default:
+                    return null;
+            };
+        }
+        /// <summary>
+        /// 异步查询所有的实体
+        /// </summary>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <returns></returns>
+        public async Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetEntity(uow)
+                 .Where(condition);
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return await query.OrderBy(keySelector).ToListAsync().ConfigureAwait(true);
+                case SortMode.Descending:
+                    return await query.OrderByDescending(keySelector).ToListAsync().ConfigureAwait(true);
+                default:
+                    return null;
+            };
+        }
+        /// <summary>
+        /// 插入一条实体
+        /// </summary>
+        /// <param name="entity">实体</param>
+        /// <returns></returns>
+        public int Insert(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).Add(entity);
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 插入实体集
+        /// 插入多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int Insert(IList<TEntity> entities)
+        public int Insert(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).AddRange(entities);
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 异步插入实体
+        /// 异步插入一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> InsertAsync(TEntity entity)
+        public async Task<int> InsertAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             await GetEntity(uow).AddAsync(entity);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 异步插入实体集
+        /// 异步插入多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> InsertAsync(IList<TEntity> entities)
+        public async Task<int> InsertAsync(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
-            await GetEntity(uow).AddRangeAsync(entities);
-            return await uow.DbContext.SaveChangesAsync();
+            await GetEntity(uow).AddRangeAsync(entities).ConfigureAwait(true);
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 修改实体的删除标识改为true
+        /// 修改一条实体的删除标识，改为true
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int MarkDelete(TEntity entity)
+        public int MarkDelete(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             typeof(TEntity).GetProperty("IsDeleted").SetValue(entity, true);
@@ -212,12 +275,16 @@ namespace Util.Data.Repository.SQLServerRepository
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 修改实体集的删除标识改为true
+        /// 修改多条实体的删除标识，改为true
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int MarkDelete(IList<TEntity> entities)
+        public int MarkDelete(IList<TEntity> entities)
         {
+            if (entities==null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             foreach (var entity in entities)
             {
@@ -228,25 +295,29 @@ namespace Util.Data.Repository.SQLServerRepository
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 异步修改实体的删除标识改为true
+        /// 异步修改一条实体的删除标识，改为true
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> MarkDeleteAsync(TEntity entity)
+        public async Task<int> MarkDeleteAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             typeof(TEntity).GetProperty("IsDeleted").SetValue(entity, true);
             typeof(TEntity).GetProperty("DeleteTime").SetValue(entity, DateTime.Now);
             GetEntity(uow).Update(entity);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 异步修改实体的删除标识改为true
+        /// 异步修改多条实体的删除标识，改为true
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> MarkDeleteAsync(IList<TEntity> entities)
+        public async Task<int> MarkDeleteAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             foreach (var entity in entities)
             {
@@ -254,14 +325,14 @@ namespace Util.Data.Repository.SQLServerRepository
                 typeof(TEntity).GetProperty("DeleteTime").SetValue(entity, DateTime.Now);
             }
             GetEntity(uow).UpdateRange(entities);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 
+        /// 修改一条实体的删除标识，改为false
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int UnmarkDelete(TEntity entity)
+        public int UnmarkDelete(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             typeof(TEntity).GetProperty("IsDeleted").SetValue(entity, false);
@@ -270,12 +341,16 @@ namespace Util.Data.Repository.SQLServerRepository
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 
+        /// 修改多条实体的删除标识，改为false
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int UnmarkDelete(IList<TEntity> entities)
+        public int UnmarkDelete(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             foreach (var entity in entities)
             {
@@ -286,25 +361,29 @@ namespace Util.Data.Repository.SQLServerRepository
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 
+        /// 异步修改一条实体的删除标识，改为false
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UnmarkDeleteAsync(TEntity entity)
+        public async Task<int> UnmarkDeleteAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             typeof(TEntity).GetProperty("IsDeleted").SetValue(entity, false);
             typeof(TEntity).GetProperty("DeleteTime").SetValue(entity, null);
             GetEntity(uow).Update(entity);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 
+        /// 异步修改多条实体的删除标识，改为false
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UnmarkDeleteAsync(IList<TEntity> entities)
+        public async Task<int> UnmarkDeleteAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             foreach (var entity in entities)
             {
@@ -312,53 +391,51 @@ namespace Util.Data.Repository.SQLServerRepository
                 typeof(TEntity).GetProperty("DeleteTime").SetValue(entity, null);
             }
             GetEntity(uow).UpdateRange(entities);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 
+        /// 更新一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int Update(TEntity entity)
+        public int Update(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).Update(entity);
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 
+        /// 更新多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int Update(IList<TEntity> entities)
+        public int Update(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).UpdateRange(entities);
             return uow.DbContext.SaveChanges();
         }
         /// <summary>
-        /// 
+        /// 异步更新一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UpdateAsync(TEntity entity)
+        public async Task<int> UpdateAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).UpdateRange(entity);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
         /// <summary>
-        /// 
+        /// 异步更新多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UpdateAsync(IList<TEntity> entities)
+        public async Task<int> UpdateAsync(IList<TEntity> entities)
         {
             var uow = new UnitOfWork(context);
             GetEntity(uow).UpdateRange(entities);
-            return await uow.DbContext.SaveChangesAsync();
+            return await uow.DbContext.SaveChangesAsync().ConfigureAwait(true);
         }
-
-        
     }
 }

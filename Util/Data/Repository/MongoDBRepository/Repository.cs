@@ -28,45 +28,45 @@ namespace Util.Data.Repository.MongoDBRepository
         /// <summary>
         /// 获取mongodb的集合
         /// </summary>
-        /// <typeparam name="TEntity">实体类型</typeparam>
-        /// <param name="uow">工作单元</param>
+        /// <typeparam name="T">实体类型</typeparam>
+        /// <param name="uow">mongodb工作单元</param>
         /// <returns></returns>
-        public virtual IMongoCollection<TEntity> GetMongoCollection<TEntity>(UnitOfWork uow)
+        public IMongoCollection<T> GetMongoCollection<T>(UnitOfWork uow)
         {
             if (uow == null)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(uow));
             }
-            return uow.database.GetCollection<TEntity>(typeof(TEntity).Name);
+            return uow.database.GetCollection<T>(typeof(T).Name);
         }
         /// <summary>
-        /// 统计
+        /// 异步统计
         /// </summary>
-        /// <param name="predicate"></param>
+        /// <param name="condition">条件表达式</param>
         /// <returns></returns>
-        public virtual int Count(Expression<Func<TEntity, bool>> predicate)
+        public int Count(Expression<Func<TEntity, bool>> condition)
         {
             var uow = new UnitOfWork(context);
-            var result = GetMongoCollection<TEntity>(uow).AsQueryable().Count(predicate);
+            var result = GetMongoCollection<TEntity>(uow).AsQueryable().Count(condition);
             return result;
         }
         /// <summary>
         /// 异步统计
         /// </summary>
-        /// <param name="predicate"></param>
+        /// <param name="condition">条件表达式</param>
         /// <returns></returns>
-        public virtual async Task<int> CountAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<int> CountAsync(Expression<Func<TEntity, bool>> condition)
         {
             var uow = new UnitOfWork(context);
-            var result =await GetMongoCollection<TEntity>(uow).AsQueryable().CountAsync(predicate);
+            var result =await GetMongoCollection<TEntity>(uow).AsQueryable().CountAsync(condition).ConfigureAwait(true);
             return result;
         }
         /// <summary>
-        /// 删除单条
+        /// 删除一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int Delete(TEntity entity)
+        public int Delete(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
@@ -74,12 +74,16 @@ namespace Util.Data.Repository.MongoDBRepository
             return (int)result.DeletedCount;
         }
         /// <summary>
-        /// 删除多条
+        /// 删除多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">实体</param>
         /// <returns></returns>
-        public virtual int Delete(IList<TEntity> entities)
+        public int Delete(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             var filters = new List<FilterDefinition<TEntity>>();
             foreach (var entity in entities)
@@ -90,39 +94,43 @@ namespace Util.Data.Repository.MongoDBRepository
             return (int)result.DeletedCount;
         }
         /// <summary>
-        /// 异步删除单条
+        /// 异步删除一条实体
         /// </summary>
-        /// <param name="entity"></param>
+        /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> DeleteAsync(TEntity entity)
+        public async Task<int> DeleteAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            var result =await GetMongoCollection<TEntity>(uow).DeleteOneAsync(filter);
+            var result =await GetMongoCollection<TEntity>(uow).DeleteOneAsync(filter).ConfigureAwait(true);
             return (int)result.DeletedCount;
         }
         /// <summary>
-        /// 异步删除多条
+        /// 异步删除多条实体
         /// </summary>
-        /// <param name="entities"></param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> DeleteAsync(IList<TEntity> entities)
+        public async Task<int> DeleteAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             var filters = new List<FilterDefinition<TEntity>>();
             foreach (var entity in entities)
             {
                 filters.Add(Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity)));
             }
-            var result =await GetMongoCollection<TEntity>(uow).DeleteManyAsync(Builders<TEntity>.Filter.Or(filters));
+            var result =await GetMongoCollection<TEntity>(uow).DeleteManyAsync(Builders<TEntity>.Filter.Or(filters)).ConfigureAwait(true);
             return (int)result.DeletedCount;
         }
-        /// <summary>
-        /// 查询，多主键有待验证
-        /// </summary>
-        /// <param name="primaryKey">主键</param>
-        /// <returns></returns>
-        public virtual TEntity Find(params object[] primaryKey)
+        ///// <summary>
+        ///// 查询，多主键有待验证
+        ///// </summary>
+        ///// <param name="primaryKey">主键</param>
+        ///// <returns></returns>
+        public TEntity Find(params object[] primaryKey)
         {
             var uow = new UnitOfWork(context);
             var filters = new List<FilterDefinition<TEntity>>();
@@ -135,28 +143,36 @@ namespace Util.Data.Repository.MongoDBRepository
             return GetMongoCollection<TEntity>(uow).Find(Builders<TEntity>.Filter.And(filters)).Single();
         }
         /// <summary>
-        /// 查询
+        /// 查询多条实体
         /// </summary>
-        /// <param name="predicate">条件</param>
+        /// <param name="condition">条件表达式条件</param>
         /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-        /// <param name="asc">顺序/倒序（默认顺序）</param>
+        /// <param name="sortMode">顺序/倒序（默认顺序）</param>
         /// <param name="pageIndex">索引页数</param>
         /// <param name="pageSize">索引页大小</param>
         /// <returns></returns>
-        public virtual IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, bool asc = true, int pageIndex = 1, int pageSize = 10)
+        public IList<TEntity> Find(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending, int pageIndex = 1, int pageSize = 10)
         {
             var uow = new UnitOfWork(context);
             var query = GetMongoCollection<TEntity>(uow).AsQueryable()
-                 .Where(predicate)
+                 .Where(condition)
                  .Skip((pageIndex - 1) * pageSize)
                  .Take(pageSize);
-            return asc ? query.OrderBy(keySelector).ToList() : query.OrderByDescending(keySelector).ToList();
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return query.OrderBy(keySelector).ToList();
+                case SortMode.Descending:
+                    return query.OrderByDescending(keySelector).ToList();
+                default:
+                    return null;
+            };
         }
-        /// <summary>
-        /// 异步查询，多主键有待验证
-        /// </summary>
-        /// <param name="primaryKey">主键</param>
-        public virtual async Task<TEntity> FindAsync(params object[] primaryKey)
+        ///// <summary>
+        ///// 异步查询，多主键有待验证
+        ///// </summary>
+        ///// <param name="primaryKey">主键</param>
+        public async Task<TEntity> FindAsync(params object[] primaryKey)
         {
             var uow = new UnitOfWork(context);
             var filters = new List<FilterDefinition<TEntity>>();
@@ -166,74 +182,153 @@ namespace Util.Data.Repository.MongoDBRepository
                     .Eq("Id",key);
                 filters.Add(filter);
             }
-            return (await GetMongoCollection<TEntity>(uow).FindAsync(Builders<TEntity>.Filter.And(filters))).Single();
+            return (await GetMongoCollection<TEntity>(uow).FindAsync(Builders<TEntity>.Filter.And(filters)).ConfigureAwait(true)).Single();
         }
         /// <summary>
-        /// 插入单条
+        /// 异步查询多条实体
+        /// </summary>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <param name="pageIndex">页面索引</param>
+        /// <param name="pageSize">页面大小</param>
+        /// <returns></returns>
+        public async Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending, int pageIndex = 1, int pageSize = 10)
+        {
+            var uow = new UnitOfWork(context);
+            var query = GetMongoCollection<TEntity>(uow).AsQueryable()
+                 .Where(condition)
+                 .Skip((pageIndex - 1) * pageSize)
+                 .Take(pageSize);
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return await query.OrderBy(keySelector).ToListAsync().ConfigureAwait(true);
+                case SortMode.Descending:
+                    return await query.OrderByDescending(keySelector).ToListAsync().ConfigureAwait(true);
+                default:
+                    return null;
+            };
+        }
+        /// <summary>
+        /// 查询所有的实体
+        /// </summary>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <returns></returns>
+        public IList<TEntity> FindAll(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending)
+        {
+            var uow = new UnitOfWork(context);
+            var quesy = GetMongoCollection<TEntity>(uow).AsQueryable().Where(condition);
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return quesy.OrderBy(keySelector).ToList();
+                case SortMode.Descending:
+                    return quesy.OrderByDescending(keySelector).ToList();
+                default:
+                    return null;
+            }
+        }
+        /// <summary>
+        /// 异步查询所有的实体
+        /// </summary>
+        /// <param name="condition">条件表达式</param>
+        /// <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+        /// <param name="sortMode">排序方式，默认顺序</param>
+        /// <returns></returns>
+        public async Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> condition, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending)
+        {
+            var uow = new UnitOfWork(context);
+            var quesy = GetMongoCollection<TEntity>(uow).AsQueryable().Where(condition);
+            switch (sortMode)
+            {
+                case SortMode.Ascending:
+                    return await quesy.OrderBy(keySelector).ToListAsync().ConfigureAwait(true);
+                case SortMode.Descending:
+                    return await quesy.OrderByDescending(keySelector).ToListAsync().ConfigureAwait(true);
+                default:
+                    return null;
+            }
+        }
+        /// <summary>
+        /// 插入一条实体
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int Insert(TEntity entity)
+        public int Insert(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             GetMongoCollection<TEntity>(uow).InsertOne(entity);
             return 1;
         }
         /// <summary>
-        /// 插入多条
+        /// 插入多条实体
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int Insert(IList<TEntity> entities)
+        public int Insert(IList<TEntity> entities)
         {
+            if (entities==null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             GetMongoCollection<TEntity>(uow).InsertMany(entities);
             return entities.Count;
         }
         /// <summary>
-        /// 异步插入单条
+        /// 异步插入一条实体
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> InsertAsync(TEntity entity)
+        public async Task<int> InsertAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
-            await GetMongoCollection<TEntity>(uow).InsertOneAsync(entity);
+            await GetMongoCollection<TEntity>(uow).InsertOneAsync(entity).ConfigureAwait(true);
             return 1;
         }
         /// <summary>
-        /// 异步插入多条
+        /// 异步插入多条实体
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> InsertAsync(IList<TEntity> entities)
+        public async Task<int> InsertAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
-            await GetMongoCollection<TEntity>(uow).InsertManyAsync(entities);
+            await GetMongoCollection<TEntity>(uow).InsertManyAsync(entities).ConfigureAwait(true);
             return entities.Count;
         }
         /// <summary>
-        /// 设置单个实体的删除标记为true
+        /// 修改一条实体的删除标识，改为true
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int MarkDelete(TEntity entity)
+        public int MarkDelete(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            var s = GetMongoCollection<TEntity>(uow).Find(filter).FirstOrDefault();
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", true)
                 .Set("DeleteTime", DateTime.Now);
             return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
         /// <summary>
-        /// 设置多个实体的删除标记为true
+        /// 修改多条实体的删除标识，改为true
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int MarkDelete(IList<TEntity> entities)
+        public int MarkDelete(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", true)
@@ -247,27 +342,31 @@ namespace Util.Data.Repository.MongoDBRepository
             return count;
         }
         /// <summary>
-        /// 异步设置单个实体的删除标记为true
+        /// 异步修改一条实体的删除标识，改为true
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> MarkDeleteAsync(TEntity entity)
+        public async Task<int> MarkDeleteAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", true)
                 .Set("DeleteTime", DateTime.Now);
-            var result = await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update);
+            var result = await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update).ConfigureAwait(true);
             return (int)result.ModifiedCount;
         }
         /// <summary>
-        /// 异步设置多个实体的删除标记为true
+        /// 异步修改多条实体的删除标识，改为true
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> MarkDeleteAsync(IList<TEntity> entities)
+        public async Task<int> MarkDeleteAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", true)
@@ -276,16 +375,16 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+                count += (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update).ConfigureAwait(true)).ModifiedCount;
             }
             return count;
         }
         /// <summary>
-        /// 设置单个实体的删除标记为false
+        /// 修改一条实体的删除标识，改为false
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int UnmarkDelete(TEntity entity)
+        public int UnmarkDelete(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
@@ -295,12 +394,16 @@ namespace Util.Data.Repository.MongoDBRepository
             return (int)GetMongoCollection<TEntity>(uow).UpdateOne(filter, update).ModifiedCount;
         }
         /// <summary>
-        /// 设置多个实体的删除标记为false
+        /// 修改多条实体的删除标识，改为false
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int UnmarkDelete(IList<TEntity> entities)
+        public int UnmarkDelete(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", false)
@@ -314,26 +417,30 @@ namespace Util.Data.Repository.MongoDBRepository
             return count;
         }
         /// <summary>
-        /// 异步设置单个实体的删除标记为false
+        /// 异步修改一条实体的删除标识，改为false
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UnmarkDeleteAsync(TEntity entity)
+        public async Task<int> UnmarkDeleteAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", false)
                 .Set<TEntity, DateTime?>("DeleteTime", null);
-            return (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+            return (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update).ConfigureAwait(true)).ModifiedCount;
         }
         /// <summary>
-        /// 异步设置多个实体的删除标记为false
+        /// 异步修改多条实体的删除标识，改为false
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UnmarkDeleteAsync(IList<TEntity> entities)
+        public async Task<int> UnmarkDeleteAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             var update = Builders<TEntity>.Update
                 .Set("IsDeleted", false)
@@ -342,7 +449,7 @@ namespace Util.Data.Repository.MongoDBRepository
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update)).ModifiedCount;
+                count += (int)(await GetMongoCollection<TEntity>(uow).UpdateOneAsync(filter, update).ConfigureAwait(true)).ModifiedCount;
             }
             return count;
         }
@@ -351,7 +458,7 @@ namespace Util.Data.Repository.MongoDBRepository
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual int Update(TEntity entity)
+        public int Update(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
@@ -360,10 +467,14 @@ namespace Util.Data.Repository.MongoDBRepository
         /// <summary>
         /// 更新多条实体
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual int Update(IList<TEntity> entities)
+        public int Update(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             int count = 0;
             foreach (var entity in entities)
@@ -378,27 +489,32 @@ namespace Util.Data.Repository.MongoDBRepository
         /// </summary>
         /// <param name="entity">实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UpdateAsync(TEntity entity)
+        public async Task<int> UpdateAsync(TEntity entity)
         {
             var uow = new UnitOfWork(context);
             var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-            return (int)(await GetMongoCollection<TEntity>(uow).ReplaceOneAsync(filter, entity)).ModifiedCount;
+            return (int)(await GetMongoCollection<TEntity>(uow).ReplaceOneAsync(filter, entity).ConfigureAwait(true)).ModifiedCount;
         }
         /// <summary>
         /// 异步更新多条实体
         /// </summary>
-        /// <param name="entities">实体列表</param>
+        /// <param name="entities">多条实体</param>
         /// <returns></returns>
-        public virtual async Task<int> UpdateAsync(IList<TEntity> entities)
+        public async Task<int> UpdateAsync(IList<TEntity> entities)
         {
+            if (entities == null)
+            {
+                throw new ArgumentNullException(nameof(entities));
+            }
             var uow = new UnitOfWork(context);
             int count = 0;
             foreach (var entity in entities)
             {
                 var filter = Builders<TEntity>.Filter.Eq("Id", typeof(TEntity).GetProperty("Id").GetValue(entity));
-                count += (int)(await GetMongoCollection<TEntity>(uow).ReplaceOneAsync(filter, entity)).ModifiedCount;
+                count += (int)(await GetMongoCollection<TEntity>(uow).ReplaceOneAsync(filter, entity).ConfigureAwait(true)).ModifiedCount;
             }
             return count;
         }
+        
     }
 }
