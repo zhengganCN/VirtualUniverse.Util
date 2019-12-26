@@ -15,11 +15,6 @@ namespace UtilTest.SQLServerTest.DataTest
             this.context = context;
         }
 
-        public override DbSet<Student> GetEntity(UnitOfWork uow)
-        {
-            return base.GetEntity(uow);
-        }
-
         /// <summary>
         /// 修改学生成绩(仅为了模拟事务操作)
         /// </summary>

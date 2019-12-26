@@ -469,7 +469,7 @@ namespace UtilTest.DataTest.MongoDBTest
         {
             while (true)
             {
-                var students = repository.Find(o => o.Id != null, o => o.Id,false);
+                var students = repository.Find(o => o.Id != null, o => o.Id,SortMode.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -492,7 +492,7 @@ namespace UtilTest.DataTest.MongoDBTest
         {
             while (true)
             {
-                var students = repository.FindAll(o => o.Id != null, o => o.Id, false);
+                var students = repository.FindAll(o => o.Id != null, o => o.Id, SortMode.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()

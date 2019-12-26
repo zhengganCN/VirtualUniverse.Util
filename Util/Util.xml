@@ -42,271 +42,477 @@
             释放资源
             </summary>
         </member>
-        <member name="T:Util.Data.Repository.MongoDBRepository.Entity`1">
+        <member name="T:Util.Data.Repository.Entity`1">
             <summary>
-            
+            实体基类
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.Id">
+        <member name="P:Util.Data.Repository.Entity`1.Id">
             <summary>
             泛型主键
             </summary>
         </member>
-        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.IsDeleted">
+        <member name="P:Util.Data.Repository.Entity`1.IsDeleted">
             <summary>
             删除标识
             </summary>
         </member>
-        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.CreateTime">
+        <member name="P:Util.Data.Repository.Entity`1.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.DeleteTime">
+        <member name="P:Util.Data.Repository.Entity`1.DeleteTime">
             <summary>
             删除时间
             </summary>
         </member>
-        <member name="P:Util.Data.Repository.MongoDBRepository.Entity`1.UpdateTime">
+        <member name="P:Util.Data.Repository.Entity`1.UpdateTime">
             <summary>
             更新时间
             </summary>
         </member>
         <member name="T:Util.Data.Repository.MongoDBRepository.Repository`1">
             <summary>
-            
+            仓储基类
             </summary>
             <typeparam name="TEntity"></typeparam>
         </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.#ctor(Util.Data.UOW.MongoDBUOW.DbContext)">
             <summary>
-            
+            构造函数，初始化上下文
             </summary>
-            <param name="predicate">查询条件表达式</param>
-            <param name="keySelector">按某个关键字排序</param>
-            <param name="asc">排序方式，true表示按asc排序，false表示按desc排序</param>
-            <param name="pageIndex">分页索引</param>
-            <param name="pageSize">分页大小</param>
+            <param name="context">mongodb上下文</param>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.GetMongoCollection``1(Util.Data.UOW.MongoDBUOW.UnitOfWork)">
+            <summary>
+            获取mongodb的集合
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <param name="uow">mongodb工作单元</param>
             <returns></returns>
         </member>
-        <member name="T:Util.Data.Repository.SQLServerRepository.Entity`1">
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
-            
+            异步统计
             </summary>
-            <typeparam name="T"></typeparam>
+            <param name="condition">条件表达式</param>
+            <returns></returns>
         </member>
-        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.Id">
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
-            泛型主键
+            异步统计
+            </summary>
+            <param name="condition">条件表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Delete(`0)">
+            <summary>
+            删除一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
+            <summary>
+            删除多条实体
+            </summary>
+            <param name="entities">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.DeleteAsync(`0)">
+            <summary>
+            异步删除一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步删除多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
+            <summary>
+            查询多条实体
+            </summary>
+            <param name="condition">条件表达式条件</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">顺序/倒序（默认顺序）</param>
+            <param name="pageIndex">索引页数</param>
+            <param name="pageSize">索引页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
+            <summary>
+            异步查询多条实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <param name="pageIndex">页面索引</param>
+            <param name="pageSize">页面大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
+            <summary>
+            查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
+            <summary>
+            异步查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Insert(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
+            <summary>
+            插入多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.InsertAsync(`0)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步插入多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Update(`0)">
+            <summary>
+            更新单条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Update(System.Collections.Generic.IList{`0})">
+            <summary>
+            更新多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UpdateAsync(`0)">
+            <summary>
+            异步更新单条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步更新多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Repository.SortMode">
+            <summary>
+            排序方式
             </summary>
         </member>
-        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.IsDeleted">
+        <member name="F:Util.Data.Repository.SortMode.Ascending">
             <summary>
-            删除标识
+            升序
             </summary>
         </member>
-        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.CreateTime">
+        <member name="F:Util.Data.Repository.SortMode.Descending">
             <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Repository.SQLServerRepository.Entity`1.UpdateTime">
-            <summary>
-            更新时间
+            降序
             </summary>
         </member>
         <member name="T:Util.Data.Repository.SQLServerRepository.Repository`1">
             <summary>
-            
+            仓储基类
             </summary>
             <typeparam name="TEntity"></typeparam>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
             <summary>
-            
+            构造函数，初始化上下文
             </summary>
-            <param name="context"></param>
+            <param name="context">SQLServer数据库上下文</param>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.GetEntity(Util.Data.UOW.SQLServerUOW.UnitOfWork)">
+            <summary>
+            获取实体
+            </summary>
+            <param name="uow">SQLServer工作单元</param>
+            <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
-            
+            统计
             </summary>
-            <param name="expression"></param>
+            <param name="condition">条件表达式</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
-            
+            异步统计
             </summary>
+            <param name="condition">条件表达式</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Delete(`0)">
             <summary>
-            
+            删除一条实体
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
             <summary>
-            
+            删除多条实体
             </summary>
-            <param name="entities"></param>
+            <param name="entities">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.DeleteAsync(`0)">
             <summary>
-            
+            异步删除一条实体
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
-            
+            异步删除多条实体
             </summary>
-            <param name="entities"></param>
+            <param name="entities">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Find(System.Object[])">
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
             <summary>
-            
+            异步查询多条实体
             </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <param name="pageIndex">页面索引</param>
+            <param name="pageSize">页面大小</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAsync(System.Object[])">
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
             <summary>
-            
+            异步查询多条实体
             </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <param name="pageIndex">页面索引</param>
+            <param name="pageSize">页面大小</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},System.Boolean,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
             <summary>
-            
+            查询所有的实体
             </summary>
-            <param name="predicate"></param>
-            <param name="keySelector"></param>
-            <param name="asc"></param>
-            <param name="pageIndex"></param>
-            <param name="pageSize"></param>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
+            <summary>
+            异步查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Insert(`0)">
             <summary>
-            插入实体
+            插入一条实体
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
             <summary>
-            插入实体集
+            插入多条实体
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.InsertAsync(`0)">
             <summary>
-            异步插入实体
+            异步插入一条实体
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
             <summary>
-            异步插入实体集
+            异步插入多条实体
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDelete(`0)">
             <summary>
-            修改实体的删除标识改为true
+            修改一条实体的删除标识，改为true
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
             <summary>
-            修改实体集的删除标识改为true
+            修改多条实体的删除标识，改为true
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDeleteAsync(`0)">
             <summary>
-            异步修改实体的删除标识改为true
+            异步修改一条实体的删除标识，改为true
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
-            异步修改实体的删除标识改为true
+            异步修改多条实体的删除标识，改为true
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDelete(`0)">
             <summary>
-            
+            修改一条实体的删除标识，改为false
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
             <summary>
-            
+            修改多条实体的删除标识，改为false
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDeleteAsync(`0)">
             <summary>
-            
+            异步修改一条实体的删除标识，改为false
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
-            
+            异步修改多条实体的删除标识，改为false
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Update(`0)">
             <summary>
-            
+            更新一条实体
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.Update(System.Collections.Generic.IList{`0})">
             <summary>
-            
+            更新多条实体
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UpdateAsync(`0)">
             <summary>
-            
+            异步更新一条实体
             </summary>
-            <param name="entity"></param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.Repository.SQLServerRepository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
             <summary>
-            
+            异步更新多条实体
             </summary>
-            <param name="entities"></param>
+            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
         <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoClientConfiguration">
@@ -343,7 +549,33 @@
         </member>
         <member name="T:Util.Data.UOW.SQLServerUOW.UnitOfWork">
             <summary>
-            
+            工作单元
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.SQLServerUOW.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            工作单元构造函数
+            </summary>
+            <param name="context">sqlserver数据库上下文</param>
+        </member>
+        <member name="P:Util.Data.UOW.SQLServerUOW.UnitOfWork.DbContext">
+            <summary>
+            sqlserver数据库上下文
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.SQLServerUOW.UnitOfWork.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.SQLServerUOW.UnitOfWork.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.SQLServerUOW.UnitOfWork.Transaction">
+            <summary>
+            事务开始
             </summary>
         </member>
         <member name="T:Util.Extend.EnumExtend">
@@ -454,6 +686,11 @@
             提示信息
             </summary>
         </member>
+        <member name="P:Util.ModelResult.ModelResult`1.ErrorInfo">
+            <summary>
+            错误信息
+            </summary>
+        </member>
         <member name="P:Util.ModelResult.ModelResult`1.Code">
             <summary>
             成功/错误代码
@@ -473,12 +710,25 @@
             <param name="pagination">分页信息</param>
             <returns></returns>
         </member>
-        <member name="M:Util.ModelResult.ModelResult`1.FailedResult(System.Enum)">
+        <member name="M:Util.ModelResult.ModelResult`1.FailedResult(System.Enum,System.String)">
             <summary>
             返回失败时调用
             </summary>
             <param name="codes">错误代码</param>
+            <param name="errorInfo">错误信息</param>
             <returns></returns>
+        </member>
+        <member name="T:Util.ModelResult.Pagination">
+            <summary>
+            分页
+            </summary>
+        </member>
+        <member name="M:Util.ModelResult.Pagination.#ctor(System.Int32,System.Int32)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="pageIndex">页面索引，默认为1</param>
+            <param name="pageSize">页面大小，默认为10</param>
         </member>
         <member name="P:Util.ModelResult.Pagination.PageIndex">
             <summary>
@@ -499,6 +749,127 @@
             <summary>
             页面总数
             </summary>
+        </member>
+        <member name="T:Util.Security.Cryptography.AES">
+            <summary>
+            对称加密算法，算法支持的密钥长度为128、192、256位。IV长度位128位
+            </summary>
+        </member>
+        <member name="M:Util.Security.Cryptography.AES.AESEncrypt(System.Byte[],System.Byte[],Util.Security.Cryptography.AES.KeyType)">
+            <summary>
+            AES加密算法
+            </summary>
+            <param name="data">需加密的数据</param>
+            <param name="key">密钥</param>
+            <param name="keyType">密钥长度</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.AES.AESDecrypt(System.Byte[],System.Byte[],Util.Security.Cryptography.AES.KeyType)">
+            <summary>
+            AES解密算法
+            </summary>
+            <param name="data">需解密的数据</param>
+            <param name="key">密钥</param>
+            <param name="keyType">密钥长度</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Security.Cryptography.AES.KeyType">
+            <summary>
+            密钥长度
+            </summary>
+        </member>
+        <member name="F:Util.Security.Cryptography.AES.KeyType.Key128">
+            <summary>
+            密钥长度为128
+            </summary>
+        </member>
+        <member name="F:Util.Security.Cryptography.AES.KeyType.Key192">
+            <summary>
+            密钥长度为192
+            </summary>
+        </member>
+        <member name="F:Util.Security.Cryptography.AES.KeyType.Key256">
+            <summary>
+            密钥长度为256
+            </summary>
+        </member>
+        <member name="T:Util.Security.Cryptography.DES">
+            <summary>
+            对称加密算法，算法支持的密钥长度为64位。
+            </summary>
+        </member>
+        <member name="M:Util.Security.Cryptography.DES.DESEncrypt(System.Byte[],System.Byte[])">
+            <summary>
+            DES加密
+            </summary>
+            <param name="data">需加密的数据</param>
+            <param name="key">密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.DES.DESDecrypt(System.Byte[],System.Byte[])">
+            <summary>
+            DES解密
+            </summary>
+            <param name="data">需解密的数据</param>
+            <param name="key">密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.DES.GetKey(System.Byte[])">
+            <summary>
+            获取密钥
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Security.Cryptography.MD5">
+            <summary>
+            hash算法，MD5
+            </summary>
+        </member>
+        <member name="M:Util.Security.Cryptography.MD5.Encrypt(System.Byte[])">
+            <summary>
+            MD5加密
+            </summary>
+            <param name="data">需加密的数据</param>
+            <returns>16进制字符串</returns>
+        </member>
+        <member name="T:Util.Security.Cryptography.RSA">
+            <summary>
+            RSA加密/解密,非对称算法
+            </summary>
+        </member>
+        <member name="T:Util.Security.Cryptography.SHA">
+            <summary>
+            hash算法
+            </summary>
+        </member>
+        <member name="M:Util.Security.Cryptography.SHA.SHA1Encrypt(System.Byte[])">
+            <summary>
+            SHA1加密
+            </summary>
+            <param name="data">需加密的数据</param>
+            <returns>16进制字符串</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.SHA.SHA256Encrypt(System.Byte[])">
+            <summary>
+            SHA256加密
+            </summary>
+            <param name="data">需加密的数据</param>
+            <returns>16进制字符串</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.SHA.SHA384Encrypt(System.Byte[])">
+            <summary>
+            SHA384加密
+            </summary>
+            <param name="data">需加密的数据</param>
+            <returns>16进制字符串</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.SHA.SHA512Encrypt(System.Byte[])">
+            <summary>
+            SHA512加密
+            </summary>
+            <param name="data">需加密的数据</param>
+            <returns>16进制字符串</returns>
         </member>
     </members>
 </doc>
