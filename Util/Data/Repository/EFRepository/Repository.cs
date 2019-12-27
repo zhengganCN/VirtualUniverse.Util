@@ -6,9 +6,9 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.UOW;
-using Util.Data.UOW.SQLServerUOW;
+using Util.Data.UOW.EFUOW;
 
-namespace Util.Data.Repository.SQLServerRepository
+namespace Util.Data.Repository.EFRepository
 {
     /// <summary>
     /// 仓储基类

@@ -1,22 +1,22 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Linq;
-using NUnit.Framework;
+using Util.Data.Repository;
 using Util.Data.Repository.EFRepository;
 using Util.Math;
-using Util.Data.Repository;
 
-namespace UtilTest.SQLServerTest.DataTest
+namespace UtilTest.DataTest.MySQLTest
 {
-    class SQLServerUOWTest
+    class MySQLUOWTest
     {
         Repository<Student> repository = null;
         [SetUp]
         public void Setup()
         {
-            repository = new Repository<Student>(new SQLServerDbContext());
+            repository = new Repository<Student>(new MySQLDbContext());
         }
         #region Insert
         [Test]
@@ -468,7 +468,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var students = repository.Find(o => o.Id != null, o => o.Id,SortMode.Descending);
+                var students = repository.Find(o => o.Id != null, o => o.Id, SortMode.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -598,7 +598,7 @@ namespace UtilTest.SQLServerTest.DataTest
         [Test]
         public void EntityTest()
         {
-            var student= new Student()
+            var student = new Student()
             {
                 Id = Guid.NewGuid(),
                 CreateTime = DateTime.Now,
@@ -621,8 +621,8 @@ namespace UtilTest.SQLServerTest.DataTest
         [Test]
         public void MultiTableNoException()
         {
-            var studentRepository = new StudentRepository(new SQLServerDbContext());
-            var result= studentRepository.InsertStudentScore(
+            var studentRepository = new StudentRepository(new MySQLDbContext());
+            var result = studentRepository.InsertStudentScore(
                 new Student()
                 {
                     CreateTime = DateTime.Now,
@@ -643,7 +643,7 @@ namespace UtilTest.SQLServerTest.DataTest
         [Test]
         public void MultiTableException()
         {
-            var studentRepository = new StudentRepository(new SQLServerDbContext());
+            var studentRepository = new StudentRepository(new MySQLDbContext());
             var result = studentRepository.InsertStudentScore(
                 new Student()
                 {

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Util.Data.Repository;
-using Util.Data.Repository.SQLServerRepository;
+using Util.Data.Repository.EFRepository;
 using UtilTest.SQLServerTest.DataTest;
 
 namespace UtilTest.DataTest.SQLServerTest

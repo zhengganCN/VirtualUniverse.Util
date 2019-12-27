@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Data.UOW.SQLServerUOW
+namespace Util.Data.UOW.EFUOW
 {
     /// <summary>
     /// 工作单元

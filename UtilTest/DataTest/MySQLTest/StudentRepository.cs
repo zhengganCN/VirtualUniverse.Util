@@ -5,7 +5,7 @@ using System.Text;
 using Util.Data.Repository.EFRepository;
 using Util.Data.UOW.EFUOW;
 
-namespace UtilTest.SQLServerTest.DataTest
+namespace UtilTest.DataTest.MySQLTest
 {
     class StudentRepository : Repository<Student>
     {
@@ -22,12 +22,12 @@ namespace UtilTest.SQLServerTest.DataTest
         /// <param name="score">添加的成绩</param>
         /// <param name="triggerException">模拟异常,是否触发异常</param>
         /// <returns></returns>
-        public bool InsertStudentScore(Student student,Score score,bool triggerException)
+        public bool InsertStudentScore(Student student, Score score, bool triggerException)
         {
-            UnitOfWork uow = null; 
+            UnitOfWork uow = null;
             try
             {
-                uow=new UnitOfWork(context);
+                uow = new UnitOfWork(context);
                 uow.Transaction();
                 GetEntity(uow).Add(student);
                 context.SaveChanges();
