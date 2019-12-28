@@ -60,7 +60,7 @@ namespace Util.ModelResult
         /// <param name="codes">错误代码</param>
         /// <param name="errorInfo">错误信息</param>
         /// <returns></returns>
-        public ModelResult<T> FailedResult(Enum codes,string errorInfo="")
+        public ModelResult<T> FailedResult(Enum codes, string errorInfo = "")
         {
             return new ModelResult<T>
             {
