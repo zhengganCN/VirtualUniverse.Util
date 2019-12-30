@@ -27,8 +27,8 @@ namespace UtilTest.DataTest.SQLServerTest
         public void AndTest()
         {
             Expression<Func<Student, bool>> expression = t => true;
-            expression = expression.And(x => x.Id != null);
-            expression = expression.And(y => y.IsDeleted==false);
+            expression= expression.And(x => x.Id != null);
+            expression= expression.And(y => y.IsDeleted==false);
             var count= repository.Count(expression);
             Assert.AreEqual(count, students.Where(o => o.Id != null && o.IsDeleted == false).Count());
         }
@@ -37,8 +37,8 @@ namespace UtilTest.DataTest.SQLServerTest
         public void OrTest()
         {
             Expression<Func<Student, bool>> expression = t => true;
-            expression = expression.Or(x => x.Id != null);
-            expression = expression.Or(y => y.IsDeleted == false);
+            expression.Or(x => x.Id != null);
+            expression.Or(y => y.IsDeleted == false);
             var count = repository.Count(expression);
             Assert.AreEqual(count, students.Where(o => o.Id != null || o.IsDeleted == false).Count());
         }

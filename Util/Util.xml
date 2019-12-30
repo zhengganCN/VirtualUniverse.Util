@@ -706,7 +706,7 @@
             返回成功时调用
             </summary>
             <param name="data">数据</param>
-            <param name="codes">成功代码</param>
+            <param name="code">成功代码</param>
             <param name="pagination">分页信息</param>
             <returns></returns>
         </member>
@@ -714,7 +714,7 @@
             <summary>
             返回失败时调用
             </summary>
-            <param name="codes">错误代码</param>
+            <param name="code">错误代码</param>
             <param name="errorInfo">错误信息</param>
             <returns></returns>
         </member>

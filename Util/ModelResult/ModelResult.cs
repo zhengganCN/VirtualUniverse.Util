@@ -40,35 +40,51 @@ namespace Util.ModelResult
         /// 返回成功时调用
         /// </summary>
         /// <param name="data">数据</param>
-        /// <param name="codes">成功代码</param>
+        /// <param name="code">成功代码</param>
         /// <param name="pagination">分页信息</param>
         /// <returns></returns>
-        public ModelResult<T> SuccessResult(T data, Enum codes, Pagination pagination = null)
+        public ModelResult<T> SuccessResult(T data, Enum code, Pagination pagination = null)
         {
-            return new ModelResult<T>
+            var model= new ModelResult<T>
             {
                 Data = data,
-                Code = codes == null ? null : (int?)codes.GetType().GetEnumValues().GetValue(0),
-                Message = codes.GetDescription(),
+                Message = code.GetDescription(),
                 Success = true,
                 Pagination = pagination
             };
+            if (code==null)
+            {
+                model.Code = null;
+            }
+            else
+            {
+                model.Code = (int)Enum.Parse(code.GetType(), code.ToString());
+            }
+            return model;
         }
         /// <summary>
         /// 返回失败时调用
         /// </summary>
-        /// <param name="codes">错误代码</param>
+        /// <param name="code">错误代码</param>
         /// <param name="errorInfo">错误信息</param>
         /// <returns></returns>
-        public ModelResult<T> FailedResult(Enum codes, string errorInfo = "")
+        public ModelResult<T> FailedResult(Enum code, string errorInfo = "")
         {
-            return new ModelResult<T>
+            var model= new ModelResult<T>
             {
-                Code = codes == null ? null : (int?)codes.GetType().GetEnumValues().GetValue(0),
-                Message = codes.GetDescription(),
+                Message = code.GetDescription(),
                 ErrorInfo = errorInfo,
                 Success = false
             };
+            if (code == null)
+            {
+                model.Code = null;
+            }
+            else
+            {
+                model.Code = (int)Enum.Parse(code.GetType(), code.ToString());
+            }
+            return model;
         }
     }
 }

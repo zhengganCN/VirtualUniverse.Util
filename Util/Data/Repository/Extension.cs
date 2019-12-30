@@ -46,7 +46,7 @@ namespace Util.Data.Repository
                 throw new ArgumentNullException(nameof(right));
             }
             var rightBody = new RebuildExpression(right.Parameters[0], left.Parameters[0]).Visit(right.Body);
-            return Expression.Lambda<Func<T, bool>>(Expression.OrElse(left.Body, rightBody), left.Parameters);
+            return Expression.Lambda<Func<T, bool>>(Expression.OrElse(left.Body, rightBody), left.Parameters); 
         }
     }
 }
