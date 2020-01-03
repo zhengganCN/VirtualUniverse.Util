@@ -10,11 +10,51 @@ namespace UtilTest.DataTest.MySQLTest
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseMySql("server=cdb-m815p5nq.cd.tencentcdb.com;user id=root;Password=hyy5201314;persistsecurityinfo=True;port=10088;database=knowledge");
+            optionsBuilder.UseMySql(StaticConfigurationValues.MySQLConnectionString);
             
             base.OnConfiguring(optionsBuilder);
         }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Score> Scores { get; set; }
+        public virtual DbSet<Score> Scores { get; set; }
+        public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<VeiwStdentScore> VeiwStdentScore { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+
+            modelBuilder.Entity<Score>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+            modelBuilder.Entity<Student>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.StudentName)
+                    .HasColumnType("longtext")
+                    .HasCharSet("utf8mb4")
+                    .HasCollation("utf8mb4_general_ci");
+            });
+
+            modelBuilder.Entity<VeiwStdentScore>(entity =>
+            {
+                entity.HasNoKey();
+
+                entity.ToView("VeiwStdentScore");
+
+                entity.Property(e => e.ScoreId)
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+
+                entity.Property(e => e.StudentId)
+                    .HasCharSet("utf8")
+                    .HasCollation("utf8_general_ci");
+            });
+
+        }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.Repository;
@@ -660,6 +661,23 @@ namespace UtilTest.DataTest.MySQLTest
             Assert.IsFalse(result);
         }
         #endregion
+        [Test]
+        public void FF()
+        {
+            var s = "08d78cee-0469-aefd-1e4a-c12398ab86fc";
+            Expression<Func<Student, bool>> expression = o => o.IsDeleted == false;
+            expression = expression.And(o => o.Id == Guid.Parse(s));
+            var ss = repository.Find(expression, o => o.Id);
+        }
+        [Test]
+        public void GG()
+        {
+            var viewStudentScore = new Repository<VeiwStdentScore>(new MySQLDbContext());
+            var s = "08d78cee-0469-aefd-1e4a-c12398ab86fc";
+            Expression<Func<VeiwStdentScore, bool>> expression = o => o.StudentId == Guid.Parse(s);
+            expression = expression.And(o => o.ScoreId == Guid.Parse("08d78cee-0809-e9fb-846e-103bdf580805"));
+            var ss = viewStudentScore.Find(expression, o => o.StudentId);
+        }
     }
     public class Student : Entity<Guid>
     {
@@ -668,5 +686,11 @@ namespace UtilTest.DataTest.MySQLTest
     public class Score : Entity<Guid>
     {
         public double MathScore { get; set; }
+    }
+
+    public class VeiwStdentScore
+    {
+        public Guid StudentId { get; set; }
+        public Guid? ScoreId { get; set; }
     }
 }

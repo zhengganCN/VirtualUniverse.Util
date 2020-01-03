@@ -10,6 +10,9 @@
       "F": "ff"
     }
   },
-  "Database": "SQLServer", //Oracle,MySQL,MongoDB,DB2,Redis,
-  "DatabaseConnectString": ""
+  "Database": "SQLServer",
+  "DatabaseConnectString": "",
+  "MySQL": {
+    "ConnectionString": "server=cdb-m815p5nq.cd.tencentcdb.com;user id=root;Password=hyy5201314;persistsecurityinfo=True;port=10088;database=testdb"
+  }
 }

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Util.Security.JWT
+namespace Util.Data.Dapper
 {
-    class JWTF
+    public interface IEntity
     {
     }
 }
