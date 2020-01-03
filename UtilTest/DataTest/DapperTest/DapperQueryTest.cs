@@ -6,43 +6,82 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using Util.Data.Dapper;
 
 namespace UtilTest.DataTest.DapperTest
 {
     public class DapperQueryTest
     {
+        private Repository<TdD> repository;
         [SetUp]
         public void SetUp()
         {
-
+            repository = new Repository<TdD>(StaticConfigurationValues.MySQLConnectionString);
         }
 
         [Test]
-        public void Find()
+        public void FindOne()
         {
-            ADSL();
+            var entity= repository.FindAll().First();
+            entity= repository.FindOne($"Where {nameof(TdD.Id)}='{entity.Id}'");
+            Assert.IsNotNull(entity);
+        }
+        [Test]
+        public void FindAll()
+        {
+            var entities = repository.FindAll();
+            Assert.IsNotNull(entities);
         }
 
-
-        public class TdD
+        [Test]
+        public void FindAllWithCondition()
         {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public int DeptId { get; set; }
-            public double Salary { get; set; }
+            var entity = repository.FindAll().First();
+            var entities = repository.FindAll($"Where {nameof(TdD.Name)}='{entity.Name}'");
+            Assert.IsNotNull(entities);
         }
 
-
-        public static void ADSL()
+        [Test]
+        public void FindMany()
         {
-            string sqlOrderDetails = "SELECT * FROM TdD;";
-            string sqlOrderDetail = "SELECT * FROM TdD WHERE Id = @Id;";
-            string sqlCustomerInsert = "INSERT INTO TdD (Name) Values (@Name);";
-
-            using var connection = new MySqlConnection(StaticConfigurationValues.MySQLConnectionString);
-            connection.Open();
-
-            var invoices = connection.Query<TdD>(sqlOrderDetails).ToList();
+            var entity = repository.FindAll().First();
+            var entities = repository.FindMany($"Where {nameof(TdD.Name)}='{entity.Name}'");
+            Assert.IsNotNull(entities);
         }
+
+        [Test]
+        public async Task FindOneAsync()
+        {
+            var entities =await repository.FindAllAsync();
+            var entity = entities.First();
+            entity =await repository.FindOneAsync($"Where {nameof(TdD.Id)}='{entity.Id}'");
+            Assert.IsNotNull(entity);
+        }
+        [Test]
+        public async Task FindAllAsync()
+        {
+            var entities = await repository.FindAllAsync();
+            Assert.IsNotNull(entities);
+        }
+
+        [Test]
+        public async Task FindAllWithConditionAsync()
+        {
+            var entities = await repository.FindAllAsync();
+            var entity = entities.First();
+            entities = await repository.FindAllAsync($"Where {nameof(TdD.Name)}='{entity.Name}'");
+            Assert.IsNotNull(entities);
+        }
+
+        [Test]
+        public async Task FindManyAsync()
+        {
+            var entities = await repository.FindAllAsync();
+            var entity = entities.First();
+            entities = await repository.FindManyAsync($"Where {nameof(TdD.Name)}='{entity.Name}'");
+            Assert.IsNotNull(entities);
+        }
+
     }
 }

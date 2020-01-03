@@ -73,6 +73,40 @@
             更新时间
             </summary>
         </member>
+        <member name="M:Util.Data.Dapper.Repository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            批量更新指定字段，根据每条记录的Id更新每条记录
+            </summary>
+            <param name="entities">更新的数据</param>
+            <param name="updateFields">更新的字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository`1.UpdateMany(`0,System.Object,System.String)">
+            <summary>
+            批量更新符合条件的记录的指定字段
+            </summary>
+            <param name="entity">更新的数据</param>
+            <param name="updateFields">更新的字段</param>
+            <param name="conditionString">条件</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            异步批量更新指定字段，根据每条记录的Id更新每条记录
+            </summary>
+            <param name="entities">更新的数据</param>
+            <param name="updateFields">更新的字段</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository`1.UpdateManyAsync(`0,System.Object,System.String)">
+            <summary>
+            异步批量更新符合条件的记录的指定字段
+            </summary>
+            <param name="entity">更新的数据</param>
+            <param name="updateFields">更新的字段</param>
+            <param name="conditionString">条件</param>
+            <returns></returns>
+        </member>
         <member name="T:Util.Data.Repository.EFRepository.Repository`1">
             <summary>
             仓储基类

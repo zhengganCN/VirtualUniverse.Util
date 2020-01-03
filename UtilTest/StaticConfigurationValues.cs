@@ -8,19 +8,17 @@ namespace UtilTest
 {
     public static class StaticConfigurationValues
     {
-        private static readonly JsonConfiguration jsonConfiguration;
+        private static readonly string _path;
         static StaticConfigurationValues()
         {
             var path = Directory.GetCurrentDirectory();
-            path = Path.Combine(path, "App.json");
-            jsonConfiguration = new JsonConfiguration(path);
+            _path = Path.Combine(path, "App.json");
         }
-        
         public static string MySQLConnectionString 
         { 
             get 
             { 
-                return jsonConfiguration.GetValue("MySQL:ConnectionString"); 
+                return new JsonConfiguration(_path).GetValue("MySQL:ConnectionString"); 
             } 
         }
     }

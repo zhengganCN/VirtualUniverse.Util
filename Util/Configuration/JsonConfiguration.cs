@@ -47,7 +47,7 @@ namespace Util.Configuration
         {
             if (string.IsNullOrEmpty(key))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentNullException(nameof(key));
             }
             var hasValue= jsonConfigurationProvider.TryGet(key, out string value);
             return hasValue ? value : "";
