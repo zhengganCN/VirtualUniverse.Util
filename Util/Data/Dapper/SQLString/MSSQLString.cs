@@ -9,6 +9,16 @@ namespace Util.Data.Dapper.SQLString
     /// </summary>
     public class MSSQLString : AbstractSQLString
     {
+        /// <summary>
+        /// 查询SQL语句
+        /// </summary>
+        /// <typeparam name="TEntity">实体类型</typeparam>
+        /// <param name="conditionString">条件字符串</param>
+        /// <param name="SequnceField">排序字段</param>
+        /// <param name="sequence">排序方式</param>
+        /// <param name="pageIndex">分页索引</param>
+        /// <param name="pageSize">分页大小</param>
+        /// <returns></returns>
         public override string QuerySQLString<TEntity>(string conditionString, string SequnceField, EnumSequence sequence, int pageIndex, int pageSize)
         {
             var propertyInfos = typeof(TEntity).GetProperties();

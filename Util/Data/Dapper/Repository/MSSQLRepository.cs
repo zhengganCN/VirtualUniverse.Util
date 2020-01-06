@@ -55,35 +55,5 @@ namespace Util.Data.Dapper.Repository
         {
             return _unitOfWork;
         }
-        /// <summary>
-        /// 查询所有符合条件的实体，并根据分页条件返回限定数量的数据
-        /// </summary>
-        /// <param name="conditionString">条件字符串</param>
-        /// <param name="sequenceField">排序字段</param>
-        /// <param name="sequence">排序方式</param>
-        /// <param name="pageInde">分页索引</param>
-        /// <param name="pageSize">分页大小</param>
-        /// <returns></returns>
-        public override IEnumerable<TEntity> FindMany(string conditionString, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending, int pageInde = 1, int pageSize = 10)
-        {
-            var sql = GetSqlString().QuerySQLString<TEntity>(conditionString, sequenceField,
-                sequence, pageInde, pageSize);
-            return GetSqlConnection().Query<TEntity>(sql);
-        }
-        /// <summary>
-        /// 异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
-        /// </summary>
-        /// <param name="conditionString">条件字符串</param>
-        /// <param name="sequenceField">排序字段</param>
-        /// <param name="sequence">排序方式</param>
-        /// <param name="pageInde">分页索引</param>
-        /// <param name="pageSize">分页大小</param>
-        /// <returns></returns>
-        public override async Task<IEnumerable<TEntity>> FindManyAsync(string conditionString, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending, int pageInde = 1, int pageSize = 10)
-        {
-            var sql = GetSqlString().QuerySQLString<TEntity>(conditionString, sequenceField,
-                sequence, pageInde, pageSize);
-            return await GetSqlConnection().QueryAsync<TEntity>(sql).ConfigureAwait(true);
-        }
     }
 }

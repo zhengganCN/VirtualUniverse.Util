@@ -5,14 +5,23 @@ using System.Text;
 
 namespace Util.Data.Dapper.UnitOfWork
 {
+    /// <summary>
+    /// 工作单元
+    /// </summary>
     public class UOW
     {
         /// <summary>
         /// SQL连接
         /// </summary>
         public DbConnection DbConnection { get; private set; }
-
+        /// <summary>
+        /// 事务
+        /// </summary>
         private DbTransaction DbTransaction { get; set; }
+        /// <summary>
+        /// 设置数据库连接
+        /// </summary>
+        /// <param name="dbConnection"></param>
         public void SetSqlConnection(DbConnection dbConnection)
         {
             DbConnection = dbConnection;
@@ -41,18 +50,12 @@ namespace Util.Data.Dapper.UnitOfWork
             DbConnection.Open();
             DbTransaction = DbConnection.BeginTransaction();
         }
-
         /// <summary>
         /// 手动关闭连接
         /// </summary>
         public void Close()
         {
             DbConnection.Close();
-        }
-
-        public static implicit operator UOW(MSSQLUOW v)
-        {
-            throw new NotImplementedException();
         }
     }
 }

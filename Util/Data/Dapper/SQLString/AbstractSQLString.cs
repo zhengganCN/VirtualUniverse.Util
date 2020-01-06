@@ -181,31 +181,7 @@ namespace Util.Data.Dapper.SQLString
         /// <param name="pageIndex">分页索引</param>
         /// <param name="pageSize">分页大小</param>
         /// <returns></returns>
-        public virtual string QuerySQLString<TEntity>(string conditionString, string SequnceField, EnumSequence sequence, int pageIndex, int pageSize)
-        {
-            var propertyInfos = typeof(TEntity).GetProperties();
-            StringBuilder argumentNames = new StringBuilder();
-            for (int i = 0; i < propertyInfos.Length; i++)
-            {
-                var propertyInfoName = propertyInfos[i].Name;
-                argumentNames.Append(propertyInfoName);
-                if (propertyInfos.Length != i + 1)
-                {
-                    argumentNames.Append(',');
-                }
-            }
-            var seqSQLString = "";
-            switch (sequence)
-            {
-                case EnumSequence.Descending:
-                    seqSQLString = $"ORDER BY {SequnceField} DESC";
-                    break;
-                case EnumSequence.Ascending:
-                    seqSQLString = $"ORDER BY {SequnceField} ASC";
-                    break;
-            }
-            return $"SELECT {argumentNames.ToString()} FROM {typeof(TEntity).Name} {conditionString} {seqSQLString} LIMIT {(pageIndex - 1) * pageSize},{pageSize}";
-        }
+        public abstract string QuerySQLString<TEntity>(string conditionString, string SequnceField, EnumSequence sequence, int pageIndex, int pageSize);
         /// <summary>
         /// 更新某条记录的删除标记为已删除
         /// </summary>
