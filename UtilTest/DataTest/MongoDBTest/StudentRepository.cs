@@ -2,17 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 using MongoDB.Driver;
-using Util.Data.Repository.MongoDBRepository;
+using Util.Data.MongoDB.Repository;
 using Util.Data.UOW.MongoDBUOW;
 
 namespace UtilTest.DataTest.MongoDBTest
 {
-    class StudentRepository : Repository<Student>
+    class StudentRepository : MongoRepository<Student>
     {
-        private readonly DbContext context;
-        public StudentRepository(DbContext context) : base(context)
+        public StudentRepository(string connectionString,string database) : base(connectionString, database)
         {
-            this.context = context;
         }
 
         /// <summary>
@@ -24,22 +22,20 @@ namespace UtilTest.DataTest.MongoDBTest
         /// <returns></returns>
         public bool InsertStudentScore(Student student, Score score, bool triggerException)
         {
-            UnitOfWork uow = null;
             try
             {
-                uow = new UnitOfWork(context);
-                uow.Transaction();
-                GetMongoCollection<Student>(uow).InsertOne(student);
+                UOW.Transaction();
+                GetMongoCollection<Student>().InsertOne(student);
                 if (triggerException)
                 {
                     throw new Exception();
                 }
-                GetMongoCollection<Score>(uow).InsertOne(score);
-                uow.Commit();
+                GetMongoCollection<Score>().InsertOne(score);
+                UOW.Commit();
             }
             catch (Exception)
             {
-                uow.Rollback();
+                UOW.Rollback();
                 return false;
             }
             return true;

@@ -5,19 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using NUnit.Framework;
-using Util.Data.Repository;
-using Util.Data.Repository.MongoDBRepository;
+using Util.Data.MongoDB;
+using Util.Data.MongoDB.Repository;
 using Util.Math;
 
 namespace UtilTest.DataTest.MongoDBTest
 {
     class MongoDBUOWTest
     {
-        private Repository<Student> repository;
+        private MongoRepository<Student> repository;
         [SetUp]
         public void SetUp() 
         {
-            repository = new Repository<Student>(new MongoDBContext());
+            repository = new MongoRepository<Student>(StaticConfigurationValues.MongoDBConnectionString,
+                StaticConfigurationValues.MongoDBDatabase);
         }
         #region Insert
         [Test]
@@ -469,7 +470,7 @@ namespace UtilTest.DataTest.MongoDBTest
         {
             while (true)
             {
-                var students = repository.Find(o => o.Id != null, o => o.Id,SortMode.Descending);
+                var students = repository.Find(o => o.Id != null, o => o.Id,EnumSequence.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -492,7 +493,7 @@ namespace UtilTest.DataTest.MongoDBTest
         {
             while (true)
             {
-                var students = repository.FindAll(o => o.Id != null, o => o.Id, SortMode.Descending);
+                var students = repository.FindAll(o => o.Id != null, o => o.Id, EnumSequence.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -622,7 +623,8 @@ namespace UtilTest.DataTest.MongoDBTest
         [Test]
         public void MultiTableNoException()
         {
-            var studentRepository = new StudentRepository(new MongoDBContext());
+            var studentRepository = new StudentRepository(StaticConfigurationValues.MongoDBConnectionString
+                , StaticConfigurationValues.MongoDBDatabase);
             var result = studentRepository.InsertStudentScore(
                 new Student()
                 {
@@ -644,7 +646,8 @@ namespace UtilTest.DataTest.MongoDBTest
         [Test]
         public void MultiTableException()
         {
-            var studentRepository = new StudentRepository(new MongoDBContext());
+            var studentRepository = new StudentRepository(StaticConfigurationValues.MongoDBConnectionString
+                , StaticConfigurationValues.MongoDBDatabase);
             var result = studentRepository.InsertStudentScore(
                 new Student()
                 {
@@ -661,15 +664,6 @@ namespace UtilTest.DataTest.MongoDBTest
             Assert.IsFalse(result);
         }
         #endregion
-        [Test]
-        public void UOWNullExecptionVerifyTest()
-        {
-            Assert.Throws(typeof(ArgumentNullException),UOWNullExecptionTest);
-        }
-        public void UOWNullExecptionTest()
-        {
-            repository.GetMongoCollection<Student>(null);
-        }
     }
     public class Student : Entity<ObjectId>
     {

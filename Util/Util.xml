@@ -1012,40 +1012,26 @@
             <param name="pageSize">分页大小</param>
             <returns></returns>
         </member>
-        <member name="T:Util.Data.Dapper.UnitOfWork.MSSQLUOW">
+        <member name="T:Util.Data.Dapper.UnitOfWork.UOW">
             <summary>
-            MSSQL工作单元
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.UnitOfWork.MSSQLUOW.SqlConnection">
-            <summary>
-            MSSQL连接
-            </summary>
-        </member>
-        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Commit">
-            <summary>
-            提交事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Rollback">
-            <summary>
-            回滚事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Transaction">
-            <summary>
-            创建事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Close">
-            <summary>
-            手动关闭连接
+            工作单元
             </summary>
         </member>
         <member name="P:Util.Data.Dapper.UnitOfWork.UOW.DbConnection">
             <summary>
             SQL连接
             </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.UnitOfWork.UOW.DbTransaction">
+            <summary>
+            事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.UOW.SetSqlConnection(System.Data.Common.DbConnection)">
+            <summary>
+            设置数据库连接
+            </summary>
+            <param name="dbConnection"></param>
         </member>
         <member name="M:Util.Data.Dapper.UnitOfWork.UOW.Commit">
             <summary>
@@ -1067,34 +1053,374 @@
             手动关闭连接
             </summary>
         </member>
-        <member name="T:Util.Data.Dapper.MySQLUOW">
+        <member name="T:Util.Data.MongoDB.Entity`1">
             <summary>
-            MySQL工作单元
+            实体基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Util.Data.MongoDB.Entity`1.Id">
+            <summary>
+            泛型主键
             </summary>
         </member>
-        <member name="P:Util.Data.Dapper.MySQLUOW.MySqlConnection">
+        <member name="P:Util.Data.MongoDB.Entity`1.IsDeleted">
             <summary>
-            MySQL连接
+            删除标识
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.MySQLUOW.Commit">
+        <member name="P:Util.Data.MongoDB.Entity`1.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.Entity`1.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.Entity`1.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:Util.Data.MongoDB.EnumSequence">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="F:Util.Data.MongoDB.EnumSequence.Descending">
+            <summary>
+            降序
+            </summary>
+        </member>
+        <member name="F:Util.Data.MongoDB.EnumSequence.Ascending">
+            <summary>
+            升序
+            </summary>
+        </member>
+        <member name="T:Util.Data.MongoDB.Interface.IEntity">
+            <summary>
+            实体接口
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.Interface.IEntity.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.Interface.IEntity.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.Interface.IEntity.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.Interface.IEntity.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:Util.Data.MongoDB.Repository.MongoRepository`1">
+            <summary>
+            仓储基类
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Util.Data.MongoDB.Repository.MongoRepository`1.UOW">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.#ctor(System.String,System.String)">
+            <summary>
+            构造函数，初始化上下文
+            </summary>
+            <param name="connectionString">连接字符串</param>
+            <param name="databaseName"></param>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.GetMongoCollection``1">
+            <summary>
+            获取mongodb的集合
+            </summary>
+            <typeparam name="T">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            异步统计
+            </summary>
+            <param name="condition">条件表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            异步统计
+            </summary>
+            <param name="condition">条件表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Delete(`0)">
+            <summary>
+            删除一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Delete(System.Collections.Generic.IList{`0})">
+            <summary>
+            删除多条实体
+            </summary>
+            <param name="entities">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.DeleteAsync(`0)">
+            <summary>
+            异步删除一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步删除多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询多条实体
+            </summary>
+            <param name="condition">条件表达式条件</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">顺序/倒序（默认顺序）</param>
+            <param name="pageIndex">索引页数</param>
+            <param name="pageSize">索引页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询多条实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <param name="pageIndex">页面索引</param>
+            <param name="pageSize">页面大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence)">
+            <summary>
+            查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence)">
+            <summary>
+            异步查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Insert(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Insert(System.Collections.Generic.IList{`0})">
+            <summary>
+            插入多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.InsertAsync(`0)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步插入多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.MarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.MarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.UnmarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.UnmarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Update(`0)">
+            <summary>
+            更新单条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Update(System.Collections.Generic.IList{`0})">
+            <summary>
+            更新多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.UpdateAsync(`0)">
+            <summary>
+            异步更新单条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步更新多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.MongoDB.UnitOfWork.UOW">
+            <summary>
+            mongo工作单元
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.UnitOfWork.UOW.Client">
+            <summary>
+            Mongo客户端
+            </summary>
+        </member>
+        <member name="P:Util.Data.MongoDB.UnitOfWork.UOW.Database">
+            <summary>
+            数据库名称
+            </summary>
+        </member>
+        <member name="M:Util.Data.MongoDB.UnitOfWork.UOW.#ctor(System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectString">连接字符串</param>
+            <param name="databaseName">数据库名称</param>
+        </member>
+        <member name="M:Util.Data.MongoDB.UnitOfWork.UOW.Commit">
             <summary>
             提交事务
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.MySQLUOW.Rollback">
+        <member name="M:Util.Data.MongoDB.UnitOfWork.UOW.Rollback">
             <summary>
             回滚事务
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.MySQLUOW.Transaction">
+        <member name="M:Util.Data.MongoDB.UnitOfWork.UOW.Transaction">
             <summary>
             创建事务
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.MySQLUOW.Close">
+        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoClientConfiguration">
             <summary>
-            手动关闭连接
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoDatabaseConfiguration">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.UOW.EFUOW.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            工作单元构造函数
+            </summary>
+            <param name="context">sqlserver数据库上下文</param>
+        </member>
+        <member name="P:Util.Data.UOW.EFUOW.UnitOfWork.DbContext">
+            <summary>
+            sqlserver数据库上下文
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Transaction">
+            <summary>
+            事务开始
             </summary>
         </member>
         <member name="T:Util.Data.Repository.EFRepository.Repository`1">
@@ -1341,220 +1667,6 @@
             更新时间
             </summary>
         </member>
-        <member name="T:Util.Data.Repository.MongoDBRepository.Repository`1">
-            <summary>
-            仓储基类
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.#ctor(Util.Data.UOW.MongoDBUOW.DbContext)">
-            <summary>
-            构造函数，初始化上下文
-            </summary>
-            <param name="context">mongodb上下文</param>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.GetMongoCollection``1(Util.Data.UOW.MongoDBUOW.UnitOfWork)">
-            <summary>
-            获取mongodb的集合
-            </summary>
-            <typeparam name="T">实体类型</typeparam>
-            <param name="uow">mongodb工作单元</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            异步统计
-            </summary>
-            <param name="condition">条件表达式</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            异步统计
-            </summary>
-            <param name="condition">条件表达式</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Delete(`0)">
-            <summary>
-            删除一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
-            <summary>
-            删除多条实体
-            </summary>
-            <param name="entities">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.DeleteAsync(`0)">
-            <summary>
-            异步删除一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步删除多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
-            <summary>
-            查询多条实体
-            </summary>
-            <param name="condition">条件表达式条件</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">顺序/倒序（默认顺序）</param>
-            <param name="pageIndex">索引页数</param>
-            <param name="pageSize">索引页大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
-            <summary>
-            异步查询多条实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <param name="pageIndex">页面索引</param>
-            <param name="pageSize">页面大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
-            <summary>
-            查询所有的实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
-            <summary>
-            异步查询所有的实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Insert(`0)">
-            <summary>
-            插入一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
-            <summary>
-            插入多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.InsertAsync(`0)">
-            <summary>
-            异步插入一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步插入多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDelete(`0)">
-            <summary>
-            修改一条实体的删除标识，改为true
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
-            <summary>
-            修改多条实体的删除标识，改为true
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDeleteAsync(`0)">
-            <summary>
-            异步修改一条实体的删除标识，改为true
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步修改多条实体的删除标识，改为true
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDelete(`0)">
-            <summary>
-            修改一条实体的删除标识，改为false
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
-            <summary>
-            修改多条实体的删除标识，改为false
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDeleteAsync(`0)">
-            <summary>
-            异步修改一条实体的删除标识，改为false
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步修改多条实体的删除标识，改为false
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Update(`0)">
-            <summary>
-            更新单条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.Update(System.Collections.Generic.IList{`0})">
-            <summary>
-            更新多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UpdateAsync(`0)">
-            <summary>
-            异步更新单条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.MongoDBRepository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步更新多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
         <member name="T:Util.Data.Repository.SortMode">
             <summary>
             排序方式
@@ -1568,69 +1680,6 @@
         <member name="F:Util.Data.Repository.SortMode.Descending">
             <summary>
             降序
-            </summary>
-        </member>
-        <member name="T:Util.Data.UOW.EFUOW.UnitOfWork">
-            <summary>
-            工作单元
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            工作单元构造函数
-            </summary>
-            <param name="context">sqlserver数据库上下文</param>
-        </member>
-        <member name="P:Util.Data.UOW.EFUOW.UnitOfWork.DbContext">
-            <summary>
-            sqlserver数据库上下文
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Commit">
-            <summary>
-            提交事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Rollback">
-            <summary>
-            回滚事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Transaction">
-            <summary>
-            事务开始
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoClientConfiguration">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoDatabaseConfiguration">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Util.Data.UOW.MongoDBUOW.UnitOfWork">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Commit">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Rollback">
-            <summary>
-            释放与事务有关的资源
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.UnitOfWork.Transaction">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:Util.Extend.EnumExtend">

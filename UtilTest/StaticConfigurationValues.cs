@@ -28,5 +28,19 @@ namespace UtilTest
                 return new JsonConfiguration(_path).GetValue("MSSQL:ConnectionString");
             }
         }
+        public static string MongoDBConnectionString
+        {
+            get
+            {
+                return new JsonConfiguration(_path).GetValue("MongoDB:ConnectionString");
+            }
+        }
+        public static string MongoDBDatabase
+        {
+            get
+            {
+                return new JsonConfiguration(_path).GetValue("MongoDB:Database");
+            }
+        }
     }
 }
