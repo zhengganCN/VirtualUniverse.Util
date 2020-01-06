@@ -87,17 +87,19 @@ namespace Util.Math
                 }
             }
         }
-        
-        /// <summary>
-        /// 格式化异常信息
-        /// </summary>
-        /// <param name="minValue"></param>
-        /// <param name="maxValue"></param>
-        /// <param name="isContainerMinValue"></param>
-        /// <param name="isContainerMaxValue"></param>
-        /// <param name="operation"></param>
-        /// <returns></returns>
+
+#pragma warning disable IDE0060 // 删除未使用的参数
+                               /// <summary>
+                               /// 格式化异常信息
+                               /// </summary>
+                               /// <param name="minValue"></param>
+                               /// <param name="maxValue"></param>
+                               /// <param name="isContainerMinValue"></param>
+                               /// <param name="isContainerMaxValue"></param>
+                               /// <param name="operation"></param>
+                               /// <returns></returns>
         private string RandomRangeExceptionInfoFormat(int minValue, int maxValue, bool isContainerMinValue, bool isContainerMaxValue,string operation)
+#pragma warning restore IDE0060 // 删除未使用的参数
         {
             return string.Format(
                 "当{0}为{1}时且当{2}为{3}时，{4}{5}{6}的值",
@@ -164,17 +166,19 @@ namespace Util.Math
                 }
             }
         }
-        
-        /// <summary>
-        /// 格式化异常信息
-        /// </summary>
-        /// <param name="minValue"></param>
-        /// <param name="maxValue"></param>
-        /// <param name="isContainerMinValue"></param>
-        /// <param name="isContainerMaxValue"></param>
-        /// <param name="operation"></param>
-        /// <returns></returns>
+
+#pragma warning disable IDE0060 // 删除未使用的参数
+                               /// <summary>
+                               /// 格式化异常信息
+                               /// </summary>
+                               /// <param name="minValue"></param>
+                               /// <param name="maxValue"></param>
+                               /// <param name="isContainerMinValue"></param>
+                               /// <param name="isContainerMaxValue"></param>
+                               /// <param name="operation"></param>
+                               /// <returns></returns>
         private string RandomRangeExceptionInfoFormat(double minValue, double maxValue, bool isContainerMinValue, bool isContainerMaxValue, string operation)
+#pragma warning restore IDE0060 // 删除未使用的参数
         {
             return string.Format(
                 "当{0}为{1}时且当{2}为{3}时，{4}{5}{6}的值",

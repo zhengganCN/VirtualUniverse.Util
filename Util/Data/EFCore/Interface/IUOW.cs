@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Data.UOW
+namespace Util.Data.EFCore.Interface
 {
-    interface IUnitOfWork
+    interface IUOW
     {
         public void Commit();
         public void Rollback();

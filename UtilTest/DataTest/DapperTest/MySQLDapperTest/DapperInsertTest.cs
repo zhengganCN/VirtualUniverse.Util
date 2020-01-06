@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Util.Data;
 using Util.Data.Dapper;
 using Util.Data.Dapper.Repository;
 

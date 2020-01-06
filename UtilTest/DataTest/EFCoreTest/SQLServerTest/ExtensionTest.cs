@@ -13,12 +13,12 @@ namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
 {
     class ExtensionTest
     {
-        private Repository<Student> repository;
+        private EFRepository<Student> repository;
         private IList<Student> students;
         [SetUp]
         public void SetUp()
         {
-            repository = new Repository<Student>(new SQLServerDbContext());
+            repository = new EFRepository<Student>(new SQLServerDbContext());
             students= repository.FindAll(o => o.IsDeleted == false, o => o.Id);
         }
 

@@ -6,7 +6,7 @@ using Util.Data.EFCore.Repository;
 
 namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
 {
-    class StudentRepository : Repository<Student>
+    class StudentRepository : EFRepository<Student>
     {
         private readonly DbContext context;
         public StudentRepository(DbContext context) : base(context)
@@ -36,7 +36,7 @@ namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
                 context.SaveChanges();
                 UOW.Commit();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 UOW.Rollback();
                 return false;

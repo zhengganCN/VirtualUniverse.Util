@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace Util.Data.Dapper
+namespace Util.Data
 {
     /// <summary>
     /// 排序方式

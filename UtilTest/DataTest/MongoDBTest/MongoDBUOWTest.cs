@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using NUnit.Framework;
+using Util.Data;
 using Util.Data.MongoDB;
 using Util.Data.MongoDB.Repository;
 using Util.Math;

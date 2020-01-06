@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Util.Data;
 using Util.Data.EFCore;
 using Util.Data.EFCore.Repository;
 using Util.Extension;
@@ -14,11 +15,11 @@ namespace UtilTest.DataTest.EFCoreTest.MySQLTest
 {
     class MySQLUOWTest
     {
-        Repository<Student> repository = null;
+        EFRepository<Student> repository = null;
         [SetUp]
         public void Setup()
         {
-            repository = new Repository<Student>(new MySQLDbContext());
+            repository = new EFRepository<Student>(new MySQLDbContext());
         }
         #region Insert
         [Test]
@@ -673,7 +674,7 @@ namespace UtilTest.DataTest.EFCoreTest.MySQLTest
         [Test]
         public void GG()
         {
-            var viewStudentScore = new Repository<VeiwStdentScore>(new MySQLDbContext());
+            var viewStudentScore = new EFRepository<VeiwStdentScore>(new MySQLDbContext());
             var s = "08d78cee-0469-aefd-1e4a-c12398ab86fc";
             Expression<Func<VeiwStdentScore, bool>> expression = o => o.StudentId == Guid.Parse(s);
             expression = expression.And(o => o.ScoreId == Guid.Parse("08d78cee-0809-e9fb-846e-103bdf580805"));

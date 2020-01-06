@@ -42,77 +42,6 @@
             释放资源
             </summary>
         </member>
-        <member name="T:Util.Data.Dapper.Entity`1">
-            <summary>
-            实体基类
-            </summary>
-            <typeparam name="T">主键类型</typeparam>
-        </member>
-        <member name="P:Util.Data.Dapper.Entity`1.Id">
-            <summary>
-            泛型主键
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.Entity`1.IsDeleted">
-            <summary>
-            删除标识
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.Entity`1.CreateTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.Entity`1.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.Entity`1.UpdateTime">
-            <summary>
-            更新时间
-            </summary>
-        </member>
-        <member name="T:Util.Data.Dapper.EnumSequence">
-            <summary>
-            排序方式
-            </summary>
-        </member>
-        <member name="F:Util.Data.Dapper.EnumSequence.Descending">
-            <summary>
-            降序
-            </summary>
-        </member>
-        <member name="F:Util.Data.Dapper.EnumSequence.Ascending">
-            <summary>
-            升序
-            </summary>
-        </member>
-        <member name="T:Util.Data.Dapper.IEntity">
-            <summary>
-            实体接口
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.IEntity.IsDeleted">
-            <summary>
-            删除标识
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.IEntity.CreateTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.IEntity.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Dapper.IEntity.UpdateTime">
-            <summary>
-            更新时间
-            </summary>
-        </member>
         <member name="M:Util.Data.Dapper.Interface.IRepository`1.InsertOne(`0)">
             <summary>
             插入一条实体
@@ -210,7 +139,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindMany(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindMany(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -241,7 +170,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindManyAsync(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindManyAsync(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -391,6 +320,11 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
+        <member name="T:Util.Data.Dapper.SQLString.ISQLString">
+            <summary>
+            SQL增、删、改、查语句帮助接口
+            </summary>
+        </member>
         <member name="M:Util.Data.Dapper.SQLString.ISQLString.InsertSQLString``1(``0)">
             <summary>
             插入SQL语句
@@ -454,7 +388,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.SQLString.ISQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.QuerySQLString``1(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询SQL语句
             </summary>
@@ -564,7 +498,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.QuerySQLString``1(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询SQL语句
             </summary>
@@ -611,7 +545,7 @@
             MSSQL增、删、改、查语句帮助类
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.SQLString.MSSQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.SQLString.MSSQLString.QuerySQLString``1(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询SQL语句
             </summary>
@@ -744,7 +678,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindMany(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindMany(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -775,7 +709,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindManyAsync(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindManyAsync(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -1000,7 +934,7 @@
             MySQL增、删、改、查语句帮助类
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.MySQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.Dapper.MySQLString.QuerySQLString``1(System.String,System.String,Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询SQL语句
             </summary>
@@ -1053,144 +987,86 @@
             手动关闭连接
             </summary>
         </member>
-        <member name="T:Util.Data.EFCore.Entity`1">
-            <summary>
-            实体基类
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:Util.Data.EFCore.Entity`1.Id">
-            <summary>
-            泛型主键
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Entity`1.IsDeleted">
-            <summary>
-            删除标识
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Entity`1.CreateTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Entity`1.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Entity`1.UpdateTime">
-            <summary>
-            更新时间
-            </summary>
-        </member>
-        <member name="T:Util.Data.EFCore.EnumSequence">
-            <summary>
-            排序方式
-            </summary>
-        </member>
-        <member name="F:Util.Data.EFCore.EnumSequence.Descending">
-            <summary>
-            降序
-            </summary>
-        </member>
-        <member name="F:Util.Data.EFCore.EnumSequence.Ascending">
-            <summary>
-            升序
-            </summary>
-        </member>
-        <member name="T:Util.Data.EFCore.Interface.IEntity">
-            <summary>
-            实体接口
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Interface.IEntity.IsDeleted">
-            <summary>
-            删除标识
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Interface.IEntity.CreateTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Interface.IEntity.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.EFCore.Interface.IEntity.UpdateTime">
-            <summary>
-            更新时间
-            </summary>
-        </member>
-        <member name="T:Util.Data.EFCore.Repository.Repository`1">
+        <member name="T:Util.Data.EFCore.Repository.EFRepository`1">
             <summary>
             仓储基类
             </summary>
             <typeparam name="TEntity"></typeparam>
         </member>
-        <member name="P:Util.Data.EFCore.Repository.Repository`1.UOW">
+        <member name="P:Util.Data.EFCore.Repository.EFRepository`1.UOW">
             <summary>
             工作单元
             </summary>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
             <summary>
             构造函数，初始化上下文
             </summary>
             <param name="context">SQLServer数据库上下文</param>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.GetEntity">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.GetEntity">
             <summary>
             获取实体
             </summary>
-            <param name="UOW">SQLServer工作单元</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             统计
             </summary>
             <param name="condition">条件表达式</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
             <summary>
             异步统计
             </summary>
             <param name="condition">条件表达式</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Delete(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Delete(`0)">
             <summary>
             删除一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Delete(System.Collections.Generic.IList{`0})">
             <summary>
             删除多条实体
             </summary>
             <param name="entities">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.DeleteAsync(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.DeleteAsync(`0)">
             <summary>
             异步删除一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步删除多条实体
             </summary>
             <param name="entities">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Find(System.Object[])">
+            <summary>
+            查询一条实体
+            </summary>
+            <param name="primaryKey">主键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.FindAsync(System.Object[])">
+            <summary>
+            异步查询一条实体
+            </summary>
+            <param name="primaryKey">主键值</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             异步查询多条实体
             </summary>
@@ -1201,7 +1077,7 @@
             <param name="pageSize">页面大小</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             异步查询多条实体
             </summary>
@@ -1212,7 +1088,7 @@
             <param name="pageSize">页面大小</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence)">
             <summary>
             查询所有的实体
             </summary>
@@ -1221,7 +1097,7 @@
             <param name="sortMode">排序方式，默认顺序</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence)">
             <summary>
             异步查询所有的实体
             </summary>
@@ -1230,112 +1106,112 @@
             <param name="sortMode">排序方式，默认顺序</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Insert(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Insert(`0)">
             <summary>
             插入一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Insert(System.Collections.Generic.IList{`0})">
             <summary>
             插入多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.InsertAsync(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.InsertAsync(`0)">
             <summary>
             异步插入一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.InsertAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步插入多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDelete(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.MarkDelete(`0)">
             <summary>
             修改一条实体的删除标识，改为true
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.MarkDelete(System.Collections.Generic.IList{`0})">
             <summary>
             修改多条实体的删除标识，改为true
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDeleteAsync(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.MarkDeleteAsync(`0)">
             <summary>
             异步修改一条实体的删除标识，改为true
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步修改多条实体的删除标识，改为true
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDelete(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.UnmarkDelete(`0)">
             <summary>
             修改一条实体的删除标识，改为false
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
             <summary>
             修改多条实体的删除标识，改为false
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDeleteAsync(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.UnmarkDeleteAsync(`0)">
             <summary>
             异步修改一条实体的删除标识，改为false
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步修改多条实体的删除标识，改为false
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Update(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Update(`0)">
             <summary>
             更新一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.Update(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.Update(System.Collections.Generic.IList{`0})">
             <summary>
             更新多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.UpdateAsync(`0)">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.UpdateAsync(`0)">
             <summary>
             异步更新一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.EFCore.Repository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:Util.Data.EFCore.Repository.EFRepository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步更新多条实体
             </summary>
@@ -1373,106 +1249,50 @@
             事务开始
             </summary>
         </member>
-        <member name="T:Util.Data.UOW.EFUOW.UnitOfWork">
-            <summary>
-            工作单元
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            工作单元构造函数
-            </summary>
-            <param name="context">sqlserver数据库上下文</param>
-        </member>
-        <member name="P:Util.Data.UOW.EFUOW.UnitOfWork.DbContext">
-            <summary>
-            sqlserver数据库上下文
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Commit">
-            <summary>
-            提交事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Rollback">
-            <summary>
-            回滚事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Transaction">
-            <summary>
-            事务开始
-            </summary>
-        </member>
-        <member name="T:Util.Data.MongoDB.Entity`1">
+        <member name="T:Util.Data.Entity`1">
             <summary>
             实体基类
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">主键类型</typeparam>
         </member>
-        <member name="P:Util.Data.MongoDB.Entity`1.Id">
+        <member name="P:Util.Data.Entity`1.Id">
             <summary>
             泛型主键
             </summary>
         </member>
-        <member name="P:Util.Data.MongoDB.Entity`1.IsDeleted">
+        <member name="P:Util.Data.Entity`1.IsDeleted">
             <summary>
             删除标识
             </summary>
         </member>
-        <member name="P:Util.Data.MongoDB.Entity`1.CreateTime">
+        <member name="P:Util.Data.Entity`1.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:Util.Data.MongoDB.Entity`1.DeleteTime">
+        <member name="P:Util.Data.Entity`1.DeleteTime">
             <summary>
             删除时间
             </summary>
         </member>
-        <member name="P:Util.Data.MongoDB.Entity`1.UpdateTime">
+        <member name="P:Util.Data.Entity`1.UpdateTime">
             <summary>
             更新时间
             </summary>
         </member>
-        <member name="T:Util.Data.MongoDB.EnumSequence">
+        <member name="T:Util.Data.EnumSequence">
             <summary>
             排序方式
             </summary>
         </member>
-        <member name="F:Util.Data.MongoDB.EnumSequence.Descending">
+        <member name="F:Util.Data.EnumSequence.Descending">
             <summary>
             降序
             </summary>
         </member>
-        <member name="F:Util.Data.MongoDB.EnumSequence.Ascending">
+        <member name="F:Util.Data.EnumSequence.Ascending">
             <summary>
             升序
-            </summary>
-        </member>
-        <member name="T:Util.Data.MongoDB.Interface.IEntity">
-            <summary>
-            实体接口
-            </summary>
-        </member>
-        <member name="P:Util.Data.MongoDB.Interface.IEntity.IsDeleted">
-            <summary>
-            删除标识
-            </summary>
-        </member>
-        <member name="P:Util.Data.MongoDB.Interface.IEntity.CreateTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.MongoDB.Interface.IEntity.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.MongoDB.Interface.IEntity.UpdateTime">
-            <summary>
-            更新时间
             </summary>
         </member>
         <member name="T:Util.Data.MongoDB.Repository.MongoRepository`1">
@@ -1542,7 +1362,7 @@
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询多条实体
             </summary>
@@ -1553,7 +1373,7 @@
             <param name="pageSize">索引页大小</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             异步查询多条实体
             </summary>
@@ -1564,7 +1384,7 @@
             <param name="pageSize">页面大小</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence)">
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence)">
             <summary>
             查询所有的实体
             </summary>
@@ -1573,7 +1393,7 @@
             <param name="sortMode">排序方式，默认顺序</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.MongoDB.EnumSequence)">
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence)">
             <summary>
             异步查询所有的实体
             </summary>
@@ -1743,10 +1563,127 @@
             <param name="value">枚举值</param>
             <returns></returns>
         </member>
+        <member name="T:Util.Extension.ExpressionExtension">
+            <summary>
+            表达式树扩展
+            </summary>
+        </member>
+        <member name="M:Util.Extension.ExpressionExtension.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            且操作
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Extension.ExpressionExtension.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            或操作
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Extension.RebuildExpression">
+            <summary>
+            重建表达式树（替换表达式参数）
+            </summary>
+        </member>
+        <member name="M:Util.Extension.RebuildExpression.#ctor(System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+        </member>
+        <member name="M:Util.Extension.RebuildExpression.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            重写
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
         <member name="T:Util.Math.MathException.RandomRangeException">
             <summary>
             随机数范围异常
             </summary>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.#ctor(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.#ctor(System.String,System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="message"></param>
+            <param name="innerException"></param>
+        </member>
+        <member name="P:Util.Math.MathException.RandomRangeException.Data">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Util.Math.MathException.RandomRangeException.HelpLink">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Util.Math.MathException.RandomRangeException.Message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Util.Math.MathException.RandomRangeException.Source">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Util.Math.MathException.RandomRangeException.StackTrace">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.Equals(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.GetBaseException">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.GetHashCode">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            
+            </summary>
+            <param name="info"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:Util.Math.MathException.RandomRangeException.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Util.Math.RandomNumber">
             <summary>

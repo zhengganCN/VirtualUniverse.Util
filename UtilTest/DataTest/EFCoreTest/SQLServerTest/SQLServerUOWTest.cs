@@ -7,16 +7,17 @@ using NUnit.Framework;
 using Util.Math;
 using Util.Data.EFCore.Repository;
 using Util.Data.EFCore;
+using Util.Data;
 
 namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
 {
     class SQLServerUOWTest
     {
-        Repository<Student> repository = null;
+        EFRepository<Student> repository = null;
         [SetUp]
         public void Setup()
         {
-            repository = new Repository<Student>(new SQLServerDbContext());
+            repository = new EFRepository<Student>(new SQLServerDbContext());
         }
         #region Insert
         [Test]

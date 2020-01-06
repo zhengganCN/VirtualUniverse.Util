@@ -4,6 +4,9 @@ using System.Text;
 
 namespace Util.Data.Dapper.SQLString
 {
+    /// <summary>
+    /// SQL增、删、改、查语句帮助接口
+    /// </summary>
     public interface ISQLString
     {
         /// <summary>

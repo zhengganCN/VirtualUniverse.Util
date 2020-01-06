@@ -11,7 +11,7 @@ namespace Util.Data.EFCore.UnitOfWork
     /// <summary>
     /// 工作单元
     /// </summary>
-    public class UOW : IUnitOfWork
+    public class UOW : IUOW
     {
         /// <summary>
         /// 工作单元构造函数

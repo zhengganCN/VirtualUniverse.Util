@@ -3,11 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Util.Data.EFCore.Repository;
-using Util.Data.UOW.EFUOW;
 
 namespace UtilTest.DataTest.EFCoreTest.MySQLTest
 {
-    class StudentRepository : Repository<Student>
+    class StudentRepository : EFRepository<Student>
     {
         private DbContext context;
         public StudentRepository(DbContext context) : base(context)

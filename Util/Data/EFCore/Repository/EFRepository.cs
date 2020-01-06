@@ -6,7 +6,6 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.EFCore.Interface;
-using Util.Data.UOW.EFUOW;
 
 namespace Util.Data.EFCore.Repository
 {
@@ -14,7 +13,7 @@ namespace Util.Data.EFCore.Repository
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+    public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class, new()
     {
         /// <summary>
         /// 工作单元
@@ -24,14 +23,13 @@ namespace Util.Data.EFCore.Repository
         /// 构造函数，初始化上下文
         /// </summary>
         /// <param name="context">SQLServer数据库上下文</param>
-        public Repository(DbContext context)
+        public EFRepository(DbContext context)
         {
             UOW = new UnitOfWork.UOW(context);
         }
         /// <summary>
         /// 获取实体
         /// </summary>
-        /// <param name="UOW">SQLServer工作单元</param>
         /// <returns></returns>
         public DbSet<TEntity> GetEntity()
         {
@@ -101,18 +99,20 @@ namespace Util.Data.EFCore.Repository
         }
         #endregion
         #region 查询
-        ///// <summary>
-        ///// 查询一条实体
-        ///// </summary>
-        ///// <returns></returns>
+        /// <summary>
+        /// 查询一条实体
+        /// </summary>
+        /// <param name="primaryKey">主键值</param>
+        /// <returns></returns>
         public TEntity Find(params object[] primaryKey)
         {
             return GetEntity().Find(primaryKey);
         }
-        ///// <summary>
-        ///// 异步查询一条实体
-        ///// </summary>
-        ///// <returns></returns>
+        /// <summary>
+        /// 异步查询一条实体
+        /// </summary>
+        /// <param name="primaryKey">主键值</param>
+        /// <returns></returns>
         public async Task<TEntity> FindAsync(params object[] primaryKey)
         {
             return await GetEntity().FindAsync(primaryKey);

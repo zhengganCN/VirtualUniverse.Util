@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Util.Data.Dapper
+namespace Util.Data
 {
     /// <summary>
-    /// 实体接口
+    /// 实体基类
     /// </summary>
-    public interface IEntity
+    /// <typeparam name="T">主键类型</typeparam>
+    public class Entity<T>
     {
+        /// <summary>
+        /// 泛型主键
+        /// </summary>
+        public T Id { get; set; }
         /// <summary>
         /// 删除标识
         /// </summary>
