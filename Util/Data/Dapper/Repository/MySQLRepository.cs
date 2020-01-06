@@ -6,28 +6,27 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.Dapper.Interface;
-using Util.Data.Repository;
 using System.Linq;
 
-namespace Util.Data.Dapper
+namespace Util.Data.Dapper.Repository
 {
     /// <summary>
     /// MySQL仓储模式
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
-    public class Repository<TEntity> : Interface.IRepository<TEntity> where TEntity : class,IEntity
+    public class MySQLRepository<TEntity> : IRepository<TEntity> where TEntity : class,IEntity
     {
         /// <summary>
         /// 工作单元
         /// </summary> 
-        private readonly UOW _unitOfWork;
+        private readonly MySQLUOW _unitOfWork;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="connectionString"></param>
-        public Repository(string connectionString)
+        public MySQLRepository(string connectionString)
         {
-            _unitOfWork = new UOW
+            _unitOfWork = new MySQLUOW
             {
                 MySqlConnection = new MySqlConnection(connectionString)
             };
@@ -44,7 +43,7 @@ namespace Util.Data.Dapper
         /// 获取工作单元
         /// </summary>
         /// <returns></returns>
-        public UOW GetUnitOfWork()
+        public MySQLUOW GetUnitOfWork()
         {
             return _unitOfWork;
         }

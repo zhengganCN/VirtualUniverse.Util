@@ -46,7 +46,7 @@
             <summary>
             实体基类
             </summary>
-            <typeparam name="T"></typeparam>
+            <typeparam name="T">主键类型</typeparam>
         </member>
         <member name="P:Util.Data.Dapper.Entity`1.Id">
             <summary>
@@ -73,39 +73,1404 @@
             更新时间
             </summary>
         </member>
-        <member name="M:Util.Data.Dapper.Repository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0},System.Object)">
+        <member name="T:Util.Data.Dapper.EnumSequence">
             <summary>
-            批量更新指定字段，根据每条记录的Id更新每条记录
+            排序方式
             </summary>
-            <param name="entities">更新的数据</param>
-            <param name="updateFields">更新的字段</param>
+        </member>
+        <member name="F:Util.Data.Dapper.EnumSequence.Descending">
+            <summary>
+            降序
+            </summary>
+        </member>
+        <member name="F:Util.Data.Dapper.EnumSequence.Ascending">
+            <summary>
+            升序
+            </summary>
+        </member>
+        <member name="T:Util.Data.Dapper.IEntity">
+            <summary>
+            实体接口
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.IEntity.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.IEntity.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.IEntity.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.IEntity.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.InsertOne(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Repository`1.UpdateMany(`0,System.Object,System.String)">
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.InsertMany(System.Collections.Generic.IEnumerable{`0})">
             <summary>
-            批量更新符合条件的记录的指定字段
+            批量插入实体集
             </summary>
-            <param name="entity">更新的数据</param>
-            <param name="updateFields">更新的字段</param>
-            <param name="conditionString">条件</param>
+            <param name="entities">实体集</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Repository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0},System.Object)">
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.InsertOneAsync(`0)">
             <summary>
-            异步批量更新指定字段，根据每条记录的Id更新每条记录
+            异步插入一条实体
             </summary>
-            <param name="entities">更新的数据</param>
-            <param name="updateFields">更新的字段</param>
+            <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Data.Dapper.Repository`1.UpdateManyAsync(`0,System.Object,System.String)">
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.InsertManyAsync(System.Collections.Generic.IEnumerable{`0})">
             <summary>
-            异步批量更新符合条件的记录的指定字段
+            异步批量插入实体集
             </summary>
-            <param name="entity">更新的数据</param>
-            <param name="updateFields">更新的字段</param>
-            <param name="conditionString">条件</param>
+            <param name="entities">实体集</param>
             <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateOne(`0)">
+            <summary>
+            更新所有字段，根据实体的Id更新实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新所有字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            批量更新指定字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateMany(`0,System.Object,System.String)">
+            <summary>
+            批量更新符合条件的实体的指定字段
+            </summary>
+            <param name="entity">实体</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateOneAsync(`0)">
+            <summary>
+            异步更新所有字段，根据实体的Id更新实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新所有字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            异步批量更新指定字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.UpdateManyAsync(`0,System.Object,System.String)">
+            <summary>
+            异步批量更新符合条件的实体的指定字段
+            </summary>
+            <param name="entity">实体</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindOne(System.String)">
+            <summary>
+            根据条件查询返回一条符合的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindMany(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindAll">
+            <summary>
+            查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindAll(System.String)">
+            <summary>
+            查询所有符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindOneAsync(System.String)">
+            <summary>
+            根据条件异步查询返回一条符合的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindManyAsync(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindAllAsync">
+            <summary>
+            异步查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.FindAllAsync(System.String)">
+            <summary>
+            异步查询所有符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.DeleteOne(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.DeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量删除实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.DeleteMany(System.String)">
+            <summary>
+            根据条件删除实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.DeleteOneAsync(`0)">
+            <summary>
+            异步删除实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.DeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量删除实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.DeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步删除实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkDeleteOne(`0)">
+            <summary>
+            更新删除标记为已删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkDeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新删除标记为已删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkDeleteMany(System.String)">
+            <summary>
+            根据条件更新删除标记为已删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkDeleteOneAsync(`0)">
+            <summary>
+            异步更新删除标记为已删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkDeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新删除标记为已删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkDeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步更新删除标记为已删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkUnDeleteOne(`0)">
+            <summary>
+            更新删除标记为未删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkUnDeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新删除标记为未删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkUnDeleteMany(System.String)">
+            <summary>
+            根据条件更新删除标记为未删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkUnDeleteOneAsync(`0)">
+            <summary>
+            异步更新删除标记为未删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkUnDeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新删除标记为未删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Interface.IRepository`1.MarkUnDeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步更新删除标记为未删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.InsertSQLString``1(``0)">
+            <summary>
+            插入SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.UpdateSQLString``1(``0)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.UpdateSQLString``1(System.Object)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.UpdateSQLString``1(System.Object,System.String)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.DeleteSQLString``1">
+            <summary>
+            删除SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.DeleteSQLString``1(System.String)">
+            <summary>
+            删除SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.QuerySQLString``1">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.QuerySQLString``1(System.String)">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <param name="SequnceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageIndex">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.MarkDeleteSQLString``1">
+            <summary>
+            更新某条记录的删除标记为已删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.MarkDeleteSQLString``1(System.String)">
+            <summary>
+            根据条件更新删除标记为已删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.MarkUnDeleteSQLString``1">
+            <summary>
+            更新某条记录的删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.ISQLString.MarkUnDeleteSQLString``1(System.String)">
+            <summary>
+            根据条件更新删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Dapper.SQLString.AbstractSQLString">
+            <summary>
+            SQL增、删、改、查语句抽象帮助类
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.InsertSQLString``1(``0)">
+            <summary>
+            插入SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.UpdateSQLString``1(``0)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.UpdateSQLString``1(System.Object)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.UpdateSQLString``1(System.Object,System.String)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.DeleteSQLString``1">
+            <summary>
+            删除SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.DeleteSQLString``1(System.String)">
+            <summary>
+            删除SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.QuerySQLString``1">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.QuerySQLString``1(System.String)">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <param name="SequnceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageIndex">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.MarkDeleteSQLString``1">
+            <summary>
+            更新某条记录的删除标记为已删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.MarkDeleteSQLString``1(System.String)">
+            <summary>
+            根据条件更新删除标记为已删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.MarkUnDeleteSQLString``1">
+            <summary>
+            更新某条记录的删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.SQLString.AbstractSQLString.MarkUnDeleteSQLString``1(System.String)">
+            <summary>
+            根据条件更新删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Dapper.SQLString.MSSQLString">
+            <summary>
+            MSSQL增、删、改、查语句帮助类
+            </summary>
+        </member>
+        <member name="T:Util.Data.Dapper.Repository.AbstractRepository`1">
+            <summary>
+            仓储抽象类，每种数据库的仓储仓储模式都应继承此类
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.GetSqlConnection">
+            <summary>
+            获取SQL连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.GetSqlString">
+            <summary>
+            获取SQLString帮助
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.GetUnitOfWork">
+            <summary>
+            获取工作单元
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.InsertOne(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.InsertMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量插入实体集
+            </summary>
+            <param name="entities">实体集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.InsertOneAsync(`0)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.InsertManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量插入实体集
+            </summary>
+            <param name="entities">实体集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateOne(`0)">
+            <summary>
+            更新所有字段，根据实体的Id更新实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新所有字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            批量更新指定字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateMany(`0,System.Object,System.String)">
+            <summary>
+            批量更新符合条件的实体的指定字段
+            </summary>
+            <param name="entity">实体</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateOneAsync(`0)">
+            <summary>
+            异步更新所有字段，根据实体的Id更新实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新所有字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            异步批量更新指定字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.UpdateManyAsync(`0,System.Object,System.String)">
+            <summary>
+            异步批量更新符合条件的实体的指定字段
+            </summary>
+            <param name="entity">实体</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindOne(System.String)">
+            <summary>
+            根据条件查询返回一条符合的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindMany(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindAll">
+            <summary>
+            查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindAll(System.String)">
+            <summary>
+            查询所有符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindOneAsync(System.String)">
+            <summary>
+            根据条件异步查询返回一条符合的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindManyAsync(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindAllAsync">
+            <summary>
+            异步查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.FindAllAsync(System.String)">
+            <summary>
+            异步查询所有符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.DeleteOne(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.DeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量删除实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.DeleteMany(System.String)">
+            <summary>
+            根据条件删除实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.DeleteOneAsync(`0)">
+            <summary>
+            异步删除实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.DeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量删除实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.DeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步删除实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkDeleteOne(`0)">
+            <summary>
+            更新删除标记为已删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkDeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新删除标记为已删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkDeleteMany(System.String)">
+            <summary>
+            根据条件更新删除标记为已删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkDeleteOneAsync(`0)">
+            <summary>
+            异步更新删除标记为已删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkDeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新删除标记为已删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkDeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步更新删除标记为已删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkUnDeleteOne(`0)">
+            <summary>
+            更新删除标记为未删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkUnDeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新删除标记为未删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkUnDeleteMany(System.String)">
+            <summary>
+            根据条件更新删除标记为未删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkUnDeleteOneAsync(`0)">
+            <summary>
+            异步更新删除标记为未删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkUnDeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新删除标记为未删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.AbstractRepository`1.MarkUnDeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步更新删除标记为未删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Dapper.Repository.MSSQLRepository`1">
+            <summary>
+            MSSQL仓储模式
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="F:Util.Data.Dapper.Repository.MSSQLRepository`1._unitOfWork">
+            <summary>
+            工作单元
+            </summary> 
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MSSQLRepository`1.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MSSQLRepository`1.GetSqlConnection">
+            <summary>
+            获取SQL连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MSSQLRepository`1.GetSqlString">
+            <summary>
+            获取SQLString帮助
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MSSQLRepository`1.GetUnitOfWork">
+            <summary>
+            获取工作单元
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MSSQLRepository`1.FindMany(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MSSQLRepository`1.FindManyAsync(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Dapper.Repository.MySQLRepository`1">
+            <summary>
+            MySQL仓储模式
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+        </member>
+        <member name="F:Util.Data.Dapper.Repository.MySQLRepository`1._unitOfWork">
+            <summary>
+            工作单元
+            </summary> 
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.#ctor(System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="connectionString"></param>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.GetMySqlConnection">
+            <summary>
+            获取MySQL连接
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.GetUnitOfWork">
+            <summary>
+            获取工作单元
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.InsertOne(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.InsertMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量插入实体集
+            </summary>
+            <param name="entities">实体集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.InsertOneAsync(`0)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.InsertManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量插入实体集
+            </summary>
+            <param name="entities">实体集</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateOne(`0)">
+            <summary>
+            更新所有字段，根据实体的Id更新实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新所有字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateMany(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            批量更新指定字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateMany(`0,System.Object,System.String)">
+            <summary>
+            批量更新符合条件的实体的指定字段
+            </summary>
+            <param name="entity">实体</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateOneAsync(`0)">
+            <summary>
+            异步更新所有字段，根据实体的Id更新实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新所有字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateManyAsync(System.Collections.Generic.IEnumerable{`0},System.Object)">
+            <summary>
+            异步批量更新指定字段，根据每条实体的Id更新每条实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.UpdateManyAsync(`0,System.Object,System.String)">
+            <summary>
+            异步批量更新符合条件的实体的指定字段
+            </summary>
+            <param name="entity">实体</param>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindOne(System.String)">
+            <summary>
+            根据条件查询返回一条符合的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindMany(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindAll">
+            <summary>
+            查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindAll(System.String)">
+            <summary>
+            查询所有符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindOneAsync(System.String)">
+            <summary>
+            根据条件异步查询返回一条符合的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindManyAsync(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <param name="sequenceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageInde">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindAllAsync">
+            <summary>
+            异步查询所有实体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.FindAllAsync(System.String)">
+            <summary>
+            异步查询所有符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.DeleteOne(`0)">
+            <summary>
+            删除实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.DeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量删除实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.DeleteMany(System.String)">
+            <summary>
+            根据条件删除实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.DeleteOneAsync(`0)">
+            <summary>
+            异步删除实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.DeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量删除实体
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.DeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步删除实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkDeleteOne(`0)">
+            <summary>
+            更新删除标记为已删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkDeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新删除标记为已删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkDeleteMany(System.String)">
+            <summary>
+            根据条件更新删除标记为已删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkDeleteOneAsync(`0)">
+            <summary>
+            异步更新删除标记为已删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkDeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新删除标记为已删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkDeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步更新删除标记为已删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkUnDeleteOne(`0)">
+            <summary>
+            更新删除标记为未删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkUnDeleteMany(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            批量更新删除标记为未删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkUnDeleteMany(System.String)">
+            <summary>
+            根据条件更新删除标记为未删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkUnDeleteOneAsync(`0)">
+            <summary>
+            异步更新删除标记为未删除
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkUnDeleteManyAsync(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            异步批量更新删除标记为未删除
+            </summary>
+            <param name="entities">实体列表</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.Repository.MySQLRepository`1.MarkUnDeleteManyAsync(System.String)">
+            <summary>
+            根据条件异步更新删除标记为未删除
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Dapper.MySQLString">
+            <summary>
+            MySQL增、删、改、查语句帮助类
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.InsertSQLString``1(``0)">
+            <summary>
+            插入SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.UpdateSQLString``1(``0)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.UpdateSQLString``1(System.Object)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.UpdateSQLString``1(System.Object,System.String)">
+            <summary>
+            更新SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="updateFields">更新字段的匿名对象</param>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.DeleteSQLString``1">
+            <summary>
+            删除SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.DeleteSQLString``1(System.String)">
+            <summary>
+            删除SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.QuerySQLString``1">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.QuerySQLString``1(System.String)">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.QuerySQLString``1(System.String,System.String,Util.Data.Dapper.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            查询SQL语句
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <param name="SequnceField">排序字段</param>
+            <param name="sequence">排序方式</param>
+            <param name="pageIndex">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.MarkDeleteSQLString``1">
+            <summary>
+            更新某条记录的删除标记为已删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.MarkDeleteSQLString``1(System.String)">
+            <summary>
+            根据条件更新删除标记为已删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.MarkUnDeleteSQLString``1">
+            <summary>
+            更新某条记录的删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLString.MarkUnDeleteSQLString``1(System.String)">
+            <summary>
+            根据条件更新删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.Dapper.UnitOfWork.MSSQLUOW">
+            <summary>
+            MSSQL工作单元
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.UnitOfWork.MSSQLUOW.SqlConnection">
+            <summary>
+            MSSQL连接
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Transaction">
+            <summary>
+            创建事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.MSSQLUOW.Close">
+            <summary>
+            手动关闭连接
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.UnitOfWork.UOW.DbConnection">
+            <summary>
+            SQL连接
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.UOW.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.UOW.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.UOW.Transaction">
+            <summary>
+            创建事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.UnitOfWork.UOW.Close">
+            <summary>
+            手动关闭连接
+            </summary>
+        </member>
+        <member name="T:Util.Data.Dapper.MySQLUOW">
+            <summary>
+            MySQL工作单元
+            </summary>
+        </member>
+        <member name="P:Util.Data.Dapper.MySQLUOW.MySqlConnection">
+            <summary>
+            MySQL连接
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLUOW.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLUOW.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLUOW.Transaction">
+            <summary>
+            创建事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.Dapper.MySQLUOW.Close">
+            <summary>
+            手动关闭连接
+            </summary>
         </member>
         <member name="T:Util.Data.Repository.EFRepository.Repository`1">
             <summary>
@@ -935,6 +2300,38 @@
             </summary>
             <param name="data">需加密的数据</param>
             <returns>16进制字符串</returns>
+        </member>
+        <member name="T:Util.Security.JWT.JsonWebToken">
+            <summary>
+            jwt帮助类
+            </summary>
+        </member>
+        <member name="M:Util.Security.JWT.JsonWebToken.#ctor(System.String,System.Int32,System.String,System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="issuer">JWT的签发者</param>
+            <param name="expires">过期时间间隔</param>
+            <param name="key">加密密钥</param>
+            <param name="audience"></param>
+        </member>
+        <member name="M:Util.Security.JWT.JsonWebToken.SetUserId(System.String)">
+            <summary>
+            设置用户唯一标识
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="M:Util.Security.JWT.JsonWebToken.SetPermissions(System.String)">
+            <summary>
+            设置用户权限列表
+            </summary>
+            <param name="permissions"></param>
+        </member>
+        <member name="M:Util.Security.JWT.JsonWebToken.GenerateToken">
+            <summary>
+            生成Token
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:Util.StringResource">
             <summary>

@@ -5,15 +5,10 @@ using System.Text;
 namespace Util.Data.Dapper
 {
     /// <summary>
-    /// 实体基类
+    /// 实体接口
     /// </summary>
-    /// <typeparam name="T">主键类型</typeparam>
-    public class Entity<T> : IEntity
+    public interface IEntity
     {
-        /// <summary>
-        /// 泛型主键
-        /// </summary>
-        public T Id { get; set; }
         /// <summary>
         /// 删除标识
         /// </summary>

@@ -5,10 +5,19 @@ using System.Text;
 
 namespace Util.Data.Dapper
 {
+    /// <summary>
+    /// 排序方式
+    /// </summary>
     public enum EnumSequence
     {
+        /// <summary>
+        /// 降序
+        /// </summary>
         [Description("降序")]
         Descending = 1,
+        /// <summary>
+        /// 升序
+        /// </summary>
         [Description("升序")]
         Ascending = 2
     }

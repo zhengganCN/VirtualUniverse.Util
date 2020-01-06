@@ -4,16 +4,17 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.Dapper;
+using Util.Data.Dapper.Repository;
 
-namespace UtilTest.DataTest.DapperTest
+namespace UtilTest.DataTest.DapperTest.MySQLDapperTest
 {
     class DapperInsertTest
     {
-        private Repository<TdD> repository;
+        private MySQLRepository<TdD> repository;
         [SetUp]
         public void SetUp()
         {
-            repository = new Repository<TdD>(StaticConfigurationValues.MySQLConnectionString);
+            repository = new MySQLRepository<TdD>(StaticConfigurationValues.MySQLConnectionString);
         }
         
         [Test]

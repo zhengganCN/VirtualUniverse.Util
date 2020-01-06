@@ -21,5 +21,12 @@ namespace UtilTest
                 return new JsonConfiguration(_path).GetValue("MySQL:ConnectionString"); 
             } 
         }
+        public static string MSSQLConnectionString
+        {
+            get
+            {
+                return new JsonConfiguration(_path).GetValue("MSSQL:ConnectionString");
+            }
+        }
     }
 }

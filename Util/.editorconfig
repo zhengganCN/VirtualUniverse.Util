@@ -17,3 +17,6 @@ dotnet_diagnostic.CA5351.severity = none
 
 # IDE0066: 将 switch 语句转换为表达式
 csharp_style_prefer_switch_expression = false:suggestion
+
+# CA2119: 密封满足私有接口的方法
+dotnet_diagnostic.CA2119.severity = none

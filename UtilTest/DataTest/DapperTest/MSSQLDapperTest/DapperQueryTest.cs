@@ -8,16 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.Dapper;
+using Util.Data.Dapper.Repository;
 
-namespace UtilTest.DataTest.DapperTest
+namespace UtilTest.DataTest.DapperTest.MSSQLDapperTest
 {
     public class DapperQueryTest
     {
-        private Repository<TdD> repository;
+        private MSSQLRepository<TdD> repository;
         [SetUp]
         public void SetUp()
         {
-            repository = new Repository<TdD>(StaticConfigurationValues.MySQLConnectionString);
+            repository = new MSSQLRepository<TdD>(StaticConfigurationValues.MSSQLConnectionString);
         }
 
         [Test]

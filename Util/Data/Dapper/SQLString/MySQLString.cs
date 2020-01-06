@@ -64,6 +64,10 @@ namespace Util.Data.Dapper
         /// <returns></returns>
         public static string UpdateSQLString<TEntity>(object updateFields)
         {
+            if (updateFields == null)
+            {
+                throw new ArgumentNullException(nameof(updateFields));
+            }
             var propertyInfos = updateFields.GetType().GetProperties();
             StringBuilder argumentNamesValues = new StringBuilder();
             for (int i = 0; i < propertyInfos.Length; i++)
@@ -88,6 +92,10 @@ namespace Util.Data.Dapper
         /// <returns></returns>
         public static string UpdateSQLString<TEntity>(object updateFields, string conditionString)
         {
+            if (updateFields == null)
+            {
+                throw new ArgumentNullException(nameof(updateFields));
+            }
             var propertyInfos = updateFields.GetType().GetProperties();
             StringBuilder argumentNamesValues = new StringBuilder();
             for (int i = 0; i < propertyInfos.Length; i++)
