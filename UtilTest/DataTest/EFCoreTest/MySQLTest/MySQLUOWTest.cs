@@ -5,11 +5,12 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
-using Util.Data.Repository;
-using Util.Data.Repository.EFRepository;
+using Util.Data.EFCore;
+using Util.Data.EFCore.Repository;
+using Util.Extension;
 using Util.Math;
 
-namespace UtilTest.DataTest.MySQLTest
+namespace UtilTest.DataTest.EFCoreTest.MySQLTest
 {
     class MySQLUOWTest
     {
@@ -469,7 +470,7 @@ namespace UtilTest.DataTest.MySQLTest
         {
             while (true)
             {
-                var students = repository.Find(o => o.Id != null, o => o.Id, SortMode.Descending);
+                var students = repository.Find(o => o.Id != null, o => o.Id, EnumSequence.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -492,7 +493,7 @@ namespace UtilTest.DataTest.MySQLTest
         {
             while (true)
             {
-                var students = repository.FindAll(o => o.Id != null, o => o.Id, SortMode.Descending);
+                var students = repository.FindAll(o => o.Id != null, o => o.Id, EnumSequence.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()

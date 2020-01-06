@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace Util.Extend
+namespace Util.Extension
 {
     /// <summary>
     /// 枚举扩展类
     /// </summary>
-    public static class EnumExtend
+    public static class EnumExtension
     {
         /// <summary>
         /// 获取枚举描述

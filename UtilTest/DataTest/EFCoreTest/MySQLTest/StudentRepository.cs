@@ -2,10 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Util.Data.Repository.EFRepository;
+using Util.Data.EFCore.Repository;
 using Util.Data.UOW.EFUOW;
 
-namespace UtilTest.DataTest.MySQLTest
+namespace UtilTest.DataTest.EFCoreTest.MySQLTest
 {
     class StudentRepository : Repository<Student>
     {
@@ -24,12 +24,10 @@ namespace UtilTest.DataTest.MySQLTest
         /// <returns></returns>
         public bool InsertStudentScore(Student student, Score score, bool triggerException)
         {
-            UnitOfWork uow = null;
             try
             {
-                uow = new UnitOfWork(context);
-                uow.Transaction();
-                GetEntity(uow).Add(student);
+                UOW.Transaction();
+                GetEntity().Add(student);
                 context.SaveChanges();
                 if (triggerException)
                 {
@@ -37,11 +35,11 @@ namespace UtilTest.DataTest.MySQLTest
                 }
                 context.Add(score);
                 context.SaveChanges();
-                uow.Commit();
+                UOW.Commit();
             }
             catch (Exception)
             {
-                uow.Rollback();
+                UOW.Rollback();
                 return false;
             }
             return true;

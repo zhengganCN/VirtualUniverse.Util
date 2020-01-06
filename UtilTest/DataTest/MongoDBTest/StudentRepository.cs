@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using MongoDB.Driver;
 using Util.Data.MongoDB.Repository;
-using Util.Data.UOW.MongoDBUOW;
 
 namespace UtilTest.DataTest.MongoDBTest
 {

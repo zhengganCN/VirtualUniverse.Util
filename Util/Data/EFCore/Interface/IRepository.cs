@@ -5,17 +5,17 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Data.Repository
+namespace Util.Data.EFCore.Interface
 {
     interface IRepository<TEntity> where TEntity : class, new()
     {
         #region 查询实体
         public TEntity Find(params object[] primaryKey);
         public Task<TEntity> FindAsync(params object[] primaryKey);
-        public IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending, int pageIndex = 1, int pageSize = 10);
-        public Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending, int pageIndex = 1, int pageSize = 10);
-        public IList<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending);
-        public Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, SortMode sortMode = SortMode.Ascending);
+        public IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, EnumSequence sortMode = EnumSequence.Ascending, int pageIndex = 1, int pageSize = 10);
+        public Task<IList<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, EnumSequence sortMode = EnumSequence.Ascending, int pageIndex = 1, int pageSize = 10);
+        public IList<TEntity> FindAll(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, EnumSequence sortMode = EnumSequence.Ascending);
+        public Task<IList<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, object>> keySelector, EnumSequence sortMode = EnumSequence.Ascending);
         #endregion
         #region 删除实体（从数据库上删除数据）
         public int Delete(TEntity entity);

@@ -6,11 +6,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using Util.Data.Repository;
-using Util.Data.Repository.EFRepository;
-using UtilTest.SQLServerTest.DataTest;
+using Util.Data.EFCore.Repository;
+using Util.Extension;
 
-namespace UtilTest.DataTest.SQLServerTest
+namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
 {
     class ExtensionTest
     {

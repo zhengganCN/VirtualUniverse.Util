@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Util.Data.EFCore.Interface
+namespace Util.Data.UOW
 {
     interface IUnitOfWork
     {

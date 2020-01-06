@@ -1053,6 +1053,357 @@
             手动关闭连接
             </summary>
         </member>
+        <member name="T:Util.Data.EFCore.Entity`1">
+            <summary>
+            实体基类
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Util.Data.EFCore.Entity`1.Id">
+            <summary>
+            泛型主键
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Entity`1.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Entity`1.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Entity`1.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Entity`1.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:Util.Data.EFCore.EnumSequence">
+            <summary>
+            排序方式
+            </summary>
+        </member>
+        <member name="F:Util.Data.EFCore.EnumSequence.Descending">
+            <summary>
+            降序
+            </summary>
+        </member>
+        <member name="F:Util.Data.EFCore.EnumSequence.Ascending">
+            <summary>
+            升序
+            </summary>
+        </member>
+        <member name="T:Util.Data.EFCore.Interface.IEntity">
+            <summary>
+            实体接口
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Interface.IEntity.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Interface.IEntity.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Interface.IEntity.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:Util.Data.EFCore.Interface.IEntity.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:Util.Data.EFCore.Repository.Repository`1">
+            <summary>
+            仓储基类
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="P:Util.Data.EFCore.Repository.Repository`1.UOW">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            构造函数，初始化上下文
+            </summary>
+            <param name="context">SQLServer数据库上下文</param>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.GetEntity">
+            <summary>
+            获取实体
+            </summary>
+            <param name="UOW">SQLServer工作单元</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            统计
+            </summary>
+            <param name="condition">条件表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            异步统计
+            </summary>
+            <param name="condition">条件表达式</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Delete(`0)">
+            <summary>
+            删除一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
+            <summary>
+            删除多条实体
+            </summary>
+            <param name="entities">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.DeleteAsync(`0)">
+            <summary>
+            异步删除一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步删除多条实体
+            </summary>
+            <param name="entities">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询多条实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <param name="pageIndex">页面索引</param>
+            <param name="pageSize">页面大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence,System.Int32,System.Int32)">
+            <summary>
+            异步查询多条实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <param name="pageIndex">页面索引</param>
+            <param name="pageSize">页面大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence)">
+            <summary>
+            查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EFCore.EnumSequence)">
+            <summary>
+            异步查询所有的实体
+            </summary>
+            <param name="condition">条件表达式</param>
+            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
+            <param name="sortMode">排序方式，默认顺序</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Insert(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
+            <summary>
+            插入多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.InsertAsync(`0)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步插入多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Update(`0)">
+            <summary>
+            更新一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.Update(System.Collections.Generic.IList{`0})">
+            <summary>
+            更新多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.UpdateAsync(`0)">
+            <summary>
+            异步更新一条实体
+            </summary>
+            <param name="entity">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Data.EFCore.Repository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步更新多条实体
+            </summary>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="T:Util.Data.EFCore.UnitOfWork.UOW">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="M:Util.Data.EFCore.UnitOfWork.UOW.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            工作单元构造函数
+            </summary>
+            <param name="context">sqlserver数据库上下文</param>
+        </member>
+        <member name="P:Util.Data.EFCore.UnitOfWork.UOW.DbContext">
+            <summary>
+            sqlserver数据库上下文
+            </summary>
+        </member>
+        <member name="M:Util.Data.EFCore.UnitOfWork.UOW.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.EFCore.UnitOfWork.UOW.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.EFCore.UnitOfWork.UOW.Transaction">
+            <summary>
+            事务开始
+            </summary>
+        </member>
+        <member name="T:Util.Data.UOW.EFUOW.UnitOfWork">
+            <summary>
+            工作单元
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
+            <summary>
+            工作单元构造函数
+            </summary>
+            <param name="context">sqlserver数据库上下文</param>
+        </member>
+        <member name="P:Util.Data.UOW.EFUOW.UnitOfWork.DbContext">
+            <summary>
+            sqlserver数据库上下文
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Commit">
+            <summary>
+            提交事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Rollback">
+            <summary>
+            回滚事务
+            </summary>
+        </member>
+        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Transaction">
+            <summary>
+            事务开始
+            </summary>
+        </member>
         <member name="T:Util.Data.MongoDB.Entity`1">
             <summary>
             实体基类
@@ -1380,314 +1731,12 @@
             创建事务
             </summary>
         </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoClientConfiguration">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.UOW.MongoDBUOW.DbContext.MongoDatabaseConfiguration">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:Util.Data.UOW.EFUOW.UnitOfWork">
-            <summary>
-            工作单元
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            工作单元构造函数
-            </summary>
-            <param name="context">sqlserver数据库上下文</param>
-        </member>
-        <member name="P:Util.Data.UOW.EFUOW.UnitOfWork.DbContext">
-            <summary>
-            sqlserver数据库上下文
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Commit">
-            <summary>
-            提交事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Rollback">
-            <summary>
-            回滚事务
-            </summary>
-        </member>
-        <member name="M:Util.Data.UOW.EFUOW.UnitOfWork.Transaction">
-            <summary>
-            事务开始
-            </summary>
-        </member>
-        <member name="T:Util.Data.Repository.EFRepository.Repository`1">
-            <summary>
-            仓储基类
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            构造函数，初始化上下文
-            </summary>
-            <param name="context">SQLServer数据库上下文</param>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.GetEntity(Util.Data.UOW.EFUOW.UnitOfWork)">
-            <summary>
-            获取实体
-            </summary>
-            <param name="uow">SQLServer工作单元</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            统计
-            </summary>
-            <param name="condition">条件表达式</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            异步统计
-            </summary>
-            <param name="condition">条件表达式</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Delete(`0)">
-            <summary>
-            删除一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Delete(System.Collections.Generic.IList{`0})">
-            <summary>
-            删除多条实体
-            </summary>
-            <param name="entities">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.DeleteAsync(`0)">
-            <summary>
-            异步删除一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步删除多条实体
-            </summary>
-            <param name="entities">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
-            <summary>
-            异步查询多条实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <param name="pageIndex">页面索引</param>
-            <param name="pageSize">页面大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode,System.Int32,System.Int32)">
-            <summary>
-            异步查询多条实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <param name="pageIndex">页面索引</param>
-            <param name="pageSize">页面大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
-            <summary>
-            查询所有的实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.Repository.SortMode)">
-            <summary>
-            异步查询所有的实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Insert(`0)">
-            <summary>
-            插入一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Insert(System.Collections.Generic.IList{`0})">
-            <summary>
-            插入多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.InsertAsync(`0)">
-            <summary>
-            异步插入一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.InsertAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步插入多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.MarkDelete(`0)">
-            <summary>
-            修改一条实体的删除标识，改为true
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.MarkDelete(System.Collections.Generic.IList{`0})">
-            <summary>
-            修改多条实体的删除标识，改为true
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.MarkDeleteAsync(`0)">
-            <summary>
-            异步修改一条实体的删除标识，改为true
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步修改多条实体的删除标识，改为true
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.UnmarkDelete(`0)">
-            <summary>
-            修改一条实体的删除标识，改为false
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
-            <summary>
-            修改多条实体的删除标识，改为false
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.UnmarkDeleteAsync(`0)">
-            <summary>
-            异步修改一条实体的删除标识，改为false
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步修改多条实体的删除标识，改为false
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Update(`0)">
-            <summary>
-            更新一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.Update(System.Collections.Generic.IList{`0})">
-            <summary>
-            更新多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.UpdateAsync(`0)">
-            <summary>
-            异步更新一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:Util.Data.Repository.EFRepository.Repository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步更新多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="T:Util.Data.Repository.Entity`1">
-            <summary>
-            实体基类
-            </summary>
-            <typeparam name="T"></typeparam>
-        </member>
-        <member name="P:Util.Data.Repository.Entity`1.Id">
-            <summary>
-            泛型主键
-            </summary>
-        </member>
-        <member name="P:Util.Data.Repository.Entity`1.IsDeleted">
-            <summary>
-            删除标识
-            </summary>
-        </member>
-        <member name="P:Util.Data.Repository.Entity`1.CreateTime">
-            <summary>
-            创建时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Repository.Entity`1.DeleteTime">
-            <summary>
-            删除时间
-            </summary>
-        </member>
-        <member name="P:Util.Data.Repository.Entity`1.UpdateTime">
-            <summary>
-            更新时间
-            </summary>
-        </member>
-        <member name="T:Util.Data.Repository.SortMode">
-            <summary>
-            排序方式
-            </summary>
-        </member>
-        <member name="F:Util.Data.Repository.SortMode.Ascending">
-            <summary>
-            升序
-            </summary>
-        </member>
-        <member name="F:Util.Data.Repository.SortMode.Descending">
-            <summary>
-            降序
-            </summary>
-        </member>
-        <member name="T:Util.Extend.EnumExtend">
+        <member name="T:Util.Extension.EnumExtension">
             <summary>
             枚举扩展类
             </summary>
         </member>
-        <member name="M:Util.Extend.EnumExtend.GetDescription(System.Enum)">
+        <member name="M:Util.Extension.EnumExtension.GetDescription(System.Enum)">
             <summary>
             获取枚举描述
             </summary>

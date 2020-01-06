@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Util.Data.Repository
+namespace Util.Data.EFCore.Interface
 {
     /// <summary>
-    /// 实体基类
+    /// 实体接口
     /// </summary>
-    /// <typeparam name="T"></typeparam>
-    public class Entity<T>
+    public interface IEntity
     {
-        /// <summary>
-        /// 泛型主键
-        /// </summary>
-        public T Id { get; set; }
         /// <summary>
         /// 删除标识
         /// </summary>

@@ -28,8 +28,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="DataTest\EFCoreTest\" />
-  </ItemGroup>
-
 </Project>

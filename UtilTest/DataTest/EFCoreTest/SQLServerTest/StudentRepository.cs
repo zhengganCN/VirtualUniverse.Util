@@ -2,14 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using Util.Data.Repository.EFRepository;
-using Util.Data.UOW.EFUOW;
+using Util.Data.EFCore.Repository;
 
-namespace UtilTest.SQLServerTest.DataTest
+namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
 {
     class StudentRepository : Repository<Student>
     {
-        private DbContext context;
+        private readonly DbContext context;
         public StudentRepository(DbContext context) : base(context)
         {
             this.context = context;
@@ -22,14 +21,12 @@ namespace UtilTest.SQLServerTest.DataTest
         /// <param name="score">添加的成绩</param>
         /// <param name="triggerException">模拟异常,是否触发异常</param>
         /// <returns></returns>
-        public bool InsertStudentScore(Student student,Score score,bool triggerException)
+        public bool InsertStudentScore(Student student, Score score, bool triggerException)
         {
-            UnitOfWork uow = null; 
             try
             {
-                uow=new UnitOfWork(context);
-                uow.Transaction();
-                GetEntity(uow).Add(student);
+                UOW.Transaction();
+                GetEntity().Add(student);
                 context.SaveChanges();
                 if (triggerException)
                 {
@@ -37,11 +34,11 @@ namespace UtilTest.SQLServerTest.DataTest
                 }
                 context.Add(score);
                 context.SaveChanges();
-                uow.Commit();
+                UOW.Commit();
             }
             catch (Exception)
             {
-                uow.Rollback();
+                UOW.Rollback();
                 return false;
             }
             return true;

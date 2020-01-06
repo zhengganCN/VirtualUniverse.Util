@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace Util.Data.Repository
+namespace Util.Extension
 {
     public static class ExpressionExtension
     {

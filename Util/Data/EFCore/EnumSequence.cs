@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace Util.Data.Repository
+namespace Util.Data.EFCore
 {
     /// <summary>
     /// 排序方式
     /// </summary>
-    public enum SortMode
+    public enum EnumSequence
     {
-        /// <summary>
-        /// 升序
-        /// </summary>
-        [Description("升序")]
-        Ascending = 1,
         /// <summary>
         /// 降序
         /// </summary>
         [Description("降序")]
-        Descending = 2
+        Descending = 1,
+        /// <summary>
+        /// 升序
+        /// </summary>
+        [Description("升序")]
+        Ascending = 2
     }
 }

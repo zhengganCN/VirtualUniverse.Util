@@ -7,7 +7,6 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Util.Data.MongoDB.Interface;
-using Util.Data.UOW.MongoDBUOW;
 
 namespace Util.Data.MongoDB.Repository
 {
@@ -15,7 +14,7 @@ namespace Util.Data.MongoDB.Repository
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class MongoRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity, new()
+    public class MongoRepository<TEntity> : IRepository<TEntity> where TEntity : class, new()
     {
         /// <summary>
         /// 工作单元

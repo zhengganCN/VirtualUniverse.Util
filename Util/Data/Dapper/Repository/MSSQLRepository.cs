@@ -16,7 +16,7 @@ namespace Util.Data.Dapper.Repository
     /// MSSQL仓储模式
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class MSSQLRepository<TEntity> : AbstractRepository<TEntity> where TEntity : class, IEntity
+    public class MSSQLRepository<TEntity> : AbstractRepository<TEntity> where TEntity : class
     {
         /// <summary>
         /// 工作单元

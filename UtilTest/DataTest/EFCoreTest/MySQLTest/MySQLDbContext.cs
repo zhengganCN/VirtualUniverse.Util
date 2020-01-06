@@ -2,9 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using UtilTest.SQLServerTest.DataTest;
 
-namespace UtilTest.DataTest.MySQLTest
+namespace UtilTest.DataTest.EFCoreTest.MySQLTest
 {
     public class MySQLDbContext : DbContext
     {

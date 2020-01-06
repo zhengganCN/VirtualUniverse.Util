@@ -1,9 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using Util.Extend;
+using Util.Extension;
 
 namespace UtilTest
 {

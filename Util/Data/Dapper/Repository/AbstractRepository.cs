@@ -14,7 +14,7 @@ namespace Util.Data.Dapper.Repository
     /// 仓储抽象类，每种数据库的仓储仓储模式都应继承此类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public abstract class AbstractRepository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity
+    public abstract class AbstractRepository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         /// <summary>
         /// 获取SQL连接

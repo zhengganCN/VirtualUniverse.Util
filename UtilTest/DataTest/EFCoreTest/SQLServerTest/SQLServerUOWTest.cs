@@ -4,11 +4,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
 using NUnit.Framework;
-using Util.Data.Repository.EFRepository;
 using Util.Math;
-using Util.Data.Repository;
+using Util.Data.EFCore.Repository;
+using Util.Data.EFCore;
 
-namespace UtilTest.SQLServerTest.DataTest
+namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
 {
     class SQLServerUOWTest
     {
@@ -468,7 +468,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var students = repository.Find(o => o.Id != null, o => o.Id,SortMode.Descending);
+                var students = repository.Find(o => o.Id != null, o => o.Id,EnumSequence.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()
@@ -491,7 +491,7 @@ namespace UtilTest.SQLServerTest.DataTest
         {
             while (true)
             {
-                var students = repository.FindAll(o => o.Id != null, o => o.Id, SortMode.Descending);
+                var students = repository.FindAll(o => o.Id != null, o => o.Id, EnumSequence.Descending);
                 if (students.Count <= 0)
                 {
                     repository.Insert(new Student()

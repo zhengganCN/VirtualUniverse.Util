@@ -18,7 +18,7 @@ namespace Util.Data.Dapper.Repository
     /// MySQL仓储模式
     /// </summary>
     /// <typeparam name="TEntity">实体类型</typeparam>
-    public class MySQLRepository<TEntity> : AbstractRepository<TEntity> where TEntity : class, IEntity
+    public class MySQLRepository<TEntity> : AbstractRepository<TEntity> where TEntity : class
     {
         /// <summary>
         /// 工作单元
