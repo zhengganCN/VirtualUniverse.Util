@@ -11,7 +11,7 @@ namespace Util.Security.Cryptography
     /// <summary>
     /// 对称加密算法，算法支持的密钥长度为128、192、256位。IV长度位128位
     /// </summary>
-    public static class AES
+    public static class AESHelper
     {
         /// <summary>
         /// AES加密算法
@@ -20,9 +20,13 @@ namespace Util.Security.Cryptography
         /// <param name="key">密钥</param>
         /// <param name="keyType">密钥长度</param>
         /// <returns></returns>
-        public static string AESEncrypt(byte[] data, byte[] key, KeyType keyType = KeyType.Key128)
+        public static byte[] AESEncrypt(byte[] data, byte[] key, KeyType keyType = KeyType.Key128)
         {
             if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
+            if (key == null)
             {
                 throw new ArgumentNullException(nameof(data));
             }
@@ -35,7 +39,7 @@ namespace Util.Security.Cryptography
             using CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
             cryptoStream.Write(data, 0, data.Length);
             cryptoStream.FlushFinalBlock();
-            return Convert.ToBase64String(memoryStream.ToArray());
+            return memoryStream.ToArray();
         }
         /// <summary>
         /// AES解密算法
@@ -44,11 +48,15 @@ namespace Util.Security.Cryptography
         /// <param name="key">密钥</param>
         /// <param name="keyType">密钥长度</param>
         /// <returns></returns>
-        public static string AESDecrypt(byte[] data, byte[] key, KeyType keyType = KeyType.Key128)
+        public static byte[] AESDecrypt(byte[] data, byte[] key, KeyType keyType = KeyType.Key128)
         {
             if (data == null)
             {
                 throw new ArgumentNullException(nameof(data));
+            }
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
             }
             using AesCryptoServiceProvider aes = new AesCryptoServiceProvider
             {
@@ -59,17 +67,23 @@ namespace Util.Security.Cryptography
             using CryptoStream cryptoStream = new CryptoStream(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Write);
             cryptoStream.Write(data, 0, data.Length);
             cryptoStream.FlushFinalBlock();
-            return Encoding.Default.GetString(memoryStream.ToArray());
+            return memoryStream.ToArray();
         }
         private static byte[] GetKey(byte[] key, KeyType keyType)
         {
-            return keyType switch
+            switch (keyType)
             {
-                KeyType.Key128 => key.Take(128).ToArray(),
-                KeyType.Key192 => key.Take(128).ToArray(),
-                KeyType.Key256 => key.Take(128).ToArray(),
-                _ => key,
-            };
+                case KeyType.Key128:
+                    key = key.Take(128).ToArray();
+                    break;
+                case KeyType.Key192:
+                    key = key.Take(192).ToArray();
+                    break;
+                case KeyType.Key256:
+                    key = key.Take(256).ToArray();
+                    break;
+            }
+            return key;
         }
 
         /// <summary>

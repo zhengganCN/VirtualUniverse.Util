@@ -8,7 +8,7 @@ namespace Util.Security.Cryptography
     /// <summary>
     /// hash算法，MD5
     /// </summary>
-    public static class MD5
+    public static class MD5Helper
     {
         /// <summary>
         /// MD5加密
@@ -17,6 +17,10 @@ namespace Util.Security.Cryptography
         /// <returns>16进制字符串</returns>
         public static string Encrypt(byte[] data)
         {
+            if (data==null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
             using (var md5 = new MD5CryptoServiceProvider())
             {
                 var hashBytes = md5.ComputeHash(data);

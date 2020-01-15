@@ -1840,12 +1840,12 @@
             页面总数
             </summary>
         </member>
-        <member name="T:Util.Security.Cryptography.AES">
+        <member name="T:Util.Security.Cryptography.AESHelper">
             <summary>
             对称加密算法，算法支持的密钥长度为128、192、256位。IV长度位128位
             </summary>
         </member>
-        <member name="M:Util.Security.Cryptography.AES.AESEncrypt(System.Byte[],System.Byte[],Util.Security.Cryptography.AES.KeyType)">
+        <member name="M:Util.Security.Cryptography.AESHelper.AESEncrypt(System.Byte[],System.Byte[],Util.Security.Cryptography.AESHelper.KeyType)">
             <summary>
             AES加密算法
             </summary>
@@ -1854,7 +1854,7 @@
             <param name="keyType">密钥长度</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Security.Cryptography.AES.AESDecrypt(System.Byte[],System.Byte[],Util.Security.Cryptography.AES.KeyType)">
+        <member name="M:Util.Security.Cryptography.AESHelper.AESDecrypt(System.Byte[],System.Byte[],Util.Security.Cryptography.AESHelper.KeyType)">
             <summary>
             AES解密算法
             </summary>
@@ -1863,32 +1863,32 @@
             <param name="keyType">密钥长度</param>
             <returns></returns>
         </member>
-        <member name="T:Util.Security.Cryptography.AES.KeyType">
+        <member name="T:Util.Security.Cryptography.AESHelper.KeyType">
             <summary>
             密钥长度
             </summary>
         </member>
-        <member name="F:Util.Security.Cryptography.AES.KeyType.Key128">
+        <member name="F:Util.Security.Cryptography.AESHelper.KeyType.Key128">
             <summary>
             密钥长度为128
             </summary>
         </member>
-        <member name="F:Util.Security.Cryptography.AES.KeyType.Key192">
+        <member name="F:Util.Security.Cryptography.AESHelper.KeyType.Key192">
             <summary>
             密钥长度为192
             </summary>
         </member>
-        <member name="F:Util.Security.Cryptography.AES.KeyType.Key256">
+        <member name="F:Util.Security.Cryptography.AESHelper.KeyType.Key256">
             <summary>
             密钥长度为256
             </summary>
         </member>
-        <member name="T:Util.Security.Cryptography.DES">
+        <member name="T:Util.Security.Cryptography.DESHelper">
             <summary>
             对称加密算法，算法支持的密钥长度为64位。
             </summary>
         </member>
-        <member name="M:Util.Security.Cryptography.DES.DESEncrypt(System.Byte[],System.Byte[])">
+        <member name="M:Util.Security.Cryptography.DESHelper.DESEncrypt(System.Byte[],System.Byte[])">
             <summary>
             DES加密
             </summary>
@@ -1896,7 +1896,7 @@
             <param name="key">密钥</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Security.Cryptography.DES.DESDecrypt(System.Byte[],System.Byte[])">
+        <member name="M:Util.Security.Cryptography.DESHelper.DESDecrypt(System.Byte[],System.Byte[])">
             <summary>
             DES解密
             </summary>
@@ -1904,57 +1904,181 @@
             <param name="key">密钥</param>
             <returns></returns>
         </member>
-        <member name="M:Util.Security.Cryptography.DES.GetKey(System.Byte[])">
+        <member name="M:Util.Security.Cryptography.DESHelper.GetKey(System.Byte[])">
             <summary>
             获取密钥
             </summary>
             <param name="key"></param>
             <returns></returns>
         </member>
-        <member name="T:Util.Security.Cryptography.MD5">
+        <member name="T:Util.Security.Cryptography.MD5Helper">
             <summary>
             hash算法，MD5
             </summary>
         </member>
-        <member name="M:Util.Security.Cryptography.MD5.Encrypt(System.Byte[])">
+        <member name="M:Util.Security.Cryptography.MD5Helper.Encrypt(System.Byte[])">
             <summary>
             MD5加密
             </summary>
             <param name="data">需加密的数据</param>
             <returns>16进制字符串</returns>
         </member>
-        <member name="T:Util.Security.Cryptography.RSA">
+        <member name="T:Util.Security.Cryptography.RSAHelper">
             <summary>
             RSA加密/解密,非对称算法
             </summary>
         </member>
-        <member name="T:Util.Security.Cryptography.SHA">
+        <member name="M:Util.Security.Cryptography.RSAHelper.Encrypt(System.Byte[],System.Security.Cryptography.RSAParameters)">
+            <summary>
+            RSA加密
+            </summary>
+            <param name="dataToEncrypt"></param>
+            <param name="rsaParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.Decrypt(System.Byte[],System.Security.Cryptography.RSAParameters)">
+            <summary>
+            RSA解密
+            </summary>
+            <param name="dataToDecrypt"></param>
+            <param name="rsaParameters"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.SignatureData(System.Byte[],System.Security.Cryptography.RSAParameters,System.Object)">
+            <summary>
+            RSA签名
+            </summary>
+            <param name="dataToSignature">待签名数据</param>
+            <param name="rsaParameters">rsa参数</param>
+            <param name="hashAlgorithm">hash算法实例，如果hashAlgorithm==null，则默认使用sha256算法</param>
+            <returns>已签名数据</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.VerifyData(System.Byte[],System.Byte[],System.Security.Cryptography.RSAParameters,System.Object)">
+            <summary>
+            RSA验签
+            </summary>
+            <param name="dataToVerify">待验签数据</param>
+            <param name="signaturedData">已签名数据</param>
+            <param name="rsaParameters">rsa参数</param>
+            <param name="hashAlgorithm">hash算法实例，如果hashAlgorithm==null，则默认使用sha256算法</param>
+            <returns>验签是否通过</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.VaildDataIsMoreLength(System.Byte[],System.Security.Cryptography.RSA)">
+            <summary>
+            //验证要加密的数据是否超长
+            </summary>
+            <param name="data"></param>
+            <param name="rsa"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.GeneratePkcs8EncryptedPrivateKey(System.Byte[],System.Security.Cryptography.PbeParameters,Util.Security.Cryptography.RSAHelper.RSAKeySizeInBits)">
+            <summary>
+            生成Pkcs8格式的加密后的私钥
+            </summary>
+            <param name="password"></param>
+            <param name="pbeParameters"></param>
+            <param name="keySizeInBits">密钥长度</param>
+            <returns>Base64</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.GeneratePkcs8PrivateKey(Util.Security.Cryptography.RSAHelper.RSAKeySizeInBits)">
+            <summary>
+            生成Pkcs8格式的私钥
+            <param name="keySizeBits">密钥长度</param>
+            </summary>
+            <returns>Base64</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.GeneratePkcs1PrivateKey(Util.Security.Cryptography.RSAHelper.RSAKeySizeInBits)">
+            <summary>
+            生成Pkcs1格式的私钥
+            </summary>
+            <param name="keySizeBits">密钥长度</param>
+            <returns>Base64</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.GetPkcs8PrivateKeyFromEncryptedPrivatedPrivateKey(System.Byte[],System.String)">
+            <summary>
+            从加密的Pkcs8格式的私钥中获取未加密的Pkcs8格式的私钥
+            </summary>
+            <param name="password"></param>
+            <param name="encryptedPrivateKey"></param>
+            <returns>Base64</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.GetPkcs1PublicKeyFromPkcs8PrivateKey(System.Byte[])">
+            <summary>
+            从Pkcs8格式的私钥中获取Pkcs1格式的公钥
+            </summary>
+            <param name="privateKey"></param>
+            <returns>Base64</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.GetPkcs1PublicKeyFromPkcs1PrivateKey(System.Byte[])">
+            <summary>
+            从Pkcs1格式的私钥中获取Pkcs1格式的公钥
+            </summary>
+            <param name="privateKey"></param>
+            <returns>Base64</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.ImportPkcs1PublicKey(System.Byte[])">
+            <summary>
+            导入Pkcs1格式的公钥
+            </summary>
+            <param name="publicKey">公钥</param>
+            <returns>rsa</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.ImportPkcs1PrivateKey(System.Byte[])">
+            <summary>
+            导入Pkcs1格式的私钥
+            </summary>
+            <param name="privateKey">私钥</param>
+            <returns>rsa</returns>
+        </member>
+        <member name="M:Util.Security.Cryptography.RSAHelper.ImportPkcs8PrivateKey(System.Byte[])">
+            <summary>
+            导入Pkcs8格式的私钥
+            </summary>
+            <param name="privateKey">私钥</param>
+            <returns>rsa</returns>
+        </member>
+        <member name="T:Util.Security.Cryptography.RSAHelper.RSAKeySizeInBits">
+            <summary>
+            密钥长度
+            </summary>
+        </member>
+        <member name="F:Util.Security.Cryptography.RSAHelper.RSAKeySizeInBits.Bits1024">
+            <summary>
+            密钥长度为1024
+            </summary>
+        </member>
+        <member name="F:Util.Security.Cryptography.RSAHelper.RSAKeySizeInBits.Bits2048">
+            <summary>
+            密钥长度为2048
+            </summary>
+        </member>
+        <member name="T:Util.Security.Cryptography.SHAHelper">
             <summary>
             hash算法
             </summary>
         </member>
-        <member name="M:Util.Security.Cryptography.SHA.SHA1Encrypt(System.Byte[])">
+        <member name="M:Util.Security.Cryptography.SHAHelper.SHA1Encrypt(System.Byte[])">
             <summary>
             SHA1加密
             </summary>
             <param name="data">需加密的数据</param>
             <returns>16进制字符串</returns>
         </member>
-        <member name="M:Util.Security.Cryptography.SHA.SHA256Encrypt(System.Byte[])">
+        <member name="M:Util.Security.Cryptography.SHAHelper.SHA256Encrypt(System.Byte[])">
             <summary>
             SHA256加密
             </summary>
             <param name="data">需加密的数据</param>
             <returns>16进制字符串</returns>
         </member>
-        <member name="M:Util.Security.Cryptography.SHA.SHA384Encrypt(System.Byte[])">
+        <member name="M:Util.Security.Cryptography.SHAHelper.SHA384Encrypt(System.Byte[])">
             <summary>
             SHA384加密
             </summary>
             <param name="data">需加密的数据</param>
             <returns>16进制字符串</returns>
         </member>
-        <member name="M:Util.Security.Cryptography.SHA.SHA512Encrypt(System.Byte[])">
+        <member name="M:Util.Security.Cryptography.SHAHelper.SHA512Encrypt(System.Byte[])">
             <summary>
             SHA512加密
             </summary>
@@ -2012,6 +2136,11 @@
         <member name="P:Util.StringResource._2DFFD5DF_292D_4E3F_9CA2_0B238B2258E7">
             <summary>
               查找类似 entities的长度必须大于0 的本地化字符串。
+            </summary>
+        </member>
+        <member name="P:Util.StringResource._47B50496_4949_443F_8D22_15D008056E32">
+            <summary>
+              查找类似 的值不能为空或长度不能小于等于0 的本地化字符串。
             </summary>
         </member>
     </members>

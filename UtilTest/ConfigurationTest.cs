@@ -68,7 +68,7 @@ namespace UtilTest
         {
             var path = Directory.GetCurrentDirectory();
             path = Path.Combine(path, "App.json");
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 JsonConfiguration jsonConfiguration = new JsonConfiguration(path);
                 var str = jsonConfiguration.GetValue("TestString");

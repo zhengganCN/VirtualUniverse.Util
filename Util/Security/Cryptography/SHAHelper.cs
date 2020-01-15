@@ -8,7 +8,7 @@ namespace Util.Security.Cryptography
     /// <summary>
     /// hash算法
     /// </summary>
-    public static class SHA
+    public static class SHAHelper
     {
         /// <summary>
         /// SHA1加密
@@ -17,6 +17,10 @@ namespace Util.Security.Cryptography
         /// <returns>16进制字符串</returns>
         public static string SHA1Encrypt(byte[] data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
             using SHA1 sha1 = new SHA1CryptoServiceProvider();
             var hashBytes = sha1.ComputeHash(data);
             StringBuilder hashString = new StringBuilder();
@@ -33,6 +37,10 @@ namespace Util.Security.Cryptography
         /// <returns>16进制字符串</returns>
         public static string SHA256Encrypt(byte[] data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
             using SHA256 sha256 = SHA256.Create();
             var hashBytes = sha256.ComputeHash(data);
             StringBuilder hashString = new StringBuilder();
@@ -50,6 +58,10 @@ namespace Util.Security.Cryptography
         /// <returns>16进制字符串</returns>
         public static string SHA384Encrypt(byte[] data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
             using SHA384 sha384 = SHA384.Create();
             var hashBytes = sha384.ComputeHash(data);
             StringBuilder hashString = new StringBuilder();
@@ -66,6 +78,10 @@ namespace Util.Security.Cryptography
         /// <returns>16进制字符串</returns>
         public static string SHA512Encrypt(byte[] data)
         {
+            if (data == null)
+            {
+                throw new ArgumentNullException(nameof(data));
+            }
             using SHA512 sha512 = SHA512.Create();
             var hashBytes = sha512.ComputeHash(data);
             StringBuilder hashString = new StringBuilder();

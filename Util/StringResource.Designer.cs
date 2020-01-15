@@ -68,5 +68,14 @@ namespace Util {
                 return ResourceManager.GetString("2DFFD5DF-292D-4E3F-9CA2-0B238B2258E7", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 的值不能为空或长度不能小于等于0 的本地化字符串。
+        /// </summary>
+        internal static string _47B50496_4949_443F_8D22_15D008056E32 {
+            get {
+                return ResourceManager.GetString("47B50496-4949-443F-8D22-15D008056E32", resourceCulture);
+            }
+        }
     }
 }

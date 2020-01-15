@@ -120,4 +120,7 @@
   <data name="2DFFD5DF-292D-4E3F-9CA2-0B238B2258E7" xml:space="preserve">
     <value>entities的长度必须大于0</value>
   </data>
+  <data name="47B50496-4949-443F-8D22-15D008056E32" xml:space="preserve">
+    <value>的值不能为空或长度不能小于等于0</value>
+  </data>
 </root>

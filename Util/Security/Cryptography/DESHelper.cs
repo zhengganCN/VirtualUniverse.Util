@@ -10,7 +10,7 @@ namespace Util.Security.Cryptography
     /// <summary>
     /// 对称加密算法，算法支持的密钥长度为64位。
     /// </summary>
-    public static class DES
+    public static class DESHelper
     {
         /// <summary>
         /// DES加密
@@ -18,11 +18,15 @@ namespace Util.Security.Cryptography
         /// <param name="data">需加密的数据</param>
         /// <param name="key">密钥</param>
         /// <returns></returns>
-        public static string DESEncrypt(byte[] data, byte[] key)
+        public static byte[] DESEncrypt(byte[] data, byte[] key)
         {
             if (data == null)
             {
                 throw new ArgumentNullException(nameof(data));
+            }
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
             }
             using DESCryptoServiceProvider des = new DESCryptoServiceProvider
             {
@@ -33,7 +37,7 @@ namespace Util.Security.Cryptography
             using CryptoStream cryptoStream = new CryptoStream(memoryStream, des.CreateEncryptor(), CryptoStreamMode.Write);
             cryptoStream.Write(data, 0, data.Length);
             cryptoStream.FlushFinalBlock();
-            return Convert.ToBase64String(memoryStream.ToArray());
+            return memoryStream.ToArray();
         }
         /// <summary>
         /// DES解密
@@ -41,11 +45,15 @@ namespace Util.Security.Cryptography
         /// <param name="data">需解密的数据</param>
         /// <param name="key">密钥</param>
         /// <returns></returns>
-        public static string DESDecrypt(byte[] data, byte[] key)
+        public static byte[] DESDecrypt(byte[] data, byte[] key)
         {
             if (data == null)
             {
                 throw new ArgumentNullException(nameof(data));
+            }
+            if (key == null)
+            {
+                throw new ArgumentNullException(nameof(key));
             }
             using DESCryptoServiceProvider des = new DESCryptoServiceProvider
             {
@@ -56,7 +64,7 @@ namespace Util.Security.Cryptography
             using CryptoStream cryptoStream = new CryptoStream(memoryStream, des.CreateDecryptor(), CryptoStreamMode.Write);
             cryptoStream.Write(data, 0, data.Length);
             cryptoStream.FlushFinalBlock();
-            return Encoding.Default.GetString(memoryStream.ToArray());
+            return memoryStream.ToArray();
         }
         /// <summary>
         /// 获取密钥
