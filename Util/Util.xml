@@ -2117,6 +2117,41 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Util.SocketUtil.SocketClient">
+            <summary>
+            客户端Socket
+            </summary>
+        </member>
+        <member name="M:Util.SocketUtil.SocketClient.SocketSendReceive(System.Net.IPEndPoint,System.Byte[],System.Int32@,System.Byte[]@,System.Int32@)">
+            <summary>
+            客户端发送接收数据
+            </summary>
+            <param name="iPEndPoint"></param>
+            <param name="message"></param>
+            <param name="sendSize"></param>
+            <param name="receive"></param>
+            <param name="receiveSize"></param>
+        </member>
+        <member name="T:Util.SocketUtil.SocketServer">
+            <summary>
+            服务端Socket
+            </summary>
+        </member>
+        <member name="M:Util.SocketUtil.SocketServer.SocketSendReceive(System.Net.IPEndPoint,System.Int32)">
+            <summary>
+            服务端发送接收数据
+            </summary>
+            <param name="iPEndPoint">本地终结点</param>
+            <param name="backlog">挂起连接队列的最大长度</param>
+        </member>
+        <member name="M:Util.SocketUtil.SocketServer.SetSendMessage(System.Byte[])">
+            <summary>
+            设置发送数据
+            需重写该函数，若不重写该函数，则默认发送一个空byte数组
+            </summary>
+            <param name="receiveData">接收到的数据</param>
+            <returns></returns>
+        </member>
         <member name="T:Util.StringResource">
             <summary>
               一个强类型的资源类，用于查找本地化的字符串等。
@@ -2141,6 +2176,124 @@
         <member name="P:Util.StringResource._47B50496_4949_443F_8D22_15D008056E32">
             <summary>
               查找类似 的值不能为空或长度不能小于等于0 的本地化字符串。
+            </summary>
+        </member>
+        <member name="T:Util.VerifyCode.StringVerifyCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.#ctor(System.Int32,System.Int32)">
+            <summary>
+            初始化位图参数
+            </summary>
+            <param name="imageWidth">位图宽度</param>
+            <param name="imageHeight">位图高度</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.Generate(System.String,System.Drawing.Brush)">
+            <summary>
+            生成验证码位图
+            </summary>
+            <param name="text">文本</param>
+            <param name="brush">笔刷</param>
+            <returns></returns>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.SetTextFont(System.Drawing.Font)">
+            <summary>
+            设置文本字体
+            </summary>
+            <param name="font">字体，font为null时，默认设置font的实例为new Font(FontFamily.GenericMonospace, 16, FontStyle.Bold)</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.SetInterferenceLine(System.Int32,System.Int32,System.Drawing.Brush)">
+            <summary>
+            设置干扰直线和竖线
+            </summary>
+            <param name="horizontalLineNumber">横线的数量</param>
+            <param name="verticalLineNumber">竖线的数量</param>
+            <param name="brush">笔刷，brush为null时，默认设置brush为black</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.SetInterferencePoint(System.Int32,System.Int32,System.Drawing.Brush,System.Drawing.Color[])">
+            <summary>
+            设置干扰点
+            </summary>
+            <param name="pointNumber">干扰点数量</param>
+            <param name="radius">半径</param>
+            <param name="brush">笔刷，brush为null时，默认设置brush为black</param>
+            <param name="colors">为圆形设置可选颜色，通过随机函数选取，colors不为空时，brush参数不生效</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.GenerateEllipse(System.Int32,System.Drawing.Brush)">
+            <summary>
+            生成圆形
+            </summary>
+            <param name="radius">半径</param>
+            <param name="brush">笔刷</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.SetBackgroundColor(System.Drawing.Color)">
+            <summary>
+            设置背景色
+            </summary>
+            <param name="backgroundColor">背景色</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.SetTextPosition(Util.VerifyCode.StringVerifyCode.EnumPosition)">
+            <summary>
+            设置文本位置
+            </summary>
+            <param name="position">文本位置枚举值</param>
+        </member>
+        <member name="M:Util.VerifyCode.StringVerifyCode.SetTextPosition(System.Int32)">
+            <summary>
+            设置文本位置
+            </summary>
+            <param name="textLength">文本字数</param>
+        </member>
+        <member name="T:Util.VerifyCode.StringVerifyCode.EnumPosition">
+            <summary>
+            位置枚举
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.LeftCenter">
+            <summary>
+            左中
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.TopCenter">
+            <summary>
+            上中
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.RightCenter">
+            <summary>
+            右中
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.BottomCenter">
+            <summary>
+            下中
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.LeftTop">
+            <summary>
+            左上
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.RightTop">
+            <summary>
+            右上
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.LeftBottom">
+            <summary>
+            左下
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.RightBottom">
+            <summary>
+            右下
+            </summary>
+        </member>
+        <member name="F:Util.VerifyCode.StringVerifyCode.EnumPosition.Center">
+            <summary>
+            居中
             </summary>
         </member>
     </members>
