@@ -1362,6 +1362,13 @@
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Find(System.Object[])">
+            <summary>
+            查询，多主键有待验证
+            </summary>
+            <param name="primaryKey">主键</param>
+            <returns></returns>
+        </member>
         <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>
             查询多条实体
@@ -1372,6 +1379,12 @@
             <param name="pageIndex">索引页数</param>
             <param name="pageSize">索引页大小</param>
             <returns></returns>
+        </member>
+        <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAsync(System.Object[])">
+            <summary>
+            异步查询，多主键有待验证
+            </summary>
+            <param name="primaryKey">主键</param>
         </member>
         <member name="M:Util.Data.MongoDB.Repository.MongoRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},Util.Data.EnumSequence,System.Int32,System.Int32)">
             <summary>

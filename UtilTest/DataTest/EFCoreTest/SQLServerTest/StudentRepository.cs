@@ -38,6 +38,7 @@ namespace UtilTest.DataTest.EFCoreTest.SQLServerTest
             }
             catch (Exception ex)
             {
+                Console.Error.WriteLine(ex.ToString());
                 UOW.Rollback();
                 return false;
             }

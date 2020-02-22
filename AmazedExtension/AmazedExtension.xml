@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmazedExtension</name>
+    </assembly>
+    <members>
+        <member name="T:AmazedExtension.Extension.EnumExtension">
+            <summary>
+            枚举扩展类
+            </summary>
+        </member>
+        <member name="M:AmazedExtension.Extension.EnumExtension.GetDescription(System.Enum)">
+            <summary>
+            获取枚举描述
+            </summary>
+            <param name="value">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedExtension.Extension.ExpressionExtension">
+            <summary>
+            表达式树扩展
+            </summary>
+        </member>
+        <member name="M:AmazedExtension.Extension.ExpressionExtension.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            且操作
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedExtension.Extension.ExpressionExtension.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            或操作
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedExtension.Extension.RebuildExpression">
+            <summary>
+            重建表达式树（替换表达式参数）
+            </summary>
+        </member>
+        <member name="M:AmazedExtension.Extension.RebuildExpression.#ctor(System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+        </member>
+        <member name="M:AmazedExtension.Extension.RebuildExpression.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            重写
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

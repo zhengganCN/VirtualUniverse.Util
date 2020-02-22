@@ -330,5 +330,5 @@ ASALocalRun/
 .mfractor/
 
 # 自定义忽略文件
-UtilTest/Migrations
-UtilTest/App.json
+Migrations
+App.json

@@ -124,11 +124,11 @@ namespace Util.Data.MongoDB.Repository
         }
         #endregion
         #region 查询
-        ///// <summary>
-        ///// 查询，多主键有待验证
-        ///// </summary>
-        ///// <param name="primaryKey">主键</param>
-        ///// <returns></returns>
+        /// <summary>
+        /// 查询，多主键有待验证
+        /// </summary>
+        /// <param name="primaryKey">主键</param>
+        /// <returns></returns>
         public TEntity Find(params object[] primaryKey)
         {
             var filters = new List<FilterDefinition<TEntity>>();
@@ -165,10 +165,10 @@ namespace Util.Data.MongoDB.Repository
                     return null;
             };
         }
-        ///// <summary>
-        ///// 异步查询，多主键有待验证
-        ///// </summary>
-        ///// <param name="primaryKey">主键</param>
+        /// <summary>
+        /// 异步查询，多主键有待验证
+        /// </summary>
+        /// <param name="primaryKey">主键</param>
         public async Task<TEntity> FindAsync(params object[] primaryKey)
         {
             var filters = new List<FilterDefinition<TEntity>>();

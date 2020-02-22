@@ -89,16 +89,16 @@ namespace Util.Math
         }
 
 #pragma warning disable IDE0060 // 删除未使用的参数
-                               /// <summary>
-                               /// 格式化异常信息
-                               /// </summary>
-                               /// <param name="minValue"></param>
-                               /// <param name="maxValue"></param>
-                               /// <param name="isContainerMinValue"></param>
-                               /// <param name="isContainerMaxValue"></param>
-                               /// <param name="operation"></param>
-                               /// <returns></returns>
-        private string RandomRangeExceptionInfoFormat(int minValue, int maxValue, bool isContainerMinValue, bool isContainerMaxValue,string operation)
+        /// <summary>
+        /// 格式化异常信息
+        /// </summary>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <param name="isContainerMinValue"></param>
+        /// <param name="isContainerMaxValue"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
+        private static string RandomRangeExceptionInfoFormat(int minValue, int maxValue, bool isContainerMinValue, bool isContainerMaxValue, string operation)
 #pragma warning restore IDE0060 // 删除未使用的参数
         {
             return string.Format(
@@ -168,16 +168,16 @@ namespace Util.Math
         }
 
 #pragma warning disable IDE0060 // 删除未使用的参数
-                               /// <summary>
-                               /// 格式化异常信息
-                               /// </summary>
-                               /// <param name="minValue"></param>
-                               /// <param name="maxValue"></param>
-                               /// <param name="isContainerMinValue"></param>
-                               /// <param name="isContainerMaxValue"></param>
-                               /// <param name="operation"></param>
-                               /// <returns></returns>
-        private string RandomRangeExceptionInfoFormat(double minValue, double maxValue, bool isContainerMinValue, bool isContainerMaxValue, string operation)
+        /// <summary>
+        /// 格式化异常信息
+        /// </summary>
+        /// <param name="minValue"></param>
+        /// <param name="maxValue"></param>
+        /// <param name="isContainerMinValue"></param>
+        /// <param name="isContainerMaxValue"></param>
+        /// <param name="operation"></param>
+        /// <returns></returns>
+        private static string RandomRangeExceptionInfoFormat(double minValue, double maxValue, bool isContainerMinValue, bool isContainerMaxValue, string operation)
 #pragma warning restore IDE0060 // 删除未使用的参数
         {
             return string.Format(
