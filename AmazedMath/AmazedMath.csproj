@@ -8,4 +8,10 @@
     <DocumentationFile>D:\GitHub\Util\AmazedMath\AmazedMath.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="AmazedMath.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

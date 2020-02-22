@@ -16,4 +16,10 @@
     <ProjectReference Include="..\AmazedMath\AmazedMath.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="AmazedVerifyCode.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

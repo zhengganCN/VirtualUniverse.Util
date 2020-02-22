@@ -8,4 +8,10 @@
     <DocumentationFile>D:\GitHub\Util\AmazedSocket\AmazedSocket.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="AmazedSocket.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
