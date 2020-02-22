@@ -1,4 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<Migration>
-  <Add-Migration>Add-Migration -Name xxx -Context XXXDbContext -OutPut xxx</Add-Migration>
-</Migration>
