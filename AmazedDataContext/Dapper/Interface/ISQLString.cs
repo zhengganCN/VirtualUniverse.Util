@@ -101,5 +101,18 @@ namespace AmazedDataContext.Dapper.SQLString
         /// <param name="conditionString">条件字符串</param>
         /// <returns></returns>
         public string MarkUnDeleteSQLString<TEntity>(string conditionString);
+        /// <summary>
+        /// 统计符合条件的实体数量
+        /// </summary>
+        /// <typeparam name="TEntity">实体类型</typeparam>
+        /// <returns></returns>
+        public string CountSQLString<TEntity>();
+        /// <summary>
+        /// 统计符合条件的实体数量
+        /// </summary>
+        /// <typeparam name="TEntity">实体类型</typeparam>
+        /// <param name="conditionString">条件字符串</param>
+        /// <returns></returns>
+        public string CountSQLString<TEntity>(string conditionString);
     }
 }

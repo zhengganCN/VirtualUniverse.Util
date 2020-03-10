@@ -220,5 +220,24 @@ namespace AmazedDataContext.Dapper.SQLString
         {
             return $"UPDATE {typeof(TEntity).Name} SET IsDeleted=0 {conditionString}";
         }
+        /// <summary>
+        /// 统计实体数量
+        /// </summary>
+        /// <typeparam name="TEntity">实体类型</typeparam>
+        /// <returns></returns>
+        public virtual string CountSQLString<TEntity>()
+        {
+            return $"SELECT COUNT(*) AS COUNT FROM  {typeof(TEntity).Name}";
+        }
+        /// <summary>
+        /// 统计符合条件的实体数量
+        /// </summary>
+        /// <typeparam name="TEntity">实体类型</typeparam>
+        /// <param name="conditionString">条件字符串</param>
+        /// <returns></returns>
+        public virtual string CountSQLString<TEntity>(string conditionString)
+        {
+            return $"SELECT COUNT(*) AS COUNT FROM  {typeof(TEntity).Name} {conditionString}";
+        }
     }
 }

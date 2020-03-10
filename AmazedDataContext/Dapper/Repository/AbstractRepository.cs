@@ -255,7 +255,7 @@ namespace AmazedDataContext.Dapper.Repository
         /// <param name="pageInde">分页索引</param>
         /// <param name="pageSize">分页大小</param>
         /// <returns></returns>
-        public virtual IEnumerable<TEntity> FindMany(string conditionString, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending, int pageInde = 1, int pageSize = 10)
+        public virtual IEnumerable<TEntity> FindMany(string conditionString, int pageInde = 1, int pageSize = 10, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending)
         {
             var sql = GetSqlString().QuerySQLString<TEntity>(conditionString, sequenceField,
                 sequence, pageInde, pageSize);
@@ -299,7 +299,7 @@ namespace AmazedDataContext.Dapper.Repository
         /// <param name="pageInde">分页索引</param>
         /// <param name="pageSize">分页大小</param>
         /// <returns></returns>
-        public virtual async Task<IEnumerable<TEntity>> FindManyAsync(string conditionString, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending, int pageInde = 1, int pageSize = 10)
+        public virtual async Task<IEnumerable<TEntity>> FindManyAsync(string conditionString, int pageInde = 1, int pageSize = 10, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending)
         {
             var sql = GetSqlString().QuerySQLString<TEntity>(conditionString, sequenceField,
                 sequence, pageInde, pageSize);
@@ -589,6 +589,45 @@ namespace AmazedDataContext.Dapper.Repository
             }
             var sql = GetSqlString().MarkUnDeleteSQLString<TEntity>(conditionString);
             return await GetSqlConnection().ExecuteAsync(sql, conditionString).ConfigureAwait(true);
+        }
+        #endregion
+        #region 统计操作
+        /// <summary>
+        /// 统计符合条件的实体
+        /// </summary>
+        /// <param name="conditionString">条件字符串</param>
+        /// <returns></returns>
+        public long Count(string conditionString = null)
+        {
+            string sql;
+            if (string.IsNullOrEmpty(conditionString))
+            {
+                sql = GetSqlString().CountSQLString<TEntity>();
+            }
+            else
+            {
+                sql = GetSqlString().CountSQLString<TEntity>(conditionString);
+            }
+            return GetSqlConnection().QuerySingleOrDefault(sql).COUNT;
+        }
+        /// <summary>
+        /// 异步统计符合条件的实体
+        /// </summary>
+        /// <param name="conditionString">条件字符串</param>
+        /// <returns></returns>
+        public async Task<long> CountAsync(string conditionString = null)
+        {
+            string sql;
+            if (string.IsNullOrEmpty(conditionString))
+            {
+                sql = GetSqlString().CountSQLString<TEntity>();
+            }
+            else
+            {
+                sql = GetSqlString().CountSQLString<TEntity>(conditionString);
+            }
+            var result = await GetSqlConnection().QueryFirstOrDefaultAsync(sql).ConfigureAwait(true);
+            return result.COUNT;
         }
         #endregion
     }

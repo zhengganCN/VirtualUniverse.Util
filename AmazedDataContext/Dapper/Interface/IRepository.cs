@@ -106,7 +106,7 @@ namespace AmazedDataContext.Dapper.Interface
         /// <param name="pageInde">分页索引</param>
         /// <param name="pageSize">分页大小</param>
         /// <returns></returns>
-        public IEnumerable<TEntity> FindMany(string conditionString, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending, int pageInde = 1, int pageSize = 10);
+        public IEnumerable<TEntity> FindMany(string conditionString, int pageInde = 1, int pageSize = 10, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending);
         /// <summary>
         /// 查询所有实体
         /// </summary>
@@ -133,7 +133,7 @@ namespace AmazedDataContext.Dapper.Interface
         /// <param name="pageInde">分页索引</param>
         /// <param name="pageSize">分页大小</param>
         /// <returns></returns>
-        public Task<IEnumerable<TEntity>> FindManyAsync(string conditionString, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending, int pageInde = 1, int pageSize = 10);
+        public Task<IEnumerable<TEntity>> FindManyAsync(string conditionString, int pageInde = 1, int pageSize = 10, string sequenceField = "Id", EnumSequence sequence = EnumSequence.Ascending);
         /// <summary>
         /// 异步查询所有实体
         /// </summary>
@@ -259,6 +259,20 @@ namespace AmazedDataContext.Dapper.Interface
         /// <param name="conditionString">条件字符串</param>
         /// <returns></returns>
         public Task<int> MarkUnDeleteManyAsync(string conditionString);
+        #endregion
+        #region 统计操作
+        /// <summary>
+        /// 统计符合条件的实体
+        /// </summary>
+        /// <param name="conditionString"></param>
+        /// <returns></returns>
+        public long Count(string conditionString = null);
+        /// <summary>
+        /// 异步统计符合条件的实体
+        /// </summary>
+        /// <param name="conditionString">条件字符串</param>
+        /// <returns></returns>
+        public Task<long> CountAsync(string conditionString = null);
         #endregion
     }
 }
