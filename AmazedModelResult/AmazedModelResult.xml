@@ -4,43 +4,43 @@
         <name>AmazedModelResult</name>
     </assembly>
     <members>
-        <member name="T:AmazedModelResult.ModelResult.ModelResult`1">
+        <member name="T:AmazedModelResult.ModelResult`1">
             <summary>
             返回的视图模型以及结果信息
             </summary>
             <typeparam name="T"></typeparam>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.ModelResult`1.Data">
+        <member name="P:AmazedModelResult.ModelResult`1.Data">
             <summary>
             返回数据
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.ModelResult`1.Pagination">
+        <member name="P:AmazedModelResult.ModelResult`1.Pagination">
             <summary>
             分页信息
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.ModelResult`1.Message">
+        <member name="P:AmazedModelResult.ModelResult`1.Message">
             <summary>
             提示信息
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.ModelResult`1.ErrorInfo">
+        <member name="P:AmazedModelResult.ModelResult`1.ErrorInfo">
             <summary>
             错误信息
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.ModelResult`1.Code">
+        <member name="P:AmazedModelResult.ModelResult`1.Code">
             <summary>
             成功/错误代码
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.ModelResult`1.Success">
+        <member name="P:AmazedModelResult.ModelResult`1.Success">
             <summary>
             成功标识,操作执行是否成功
             </summary>
         </member>
-        <member name="M:AmazedModelResult.ModelResult.ModelResult`1.SuccessResult(`0,System.Enum,AmazedModelResult.ModelResult.Pagination)">
+        <member name="M:AmazedModelResult.ModelResult`1.SuccessResult(`0,System.Enum,AmazedModelResult.Pagination)">
             <summary>
             返回成功时调用
             </summary>
@@ -49,7 +49,7 @@
             <param name="pagination">分页信息</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedModelResult.ModelResult.ModelResult`1.FailedResult(System.Enum,System.String)">
+        <member name="M:AmazedModelResult.ModelResult`1.FailedResult(System.Enum,System.String)">
             <summary>
             返回失败时调用
             </summary>
@@ -57,34 +57,34 @@
             <param name="errorInfo">错误信息</param>
             <returns></returns>
         </member>
-        <member name="T:AmazedModelResult.ModelResult.Pagination">
+        <member name="T:AmazedModelResult.Pagination">
             <summary>
             分页
             </summary>
         </member>
-        <member name="M:AmazedModelResult.ModelResult.Pagination.#ctor(System.Int32,System.Int32)">
+        <member name="M:AmazedModelResult.Pagination.#ctor(System.Int32,System.Int32)">
             <summary>
             构造函数
             </summary>
             <param name="pageIndex">页面索引，默认为1</param>
             <param name="pageSize">页面大小，默认为10</param>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.Pagination.PageIndex">
+        <member name="P:AmazedModelResult.Pagination.PageIndex">
             <summary>
             页面索引
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.Pagination.PageSize">
+        <member name="P:AmazedModelResult.Pagination.PageSize">
             <summary>
             页面大小
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.Pagination.Count">
+        <member name="P:AmazedModelResult.Pagination.Count">
             <summary>
             项总数
             </summary>
         </member>
-        <member name="P:AmazedModelResult.ModelResult.Pagination.PageCount">
+        <member name="P:AmazedModelResult.Pagination.PageCount">
             <summary>
             页面总数
             </summary>

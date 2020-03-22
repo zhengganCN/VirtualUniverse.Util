@@ -1,4 +1,4 @@
-﻿using AmazedExtension.Extension;
+﻿using AmazedExtension;
 using NUnit.Framework;
 
 namespace NUnitTestAmazedExtension

@@ -5,7 +5,7 @@ using System.Net.Http;
 using System.Net.Sockets;
 using System.Text;
 
-namespace AmazedSocket.SocketUtil
+namespace AmazedSocket
 {
     /// <summary>
     /// 客户端Socket

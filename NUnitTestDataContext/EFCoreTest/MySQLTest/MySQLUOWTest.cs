@@ -1,6 +1,6 @@
 ﻿using AmazedDataContext;
 using AmazedDataContext.EFCore.Repository;
-using AmazedExtension.Extension;
+using AmazedExtension;
 using AmazedMath.Math;
 using NUnit.Framework;
 using System;

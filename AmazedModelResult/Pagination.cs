@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AmazedModelResult.ModelResult
+namespace AmazedModelResult
 {
     /// <summary>
     /// 分页

@@ -4,12 +4,12 @@
         <name>AmazedSocket</name>
     </assembly>
     <members>
-        <member name="T:AmazedSocket.SocketUtil.SocketClient">
+        <member name="T:AmazedSocket.SocketClient">
             <summary>
             客户端Socket
             </summary>
         </member>
-        <member name="M:AmazedSocket.SocketUtil.SocketClient.SocketSendReceive(System.Net.IPEndPoint,System.Byte[],System.Int32@,System.Byte[]@,System.Int32@)">
+        <member name="M:AmazedSocket.SocketClient.SocketSendReceive(System.Net.IPEndPoint,System.Byte[],System.Int32@,System.Byte[]@,System.Int32@)">
             <summary>
             客户端发送接收数据
             </summary>
@@ -19,19 +19,19 @@
             <param name="receive"></param>
             <param name="receiveSize"></param>
         </member>
-        <member name="T:AmazedSocket.SocketUtil.SocketServer">
+        <member name="T:AmazedSocket.SocketServer">
             <summary>
             服务端Socket
             </summary>
         </member>
-        <member name="M:AmazedSocket.SocketUtil.SocketServer.SocketSendReceive(System.Net.IPEndPoint,System.Int32)">
+        <member name="M:AmazedSocket.SocketServer.SocketSendReceive(System.Net.IPEndPoint,System.Int32)">
             <summary>
             服务端发送接收数据
             </summary>
             <param name="iPEndPoint">本地终结点</param>
             <param name="backlog">挂起连接队列的最大长度</param>
         </member>
-        <member name="M:AmazedSocket.SocketUtil.SocketServer.SetSendMessage(System.Byte[])">
+        <member name="M:AmazedSocket.SocketServer.SetSendMessage(System.Byte[])">
             <summary>
             设置发送数据
             需重写该函数，若不重写该函数，则默认发送一个空byte数组

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
-namespace AmazedExtension.Extension
+namespace AmazedExtension
 {
     /// <summary>
     /// 表达式树扩展

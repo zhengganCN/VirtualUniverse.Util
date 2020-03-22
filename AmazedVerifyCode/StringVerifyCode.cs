@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Text;
 
-namespace AmazedVerifyCode.VerifyCode
+namespace AmazedVerifyCode
 {
     /// <summary>
     /// 

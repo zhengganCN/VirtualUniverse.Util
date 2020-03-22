@@ -1,5 +1,5 @@
 ﻿using AmazedMath.Math;
-using AmazedVerifyCode.VerifyCode;
+using AmazedVerifyCode;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
-using static AmazedVerifyCode.VerifyCode.StringVerifyCode;
+using static AmazedVerifyCode.StringVerifyCode;
 
 namespace NUnitTestVerifyCode.VerifyCodeTest
 {

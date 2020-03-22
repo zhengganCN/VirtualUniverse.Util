@@ -9,7 +9,7 @@ using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 using Newtonsoft.Json;
 
-namespace AmazedConfiguration.Configuration
+namespace AmazedConfiguration
 {
     /// <summary>
     /// Json配置文件操作类

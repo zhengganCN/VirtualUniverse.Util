@@ -1,4 +1,4 @@
-﻿using AmazedModelResult.ModelResult;
+﻿using AmazedModelResult;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

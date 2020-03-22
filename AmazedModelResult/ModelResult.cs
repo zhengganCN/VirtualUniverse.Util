@@ -1,9 +1,9 @@
-﻿using AmazedExtension.Extension;
+﻿using AmazedExtension;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AmazedModelResult.ModelResult
+namespace AmazedModelResult
 {
     /// <summary>
     /// 返回的视图模型以及结果信息

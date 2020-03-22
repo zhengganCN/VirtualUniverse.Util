@@ -1,6 +1,6 @@
 ﻿//using LinqKit;
 using AmazedDataContext.EFCore.Repository;
-using AmazedExtension.Extension;
+using AmazedExtension;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

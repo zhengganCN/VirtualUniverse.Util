@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 
-namespace AmazedSocket.SocketUtil
+namespace AmazedSocket
 {
     /// <summary>
     /// 服务端Socket
