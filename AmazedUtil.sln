@@ -35,6 +35,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestSocket", "NUnitTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestVerifyCode", "NUnitTestVerifyCode\NUnitTestVerifyCode.csproj", "{4F82E3FF-A5A3-489F-848A-14E34BEF43C9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedConvert", "AmazedConvert\AmazedConvert.csproj", "{BFF0F0AC-5E1F-491C-BAA5-AFA5275D0C36}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedConvert", "NUnitTestAmazedConvert\NUnitTestAmazedConvert.csproj", "{76BB238A-9C01-4A72-B41D-1348F9DBA2B7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{4F82E3FF-A5A3-489F-848A-14E34BEF43C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F82E3FF-A5A3-489F-848A-14E34BEF43C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F82E3FF-A5A3-489F-848A-14E34BEF43C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFF0F0AC-5E1F-491C-BAA5-AFA5275D0C36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFF0F0AC-5E1F-491C-BAA5-AFA5275D0C36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFF0F0AC-5E1F-491C-BAA5-AFA5275D0C36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFF0F0AC-5E1F-491C-BAA5-AFA5275D0C36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76BB238A-9C01-4A72-B41D-1348F9DBA2B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76BB238A-9C01-4A72-B41D-1348F9DBA2B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76BB238A-9C01-4A72-B41D-1348F9DBA2B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76BB238A-9C01-4A72-B41D-1348F9DBA2B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

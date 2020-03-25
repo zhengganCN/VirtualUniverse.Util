@@ -3,7 +3,7 @@ using NUnit.Framework;
 
 namespace NUnitTestAmazedConvert
 {
-    public class AmazedConvertTest
+    public class AmazedOctalConvertTest
     {
         [SetUp]
         public void Setup()
@@ -12,10 +12,11 @@ namespace NUnitTestAmazedConvert
         }
 
         [Test]
-        public void Test1()
+        public void TestToBinary()
         {
-            var value = BinaryConvert.ToDecimal("1001");
-            Assert.AreEqual(value, 9);
+            var value = OctConvert.ToBinary("77");
+            Assert.AreEqual(value, "111111");
         }
+
     }
 }
