@@ -12,7 +12,12 @@ namespace AmazedMP3InfoReader
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
 
-
+        /// <summary>
+        /// 获取MP3的ID3V1数据；返回值为NULL，表示无ID3V1数据
+        /// </summary>
+        /// <param name="path">mp3文件路径</param>
+        /// <remarks></remarks>
+        /// <returns></returns>
         public MP3_ID3V1 GetMP3_ID3V1(string path,string charset="GBK")
         {
             if (string.IsNullOrEmpty(path))
