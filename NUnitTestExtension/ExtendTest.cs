@@ -1,5 +1,6 @@
 ﻿using AmazedExtension;
 using NUnit.Framework;
+using System;
 
 namespace NUnitTestAmazedExtension
 {
@@ -13,7 +14,21 @@ namespace NUnitTestAmazedExtension
         [Test]
         public void TestEnumExtend()
         {
-            if (TestEnum.Monday.GetDescription()== "星期一")
+            if (TestEnum.Monday.GetDescription() == "星期一")
+            {
+                Assert.IsTrue(true);
+            }
+            else
+            {
+                Assert.IsTrue(false);
+            }
+        }
+
+        [Test]
+        public void TestEnumList()
+        {
+           var enums= EnumHelper.GetEnumList(typeof(TestEnum));
+            if(enums[0].EnumDescription== "星期一" && enums[1].EnumDescription == "星期二" && enums[2].EnumDescription == "星期三")
             {
                 Assert.IsTrue(true);
             }

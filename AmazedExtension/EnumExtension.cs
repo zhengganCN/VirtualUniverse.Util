@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Reflection;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace AmazedExtension
@@ -22,11 +24,8 @@ namespace AmazedExtension
                 return string.Empty;
             }
             var field = value.GetType().GetField(value.ToString());
-            if (field == null)
-            {
-                return string.Empty;
-            }
-            return !(Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute)) is DescriptionAttribute attribute) ? value.ToString() : attribute.Description;
+            var description = ((DescriptionAttribute)field.GetCustomAttribute(typeof(DescriptionAttribute)))?.Description;
+            return !string.IsNullOrEmpty(description) ? description : field.Name;
         }
     }
 }

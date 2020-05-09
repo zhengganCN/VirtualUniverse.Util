@@ -21,7 +21,7 @@ namespace AmazedMP3InfoReader
         /// <summary>
         /// 出品年代
         /// </summary>
-        public string Year { get; set; }
+        public int Year { get; set; }
         /// <summary>
         /// 备注
         /// </summary>

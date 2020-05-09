@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Document\Github\AmazedUtil\AmazedMP3InfoReader\AmazedMP3InfoReader.xml</DocumentationFile>
+    <OutputPath>D:\DLL\AmazedMP3InfoReader\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

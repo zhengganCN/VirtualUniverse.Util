@@ -11,8 +11,10 @@ namespace NUnitTestSocket.SocketUtil
         [SetUp]
         public void SetUp() { }
         [Test]
-        public void ClientSendReceive()
+        [TestCase("hello")]
+        public void ClientSendReceive(string collor)
         {
+            Console.WriteLine(collor);
             //var client = new SocketClient();
             //var ipAddress = IPAddress.Parse("localhost");
             //var ip = new IPEndPoint(ipAddress, 11111);

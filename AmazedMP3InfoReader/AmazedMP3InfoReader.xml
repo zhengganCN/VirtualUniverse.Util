@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmazedMP3InfoReader</name>
+    </assembly>
+    <members>
+        <member name="M:AmazedMP3InfoReader.MP3Reader.GetMP3_ID3V1(System.String,System.String)">
+            <summary>
+            获取MP3的ID3V1数据；返回值为NULL，表示无ID3V1数据
+            </summary>
+            <param name="path">mp3文件路径</param>
+            <remarks></remarks>
+            <returns></returns>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Title">
+            <summary>
+            标题
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Artist">
+            <summary>
+            歌手
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Album">
+            <summary>
+            专集
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Year">
+            <summary>
+            出品年代
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Comment">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Reserve">
+            <summary>
+            保留
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Track">
+            <summary>
+            音轨
+            </summary>
+        </member>
+        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Genre">
+            <summary>
+            类型
+            </summary>
+        </member>
+    </members>
+</doc>
