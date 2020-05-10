@@ -4,6 +4,9 @@ using System.Text;
 
 namespace AmazedMP3InfoReader
 {
+    /// <summary>
+    /// ID3V1信息
+    /// </summary>
     public class MP3_ID3V1
     {
         /// <summary>
@@ -21,7 +24,7 @@ namespace AmazedMP3InfoReader
         /// <summary>
         /// 出品年代
         /// </summary>
-        public int Year { get; set; }
+        public string Year { get; set; }
         /// <summary>
         /// 备注
         /// </summary>
