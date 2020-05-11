@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AmazedMP3InfoReader.MP3Tag
+namespace AmazedID3Analysis.MP3Tag
 {
     public class MP3FrameContent
     {

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Document\Github\AmazedUtil\AmazedMP3InfoReader\AmazedMP3InfoReader.xml</DocumentationFile>
+    <DocumentationFile>D:\Document\Github\AmazedUtil\AmazedMP3InfoReader\AmazedID3Analysis.xml</DocumentationFile>
     <OutputPath>D:\DLL\AmazedMP3InfoReader\</OutputPath>
   </PropertyGroup>
 

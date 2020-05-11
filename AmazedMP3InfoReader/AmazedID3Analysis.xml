@@ -1,150 +1,150 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>AmazedMP3InfoReader</name>
+        <name>AmazedID3Analysis</name>
     </assembly>
     <members>
-        <member name="T:AmazedMP3InfoReader.MP3Info">
+        <member name="T:AmazedID3Analysis.MP3Info">
             <summary>
             MP3信息
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Title">
+        <member name="P:AmazedID3Analysis.MP3Info.Title">
             <summary>
             标题
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Subtitle">
+        <member name="P:AmazedID3Analysis.MP3Info.Subtitle">
             <summary>
             副标题
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Level">
+        <member name="P:AmazedID3Analysis.MP3Info.Level">
             <summary>
             分级
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Remark">
+        <member name="P:AmazedID3Analysis.MP3Info.Remark">
             <summary>
             备注
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.ArtistsInvolvedInCreation">
+        <member name="P:AmazedID3Analysis.MP3Info.ArtistsInvolvedInCreation">
             <summary>
             参与创作的艺术家
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.AlbumArtist">
+        <member name="P:AmazedID3Analysis.MP3Info.AlbumArtist">
             <summary>
             唱片集艺术家
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Album">
+        <member name="P:AmazedID3Analysis.MP3Info.Album">
             <summary>
             唱片集
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Year">
+        <member name="P:AmazedID3Analysis.MP3Info.Year">
             <summary>
             年代
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Track">
+        <member name="P:AmazedID3Analysis.MP3Info.Track">
             <summary>
             音轨
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Picture">
+        <member name="P:AmazedID3Analysis.MP3Info.Picture">
             <summary>
             歌曲图片的base64编码
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Genre">
+        <member name="P:AmazedID3Analysis.MP3Info.Genre">
             <summary>
             音乐流派
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Time">
+        <member name="P:AmazedID3Analysis.MP3Info.Time">
             <summary>
             时长,单位秒
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.BitRate">
+        <member name="P:AmazedID3Analysis.MP3Info.BitRate">
             <summary>
             比特率
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Publisher">
+        <member name="P:AmazedID3Analysis.MP3Info.Publisher">
             <summary>
             发布者
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Coder">
+        <member name="P:AmazedID3Analysis.MP3Info.Coder">
             <summary>
             编码人员
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.AuthorUrl">
+        <member name="P:AmazedID3Analysis.MP3Info.AuthorUrl">
             <summary>
             作者url
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Copyright">
+        <member name="P:AmazedID3Analysis.MP3Info.Copyright">
             <summary>
             版权
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Composer">
+        <member name="P:AmazedID3Analysis.MP3Info.Composer">
             <summary>
             作曲者
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Commander">
+        <member name="P:AmazedID3Analysis.MP3Info.Commander">
             <summary>
             指挥者
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.GroupDescription">
+        <member name="P:AmazedID3Analysis.MP3Info.GroupDescription">
             <summary>
             组说明
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Atmosphere">
+        <member name="P:AmazedID3Analysis.MP3Info.Atmosphere">
             <summary>
             氛围
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.PartSet">
+        <member name="P:AmazedID3Analysis.MP3Info.PartSet">
             <summary>
             部分设置
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.InitialTone">
+        <member name="P:AmazedID3Analysis.MP3Info.InitialTone">
             <summary>
             初始调性
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.BeatsPerMinute">
+        <member name="P:AmazedID3Analysis.MP3Info.BeatsPerMinute">
             <summary>
             每分钟节拍数
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Info.Size">
+        <member name="P:AmazedID3Analysis.MP3Info.Size">
             <summary>
             MP3文件大小,单位byte
             </summary>
         </member>
-        <member name="T:AmazedMP3InfoReader.MP3Reader">
+        <member name="T:AmazedID3Analysis.MP3Reader">
             <summary>
             
             </summary>
         </member>
-        <member name="M:AmazedMP3InfoReader.MP3Reader.#ctor">
+        <member name="M:AmazedID3Analysis.MP3Reader.#ctor">
             <summary>
             
             </summary>
         </member>
-        <member name="M:AmazedMP3InfoReader.MP3Reader.GetMP3_ID3V1(System.String,System.String)">
+        <member name="M:AmazedID3Analysis.MP3Reader.GetMP3_ID3V1(System.String,System.String)">
             <summary>
             获取MP3的ID3V1数据；返回值为NULL，表示无ID3V1数据
             </summary>
@@ -152,128 +152,128 @@
             <param name="charset">MP3元数据的编码类型</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedMP3InfoReader.MP3Reader.GetMP3_ID3V2(System.String)">
+        <member name="M:AmazedID3Analysis.MP3Reader.GetMP3_ID3V2(System.String)">
             <summary>
             获取MP3的ID3V2数据；返回值为NULL，表示无ID3V2数据
             </summary>
             <param name="path">mp3文件路径</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedMP3InfoReader.MP3Reader.GetTagSize(System.Byte[])">
+        <member name="M:AmazedID3Analysis.MP3Reader.GetTagSize(System.Byte[])">
             <summary>
             获取标签大小
             </summary>
             <param name="size"></param>
             <returns></returns>
         </member>
-        <member name="M:AmazedMP3InfoReader.MP3Reader.GetFrameSize(System.Byte[])">
+        <member name="M:AmazedID3Analysis.MP3Reader.GetFrameSize(System.Byte[])">
             <summary>
             获取帧大小
             </summary>
             <param name="size"></param>
             <returns></returns>
         </member>
-        <member name="T:AmazedMP3InfoReader.MP3Tag.MP3FrameHeader">
+        <member name="T:AmazedID3Analysis.MP3Tag.MP3FrameHeader">
             <summary>
             帧头
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3FrameHeader.FrameID">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3FrameHeader.FrameID">
             <summary>
             用四个字符标识一个帧
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3FrameHeader.Size">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3FrameHeader.Size">
             <summary>
             帧内容的大小，不包括帧头，不得小于1
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3FrameHeader.Flags">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3FrameHeader.Flags">
             <summary>
             存放标志，只定义了6位
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3TagHeader.Header">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3TagHeader.Header">
             <summary>
             必须为"ID3"否则认为标签不存在
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3TagHeader.Ver">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3TagHeader.Ver">
             <summary>
             版本号;ID3V2.3就记录03,ID3V2.4就记录04
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3TagHeader.Revision">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3TagHeader.Revision">
             <summary>
             副版本号;此版本记录为00
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3TagHeader.Flag">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3TagHeader.Flag">
             <summary>
             存放标志的字节，这个版本只定义了三位
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3Tag.MP3TagHeader.Size">
+        <member name="P:AmazedID3Analysis.MP3Tag.MP3TagHeader.Size">
             <summary>
             标签大小，包括标签帧和标签头。（不包括扩展标签头的10个字节）
             </summary>
         </member>
-        <member name="T:AmazedMP3InfoReader.MP3_ID3V1">
+        <member name="T:AmazedID3Analysis.MP3_ID3V1">
             <summary>
             ID3V1信息
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Title">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Title">
             <summary>
             标题
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Artist">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Artist">
             <summary>
             歌手
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Album">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Album">
             <summary>
             专集
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Year">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Year">
             <summary>
             出品年代
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Comment">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Comment">
             <summary>
             备注
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Reserve">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Reserve">
             <summary>
             保留
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Track">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Track">
             <summary>
             音轨
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V1.Genre">
+        <member name="P:AmazedID3Analysis.MP3_ID3V1.Genre">
             <summary>
             类型
             </summary>
         </member>
-        <member name="T:AmazedMP3InfoReader.MP3_ID3V2">
+        <member name="T:AmazedID3Analysis.MP3_ID3V2">
             <summary>
             ID3V2信息
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V2.MP3TagHeader">
+        <member name="P:AmazedID3Analysis.MP3_ID3V2.MP3TagHeader">
             <summary>
             标签头
             </summary>
         </member>
-        <member name="P:AmazedMP3InfoReader.MP3_ID3V2.MP3TagFrames">
+        <member name="P:AmazedID3Analysis.MP3_ID3V2.MP3TagFrames">
             <summary>
             标签帧
             </summary>

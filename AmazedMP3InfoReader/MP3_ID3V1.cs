@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AmazedMP3InfoReader
+namespace AmazedID3Analysis
 {
     /// <summary>
     /// ID3V1信息

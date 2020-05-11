@@ -39,9 +39,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedConvert", "AmazedConv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedConvert", "NUnitTestAmazedConvert\NUnitTestAmazedConvert.csproj", "{76BB238A-9C01-4A72-B41D-1348F9DBA2B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazedMP3InfoReader", "AmazedMP3InfoReader\AmazedMP3InfoReader.csproj", "{DF7E5441-344A-4BDA-870B-F8A393B2FC92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedID3Analysis", "AmazedMP3InfoReader\AmazedID3Analysis.csproj", "{DF7E5441-344A-4BDA-870B-F8A393B2FC92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestMP3InfoReader", "NUnitTestMP3InfoReader\NUnitTestMP3InfoReader.csproj", "{B7A292A8-D834-4BF8-AD83-1A6FF6BD74D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedID3Analysis", "NUnitTestMP3InfoReader\NUnitTestAmazedID3Analysis.csproj", "{B7A292A8-D834-4BF8-AD83-1A6FF6BD74D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

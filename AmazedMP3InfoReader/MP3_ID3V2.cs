@@ -1,9 +1,9 @@
-﻿using AmazedMP3InfoReader.MP3Tag;
+﻿using AmazedID3Analysis.MP3Tag;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace AmazedMP3InfoReader
+namespace AmazedID3Analysis
 {
     /// <summary>
     /// ID3V2信息

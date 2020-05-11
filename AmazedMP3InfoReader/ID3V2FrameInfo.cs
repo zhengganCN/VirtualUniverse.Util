@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 
-namespace AmazedMP3InfoReader
+namespace AmazedID3Analysis
 {
     enum ID3V2FrameInfo
     {

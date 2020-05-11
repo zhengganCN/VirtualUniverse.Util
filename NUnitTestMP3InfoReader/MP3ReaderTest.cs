@@ -1,4 +1,4 @@
-using AmazedMP3InfoReader;
+using AmazedID3Analysis;
 using NUnit.Framework;
 using System.IO;
 
@@ -38,8 +38,8 @@ namespace NUnitTestMP3InfoReader
         public void MP3InfoTest(string path)
         {
             MP3Reader mP3Reader = new MP3Reader();
-            var iD3V2 = mP3Reader.GetMP3Info(path);
-            Assert.IsNotNull(iD3V2);
+            var mP3Info = mP3Reader.GetMP3Info(path);
+            Assert.IsNotNull(mP3Info);
         }
 
     }
