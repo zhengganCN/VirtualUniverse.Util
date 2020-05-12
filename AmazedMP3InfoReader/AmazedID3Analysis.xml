@@ -159,6 +159,13 @@
             <param name="path">mp3文件路径</param>
             <returns></returns>
         </member>
+        <member name="M:AmazedID3Analysis.MP3Reader.GetMP3Info(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
         <member name="M:AmazedID3Analysis.MP3Reader.GetTagSize(System.Byte[])">
             <summary>
             获取标签大小

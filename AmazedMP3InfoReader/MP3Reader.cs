@@ -123,7 +123,11 @@ namespace AmazedID3Analysis
                 return null;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public MP3Info GetMP3Info(string path)
         {
             var iD3V1 = GetMP3_ID3V1(path);
@@ -236,10 +240,20 @@ namespace AmazedID3Analysis
             var buffer = new byte[count];
             fileStream.Seek(offset, SeekOrigin.Begin);
             fileStream?.Read(buffer, 0, count);
-            if (buffer[0] == 1)
+            int index = 0;
+            while (index < count)
             {
-                buffer = buffer.Skip(1).Take(count - 1).ToArray();
+                if (buffer[index] == 0xFF && buffer[index + 1] == 0xD8)//判断是否是jpg格式图片
+                {
+                    break;
+                }
+                else if (buffer[index] == 0x89 && buffer[index + 1] == 0x50 && buffer[index + 2] == 0x4E && buffer[index + 3] == 0x47) //判断是否是png格式图片
+                {
+                    break;
+                }
+                index++;
             }
+            buffer = buffer.Skip(index).Take(buffer.Length - index).ToArray();
             var base64 = Convert.ToBase64String(buffer);
             return base64;
         }
