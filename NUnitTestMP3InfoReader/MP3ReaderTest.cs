@@ -47,9 +47,9 @@ namespace NUnitTestMP3InfoReader
             Assert.IsNotNull(mP3Info);
         }
         [Test]
-        [TestCase(@"E:\QMDownload\Ayo97 _ 周思涵 - 感谢你曾来过.mp3",1)]
-        [TestCase(@"E:\QMDownload\田馥甄 - 你就不要想起我.mp3",2)]
-        public void GenerateMP3PictureTest(string path,int index)
+        [TestCase(@"E:\QMDownload\Ayo97 _ 周思涵 - 感谢你曾来过.mp3", 1)]
+        [TestCase(@"E:\QMDownload\田馥甄 - 你就不要想起我.mp3", 2)]
+        public void GenerateMP3PictureTest(string path, int index)
         {
             MP3Reader reader = new MP3Reader();
             string base64Picture = reader.GetMP3Info(path).Picture;
