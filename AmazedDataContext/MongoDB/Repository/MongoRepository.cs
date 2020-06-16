@@ -14,7 +14,7 @@ namespace AmazedDataContext.MongoDB.Repository
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class MongoRepository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+    public class MongoRepository<TEntity> : AmazedDataContext.MongoDB.Interface.IRepository<TEntity> where TEntity : class, new()
     {
         /// <summary>
         /// 工作单元

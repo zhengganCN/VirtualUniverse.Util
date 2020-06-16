@@ -14,27 +14,27 @@ namespace AmazedModelResult
         /// <summary>
         /// 返回数据
         /// </summary>
-        public T Data { get; private set; }
+        public T Data { get; internal set; }
         /// <summary>
         /// 分页信息
         /// </summary>
-        public Pagination Pagination { get; private set; }
+        public Pagination Pagination { get; internal set; }
         /// <summary>
         /// 提示信息
         /// </summary>
-        public string Message { get; private set; }
+        public string Message { get; internal set; }
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string ErrorInfo { get; private set; }
+        public string ErrorInfo { get; internal set; }
         /// <summary>
         /// 成功/错误代码
         /// </summary>
-        public int? Code { get; private set; }
+        public int? Code { get; internal set; }
         /// <summary>
         /// 成功标识,操作执行是否成功
         /// </summary>
-        public bool Success { get; private set; }
+        public bool Success { get; internal set; }
 
         /// <summary>
         /// 返回成功时调用

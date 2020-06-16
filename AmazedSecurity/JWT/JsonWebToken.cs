@@ -1,6 +1,7 @@
 ﻿using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 
@@ -13,10 +14,10 @@ namespace AmazedSecurity.JWT
     {
         private readonly string Issuer;
         private readonly int Expires;
-        private readonly string Key;
+        private readonly byte[] Key;
         private readonly string Audience;
         private string UserId;
-        private string Permissions;
+        private string Authorities;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -24,7 +25,7 @@ namespace AmazedSecurity.JWT
         /// <param name="expires">过期时间间隔</param>
         /// <param name="key">加密密钥</param>
         /// <param name="audience"></param>
-        public JsonWebToken(string issuer, int expires, string key, string audience)
+        public JsonWebToken(string issuer, int expires, byte[] key, string audience)
         {
             Issuer = issuer;
             Expires = expires;
@@ -42,10 +43,32 @@ namespace AmazedSecurity.JWT
         /// <summary>
         /// 设置用户权限列表
         /// </summary>
-        /// <param name="permissions"></param>
-        public void SetPermissions(string permissions)
+        /// <param name="authorities"></param>
+        public void SetAuthorities(string authorities)
         {
-            Permissions = permissions;
+            Authorities = authorities;
+        }
+        /// <summary>
+        /// 获取token中的用户ID
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public string GetUserId(string token)
+        {
+            var jwt = new JwtSecurityToken(token);
+            var claim = jwt.Claims.FirstOrDefault(claim => claim.Type == ClaimTypes.NameIdentifier);
+            return claim?.Value;
+        }
+        /// <summary>
+        /// 获取token中的权限ID列表
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        public string GetAuthorities(string token)
+        {
+            var jwt= new JwtSecurityToken(token);
+            var claim = jwt.Claims.FirstOrDefault(claim => claim.Type == nameof(Authorities));
+            return claim?.Value;
         }
 
         /// <summary>
@@ -56,11 +79,10 @@ namespace AmazedSecurity.JWT
         {
             var claims = new Claim[]
             {
-                new Claim(ClaimTypes.NameIdentifier, UserId),
-                new Claim("Permissions",Permissions)
+                new Claim(ClaimTypes.NameIdentifier, string.IsNullOrEmpty(UserId)?"":UserId),
+                new Claim(nameof(Authorities),string.IsNullOrEmpty(Authorities)?"":Authorities)
             };
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Key));
-
+            var key = new SymmetricSecurityKey(Key);
             var token = new JwtSecurityToken(
                 issuer: Issuer,
                 audience: Audience,

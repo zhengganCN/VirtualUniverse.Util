@@ -19,7 +19,7 @@ namespace NUnitTestAmazedSecurity.Security.JWT
             JsonWebToken jwt = new JsonWebToken(StaticConfigurationValues.JWTIssuer, int.Parse(StaticConfigurationValues.JWTExpires),
                         StaticConfigurationValues.JWTIssuerSigningKey, StaticConfigurationValues.JWTAudience);
             jwt.SetUserId("asdasd");
-            jwt.SetPermissions("");
+            jwt.SetAuthorities("");
             var s = jwt.GenerateToken();
             Assert.IsNotEmpty(s);
         }

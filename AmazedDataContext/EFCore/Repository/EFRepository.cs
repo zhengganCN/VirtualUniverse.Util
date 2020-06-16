@@ -13,7 +13,7 @@ namespace AmazedDataContext.EFCore.Repository
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public class EFRepository<TEntity> : IRepository<TEntity> where TEntity : class, new()
+    public class EFRepository<TEntity> : AmazedDataContext.EFCore.Interface.IRepository<TEntity> where TEntity : class, new()
     {
         /// <summary>
         /// 工作单元

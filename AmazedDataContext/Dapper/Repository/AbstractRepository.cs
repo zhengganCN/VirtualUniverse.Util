@@ -14,7 +14,7 @@ namespace AmazedDataContext.Dapper.Repository
     /// 仓储抽象类，每种数据库的仓储仓储模式都应继承此类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public abstract class AbstractRepository<TEntity> : IRepository<TEntity> where TEntity : class
+    public abstract class AbstractRepository<TEntity> : AmazedDataContext.Dapper.Interface.IRepository<TEntity> where TEntity : class
     {
         /// <summary>
         /// 获取SQL连接
