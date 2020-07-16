@@ -34,11 +34,11 @@ namespace NUnitTestAmazedSecurity
                 return GetJsonConfiguration().GetValue("JWT:Issuer");
             }
         }
-        public static string JWTIssuerSigningKey
+        public static byte[] JWTIssuerSigningKey
         {
             get
             {
-                return GetJsonConfiguration().GetValue("JWT:IssuerSigningKey");
+                return Encoding.UTF8.GetBytes(GetJsonConfiguration().GetValue("JWT:IssuerSigningKey"));
             }
         }
         public static string JWTExpires
