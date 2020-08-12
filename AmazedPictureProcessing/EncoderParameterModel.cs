@@ -8,7 +8,9 @@ namespace AmazedPictureProcessing
     public class EncoderParameterModel
     {
         /// <summary>
-        /// 向图像编码器传递参数时，该参数将封装在 EncoderParameter 对象中。 EncoderParameter 对象的一个字段是 GUID，用于指定参数的类别。 使用 Encoder 类的静态字段来检索包含所需类别的参数 Encoder。
+        /// 向图像编码器传递参数时，该参数将封装在 EncoderParameter 对象中。 
+        /// EncoderParameter 对象的一个字段是 GUID，用于指定参数的类别。
+        /// 使用 Encoder 类的静态字段来检索包含所需类别的参数 Encoder。
         /// </summary>
         public long? ChrominanceTable { get; set; }
         /// <summary>
@@ -24,7 +26,8 @@ namespace AmazedPictureProcessing
         /// </summary>
         public long? LuminanceTable { get; set; }
         /// <summary>
-        /// 质量参数。质量参数的有用值范围是从0到100。 指定的数字越小，压缩就越高，因此图像的质量越低。 0和100会向你显示最高质量的图像。
+        /// 质量参数。质量参数的有用值范围是从0到100。 指定的数字越小，压缩就越高，
+        /// 因此图像的质量越低。 0和100会向你显示最高质量的图像。
         /// </summary>
         public long? Quality { get; set; }
         /// <summary>

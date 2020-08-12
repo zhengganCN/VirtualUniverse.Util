@@ -25,22 +25,30 @@ namespace AmazedPictureProcessing
         /// <returns></returns>
         public Stream PicCompression(Stream imageStream, Size destSize, EncoderParameterModel model, ImageFormat imageFormat)
         {
-            var image= Image.FromStream(imageStream);
-            image = GenerateSizePic(image, destSize);
-            if (model == null)
+            try
             {
-                throw new ArgumentNullException($"参数{nameof(model)}不能为空");
+                var image = Image.FromStream(imageStream);
+                image = GenerateSizePic(image, destSize);
+                if (model == null)
+                {
+                    throw new ArgumentNullException($"参数{nameof(model)}不能为空");
+                }
+                if (imageFormat == null)
+                {
+                    throw new ArgumentNullException($"参数{nameof(imageFormat)}不能为空");
+                }
+                ImageCodecInfo imageCodecInfo = GetEncoder(imageFormat);
+                EncoderParameters encoderParameters = new EncoderParameters(GetEncoderParameterModelValueNumbers(model));
+                MemoryStream ms = new MemoryStream();
+                ConstructorEncoderParameters(model, encoderParameters);
+                image.Save(ms, imageCodecInfo, encoderParameters);
+                return ms;
             }
-            if (imageFormat == null)
+            catch (Exception ex)
             {
-                throw new ArgumentNullException($"参数{nameof(imageFormat)}不能为空");
+                throw;
             }
-            ImageCodecInfo imageCodecInfo = GetEncoder(imageFormat);
-            EncoderParameters encoderParameters = new EncoderParameters(GetEncoderParameterModelValueNumbers(model));
-            MemoryStream ms = new MemoryStream();
-            ConstructorEncoderParameters(model, encoderParameters);
-            image.Save(ms, imageCodecInfo, encoderParameters);
-            return ms;
+            return null;
         }
         /// <summary>
         /// 图片压缩
@@ -177,7 +185,7 @@ namespace AmazedPictureProcessing
         {
             var srcRectangle = new Rectangle(0, 0, image.Width, image.Height);
             Rectangle destRectangle = GenerateDestRectangle(ref destSize, image.Size);
-            var bitmap = new Bitmap(destSize.Width, destSize.Height);
+            var bitmap = new Bitmap(destRectangle.Width, destRectangle.Height);
             using Graphics g = Graphics.FromImage(bitmap);
             g.Clear(Color.Transparent);
             g.CompositingQuality = CompositingQuality.HighQuality;
@@ -205,8 +213,8 @@ namespace AmazedPictureProcessing
             }
             else if (destSize.Width != 0 & destSize.Height != 0)
             {
-                rectangle.Height = imageSize.Height;
-                rectangle.Width = imageSize.Width;
+                rectangle.Height = destSize.Height;
+                rectangle.Width = destSize.Width;
             }
             else if (destSize.Width != 0 & destSize.Height == 0)
             {

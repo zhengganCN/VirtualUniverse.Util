@@ -30,7 +30,7 @@ namespace NUnitTestAmazedPictureProcessing
             {
                 Quality = quality
             };
-            var stream = compression.PicCompression(image, new Size(980,540), model,ImageFormat.Jpeg);
+            var stream = compression.PicCompression(image, new Size(120,50), model,ImageFormat.Jpeg);
             Bitmap bitmap = new Bitmap(stream);
             bitmap.Save(@"C:\Users\93281\Pictures\" + Guid.NewGuid() + "." +quality + ".jpg", ImageFormat.Jpeg);
             Assert.Pass();
