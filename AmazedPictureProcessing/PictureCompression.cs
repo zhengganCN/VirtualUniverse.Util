@@ -25,30 +25,22 @@ namespace AmazedPictureProcessing
         /// <returns></returns>
         public Stream PicCompression(Stream imageStream, Size destSize, EncoderParameterModel model, ImageFormat imageFormat)
         {
-            try
+            var image = Image.FromStream(imageStream);
+            image = GenerateSizePic(image, destSize);
+            if (model == null)
             {
-                var image = Image.FromStream(imageStream);
-                image = GenerateSizePic(image, destSize);
-                if (model == null)
-                {
-                    throw new ArgumentNullException($"参数{nameof(model)}不能为空");
-                }
-                if (imageFormat == null)
-                {
-                    throw new ArgumentNullException($"参数{nameof(imageFormat)}不能为空");
-                }
-                ImageCodecInfo imageCodecInfo = GetEncoder(imageFormat);
-                EncoderParameters encoderParameters = new EncoderParameters(GetEncoderParameterModelValueNumbers(model));
-                MemoryStream ms = new MemoryStream();
-                ConstructorEncoderParameters(model, encoderParameters);
-                image.Save(ms, imageCodecInfo, encoderParameters);
-                return ms;
+                throw new ArgumentNullException($"参数{nameof(model)}不能为空");
             }
-            catch (Exception ex)
+            if (imageFormat == null)
             {
-                throw;
+                throw new ArgumentNullException($"参数{nameof(imageFormat)}不能为空");
             }
-            return null;
+            ImageCodecInfo imageCodecInfo = GetEncoder(imageFormat);
+            EncoderParameters encoderParameters = new EncoderParameters(GetEncoderParameterModelValueNumbers(model));
+            MemoryStream ms = new MemoryStream();
+            ConstructorEncoderParameters(model, encoderParameters);
+            image.Save(ms, imageCodecInfo, encoderParameters);
+            return ms;
         }
         /// <summary>
         /// 图片压缩
@@ -88,49 +80,49 @@ namespace AmazedPictureProcessing
             if (model.Quality.HasValue)
             {
                 encoder = Encoder.Quality;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, model.Quality.Value);
                 encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.ChrominanceTable.HasValue)
             {
                 encoder = Encoder.ChrominanceTable;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, model.ChrominanceTable.Value);
                 encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.ColorDepth.HasValue)
             {
                 encoder = Encoder.ColorDepth;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.ColorDepth.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 index++;
             }
             if (model.Compression.HasValue)
             {
                 encoder = Encoder.Compression;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.Compression.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 index++;
             }
             if (model.LuminanceTable.HasValue)
             {
                 encoder = Encoder.LuminanceTable;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, model.LuminanceTable.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 index++;
             }
             if (model.RenderMethod.HasValue)
             {
                 encoder = Encoder.RenderMethod;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.RenderMethod.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 index++;
             }
             if (model.SaveFlag.HasValue)
             {
                 encoder = Encoder.SaveFlag;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, model.SaveFlag.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 
                 index++;
@@ -138,21 +130,21 @@ namespace AmazedPictureProcessing
             if (model.ScanMethod.HasValue)
             {
                 encoder = Encoder.ScanMethod;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.ScanMethod.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 index++;
             }
             if (model.Transformation.HasValue)
             {
                 encoder = Encoder.Transformation;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.Transformation.Value);
                 encoderParameters.Param[index] = encoderParameter; 
                 index++;
             }
             if (model.Version.HasValue)
             {
                 encoder = Encoder.Version;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, 50L);
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.Version.Value);
                 encoderParameters.Param[index] = encoderParameter;
             }
         }
