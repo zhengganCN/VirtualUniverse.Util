@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmazedConvert</name>
+    </assembly>
+    <members>
+        <member name="T:AmazedConvert.BinaryConvert">
+            <summary>
+            二进制转换
+            </summary>
+        </member>
+        <member name="M:AmazedConvert.BinaryConvert.ToHex(System.String)">
+            <summary>
+            二进制转十六进制
+            </summary>
+            <param name="binary">二进制字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.BinaryConvert.ToDecimal(System.String)">
+            <summary>
+            二进制转十进制
+            </summary>
+            <param name="binary">二进制字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.BinaryConvert.ToOctal(System.String)">
+            <summary>
+            二进制转八进制
+            </summary>
+            <param name="binary">二进制字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.BinaryConvert.CheckBinaryData(System.String)">
+            <summary>
+            检查二进制字符串是否只包含0或1
+            </summary>
+            <param name="binary">二进制字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.BinaryConvert.GetHexCharFromFourBinaryChar(System.String)">
+            <summary>
+            通过4位二进制数获取1位16进制数
+            如：1111 => F
+            </summary>
+            <param name="fourBinary">4位二进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.BinaryConvert.GetOctalCharFromThreeBinaryChar(System.String)">
+            <summary>
+            通过3位二进制数获取1位8进制数
+            如：111 => 7
+            </summary>
+            <param name="threeBinary">3位二进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.DecimalConvert.ToHex(System.Int32)">
+            <summary>
+            十进制转十六进制
+            </summary>
+            <param name="dec">十进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.DecimalConvert.ToBinary(System.Int32)">
+            <summary>
+            十进制转二进制
+            </summary>
+            <param name="dec">十进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.DecimalConvert.ToOctal(System.Int32)">
+            <summary>
+            十进制转八进制
+            </summary>
+            <param name="dec">十进制数</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedConvert.HexConvert">
+            <summary>
+            16进制转换
+            </summary>
+        </member>
+        <member name="M:AmazedConvert.HexConvert.ToDecimal(System.String)">
+            <summary>
+            十六进制转十进制
+            </summary>
+            <param name="hex">十六进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.HexConvert.ToBinary(System.String)">
+            <summary>
+            十六进制转二进制
+            </summary>
+            <param name="hex">十六进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.HexConvert.ToOctal(System.String)">
+            <summary>
+            十六进制转八进制
+            </summary>
+            <param name="hex">十六进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.HexConvert.CheckHexData(System.String)">
+            <summary>
+            检查16进制数据
+            </summary>
+            <param name="hex">16进制数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.HexConvert.GetFourBinaryCharFromHexChar(System.Char)">
+            <summary>
+            通过1位16进制数获取4位二进制数
+            如：1111 => F
+            </summary>
+            <param name="oneHex">1位16进制数</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedConvert.OctConvert">
+            <summary>
+            八进制转换
+            </summary>
+        </member>
+        <member name="M:AmazedConvert.OctConvert.ToDecimal(System.String)">
+            <summary>
+            八进制转十进制
+            </summary>
+            <param name="octal">八进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.OctConvert.ToBinary(System.String)">
+            <summary>
+            八进制转二进制
+            </summary>
+            <param name="octal">八进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.OctConvert.ToHex(System.String)">
+            <summary>
+            八进制转十六进制
+            </summary>
+            <param name="octal">八进制数</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.OctConvert.CheckOctalData(System.String)">
+            <summary>
+            检查8进制数据
+            </summary>
+            <param name="octal">8进制数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.OctConvert.GetThreeBinaryCharFromOctalChar(System.Char)">
+            <summary>
+            通过1位8进制数获取3位二进制数
+            如：111 => 7
+            </summary>
+            <param name="oneOctal">1位8进制数</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

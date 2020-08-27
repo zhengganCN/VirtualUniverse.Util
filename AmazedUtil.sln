@@ -49,7 +49,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedPictureProce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedFileCompression", "AmazedFileCompression\AmazedFileCompression.csproj", "{4924E053-1FF7-4C88-8CFF-86731551AD24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestAmazedFileCompression", "NUnitTestAmazedFileCompression\NUnitTestAmazedFileCompression.csproj", "{80D4F1F7-15A0-4C94-9C16-FB8FE5489747}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedFileCompression", "NUnitTestAmazedFileCompression\NUnitTestAmazedFileCompression.csproj", "{80D4F1F7-15A0-4C94-9C16-FB8FE5489747}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazedAlgorithm", "AmazedAlgorithm\AmazedAlgorithm.csproj", "{A8490499-ACD2-4FC0-A4C3-47E97697B6C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestAmazedAlgorithm", "NUnitTestAmazedAlgorithm\NUnitTestAmazedAlgorithm.csproj", "{BD9B99B0-1831-4C43-BAA5-759618AAEE8F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +157,14 @@ Global
 		{80D4F1F7-15A0-4C94-9C16-FB8FE5489747}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{80D4F1F7-15A0-4C94-9C16-FB8FE5489747}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{80D4F1F7-15A0-4C94-9C16-FB8FE5489747}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8490499-ACD2-4FC0-A4C3-47E97697B6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8490499-ACD2-4FC0-A4C3-47E97697B6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8490499-ACD2-4FC0-A4C3-47E97697B6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8490499-ACD2-4FC0-A4C3-47E97697B6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD9B99B0-1831-4C43-BAA5-759618AAEE8F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD9B99B0-1831-4C43-BAA5-759618AAEE8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD9B99B0-1831-4C43-BAA5-759618AAEE8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD9B99B0-1831-4C43-BAA5-759618AAEE8F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
