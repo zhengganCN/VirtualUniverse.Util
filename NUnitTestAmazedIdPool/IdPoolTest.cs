@@ -20,13 +20,14 @@ namespace NUnitTestAmazedIdPool
         public void IdPoolGenerateTest(string ip)
         {
             IdGenerateService idGenerateService = new IdGenerateService(new LoggerFactory().CreateLogger<IdGenerateService>());
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 2000; i++)
             {
                 var id = IdPool.GainId(() =>
                 {
                     return idGenerateService.GenerateIds(ip);
                 });
             }
+            var count= IdPool.Count;
         }
     }
 }
