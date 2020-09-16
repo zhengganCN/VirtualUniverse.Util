@@ -27,7 +27,6 @@ namespace NUnitTestAmazedIdPool
                     return idGenerateService.GenerateIds(ip);
                 });
             }
-            var count= IdPool.Count;
         }
     }
 }
