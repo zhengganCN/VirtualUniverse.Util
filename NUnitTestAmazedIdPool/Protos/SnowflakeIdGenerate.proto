@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcIdGenerateService";
+
+package SnowflakeIdGenerate;
+
+// The greeting service definition.
+service SnowflakeIdGenerate {
+  // Sends a greeting
+  rpc GenerateIds (GenerateIdsRequest) returns (GenerateIdsReply);
+}
+
+// The request message containing the user's name.
+message GenerateIdsRequest {
+  int32 IdNumber = 1;
+}
+
+// The response message containing the greetings.
+message GenerateIdsReply {
+  bytes Ids = 1;
+}

@@ -53,6 +53,36 @@
             <param name="threeBinary">3位二进制数</param>
             <returns></returns>
         </member>
+        <member name="T:AmazedConvert.DateTimeConvert">
+            <summary>
+            时间转换类
+            </summary>
+        </member>
+        <member name="M:AmazedConvert.DateTimeConvert.GetCurrentMonthWeekCount(System.DateTime)">
+            <summary>
+            获取给定月份的周数
+            </summary>
+            <param name="dateTime">要获取周数的年月</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.DateTimeConvert.GetCurrentMonthWeekIndex(System.DateTime)">
+            <summary>
+            获取给定月份的周索引，从1开始
+            </summary>
+            <param name="dateTime">要获取周索引的年月</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConvert.DateTimeConvert.GetCurrentWeekStartEndTime(System.DateTime,System.Int32)">
+            <summary>
+            获取给定年月的给定周的起止日期
+            </summary>
+            <param name="dateTime"></param>
+            <param name="week">周，从1开始</param>
+            <returns>
+            第一项：给定周的开始时间
+            第二项：给定周的结束时间
+            </returns>
+        </member>
         <member name="M:AmazedConvert.DecimalConvert.ToHex(System.Int32)">
             <summary>
             十进制转十六进制

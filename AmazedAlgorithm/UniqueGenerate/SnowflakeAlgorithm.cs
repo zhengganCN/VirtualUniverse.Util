@@ -6,6 +6,9 @@ using System.Threading;
 
 namespace AmazedAlgorithm.UniqueGenerate
 {
+    /// <summary>
+    /// 雪花算法
+    /// </summary>
     public static class SnowflakeAlgorithm
     {
         /// <summary>

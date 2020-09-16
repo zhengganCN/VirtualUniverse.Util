@@ -69,7 +69,7 @@ namespace AmazedDataValidation
             {
                 result = false;
             }
-            return result;//符合15位身份证标准 
+            return result;
         }
 
         /// <summary>
