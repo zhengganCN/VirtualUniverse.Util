@@ -40,7 +40,7 @@ namespace AmazedModelResult
         /// <param name="result"></param>
         /// <param name="code"></param>
         /// <param name="errorInfo"></param>
-        public static void FailedResult<T>(this ModelResult<T> result, Enum code, string errorInfo = "")
+        public static void FailedResult<T>(this ModelResult<T> result, Enum code, object errorInfo = null)
         {
             result.Message = code.GetDescription();
             result.ErrorInfo = errorInfo;

@@ -57,9 +57,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedAlgorithm", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedDataValidation", "AmazedDataValidation\AmazedDataValidation.csproj", "{2351FBF7-9022-4BC7-84D0-9D68FDC7779A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazedIdPool", "AmazedIdPool\AmazedIdPool.csproj", "{71B01CF7-7201-4926-A92B-30A972631DEA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedIdPool", "AmazedIdPool\AmazedIdPool.csproj", "{71B01CF7-7201-4926-A92B-30A972631DEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestAmazedIdPool", "NUnitTestAmazedIdPool\NUnitTestAmazedIdPool.csproj", "{2096B558-64E1-478D-8885-35DD1DE3042D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedIdPool", "NUnitTestAmazedIdPool\NUnitTestAmazedIdPool.csproj", "{2096B558-64E1-478D-8885-35DD1DE3042D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AmazedFilter", "AmazedFilter\AmazedFilter.csproj", "{CC8EC1BA-8989-4E02-B770-19C5482C00F2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -183,6 +185,10 @@ Global
 		{2096B558-64E1-478D-8885-35DD1DE3042D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2096B558-64E1-478D-8885-35DD1DE3042D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2096B558-64E1-478D-8885-35DD1DE3042D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
