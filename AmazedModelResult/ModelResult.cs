@@ -26,7 +26,7 @@ namespace AmazedModelResult
         /// <summary>
         /// 错误信息
         /// </summary>
-        public string ErrorInfo { get; internal set; }
+        public object ErrorInfo { get; internal set; }
         /// <summary>
         /// 成功/错误代码
         /// </summary>
