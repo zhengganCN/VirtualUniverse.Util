@@ -3,9 +3,9 @@
 namespace AmazedModelResult
 {
     /// <summary>
-    /// 
+    /// 结果枚举
     /// </summary>
-    public class ResultEnum
+    public static class ResultEnum
     {
         /// <summary>
         /// 模型验证结果提示枚举
