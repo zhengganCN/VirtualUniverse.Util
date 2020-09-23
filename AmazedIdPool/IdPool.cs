@@ -42,23 +42,34 @@ namespace AmazedIdPool
             {
                 throw new ArgumentException(nameof(IdPoolSize) + "属性不能小于1000");
             }
-            if (Ids.Count <= Ids.Count * Seed && !IsGenerateIds)
-            {
-                Task.Run(() =>
-                {
-                    IsGenerateIds = true;
-                    var newIds = gainIdsFunc.Invoke();
-                    foreach (var newId in newIds)
-                    {
-                        Ids.Enqueue(newId);
-                    }
-                    IsGenerateIds = false;
-                });
-            }
+            EnterIdsQueue(gainIdsFunc);
             lock (ObjectLock)
             {
-                while (Ids.Count == 0) ;
+                while (Ids.Count == 0)
+                {
+                    EnterIdsQueue(gainIdsFunc);
+                };
                 return Ids.Dequeue();
+            }
+        }
+        /// <summary>
+        /// 入队
+        /// </summary>
+        /// <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
+        private static void EnterIdsQueue(Func<List<long>> gainIdsFunc)
+        {
+            if (Ids.Count <= Ids.Count * Seed && !IsGenerateIds)
+            {
+                IsGenerateIds = true;
+                Task.Run(() =>
+                    {
+                        var newIds = gainIdsFunc.Invoke();
+                        foreach (var newId in newIds)
+                        {
+                            Ids.Enqueue(newId);
+                        }
+                        IsGenerateIds = false;
+                    });
             }
         }
     }
