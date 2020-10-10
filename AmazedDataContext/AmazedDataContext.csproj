@@ -8,8 +8,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\GitHub\Util\AmazedDataContext\AmazedDataContext.xml</DocumentationFile>
-    <OutputPath>D:\DLL\AmazedDataContext</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedDataContext\AmazedDataContext.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

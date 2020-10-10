@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\GitHub\Util\AmazedMath\AmazedMath.xml</DocumentationFile>
-    <OutputPath>D:\DLL\AmazedMath</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedMath\AmazedMath.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

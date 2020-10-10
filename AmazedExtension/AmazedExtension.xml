@@ -16,6 +16,33 @@
             <param name="value">枚举值</param>
             <returns></returns>
         </member>
+        <member name="M:AmazedExtension.EnumHelper.GetEnumList(System.Type)">
+            <summary>
+            获取枚举列表
+            </summary>
+            <param name="enumType">枚举类型</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedExtension.EnumModel">
+            <summary>
+            枚举模型
+            </summary>
+        </member>
+        <member name="P:AmazedExtension.EnumModel.EnumKey">
+            <summary>
+            枚举Key
+            </summary>
+        </member>
+        <member name="P:AmazedExtension.EnumModel.EnumValue">
+            <summary>
+            枚举值
+            </summary>
+        </member>
+        <member name="P:AmazedExtension.EnumModel.EnumDescription">
+            <summary>
+            枚举描述
+            </summary>
+        </member>
         <member name="T:AmazedExtension.ExpressionExtension">
             <summary>
             表达式树扩展

@@ -57,6 +57,30 @@
             <param name="errorInfo">错误信息</param>
             <returns></returns>
         </member>
+        <member name="T:AmazedModelResult.ModelResultExtension">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AmazedModelResult.ModelResultExtension.SuccessResult``1(AmazedModelResult.ModelResult{``0},``0,System.Enum,AmazedModelResult.Pagination)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <param name="data"></param>
+            <param name="code"></param>
+            <param name="pagination"></param>
+        </member>
+        <member name="M:AmazedModelResult.ModelResultExtension.FailedResult``1(AmazedModelResult.ModelResult{``0},System.Enum,System.Object)">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <param name="code"></param>
+            <param name="errorInfo"></param>
+        </member>
         <member name="T:AmazedModelResult.Pagination">
             <summary>
             分页
@@ -87,6 +111,21 @@
         <member name="P:AmazedModelResult.Pagination.PageCount">
             <summary>
             页面总数
+            </summary>
+        </member>
+        <member name="T:AmazedModelResult.ResultEnum">
+            <summary>
+            结果枚举
+            </summary>
+        </member>
+        <member name="T:AmazedModelResult.ResultEnum.ModelVaildEnum">
+            <summary>
+            模型验证结果提示枚举
+            </summary>
+        </member>
+        <member name="F:AmazedModelResult.ResultEnum.ModelVaildEnum.ModelVaildFaild">
+            <summary>
+            模型验证失败
             </summary>
         </member>
     </members>

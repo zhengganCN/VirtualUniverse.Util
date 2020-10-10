@@ -254,7 +254,7 @@
             jwt帮助类
             </summary>
         </member>
-        <member name="M:AmazedSecurity.JWT.JsonWebToken.#ctor(System.String,System.Int32,System.String,System.String)">
+        <member name="M:AmazedSecurity.JWT.JsonWebToken.#ctor(System.String,System.Int32,System.Byte[],System.String)">
             <summary>
             构造函数
             </summary>
@@ -269,17 +269,56 @@
             </summary>
             <param name="userId"></param>
         </member>
-        <member name="M:AmazedSecurity.JWT.JsonWebToken.SetPermissions(System.String)">
+        <member name="M:AmazedSecurity.JWT.JsonWebToken.SetAuthorities(System.String)">
             <summary>
             设置用户权限列表
             </summary>
-            <param name="permissions"></param>
+            <param name="authorities"></param>
+        </member>
+        <member name="M:AmazedSecurity.JWT.JsonWebToken.GetUserId(System.String)">
+            <summary>
+            获取token中的用户ID
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedSecurity.JWT.JsonWebToken.GetAuthorities(System.String)">
+            <summary>
+            获取token中的权限ID列表
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
         </member>
         <member name="M:AmazedSecurity.JWT.JsonWebToken.GenerateToken">
             <summary>
             生成Token
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:AmazedSecurity.JWT.JWTParamModel">
+            <summary>
+            jwt参数模型
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.JWT.JWTParamModel.Issuer">
+            <summary>
+            JWT的签发者
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.JWT.JWTParamModel.Expires">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.JWT.JWTParamModel.Key">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.JWT.JWTParamModel.Audience">
+            <summary>
+            接受token者
+            </summary>
         </member>
         <member name="T:AmazedSecurity.StringResource">
             <summary>

@@ -8,8 +8,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\GitHub\Util\AmazedSecurity\AmazedSecurity.xml</DocumentationFile>
-    <OutputPath>D:\DLL\AmazedSecurity</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedSecurity\AmazedSecurity.xml</DocumentationFile>
+    <OutputPath></OutputPath>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
 
   <ItemGroup>

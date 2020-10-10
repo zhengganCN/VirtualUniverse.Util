@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\DLL\\AmazedPictureProcessing\AmazedPictureProcessing.xml</DocumentationFile>
-    <OutputPath>D:\DLL\\AmazedPictureProcessing</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedPictureProcessing\AmazedPictureProcessing.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

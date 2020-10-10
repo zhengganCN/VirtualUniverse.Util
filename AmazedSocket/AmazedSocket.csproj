@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\GitHub\Util\AmazedSocket\AmazedSocket.xml</DocumentationFile>
-    <OutputPath>D:\DLL\AmazedSocket</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedSocket\AmazedSocket.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

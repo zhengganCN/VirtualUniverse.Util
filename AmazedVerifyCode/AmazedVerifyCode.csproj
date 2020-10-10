@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\GitHub\Util\AmazedVerifyCode\AmazedVerifyCode.xml</DocumentationFile>
-    <OutputPath>D:\DLL\AmazedVerifyCode</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedVerifyCode\AmazedVerifyCode.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
   <ItemGroup>

@@ -101,7 +101,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.Dapper.Interface.IRepository`1.FindMany(System.String,System.String,AmazedDataContext.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:AmazedDataContext.Dapper.Interface.IRepository`1.FindMany(System.String,System.Int32,System.Int32,System.String,AmazedDataContext.EnumSequence)">
             <summary>
             查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -132,7 +132,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.Dapper.Interface.IRepository`1.FindManyAsync(System.String,System.String,AmazedDataContext.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:AmazedDataContext.Dapper.Interface.IRepository`1.FindManyAsync(System.String,System.Int32,System.Int32,System.String,AmazedDataContext.EnumSequence)">
             <summary>
             异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -282,6 +282,20 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
+        <member name="M:AmazedDataContext.Dapper.Interface.IRepository`1.Count(System.String)">
+            <summary>
+            统计符合条件的实体
+            </summary>
+            <param name="conditionString"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.Dapper.Interface.IRepository`1.CountAsync(System.String)">
+            <summary>
+            异步统计符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
         <member name="T:AmazedDataContext.Dapper.SQLString.ISQLString">
             <summary>
             SQL增、删、改、查语句帮助接口
@@ -392,6 +406,21 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
+        <member name="M:AmazedDataContext.Dapper.SQLString.ISQLString.CountSQLString``1">
+            <summary>
+            统计符合条件的实体数量
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.Dapper.SQLString.ISQLString.CountSQLString``1(System.String)">
+            <summary>
+            统计符合条件的实体数量
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
         <member name="T:AmazedDataContext.Dapper.SQLString.AbstractSQLString">
             <summary>
             SQL增、删、改、查语句抽象帮助类
@@ -497,6 +526,21 @@
         <member name="M:AmazedDataContext.Dapper.SQLString.AbstractSQLString.MarkUnDeleteSQLString``1(System.String)">
             <summary>
             根据条件更新删除标记为未删除
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.Dapper.SQLString.AbstractSQLString.CountSQLString``1">
+            <summary>
+            统计实体数量
+            </summary>
+            <typeparam name="TEntity">实体类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.Dapper.SQLString.AbstractSQLString.CountSQLString``1(System.String)">
+            <summary>
+            统计符合条件的实体数量
             </summary>
             <typeparam name="TEntity">实体类型</typeparam>
             <param name="conditionString">条件字符串</param>
@@ -640,7 +684,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.Dapper.Repository.AbstractRepository`1.FindMany(System.String,System.String,AmazedDataContext.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:AmazedDataContext.Dapper.Repository.AbstractRepository`1.FindMany(System.String,System.Int32,System.Int32,System.String,AmazedDataContext.EnumSequence)">
             <summary>
             查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -671,7 +715,7 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.Dapper.Repository.AbstractRepository`1.FindManyAsync(System.String,System.String,AmazedDataContext.EnumSequence,System.Int32,System.Int32)">
+        <member name="M:AmazedDataContext.Dapper.Repository.AbstractRepository`1.FindManyAsync(System.String,System.Int32,System.Int32,System.String,AmazedDataContext.EnumSequence)">
             <summary>
             异步查询所有符合条件的实体，并根据分页条件返回限定数量的数据
             </summary>
@@ -821,6 +865,20 @@
             <param name="conditionString">条件字符串</param>
             <returns></returns>
         </member>
+        <member name="M:AmazedDataContext.Dapper.Repository.AbstractRepository`1.Count(System.String)">
+            <summary>
+            统计符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.Dapper.Repository.AbstractRepository`1.CountAsync(System.String)">
+            <summary>
+            异步统计符合条件的实体
+            </summary>
+            <param name="conditionString">条件字符串</param>
+            <returns></returns>
+        </member>
         <member name="T:AmazedDataContext.Dapper.Repository.MSSQLRepository`1">
             <summary>
             MSSQL仓储模式
@@ -948,6 +1006,27 @@
             <summary>
             手动关闭连接
             </summary>
+        </member>
+        <member name="T:AmazedDataContext.EFCore.Extension.ModelCommentCreating">
+            <summary>
+            创建模型说明
+            使用：在继承DbContext的类中重写protected override void OnModelCreating(ModelBuilder modelBuilder)，并在该重写方法中调用 ModelCommentCreating 类的成员方法
+            注意：如果表是一个视图（即DbSet&lt;T&gt;中的T是一个视图），则必须为DbSet&lt;T&gt;添加DbView特性，否则不能在T的属性中使用Describute特性
+            </summary>
+        </member>
+        <member name="M:AmazedDataContext.EFCore.Extension.ModelCommentCreating.ColumnCommentCreating(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            创建表的字段说明
+            </summary>
+            <param name="dbContext">数据库上下文</param>
+            <param name="modelBuilder">模型构造器</param>
+        </member>
+        <member name="M:AmazedDataContext.EFCore.Extension.ModelCommentCreating.TableOrViewCommentCreating(Microsoft.EntityFrameworkCore.DbContext,Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <summary>
+            创建表或视图的说明
+            </summary>
+            <param name="dbContext">数据库上下文</param>
+            <param name="modelBuilder">模型构造器</param>
         </member>
         <member name="T:AmazedDataContext.EFCore.Repository.EFRepository`1">
             <summary>
@@ -1256,6 +1335,90 @@
             <summary>
             升序
             </summary>
+        </member>
+        <member name="T:AmazedDataContext.Model.BaseQueryModel">
+            <summary>
+            查询模型基类
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.BaseQueryModel.Keyword">
+            <summary>
+            关键字
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.BaseQueryModel.PageIndex">
+            <summary>
+            页面索引
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.BaseQueryModel.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="T:AmazedDataContext.Model.DBViewAttribute">
+            <summary>
+            视图特性
+            </summary>
+        </member>
+        <member name="T:AmazedDataContext.MongoDB.MongoDbContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoDbContext.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoDbContext.OnConfiguring(AmazedDataContext.MongoDB.MongoDbContextOptionsBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="optionsBuilder"></param>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoDbContext.GetMongoClient">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoDbContext.GetMongoDatabase">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoDbContext.OnModelCreating(AmazedDataContext.MongoDB.MongoDbContextOptionsBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="optionsBuilder"></param>
+        </member>
+        <member name="T:AmazedDataContext.MongoDB.MongoDbSet`1">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoDbSet`1.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoRepositoryBase`1.FindOne(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataContext.MongoDB.MongoRepositoryBase`1.FindOneAsync(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
         </member>
         <member name="T:AmazedDataContext.MongoDB.Repository.MongoRepository`1">
             <summary>

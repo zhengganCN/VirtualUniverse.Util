@@ -197,11 +197,13 @@ namespace AmazedPictureProcessing
             var rectangle = new Rectangle
             {
                 X = 0,
-                Y = 0
+                Y = 0,
+                Width = destSize.Width,
+                Height = destSize.Height
             };
             if (destSize.Width == 0 & destSize.Height != 0)
             {
-                rectangle.Width = (imageSize.Height / destSize.Height) * imageSize.Width;
+                rectangle.Width = (destSize.Height * imageSize.Width) / imageSize.Height;
             }
             else if (destSize.Width != 0 & destSize.Height != 0)
             {
@@ -210,7 +212,7 @@ namespace AmazedPictureProcessing
             }
             else if (destSize.Width != 0 & destSize.Height == 0)
             {
-                rectangle.Height = (imageSize.Width / destSize.Width) * imageSize.Height;
+                rectangle.Height = (destSize.Width * imageSize.Height) / imageSize.Width;
             }
             return rectangle;
         }

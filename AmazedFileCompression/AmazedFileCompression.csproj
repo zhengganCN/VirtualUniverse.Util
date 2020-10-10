@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Softwares\AmazedUtil\AmazedFileCompression\AmazedFileCompression.xml</DocumentationFile>
-    <OutputPath>D:\DLL\AmazedFileCompression</OutputPath>
+    <DocumentationFile>G:\Softwares\AmazedUtil\AmazedFileCompression\AmazedFileCompression.xml</DocumentationFile>
+    <OutputPath></OutputPath>
   </PropertyGroup>
 
 </Project>

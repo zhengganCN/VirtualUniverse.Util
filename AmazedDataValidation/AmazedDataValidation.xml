@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmazedDataValidation</name>
+    </assembly>
+    <members>
+        <member name="T:AmazedDataValidation.IDNumberVerification">
+            <summary>
+            身份证号验证
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.IDNumberVerification.ProvinceCode">
+            <summary>
+            省份代码
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.IDNumberVerification.ValidIDNumber(System.String)">
+            <summary>
+            验证身份证号
+            </summary>
+            <param name="idNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.IDNumberVerification.ValidIDNumber18(System.String)">
+            <summary> 
+            验证18位身份证号
+            </summary>
+            <param name="idNumber">身份证号</param>
+            <returns>验证成功为True，否则为False</returns>
+        </member>
+        <member name="M:AmazedDataValidation.IDNumberVerification.ValidIDNumber15(System.String)">
+            <summary> 
+            验证15位身份证号 
+            </summary> 
+            <param name="idNumber">身份证号</param> 
+            <returns>验证成功为True，否则为False</returns> 
+        </member>
+        <member name="M:AmazedDataValidation.IDNumberVerification.Valid18Code(System.String)">
+            <summary>
+            验证18位身份证的第18位的合法性
+            </summary>
+            <param name="idNumber">身份证号</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.IDNumberVerification.VaildDate(System.String)">
+            <summary>
+            验证日期格式是否正确
+            </summary>
+            <param name="date">日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.IDNumberVerification.ValidProvince(System.String)">
+            <summary>
+            省份验证
+            </summary>
+            <param name="idNumber">身份证号</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedDataValidation.PhoneNumberVerification">
+            <summary>
+            手机号验证
+            </summary>
+        </member>
+    </members>
+</doc>

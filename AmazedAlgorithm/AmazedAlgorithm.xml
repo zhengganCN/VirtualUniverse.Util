@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmazedAlgorithm</name>
+    </assembly>
+    <members>
+        <member name="T:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm">
+            <summary>
+            雪花算法
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm._workerId">
+            <summary>
+            机器ID
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.TimestampBitsLength">
+            <summary>
+            时间戳bit长度，最大支持使用从1970年至以后139年的时间
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.WorkerIdBitsLength">
+            <summary>
+            机器位bit长度，最大支持2048台机器使用
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.SequenceBitsLength">
+            <summary>
+            序列号bit长度，每毫秒最大支持生成1024个ID
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.mutex">
+            <summary>
+            互斥锁
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.OffsetTime">
+            <summary>
+            偏移时间，这是一个避免重复的随机量，自行设定，不要大于当前时间戳，该值确定后不能改变，否则可能会生成重复ID
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.MaxWorkerId">
+            <summary>
+            最大机器ID
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.MaxSequence">
+            <summary>
+            一毫秒内可以产生计数，如果达到该值则等到下一毫秒在进行生成
+            </summary>
+        </member>
+        <member name="F:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.LastTimestamp">
+            <summary>
+            记录上一次生成时间戳的时间
+            </summary>
+        </member>
+        <member name="M:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.NextMillis(System.Int64)">
+            <summary>
+            获取下一毫秒时间戳
+            </summary>
+            <param name="lastTimestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.TimeGen">
+            <summary>
+            生成当前时间戳
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
