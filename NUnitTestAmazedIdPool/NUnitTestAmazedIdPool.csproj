@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AmazedIdPool\AmazedIdPool.csproj" />
+    <ProjectReference Include="..\AmazedService\AmazedService.csproj" />
   </ItemGroup>
 
 	<ItemGroup>

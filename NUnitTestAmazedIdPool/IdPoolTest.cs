@@ -1,4 +1,5 @@
-using AmazedIdPool;
+using NUnitTestAmazedIdPool;
+using AmazedService.IdPoolService;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using NUnitTestAmazedIdPool.Services;

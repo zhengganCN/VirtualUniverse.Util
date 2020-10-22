@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
-namespace AmazedIdPool
+namespace AmazedService.IdPoolService
 {
+    /// <summary>
+    /// Id池
+    /// </summary>
     public static class IdPool
     {
         /// <summary>
