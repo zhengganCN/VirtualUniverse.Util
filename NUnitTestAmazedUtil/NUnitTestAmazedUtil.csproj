@@ -1,0 +1,53 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Net.Client" Version="2.29.0" />
+    <PackageReference Include="Google.Protobuf" Version="3.12.3" />
+    <PackageReference Include="Grpc.Tools" Version="2.30.0" />
+    <PackageReference Include="nunit" Version="3.12.0" />
+    <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="AmazedDataValidation\" />
+    <Folder Include="AmazedFilter\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AmazedAlgorithm\AmazedAlgorithm.csproj" />
+    <ProjectReference Include="..\AmazedConfiguration\AmazedConfiguration.csproj" />
+    <ProjectReference Include="..\AmazedConvert\AmazedConvert.csproj" />
+    <ProjectReference Include="..\AmazedDataContext\AmazedDataContext.csproj" />
+    <ProjectReference Include="..\AmazedExtension\AmazedExtension.csproj" />
+    <ProjectReference Include="..\AmazedFileCompression\AmazedFileCompression.csproj" />
+    <ProjectReference Include="..\AmazedIdPool\AmazedIdPool.csproj" />
+    <ProjectReference Include="..\AmazedMath\AmazedMath.csproj" />
+    <ProjectReference Include="..\AmazedModelResult\AmazedModelResult.csproj" />
+    <ProjectReference Include="..\AmazedMP3InfoReader\AmazedID3Analysis.csproj" />
+    <ProjectReference Include="..\AmazedPictureProcessing\AmazedPictureProcessing.csproj" />
+    <ProjectReference Include="..\AmazedSecurity\AmazedSecurity.csproj" />
+    <ProjectReference Include="..\AmazedVerifyCode\AmazedVerifyCode.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="AmazedConfiguration\App.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="AmazedDataContext\App.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="AmazedIdPool\Protos\SnowflakeIdGenerate.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>
