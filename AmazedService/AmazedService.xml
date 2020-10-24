@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AmazedService</name>
+    </assembly>
+    <members>
+        <member name="T:AmazedService.BackgroundWorker.BaseBackgroundService">
+            <summary>
+            后台服务启动基类
+            </summary>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.#ctor(AmazedService.BackgroundWorker.ServiceStartupParam)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="param">服务启动参数</param>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.Dispose">
+            <summary>
+            销毁
+            </summary>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.Execute(System.Object)">
+            <summary>
+            执行耗时任务
+            </summary>
+            <param name="state"></param>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            启动任务
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            结束任务
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.ExecuteAsync">
+            <summary>
+            耗时任务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedService.BackgroundWorker.ServiceStartupParam">
+            <summary>
+            服务启动参数
+            </summary>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.StartNow">
+            <summary>
+            是否立即启动
+            </summary>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.Interval">
+            <summary>
+            间隔，单位毫秒
+            </summary>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.StartHour">
+            <summary>
+            启动“时”
+            </summary>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.StartMinite">
+            <summary>
+            启动“分”
+            </summary>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.StartSecond">
+            <summary>
+            启动“秒”
+            </summary>
+        </member>
+        <member name="T:AmazedService.IdPoolService.IdPool">
+            <summary>
+            Id池
+            </summary>
+        </member>
+        <member name="F:AmazedService.IdPoolService.IdPool.ObjectLock">
+            <summary>
+            对象锁
+            </summary>
+        </member>
+        <member name="P:AmazedService.IdPoolService.IdPool.Seed">
+            <summary>
+            触发补充Id池的种子；当Id池中id的数量小于 IdPoolSize * Seed 时，触发补充Id操作
+            </summary>
+        </member>
+        <member name="P:AmazedService.IdPoolService.IdPool.IdPoolSize">
+            <summary>
+            Id池大小
+            </summary>
+        </member>
+        <member name="F:AmazedService.IdPoolService.IdPool.Ids">
+            <summary>
+            id队列
+            </summary>
+        </member>
+        <member name="F:AmazedService.IdPoolService.IdPool.IsGenerateIds">
+            <summary>
+            是否正在生成id
+            </summary>
+        </member>
+        <member name="M:AmazedService.IdPoolService.IdPool.GainId(System.Func{System.Collections.Generic.List{System.Int64}})">
+            <summary>
+            获取id池的第一个id，当id池不足时，通过匿名委托函数获取新生成的ID，补充Id池
+            </summary>
+            <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.IdPoolService.IdPool.EnterIdsQueue(System.Func{System.Collections.Generic.List{System.Int64}})">
+            <summary>
+            入队
+            </summary>
+            <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
+        </member>
+    </members>
+</doc>
