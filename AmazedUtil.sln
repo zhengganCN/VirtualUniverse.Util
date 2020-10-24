@@ -31,11 +31,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedAlgorithm", "AmazedAl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedDataValidation", "AmazedDataValidation\AmazedDataValidation.csproj", "{2351FBF7-9022-4BC7-84D0-9D68FDC7779A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedIdPool", "AmazedIdPool\AmazedIdPool.csproj", "{71B01CF7-7201-4926-A92B-30A972631DEA}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedFilter", "AmazedFilter\AmazedFilter.csproj", "{CC8EC1BA-8989-4E02-B770-19C5482C00F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NUnitTestAmazedUtil", "NUnitTestAmazedUtil\NUnitTestAmazedUtil.csproj", "{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NUnitTestAmazedUtil", "NUnitTestAmazedUtil\NUnitTestAmazedUtil.csproj", "{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedService", "AmazedService\AmazedService.csproj", "{6D2FC7D6-DD19-4FC8-A048-54FF258F8ED0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -99,36 +99,18 @@ Global
 		{2351FBF7-9022-4BC7-84D0-9D68FDC7779A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2351FBF7-9022-4BC7-84D0-9D68FDC7779A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2351FBF7-9022-4BC7-84D0-9D68FDC7779A}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
-		{71B01CF7-7201-4926-A92B-30A972631DEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{71B01CF7-7201-4926-A92B-30A972631DEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{71B01CF7-7201-4926-A92B-30A972631DEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{71B01CF7-7201-4926-A92B-30A972631DEA}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{2096B558-64E1-478D-8885-35DD1DE3042D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2096B558-64E1-478D-8885-35DD1DE3042D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2096B558-64E1-478D-8885-35DD1DE3042D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2096B558-64E1-478D-8885-35DD1DE3042D}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 0334cea4589033bf8c0db4b4fb8e6de852cfff48
 		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Release|Any CPU.Build.0 = Release|Any CPU
-<<<<<<< HEAD
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Release|Any CPU.Build.0 = Release|Any CPU
-=======
-		{9A1FE2F0-6E43-420B-94C3-921A853C622F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A1FE2F0-6E43-420B-94C3-921A853C622F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A1FE2F0-6E43-420B-94C3-921A853C622F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A1FE2F0-6E43-420B-94C3-921A853C622F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D4FD375E-A760-4618-9A5D-A33F0C849CF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D4FD375E-A760-4618-9A5D-A33F0C849CF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D4FD375E-A760-4618-9A5D-A33F0C849CF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D4FD375E-A760-4618-9A5D-A33F0C849CF7}.Release|Any CPU.Build.0 = Release|Any CPU
->>>>>>> 0334cea4589033bf8c0db4b4fb8e6de852cfff48
+		{6D2FC7D6-DD19-4FC8-A048-54FF258F8ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D2FC7D6-DD19-4FC8-A048-54FF258F8ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D2FC7D6-DD19-4FC8-A048-54FF258F8ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D2FC7D6-DD19-4FC8-A048-54FF258F8ED0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,24 +14,20 @@ namespace AmazedService.BackgroundWorker
     public abstract class BaseBackgroundService : IHostedService, IDisposable
     {
         private readonly Timer _timer;
+        private readonly Func<ServiceStartupParam> _func;
+        private ServiceStartupParam _param;
+        private readonly ILogger<BaseBackgroundService> _logger;
         /// <summary>
         /// 构造函数
         /// </summary>
-        /// <param name="param">服务启动参数</param>
-        public BaseBackgroundService(ServiceStartupParam param)
+        /// <param name="func">服务启动参数</param>
+        /// <param name="logger">日志</param>
+        protected BaseBackgroundService(Func<ServiceStartupParam> func, ILogger<BaseBackgroundService> logger)
         {
-            var dueTime = 0;
-            if (!param.StartNow)
-            {
-                var now = DateTime.Now;
-                DateTime startTime = DateTime.Today.AddHours(param.StartHour).AddMinutes(param.StartMinite).AddSeconds(param.StartMinite);
-                if (now > startTime)
-                {
-                    startTime = startTime.AddDays(1);
-                }
-                dueTime = (int)((startTime - now).TotalMilliseconds);
-            }
-            _timer = new Timer(Execute, null, dueTime, param.Interval);
+            _func = func;
+            _param = func.Invoke();
+            _timer = new Timer(Execute, null, 0, Timeout.Infinite);
+            _logger = logger;
         }
         /// <summary>
         /// 销毁
@@ -46,8 +42,52 @@ namespace AmazedService.BackgroundWorker
         /// <param name="state"></param>
         private void Execute(object state)
         {
-            ExecuteAsync().Wait();
+            while (CanExecuteTask())
+            {
+                try
+                {
+                    _param = _func.Invoke();
+                    ExecuteAsync().Wait();
+                    _param = _func.Invoke();
+                    Task.Delay(_param.Interval).Wait();
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex.ToString());
+                    Task.Delay(1000).Wait();
+                }
+            }
+           
         }
+        private bool CanExecuteTask()
+        {
+            var now = DateTime.Now;
+            bool result = false;
+            if (_param.StartNow)
+            {
+                result = true;
+            }
+            else
+            {
+                if (_param.StartTime.HasValue && _param.EndTime.HasValue)
+                {
+                    var startTime = DateTime.Today.AddHours(_param.StartTime.Value.Hour).AddMinutes(_param.StartTime.Value.Minute).AddSeconds(_param.StartTime.Value.Second);
+                    var endTime = DateTime.Today.AddHours(_param.EndTime.Value.Hour).AddMinutes(_param.EndTime.Value.Minute).AddSeconds(_param.EndTime.Value.Second);
+                    result = startTime <= now && now <= endTime;
+                }
+                else if (_param.StartTime.HasValue && (!_param.EndTime.HasValue))
+                {
+                    var startTime = DateTime.Today.AddHours(_param.StartTime.Value.Hour).AddMinutes(_param.StartTime.Value.Minute).AddSeconds(_param.StartTime.Value.Second);
+                    result = startTime <= now;
+                }
+                else if (!_param.StartTime.HasValue)
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+
         /// <summary>
         /// 启动任务
         /// </summary>
