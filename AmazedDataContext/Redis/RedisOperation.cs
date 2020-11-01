@@ -111,7 +111,7 @@ namespace AmazedDataContext.Redis
         /// <typeparam name="T">保存对象的类型</typeparam>
         /// <param name="key">键</param>
         /// <returns></returns>
-        public T GetString<T>(string key)
+        public T StringGet<T>(string key)
         {
             return JsonConvert.DeserializeObject<T>(CacheRedis.StringGet(key));
         }
@@ -121,7 +121,7 @@ namespace AmazedDataContext.Redis
         /// </summary>
         /// <param name="keys">键列表</param>
         /// <returns></returns>
-        public IDictionary<string, string> GetString(IList<string> keys)
+        public IDictionary<string, string> StringGet(IList<string> keys)
         {
             var redisKeys = new RedisKey[keys.Count];
             var index = 0;

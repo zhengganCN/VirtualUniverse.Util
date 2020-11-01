@@ -1750,7 +1750,7 @@
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.Redis.RedisOperation.GetString``1(System.String)">
+        <member name="M:AmazedDataContext.Redis.RedisOperation.StringGet``1(System.String)">
             <summary>
             获取一个key的对象
             </summary>
@@ -1758,7 +1758,7 @@
             <param name="key">键</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.Redis.RedisOperation.GetString(System.Collections.Generic.IList{System.String})">
+        <member name="M:AmazedDataContext.Redis.RedisOperation.StringGet(System.Collections.Generic.IList{System.String})">
             <summary>
             获取多条记录
             </summary>
