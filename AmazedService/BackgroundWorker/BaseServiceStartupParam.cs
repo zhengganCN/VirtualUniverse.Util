@@ -7,7 +7,7 @@ namespace AmazedService.BackgroundWorker
     /// <summary>
     /// 服务启动参数
     /// </summary>
-    public class ServiceStartupParam
+    public class BaseServiceStartupParam
     {
         /// <summary>
         /// 是否立即启动；是，则只有Interval参数有效，StartTime和EndTime无效；否，则必须设置StartTime

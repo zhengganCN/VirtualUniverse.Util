@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
@@ -27,10 +28,6 @@ namespace AmazedService.IdPoolService
         /// </summary>
         private static readonly Queue<long> Ids = new Queue<long>(IdPoolSize);
         /// <summary>
-        /// 是否正在生成id
-        /// </summary>
-        private static bool IsGenerateIds = false;
-        /// <summary>
         /// 获取id池的第一个id，当id池不足时，通过匿名委托函数获取新生成的ID，补充Id池
         /// </summary>
         /// <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
@@ -45,14 +42,15 @@ namespace AmazedService.IdPoolService
             {
                 throw new ArgumentException(nameof(IdPoolSize) + "属性不能小于1000");
             }
-            EnterIdsQueue(gainIdsFunc);
             lock (ObjectLock)
             {
-                while (Ids.Count == 0)
+                EnterIdsQueue(gainIdsFunc);
+                var id = Ids.Dequeue();
+                if (id == 0)
                 {
-                    EnterIdsQueue(gainIdsFunc);
-                };
-                return Ids.Dequeue();
+                    id = GainId(gainIdsFunc);
+                }
+                return id;
             }
         }
         /// <summary>
@@ -61,18 +59,29 @@ namespace AmazedService.IdPoolService
         /// <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
         private static void EnterIdsQueue(Func<List<long>> gainIdsFunc)
         {
-            if (Ids.Count <= Ids.Count * Seed && !IsGenerateIds)
+            var seedCapacity = IdPoolSize * Seed;
+            if (Ids.Count <= seedCapacity)
             {
-                IsGenerateIds = true;
-                Task.Run(() =>
+                var taskNum = (int)((IdPoolSize - seedCapacity) / 1000);
+                if (taskNum > 0)
+                {
+                    var tasks = new Task<List<long>>[taskNum];
+                    for (int i = 0; i < taskNum; i++)
                     {
-                        var newIds = gainIdsFunc.Invoke();
-                        foreach (var newId in newIds)
+                        tasks[i] = Task.Run(() =>
                         {
-                            Ids.Enqueue(newId);
+                            return gainIdsFunc.Invoke();
+                        });
+                    }
+                    Task.WaitAll(tasks);
+                    foreach (var task in tasks)
+                    {
+                        foreach (var id in task.Result)
+                        {
+                            Ids.Enqueue(id);
                         }
-                        IsGenerateIds = false;
-                    });
+                    }
+                }
             }
         }
     }

@@ -6,10 +6,10 @@
     <members>
         <member name="T:AmazedService.BackgroundWorker.BaseBackgroundService">
             <summary>
-            后台服务基类
+            后台服务基类（定时任务）
             </summary>
         </member>
-        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.#ctor(System.Func{AmazedService.BackgroundWorker.ServiceStartupParam},Microsoft.Extensions.Logging.ILogger{AmazedService.BackgroundWorker.BaseBackgroundService})">
+        <member name="M:AmazedService.BackgroundWorker.BaseBackgroundService.#ctor(System.Func{AmazedService.BackgroundWorker.BaseServiceStartupParam},Microsoft.Extensions.Logging.ILogger{AmazedService.BackgroundWorker.BaseBackgroundService})">
             <summary>
             构造函数
             </summary>
@@ -47,33 +47,75 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:AmazedService.BackgroundWorker.ServiceStartupParam">
+        <member name="T:AmazedService.BackgroundWorker.BaseServiceStartupParam">
             <summary>
             服务启动参数
             </summary>
         </member>
-        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.StartNow">
+        <member name="P:AmazedService.BackgroundWorker.BaseServiceStartupParam.StartNow">
             <summary>
             是否立即启动；是，则只有Interval参数有效，StartTime和EndTime无效；否，则必须设置StartTime
             </summary>
         </member>
-        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.Interval">
+        <member name="P:AmazedService.BackgroundWorker.BaseServiceStartupParam.Interval">
             <summary>
             间隔，单位毫秒；默认值为0，表示上一次任务执行完毕后会间隔多久执行下一次任务
             </summary>
         </member>
-        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.StartTime">
+        <member name="P:AmazedService.BackgroundWorker.BaseServiceStartupParam.StartTime">
             <summary>
             启动时间 (只包含时分秒不包括日期)
             说明：
             如果启动时间不为空，则表示程序会在当天的启动时间之后执行
             </summary>
         </member>
-        <member name="P:AmazedService.BackgroundWorker.ServiceStartupParam.EndTime">
+        <member name="P:AmazedService.BackgroundWorker.BaseServiceStartupParam.EndTime">
             <summary>
             结束时间
             说明：
             如果结束时间不为空，则表示程序会在当天的启动时间之前后执行
+            </summary>
+        </member>
+        <member name="T:AmazedService.BackgroundWorker.OnceBackgroundService">
+            <summary>
+            每日执行一次的后台服务基类
+            </summary>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.OnceBackgroundService.#ctor(System.Func{AmazedService.BackgroundWorker.OnceServiceStartupParam},Microsoft.Extensions.Logging.ILogger{AmazedService.BackgroundWorker.OnceBackgroundService})">
+            <summary>
+            
+            </summary>
+            <param name="func"></param>
+            <param name="logger"></param>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.OnceBackgroundService.Dispose">
+            <summary>
+            销毁
+            </summary>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.OnceBackgroundService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.BackgroundWorker.OnceBackgroundService.ExecuteAsync">
+            <summary>
+            耗时任务
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.OnceServiceStartupParam.StartNow">
+            <summary>
+            是否立即启动；是，则只有Interval参数有效，StartTime无效；否，则必须设置StartTime
+            </summary>
+        </member>
+        <member name="P:AmazedService.BackgroundWorker.OnceServiceStartupParam.StartTime">
+            <summary>
+            启动时间 (只包含时分秒不包括日期)
+            说明：
+            如果启动时间不为空，则表示程序会在当天的启动时间之后执行
             </summary>
         </member>
         <member name="T:AmazedService.FtpOperationUtil.FtpOperation">
@@ -81,28 +123,68 @@
             ftp操作类
             </summary>
         </member>
-        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpDirectories(AmazedService.FtpOperationUtil.FtpStratupParam,System.String)">
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpClient(AmazedService.FtpOperationUtil.FtpStratupParam)">
             <summary>
-            递归获取根路径下的所有的文件夹
+            获取FTP客户端
             </summary>
-            <param name="param">启动参数</param>
-            <param name="path">根路径</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpFiles(AmazedService.FtpOperationUtil.FtpStratupParam,System.String)">
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpDirectories(FluentFTP.FtpClient,System.String,System.Boolean)">
             <summary>
-            递归获取根路径下的所有的文件(不包括目录)
+            获取指定路径下的所有的文件夹
             </summary>
-            <param name="param">启动参数</param>
-            <param name="path">根路径</param>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="isRecursion">是否递归获取</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpListItems(AmazedService.FtpOperationUtil.FtpStratupParam,System.String)">
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpDirectories(FluentFTP.FtpClient,System.String,System.Func{FluentFTP.FtpListItem,System.Boolean},System.Boolean)">
             <summary>
-            递归获取根路径下的所有的文件(包括目录)
+            获取路径下的所有的文件夹
             </summary>
-            <param name="param">启动参数</param>
-            <param name="path">根路径</param>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="dirCond">目录过滤条件</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpFiles(FluentFTP.FtpClient,System.String,System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(不包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpFiles(FluentFTP.FtpClient,System.String,System.Func{FluentFTP.FtpListItem,System.Boolean},System.Func{FluentFTP.FtpListItem,System.Boolean},System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(不包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="dirCond">目录过滤条件</param>
+            <param name="fileCond">文件过滤条件</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpListItems(FluentFTP.FtpClient,System.String,System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.FtpOperationUtil.FtpOperation.GetFtpFilesDirectory(FluentFTP.FtpClient,System.String,System.Func{FluentFTP.FtpListItem,System.Boolean},System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="dirCond">目录过滤条件</param>
+            <param name="isRecursion">是否递归获取</param>
             <returns></returns>
         </member>
         <member name="T:AmazedService.FtpOperationUtil.FtpStratupParam">
@@ -148,11 +230,6 @@
         <member name="F:AmazedService.IdPoolService.IdPool.Ids">
             <summary>
             id队列
-            </summary>
-        </member>
-        <member name="F:AmazedService.IdPoolService.IdPool.IsGenerateIds">
-            <summary>
-            是否正在生成id
             </summary>
         </member>
         <member name="M:AmazedService.IdPoolService.IdPool.GainId(System.Func{System.Collections.Generic.List{System.Int64}})">

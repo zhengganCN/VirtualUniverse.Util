@@ -61,5 +61,129 @@
             手机号验证
             </summary>
         </member>
+        <member name="T:AmazedDataValidation.ValidationModel.AmazedValidationResult">
+            <summary>
+            验证结果
+            </summary>
+        </member>
+        <member name="P:AmazedDataValidation.ValidationModel.AmazedValidationResult.FieldName">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:AmazedDataValidation.ValidationModel.AmazedValidationResult.FieldVerifyResult">
+            <summary>
+            字段验证结果
+            </summary>
+        </member>
+        <member name="T:AmazedDataValidation.ValidationModel.ValidationModelState">
+            <summary>
+            验证模型状态
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.ValidationModel.ValidationModelState._model">
+            <summary>
+            要验证的模型，不能为空
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.#ctor(System.Object)">
+            <summary>
+            验证模型状态
+            </summary>
+            <param name="model">要验证的模型，不能为空</param>
+        </member>
+        <member name="P:AmazedDataValidation.ValidationModel.ValidationModelState.IsValid">
+            <summary>
+            模型是否验证通过
+            </summary>
+        </member>
+        <member name="P:AmazedDataValidation.ValidationModel.ValidationModelState.ValidResult">
+            <summary>
+            模型验证结果
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.VerifyModel">
+            <summary>
+            验证模型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.GetPropertyInfosIncludeChildrenPropertyInfos(System.Object)">
+            <summary>
+            获取对象的所有属性
+            </summary>
+            <param name="model">验证结果</param>
+            <returns><see cref="T:AmazedDataValidation.ValidationModel.AmazedValidationResult"/></returns>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.DistinguishCustomType(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            分类（值类型属性、字符串类型属性）和（自定义类型属性）
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <returns><see cref="T:AmazedDataValidation.ValidationModel.AmazedValidationResult"/></returns>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.AttributeIsNotValueTypeOrIsEnumerable(System.Object,System.Reflection.PropertyInfo,AmazedDataValidation.ValidationModel.AmazedValidationResult)">
+            <summary>
+            判断非值类型属性属性是否继承了IEnumerable接口，是，则表示该属性是一个可枚举列表，否，则表示该属性是一个非值类型对象
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="result">验证结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.HandleNotValueTypeAttribute(System.Object,System.Reflection.PropertyInfo,AmazedDataValidation.ValidationModel.AmazedValidationResult)">
+            <summary>
+            处理属性为非值类型的属性
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="result">验证结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.HandleEnumrableAttribute(System.Object,System.Reflection.PropertyInfo,AmazedDataValidation.ValidationModel.AmazedValidationResult)">
+            <summary>
+            处理属性类型为可枚举的属性
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="result">验证结果</param>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.GetAttributeValidationResult(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            获取属性的验证结果
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <returns><see cref="T:AmazedDataValidation.ValidationModel.AmazedValidationResult"/></returns>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationModel.ValidationModelState.GetValidationAttributeResult(System.Object,System.Reflection.PropertyInfo,System.Attribute)">
+            <summary>
+            验证具有继承自<see cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute"/>特性的属性，并返回验证结果
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="attribute">属性的特性</param>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.CellPhoneVerifyAttribute">
+            <summary>
+            移动电话验证
+            </summary>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.IDCardVerifyAttribute">
+            <summary>
+            ID卡格式验证
+            </summary>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.IDCardType">
+            <summary>
+            ID卡类型
+            </summary>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.MailVerifyAttribute">
+            <summary>
+            邮箱验证
+            </summary>
+        </member>
     </members>
 </doc>

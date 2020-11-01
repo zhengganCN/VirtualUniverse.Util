@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 namespace AmazedService.BackgroundWorker
 {
     /// <summary>
-    /// 后台服务基类
+    /// 后台服务基类（定时任务）
     /// </summary>
     public abstract class BaseBackgroundService : IHostedService, IDisposable
     {
         private readonly Timer _timer;
-        private readonly Func<ServiceStartupParam> _func;
-        private ServiceStartupParam _param;
+        private readonly Func<BaseServiceStartupParam> _func;
+        private BaseServiceStartupParam _param;
         private readonly ILogger<BaseBackgroundService> _logger;
         /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="func">服务启动参数</param>
         /// <param name="logger">日志</param>
-        protected BaseBackgroundService(Func<ServiceStartupParam> func, ILogger<BaseBackgroundService> logger)
+        protected BaseBackgroundService(Func<BaseServiceStartupParam> func, ILogger<BaseBackgroundService> logger)
         {
             _func = func;
             _param = func.Invoke();

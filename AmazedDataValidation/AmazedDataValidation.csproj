@@ -8,4 +8,8 @@
     <DocumentationFile>G:\Softwares\AmazedUtil\AmazedDataValidation\AmazedDataValidation.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
 </Project>
