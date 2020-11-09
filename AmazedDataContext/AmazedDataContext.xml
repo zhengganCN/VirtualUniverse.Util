@@ -1290,33 +1290,28 @@
             事务开始
             </summary>
         </member>
-        <member name="T:AmazedDataContext.Entity`1">
+        <member name="T:AmazedDataContext.Entity">
             <summary>
             实体基类
             </summary>
             <typeparam name="T">主键类型</typeparam>
         </member>
-        <member name="P:AmazedDataContext.Entity`1.Id">
-            <summary>
-            泛型主键
-            </summary>
-        </member>
-        <member name="P:AmazedDataContext.Entity`1.IsDeleted">
+        <member name="P:AmazedDataContext.Entity.IsDeleted">
             <summary>
             删除标识
             </summary>
         </member>
-        <member name="P:AmazedDataContext.Entity`1.CreateTime">
+        <member name="P:AmazedDataContext.Entity.CreateTime">
             <summary>
             创建时间
             </summary>
         </member>
-        <member name="P:AmazedDataContext.Entity`1.DeleteTime">
+        <member name="P:AmazedDataContext.Entity.DeleteTime">
             <summary>
             删除时间
             </summary>
         </member>
-        <member name="P:AmazedDataContext.Entity`1.UpdateTime">
+        <member name="P:AmazedDataContext.Entity.UpdateTime">
             <summary>
             更新时间
             </summary>

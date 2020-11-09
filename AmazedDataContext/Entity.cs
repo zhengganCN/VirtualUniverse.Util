@@ -9,13 +9,8 @@ namespace AmazedDataContext
     /// 实体基类
     /// </summary>
     /// <typeparam name="T">主键类型</typeparam>
-    public class Entity<T>
+    public class Entity
     {
-        /// <summary>
-        /// 泛型主键
-        /// </summary>
-        [Description("主键")]
-        public T Id { get; set; }
         /// <summary>
         /// 删除标识
         /// </summary>

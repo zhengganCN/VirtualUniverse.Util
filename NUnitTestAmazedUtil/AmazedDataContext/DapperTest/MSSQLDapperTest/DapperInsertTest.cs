@@ -90,8 +90,9 @@ namespace NUnitTestAmazedUtil.AmazedDataContext.DataTest.DapperTest.MSSQLDapperT
             Assert.AreEqual(result, 2);
         }
     }
-    class TdD : Entity<Guid>
+    class TdD : Entity
     {
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public Guid? DeptId { get; set; }
         public double Salary { get; set; }

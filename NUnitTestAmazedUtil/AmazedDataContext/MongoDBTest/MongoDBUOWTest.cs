@@ -665,12 +665,14 @@ namespace NUnitTestAmazedUtil.AmazedDataContext.DataTest.MongoDBTest
         }
         #endregion
     }
-    public class Student : Entity<ObjectId>
+    public class Student : Entity
     {
+        public ObjectId Id { get; set; }
         public string StudentName { get; set; }
     }
-    public class Score : Entity<ObjectId>
+    public class Score : Entity
     {
+        public ObjectId Id { get; set; }
         public double MathScore { get; set; }
     }
 }

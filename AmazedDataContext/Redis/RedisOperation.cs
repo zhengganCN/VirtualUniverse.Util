@@ -2,7 +2,6 @@
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +10,11 @@ namespace AmazedDataContext.Redis
     /// <summary>
     /// Redis操作类
     /// </summary>
-    public  class RedisOperation
+    public class RedisOperation
     {
-        private  ConnectionMultiplexer connection;
-        private  Func<ConfigurationOptions> _func;
-        private Func<int> _db;
+        private ConnectionMultiplexer connection;
+        private readonly Func<ConfigurationOptions> _func;
+        private readonly Func<int> _db;
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -154,7 +153,7 @@ namespace AmazedDataContext.Redis
             {
                 values.Add(CacheRedis.ListGetByIndex(key, i));
             }
-            return values.ToList();
+            return values;
         }
         /// <summary>
         /// 获取List列表
@@ -170,7 +169,7 @@ namespace AmazedDataContext.Redis
             {
                 values.Add(JsonConvert.DeserializeObject<T>(CacheRedis.ListGetByIndex(key, i)));
             }
-            return values.ToList();
+            return values;
         }
         /// <summary>
         /// 获取List列表中指定索引处的值
@@ -178,7 +177,7 @@ namespace AmazedDataContext.Redis
         /// <param name="key">键</param>
         /// <param name="index">索引</param>
         /// <returns></returns>
-        public string ListGetByIndex(string key,int index)
+        public string ListGetByIndex(string key, int index)
         {
             return CacheRedis.ListGetByIndex(key, index);
         }
@@ -291,9 +290,9 @@ namespace AmazedDataContext.Redis
         /// <param name="key">键</param>
         /// <param name="field">字段</param>
         /// <returns></returns>
-        public string HashGet(string key,string field)
+        public string HashGet(string key, string field)
         {
-            return  CacheRedis.HashGet(key, field);
+            return CacheRedis.HashGet(key, field);
         }
         /// <summary>
         /// 获取hash表中指定字段的对象
@@ -312,9 +311,9 @@ namespace AmazedDataContext.Redis
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="pairs">hash表中的键值对</param>
-        public void HashSet(string key,Dictionary<string,string> pairs)
+        public void HashSet(string key, Dictionary<string, string> pairs)
         {
-            var hashEntries= new HashEntry[pairs.Count];
+            var hashEntries = new HashEntry[pairs.Count];
             var index = 0;
             foreach (var pair in pairs)
             {
@@ -346,7 +345,7 @@ namespace AmazedDataContext.Redis
         /// <param name="key">键</param>
         /// <param name="field">字段</param>
         /// <returns></returns>
-        public bool HashDelete(string key,string field)
+        public bool HashDelete(string key, string field)
         {
             return CacheRedis.HashDelete(key, field);
         }
@@ -368,7 +367,7 @@ namespace AmazedDataContext.Redis
         /// <param name="key">键</param>
         /// <param name="value">值</param>
         /// <returns></returns>
-        public bool SetInsert(string key,  string value)
+        public bool SetInsert(string key, string value)
         {
             return CacheRedis.SetAdd(key, value);
         }
@@ -389,7 +388,7 @@ namespace AmazedDataContext.Redis
         /// <param name="key">键</param>
         /// <param name="value">要删除的值</param>
         /// <returns></returns>
-        public bool SetDelete(string key,string value)
+        public bool SetDelete(string key, string value)
         {
             return CacheRedis.SetRemove(key, value);
         }
@@ -459,7 +458,7 @@ namespace AmazedDataContext.Redis
         /// <param name="pattern">模式匹配（正则）</param>
         /// <param name="pageSize">匹配值的数量</param>
         /// <returns></returns>
-        public IEnumerable<T> SetGet<T>(string key,string pattern,int pageSize)
+        public IEnumerable<T> SetGet<T>(string key, string pattern, int pageSize)
         {
             var result = new List<T>();
             var values = CacheRedis.SetScan(key, pattern, pageSize);
@@ -511,7 +510,7 @@ namespace AmazedDataContext.Redis
         /// <returns></returns>
         public bool ZSetInsert(string key, string value, double score)
         {
-            return CacheRedis.SortedSetAdd(key,value, score);
+            return CacheRedis.SortedSetAdd(key, value, score);
         }
         /// <summary>
         /// 向ZSet集合中添加值
@@ -523,7 +522,7 @@ namespace AmazedDataContext.Redis
         /// <returns></returns>
         public bool ZSetInsert<T>(string key, T value, double score)
         {
-            return CacheRedis.SortedSetAdd(key, JsonConvert.SerializeObject(value),score);
+            return CacheRedis.SortedSetAdd(key, JsonConvert.SerializeObject(value), score);
         }
         /// <summary>
         /// 删除ZSet集合中匹配的值
@@ -562,7 +561,7 @@ namespace AmazedDataContext.Redis
         /// <param name="pattern">模式匹配（正则）</param>
         /// <param name="pageSize">匹配值的数量</param>
         /// <returns></returns>
-        public IDictionary<string,double> ZSetGet(string key, string pattern, int pageSize)
+        public IDictionary<string, double> ZSetGet(string key, string pattern, int pageSize)
         {
             var result = new Dictionary<string, double>();
             var values = CacheRedis.SortedSetScan(key, pattern, pageSize);

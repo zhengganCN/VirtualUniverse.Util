@@ -9,27 +9,37 @@ namespace NUnitTestAmazedUtil.AmazedDataContext.RedisTest
 {
     class RedisOperationTest
     {
-        RedisOperation operation;
+        private RedisOperation operation;
+        private const string host = "127.0.0.1";
         [SetUp]
         public void SetUp() {
+            operation = new RedisOperation(
+                () =>
+                {
+                    var config = new ConfigurationOptions
+                    { };
+                    config.EndPoints.Add(host);
+                    return config;
+                },
+                () => { return 0; }
+            );
         }
         [Test]
         public void ConnectRedis()
         {
-            operation = new RedisOperation(
-                () =>
-                    {
-                        var config= new ConfigurationOptions
-                        {
-                            Password = "password"
-                        };
-                        config.EndPoints.Add("host");
-                        return config;
-                    },
-                () => { return 0; }
-            );
-            var value= operation.CacheRedis.StringGet("Test");
             Assert.IsTrue(operation.CacheConnection.IsConnected);
+        }
+        [Test]
+        public void HashGet()
+        {
+            var key = "Test";
+            var field = "Field";
+            var value = "Value";
+            operation.HashSet(key, new Dictionary<string, string> 
+            { 
+                { field, value } 
+            });
+            Assert.AreEqual(operation.HashGet(key, field), value);
         }
     }
 }

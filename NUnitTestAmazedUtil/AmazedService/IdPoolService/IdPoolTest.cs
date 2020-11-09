@@ -1,5 +1,5 @@
 ﻿using AmazedService.IdPoolService;
-using GrpcIdGenerateClient.Services;
+using GRpcClient.Services;
 using Microsoft.Extensions.Logging;
 using NUnit.Framework;
 using System;

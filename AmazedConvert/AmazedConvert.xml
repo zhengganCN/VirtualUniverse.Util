@@ -83,6 +83,11 @@
             第二项：给定周的结束时间
             </returns>
         </member>
+        <member name="T:AmazedConvert.DecimalConvert">
+            <summary>
+            进制转换
+            </summary>
+        </member>
         <member name="M:AmazedConvert.DecimalConvert.ToHex(System.Int32)">
             <summary>
             十进制转十六进制

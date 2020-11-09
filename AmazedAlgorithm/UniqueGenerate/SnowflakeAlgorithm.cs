@@ -49,7 +49,11 @@ namespace AmazedAlgorithm.UniqueGenerate
         /// 记录上一次生成时间戳的时间
         /// </summary>
         private static long LastTimestamp = -1L;
-
+        /// <summary>
+        /// 生成ID
+        /// </summary>
+        /// <param name="workerId">工作ID</param>
+        /// <returns></returns>
         public static long GenerateId(long workerId)
         {
             mutex.WaitOne();

@@ -661,12 +661,14 @@ namespace NUnitTestAmazedUtil.AmazedDataContext.DataTest.EFCoreTest.SQLServerTes
         }
         #endregion
     }
-    public class Student : Entity<Guid>
+    public class Student : Entity
     {
+        public Guid Id { get; set; }
         public string StudentName { get; set; }
     }
-    public class Score : Entity<Guid>
+    public class Score : Entity
     {
+        public Guid Id { get; set; }
         public double MathScore { get; set; }
     }
 }

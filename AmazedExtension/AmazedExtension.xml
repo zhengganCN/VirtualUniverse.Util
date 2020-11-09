@@ -16,6 +16,11 @@
             <param name="value">枚举值</param>
             <returns></returns>
         </member>
+        <member name="T:AmazedExtension.EnumHelper">
+            <summary>
+            枚举操作类
+            </summary>
+        </member>
         <member name="M:AmazedExtension.EnumHelper.GetEnumList(System.Type)">
             <summary>
             获取枚举列表

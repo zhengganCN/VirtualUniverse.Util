@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\GRpcServices\GRpcClient\GRpcClient.csproj" />
     <ProjectReference Include="..\AmazedAlgorithm\AmazedAlgorithm.csproj" />
     <ProjectReference Include="..\AmazedConfiguration\AmazedConfiguration.csproj" />
     <ProjectReference Include="..\AmazedConvert\AmazedConvert.csproj" />
@@ -35,12 +36,6 @@
     <ProjectReference Include="..\AmazedSecurity\AmazedSecurity.csproj" />
     <ProjectReference Include="..\AmazedService\AmazedService.csproj" />
     <ProjectReference Include="..\AmazedVerifyCode\AmazedVerifyCode.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="GrpcIdGenerateClient">
-      <HintPath>..\..\GrpcIdGenerateService\GrpcIdGenerateClient\bin\Release\netcoreapp3.1\GrpcIdGenerateClient.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

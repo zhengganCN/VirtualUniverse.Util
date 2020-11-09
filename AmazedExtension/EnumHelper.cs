@@ -6,6 +6,9 @@ using System.Text;
 
 namespace AmazedExtension
 {
+    /// <summary>
+    /// 枚举操作类
+    /// </summary>
     public static class EnumHelper
     {
         /// <summary>
@@ -15,7 +18,7 @@ namespace AmazedExtension
         /// <returns></returns>
         public static List<EnumModel> GetEnumList(Type enumType)
         {
-            var fieldInfos = enumType.GetFields();//.GetType().GetFields();
+            var fieldInfos = enumType.GetFields();
             var list = new List<EnumModel>();
             foreach (var fieldInfo in fieldInfos)
             {

@@ -98,6 +98,13 @@
             记录上一次生成时间戳的时间
             </summary>
         </member>
+        <member name="M:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.GenerateId(System.Int64)">
+            <summary>
+            生成ID
+            </summary>
+            <param name="workerId">工作ID</param>
+            <returns></returns>
+        </member>
         <member name="M:AmazedAlgorithm.UniqueGenerate.SnowflakeAlgorithm.NextMillis(System.Int64)">
             <summary>
             获取下一毫秒时间戳

@@ -37,6 +37,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedService", "AmazedServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedID3Analysis", "AmazedID3Analysis\AmazedID3Analysis.csproj", "{FC18A40F-1035-45EE-BF75-00B9F96C5E8E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GRpcClient", "..\GRpcServices\GRpcClient\GRpcClient.csproj", "{26AE68B0-407C-4F0D-A94F-E3BF9B799DEC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{FC18A40F-1035-45EE-BF75-00B9F96C5E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC18A40F-1035-45EE-BF75-00B9F96C5E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC18A40F-1035-45EE-BF75-00B9F96C5E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26AE68B0-407C-4F0D-A94F-E3BF9B799DEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26AE68B0-407C-4F0D-A94F-E3BF9B799DEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26AE68B0-407C-4F0D-A94F-E3BF9B799DEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26AE68B0-407C-4F0D-A94F-E3BF9B799DEC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

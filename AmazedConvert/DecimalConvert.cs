@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AmazedConvert
 {
+    /// <summary>
+    /// 进制转换
+    /// </summary>
     public static class DecimalConvert
     {
         /// <summary>
