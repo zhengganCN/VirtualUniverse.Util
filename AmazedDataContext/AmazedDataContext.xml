@@ -1294,7 +1294,6 @@
             <summary>
             实体基类
             </summary>
-            <typeparam name="T">主键类型</typeparam>
         </member>
         <member name="P:AmazedDataContext.Entity.IsDeleted">
             <summary>

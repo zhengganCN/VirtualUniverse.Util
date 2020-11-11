@@ -8,7 +8,6 @@ namespace AmazedDataContext
     /// <summary>
     /// 实体基类
     /// </summary>
-    /// <typeparam name="T">主键类型</typeparam>
     public class Entity
     {
         /// <summary>

@@ -320,6 +320,80 @@
             接受token者
             </summary>
         </member>
+        <member name="T:AmazedSecurity.Permission.AutoGeneratePermission">
+            <summary>
+            自动生成权限列表，通过每个方法的<see cref="T:AmazedSecurity.Permission.PermissionValidAttribute"/>特性的<see cref="P:AmazedSecurity.Permission.PermissionValidAttribute.PermissionName"/>属性来生成权限列表
+            如果权限不存在，生成；否则查看该权限是否已标记为删除，是，则取消删除标记，否则，不做任何操作
+            </summary>
+        </member>
+        <member name="M:AmazedSecurity.Permission.AutoGeneratePermission.AddAutoGeneratePermission(Microsoft.Extensions.DependencyInjection.IServiceCollection,AmazedSecurity.Permission.PermissionOperationAbstract,System.Reflection.Assembly[])">
+            <summary>
+            服务集合的扩展方法，用于自动生成权限列表
+            </summary>
+            <param name="services">服务集合</param>
+            <param name="permissionOperation"></param>
+            <param name="assemblies">程序集集合</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedSecurity.Permission.AutoGeneratePermission.GetControllers(System.Reflection.Assembly)">
+            <summary>
+            获取所有控制器类
+            </summary>
+            <param name="assembly">程序集</param>
+        </member>
+        <member name="M:AmazedSecurity.Permission.AutoGeneratePermission.GetControllerMethods(System.Type)">
+            <summary>
+            获取控制器中的所有方法
+            </summary>
+            <param name="controller">控制器类</param>
+        </member>
+        <member name="M:AmazedSecurity.Permission.AutoGeneratePermission.GetPermissionValidAttribute(System.Reflection.MethodInfo)">
+            <summary>
+            获取方法的所有<see cref="T:System.Attribute"/>特性
+            </summary>
+            <param name="method">函数方法</param>
+        </member>
+        <member name="M:AmazedSecurity.Permission.AutoGeneratePermission.CreateOrUpdatePermission(AmazedSecurity.Permission.PermissionValidAttribute)">
+            <summary>
+            创建或更新权限
+            </summary>
+            <param name="permissionValid">权限验证特性</param>
+        </member>
+        <member name="T:AmazedSecurity.Permission.PermissionValidAttribute">
+            <summary>
+            用户权限验证特性
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.Permission.PermissionValidAttribute.PermissionName">
+            <summary>
+            权限名称
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.Permission.PermissionValidAttribute.IsValid">
+            <summary>
+            是否验证成功
+            </summary>
+        </member>
+        <member name="M:AmazedSecurity.Permission.PermissionValidAttribute.#ctor(System.String)">
+            <summary>
+            用户权限验证
+            </summary>
+            <param name="permissionName">权限名称</param>
+        </member>
+        <member name="M:AmazedSecurity.Permission.PermissionValidAttribute.ValidUserPermission(System.String,System.String)">
+            <summary>
+            用户权限验证
+            </summary>
+            <param name="userId">用户ID</param>
+            <param name="permissionName">权限名称</param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedSecurity.Permission.PermissionValidAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            方法执行前验证权限，如不通过，则返回错误信息
+            </summary>
+            <param name="context">执行前上下文</param>
+        </member>
         <member name="T:AmazedSecurity.StringResource">
             <summary>
               一个强类型的资源类，用于查找本地化的字符串等。
