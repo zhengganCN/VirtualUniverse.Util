@@ -33,6 +33,6 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         script: |
-          cd $GitDir
+          cd /data/git
           wget https://github.com/zhengganCN/AmazedUtil/archive/master.zip
 
