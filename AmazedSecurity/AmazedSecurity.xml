@@ -359,6 +359,27 @@
             </summary>
             <param name="permissionValid">权限验证特性</param>
         </member>
+        <member name="T:AmazedSecurity.Permission.IPermission">
+            <summary>
+            权限实体表必须继承的接口
+            </summary>
+        </member>
+        <member name="P:AmazedSecurity.Permission.IPermission.PermissionName">
+            <summary>
+            权限名称，唯一
+            </summary>
+        </member>
+        <member name="T:AmazedSecurity.Permission.PermissionOperationAbstract">
+            <summary>
+            权限表操作抽象类
+            </summary>
+        </member>
+        <member name="M:AmazedSecurity.Permission.PermissionOperationAbstract.CreateOrUpdatePermission(System.String)">
+            <summary>
+            创建或更新权限表
+            </summary>
+            <param name="permissionName"></param>
+        </member>
         <member name="T:AmazedSecurity.Permission.PermissionValidAttribute">
             <summary>
             用户权限验证特性

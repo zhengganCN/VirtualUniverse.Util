@@ -7,35 +7,72 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Grpc.Net.Client" Version="2.29.0" />
-    <PackageReference Include="Google.Protobuf" Version="3.12.3" />
-    <PackageReference Include="Grpc.Tools" Version="2.30.0" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
+    <PackageReference Include="MongoDB.Driver" Version="2.9.3" />
     <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.1" />
+    <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="3.0.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AmazedFilter\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\GRpcServices\GRpcClient\GRpcClient.csproj" />
-    <ProjectReference Include="..\AmazedAlgorithm\AmazedAlgorithm.csproj" />
-    <ProjectReference Include="..\AmazedConfiguration\AmazedConfiguration.csproj" />
-    <ProjectReference Include="..\AmazedConvert\AmazedConvert.csproj" />
-    <ProjectReference Include="..\AmazedDataContext\AmazedDataContext.csproj" />
-    <ProjectReference Include="..\AmazedDataValidation\AmazedDataValidation.csproj" />
-    <ProjectReference Include="..\AmazedExtension\AmazedExtension.csproj" />
-    <ProjectReference Include="..\AmazedFileCompression\AmazedFileCompression.csproj" />
-    <ProjectReference Include="..\AmazedID3Analysis\AmazedID3Analysis.csproj" />
-    <ProjectReference Include="..\AmazedMath\AmazedMath.csproj" />
-    <ProjectReference Include="..\AmazedModelResult\AmazedModelResult.csproj" />
-    <ProjectReference Include="..\AmazedPictureProcessing\AmazedPictureProcessing.csproj" />
-    <ProjectReference Include="..\AmazedSecurity\AmazedSecurity.csproj" />
-    <ProjectReference Include="..\AmazedService\AmazedService.csproj" />
-    <ProjectReference Include="..\AmazedVerifyCode\AmazedVerifyCode.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AmazedAlgorithm">
+      <HintPath>..\AmazedAlgorithm\bin\Debug\netcoreapp3.1\AmazedAlgorithm.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedConfiguration">
+      <HintPath>..\AmazedConfiguration\bin\Debug\netcoreapp3.1\AmazedConfiguration.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedConvert">
+      <HintPath>..\AmazedConvert\bin\Debug\netcoreapp3.1\AmazedConvert.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedDataContext">
+      <HintPath>..\AmazedDataContext\bin\Debug\netcoreapp3.1\AmazedDataContext.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedDataValidation">
+      <HintPath>..\AmazedDataValidation\bin\Debug\netcoreapp3.1\AmazedDataValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedExtension">
+      <HintPath>..\AmazedExtension\bin\Debug\netcoreapp3.1\AmazedExtension.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedFileCompression">
+      <HintPath>..\AmazedFileCompression\bin\Debug\netcoreapp3.1\AmazedFileCompression.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedFilter">
+      <HintPath>..\AmazedFilter\bin\Debug\netcoreapp3.1\AmazedFilter.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedGeneralData">
+      <HintPath>..\AmazedGeneralData\bin\Debug\netcoreapp3.1\AmazedGeneralData.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedID3Analysis">
+      <HintPath>..\AmazedID3Analysis\bin\Debug\netcoreapp3.1\AmazedID3Analysis.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedMath">
+      <HintPath>..\AmazedMath\bin\Debug\netcoreapp3.1\AmazedMath.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedModelResult">
+      <HintPath>..\AmazedModelResult\bin\Debug\netcoreapp3.1\AmazedModelResult.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedPictureProcessing">
+      <HintPath>..\AmazedPictureProcessing\bin\Debug\netcoreapp3.1\AmazedPictureProcessing.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedSecurity">
+      <HintPath>..\AmazedSecurity\bin\Debug\netcoreapp3.1\AmazedSecurity.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedService">
+      <HintPath>..\AmazedService\bin\Debug\netcoreapp3.1\AmazedService.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedSocket">
+      <HintPath>..\AmazedSocket\bin\Debug\netcoreapp3.1\AmazedSocket.dll</HintPath>
+    </Reference>
+    <Reference Include="AmazedVerifyCode">
+      <HintPath>..\AmazedVerifyCode\bin\Debug\netcoreapp3.1\AmazedVerifyCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

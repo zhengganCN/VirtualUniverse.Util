@@ -1,7 +1,5 @@
 ﻿
 using AmazedDataContext.Dapper.Repository;
-using Dapper;
-using MySql.Data.MySqlClient;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
