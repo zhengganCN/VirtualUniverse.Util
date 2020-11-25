@@ -58,6 +58,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedID3Analysis", "Amazed
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AmazedGeneralData", "AmazedGeneralData\AmazedGeneralData.csproj", "{7A2AC9DD-44C7-4BFF-9209-7F13A921D42E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A388BEF2-564F-4EF5-99C2-B7FA4DCFA17F}"
+	ProjectSection(SolutionItems) = preProject
+		NuGet.Config = NuGet.Config
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -121,7 +126,6 @@ Global
 		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC8EC1BA-8989-4E02-B770-19C5482C00F2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{146A2A0C-B64B-46BE-AAC8-7CD7DBF0441B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6D2FC7D6-DD19-4FC8-A048-54FF258F8ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
