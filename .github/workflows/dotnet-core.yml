@@ -25,9 +25,6 @@ jobs:
       run: dotnet test --no-restore --verbosity normal
     - name: SSH Remote Commands
       uses: appleboy/ssh-action@v0.1.4
-      env: 
-        WorkDir: ${{ secrets.WORKDIR }}
-        GitDir: ${{ secrets.GITDIR }}
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
@@ -38,5 +35,4 @@ jobs:
           git clone https://github.com/zhengganCN/AmazedUtil.git
           cd AmazedUtil
           dotnet publish -c Release  -o ./publish
-          mv ./publish/* /home/Util
 
