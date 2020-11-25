@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AmazedExtension\AmazedExtension.csproj" />
+    <PackageReference Include="AmazedExtension" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

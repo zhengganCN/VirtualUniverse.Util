@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="GRpcClient" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.1" />
     <PackageReference Include="MongoDB.Bson" Version="2.11.4" />
@@ -15,10 +16,6 @@
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.0.1" />
     <PackageReference Include="StackExchange.Redis" Version="2.1.58" />
     <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\GRpcServices\GRpcClient\GRpcClient.csproj" />
   </ItemGroup>
 
   <ItemGroup>
