@@ -23,3 +23,16 @@ jobs:
       run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v0.1.4
+      env: 
+        WorkDir: ${{ secrets.WORKDIR }}
+        GitDir: ${{ secrets.GITDIR }}
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        script: |
+          cd $GitDir
+          wget https://github.com/zhengganCN/AmazedUtil/archive/master.zip
+
