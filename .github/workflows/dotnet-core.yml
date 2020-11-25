@@ -34,5 +34,9 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         script: |
           cd ${{ secrets.GITDIR }}
-          wget https://github.com/zhengganCN/AmazedUtil/archive/master.zip
+          rm -rf AmazedUtil
+          git clone https://github.com/zhengganCN/AmazedUtil.git
+          cd AmazedUtil
+          dotnet publish -c Release  -o ./publish
+          mv ./publish/* /home/Util
 
