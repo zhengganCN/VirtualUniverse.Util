@@ -5,9 +5,9 @@ using System.Text;
 namespace AmazedDataContext.Model
 {
     /// <summary>
-    /// 查询模型基类
+    /// 查询模型基类接口
     /// </summary>
-    public class BaseQueryModel : IBaseQueryModel
+    public interface IBaseQueryModel
     {
         /// <summary>
         /// 关键字
@@ -16,10 +16,10 @@ namespace AmazedDataContext.Model
         /// <summary>
         /// 页面索引
         /// </summary>
-        public int PageIndex { get; set; } = 1;
+        public int PageIndex { get; set; }
         /// <summary>
         /// 页面大小
         /// </summary>
-        public int PageSize { get; set; } = 10;
+        public int PageSize { get; set; }
     }
 }

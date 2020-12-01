@@ -4,6 +4,104 @@
         <name>AmazedConfiguration</name>
     </assembly>
     <members>
+        <member name="T:AmazedConfiguration.BaseJsonConfiguration">
+            <summary>
+            Json配置文件操作类
+            </summary>
+        </member>
+        <member name="M:AmazedConfiguration.BaseJsonConfiguration.#ctor">
+            <summary>
+            构造函数
+            </summary>
+        </member>
+        <member name="M:AmazedConfiguration.BaseJsonConfiguration.GetJsonConfiguration">
+            <summary>
+            默认读取配置文件函数，如需修改，则重写该函数
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConfiguration.BaseJsonConfiguration.GetValue(System.String)">
+            <summary>
+            获取值，如果在json文件中没有key，则放回空字符串
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConfiguration.BaseJsonConfiguration.GetObject``1">
+            <summary>
+            把整个json文件转换成实例对象
+            </summary>
+            <typeparam name="T">json文件实例化后的类型</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedConfiguration.BaseJsonConfiguration.SetValue(System.String,System.String)">
+            <summary>
+            根据key设置value
+            无效方法，暂未实现
+            </summary>
+            <param name="key"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:AmazedConfiguration.BaseJsonConfiguration.Dispose">
+            <summary>
+            释放资源
+            </summary>
+        </member>
+        <member name="T:AmazedConfiguration.ConstConfigPath">
+            <summary>
+            常量配置文件名称
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.ConstConfigPath.Environment">
+            <summary>
+            环境配置文件文件名
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.ConstConfigPath.Development">
+            <summary>
+            开发环境配置文件名
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.ConstConfigPath.Test">
+            <summary>
+            测试环境配置文件名
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.ConstConfigPath.Production">
+            <summary>
+            生产环境配置文件名
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.ConstConfigPath.CurrentEnvironment">
+            <summary>
+            环境配置字段
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.ConstConfigPath.ValueConfigFilter">
+            <summary>
+            配置文件正则匹配
+            </summary>
+        </member>
+        <member name="T:AmazedConfiguration.EnumConfigEnvironment">
+            <summary>
+            枚举配置环境
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.EnumConfigEnvironment.Development">
+            <summary>
+            开发环境
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.EnumConfigEnvironment.Test">
+            <summary>
+            测试环境
+            </summary>
+        </member>
+        <member name="F:AmazedConfiguration.EnumConfigEnvironment.Production">
+            <summary>
+            生产环境
+            </summary>
+        </member>
         <member name="T:AmazedConfiguration.JsonConfiguration">
             <summary>
             Json配置文件操作类

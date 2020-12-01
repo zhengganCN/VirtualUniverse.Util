@@ -165,12 +165,12 @@
             <param name="propertyInfo">要验证的属性</param>
             <param name="attribute">属性的特性</param>
         </member>
-        <member name="T:AmazedDataValidation.VerifyAttribute.CellPhoneVerifyAttribute">
+        <member name="T:AmazedDataValidation.VerifyAttribute.CellPhoneAttribute">
             <summary>
             移动电话验证
             </summary>
         </member>
-        <member name="T:AmazedDataValidation.VerifyAttribute.IDCardVerifyAttribute">
+        <member name="T:AmazedDataValidation.VerifyAttribute.IDCardAttribute">
             <summary>
             ID卡格式验证
             </summary>
@@ -180,9 +180,41 @@
             ID卡类型
             </summary>
         </member>
-        <member name="T:AmazedDataValidation.VerifyAttribute.MailVerifyAttribute">
+        <member name="T:AmazedDataValidation.VerifyAttribute.MailAttribute">
             <summary>
             邮箱验证
+            </summary>
+        </member>
+        <member name="T:THBankAccount.Util.DataAnnotations.FixLengthAttribute">
+            <summary>
+            固定长度验证特性
+            </summary>
+        </member>
+        <member name="P:THBankAccount.Util.DataAnnotations.FixLengthAttribute.Lengths">
+            <summary>
+            字符串长度
+            </summary>
+        </member>
+        <member name="M:THBankAccount.Util.DataAnnotations.FixLengthAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:THBankAccount.Util.DataAnnotations.NoSpaceAttribute">
+            <summary>
+            字符串没有空格验证特性
+            </summary>
+        </member>
+        <member name="T:THBankAccount.Util.DataAnnotations.OnlyNumberAttribute">
+            <summary>
+            字符串只能包含数字特性
+            </summary>
+        </member>
+        <member name="T:THBankAccount.Util.DataAnnotations.StringConvertLongAttribute">
+            <summary>
+            字符串转换成长整型数据验证特性
             </summary>
         </member>
     </members>

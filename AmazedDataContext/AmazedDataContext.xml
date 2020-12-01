@@ -1355,6 +1355,26 @@
             视图特性
             </summary>
         </member>
+        <member name="T:AmazedDataContext.Model.IBaseQueryModel">
+            <summary>
+            查询模型基类接口
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.IBaseQueryModel.Keyword">
+            <summary>
+            关键字
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.IBaseQueryModel.PageIndex">
+            <summary>
+            页面索引
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.IBaseQueryModel.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
         <member name="T:AmazedDataContext.MongoDB.MongoDbContext">
             <summary>
             

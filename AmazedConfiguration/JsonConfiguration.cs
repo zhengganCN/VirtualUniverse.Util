@@ -1,13 +1,9 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration.Json;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.IO;
 using System.Text;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Json;
-using Microsoft.Extensions.FileProviders;
-using System.Reflection;
-using Newtonsoft.Json;
 
 namespace AmazedConfiguration
 {
@@ -28,12 +24,7 @@ namespace AmazedConfiguration
             using (var memoryStream = new MemoryStream())
             {
                 using var fs = new FileStream(configFilePath, FileMode.Open, FileAccess.Read);
-                var buf = new byte[fs.Length];
-                fs.Read(buf, 0, (int)fs.Length);
-                data = buf;
-                memoryStream.Write(buf, 0, buf.Length);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                jsonProvider.Load(memoryStream);
+                jsonProvider.Load(fs);
             }
             jsonConfigurationProvider = jsonProvider;
         }
