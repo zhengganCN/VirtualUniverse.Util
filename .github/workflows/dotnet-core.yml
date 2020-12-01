@@ -20,6 +20,19 @@ jobs:
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --no-restore
     - name: Test
       run: dotnet test --no-restore --verbosity normal
+    - name: SSH Remote Commands
+      uses: appleboy/ssh-action@v0.1.4
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        script: |
+          cd ${{ secrets.GITDIR }}
+          rm -rf AmazedUtil
+          git clone https://github.com/zhengganCN/AmazedUtil.git
+          cd AmazedUtil
+          dotnet publish -c Release  -o ./publish
+
