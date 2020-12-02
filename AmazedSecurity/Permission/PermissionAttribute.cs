@@ -13,8 +13,12 @@ namespace AmazedSecurity.Permission
     /// 用户权限验证特性
     /// </summary>
     [AttributeUsage(AttributeTargets.Method, AllowMultiple = false, Inherited = false)]
-    public abstract class PermissionValidAttribute : ActionFilterAttribute
+    public abstract class PermissionAttribute : ActionFilterAttribute
     {
+        /// <summary>
+        /// 权限所属
+        /// </summary>
+        public string Namespace { get; private set; }
         /// <summary>
         /// 权限名称
         /// </summary>
@@ -26,13 +30,19 @@ namespace AmazedSecurity.Permission
         /// <summary>
         /// 用户权限验证
         /// </summary>
+        /// <param name="space">权限所属</param>
         /// <param name="permissionName">权限名称</param>
-        public PermissionValidAttribute(string permissionName)
+        public PermissionAttribute(string space, string permissionName)
         {
+            if (string.IsNullOrWhiteSpace(space))
+            {
+                throw new ArgumentException($"参数{nameof(space)}不能为空或空字符串");
+            }
             if (string.IsNullOrWhiteSpace(permissionName))
             {
                 throw new ArgumentException($"参数{nameof(permissionName)}不能为空或空字符串");
             }
+            Namespace = space;
             PermissionName = permissionName;
         }
         /// <summary>
@@ -52,7 +62,7 @@ namespace AmazedSecurity.Permission
             var jwt = new JwtSecurityToken(auth.ToString().Split(' ')[1]);
             var userId = long.Parse(jwt.Subject);
 
-            IsValid = ValidUserPermission(userId.ToString(), PermissionName);
+            IsValid = ValidUserPermission(userId.ToString(), Namespace + "." + PermissionName);
             if (!IsValid)
             {
                 var result = new ModelResult<string>();

@@ -11,7 +11,7 @@ using System.Text;
 namespace AmazedSecurity.Permission
 {
     /// <summary>
-    /// 自动生成权限列表，通过每个方法的<see cref="PermissionValidAttribute"/>特性的<see cref="PermissionValidAttribute.PermissionName"/>属性来生成权限列表
+    /// 自动生成权限列表，通过每个方法的<see cref="PermissionAttribute"/>特性的<see cref="PermissionAttribute.Namespace"/>和<see cref="PermissionAttribute.PermissionName"/>属性来生成权限列表
     /// 如果权限不存在，生成；否则查看该权限是否已标记为删除，是，则取消删除标记，否则，不做任何操作
     /// </summary>
     public static class AutoGeneratePermission
@@ -70,7 +70,7 @@ namespace AmazedSecurity.Permission
         /// <param name="method">函数方法</param>
         private static void GetPermissionValidAttribute(MethodInfo method)
         {
-            var permissionValids = method.GetCustomAttributes<PermissionValidAttribute>();
+            var permissionValids = method.GetCustomAttributes<PermissionAttribute>();
             foreach (var permissionValid in permissionValids)
             {
                 CreateOrUpdatePermission(permissionValid);
@@ -80,11 +80,12 @@ namespace AmazedSecurity.Permission
         /// 创建或更新权限
         /// </summary>
         /// <param name="permissionValid">权限验证特性</param>
-        private static void CreateOrUpdatePermission(PermissionValidAttribute permissionValid)
+        private static void CreateOrUpdatePermission(PermissionAttribute permissionValid)
         {
-            if (!string.IsNullOrWhiteSpace(permissionValid.PermissionName))
+            var value = permissionValid.Namespace + "." + permissionValid.PermissionName;
+            if (!string.IsNullOrWhiteSpace(value))
             {
-                _permissionOperation.CreateOrUpdatePermission(permissionValid.PermissionName);
+                _permissionOperation.CreateOrUpdatePermission(value);
             }
         }
     }

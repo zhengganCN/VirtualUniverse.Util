@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>1.0.4</Version>
     <Description>JWT、AES、DES、MD5、RSA、SHA；
 权限自动生成、权限验证特性；
 </Description>

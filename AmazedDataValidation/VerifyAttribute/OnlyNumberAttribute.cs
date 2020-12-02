@@ -16,7 +16,7 @@ namespace THBankAccount.Util.DataAnnotations
         {
             if (value is string)
             {
-                return !Regex.IsMatch((string)value, @"^[0-9]");
+                return !Regex.IsMatch((string)value, @"[^0-9]");
             }
             else
             {

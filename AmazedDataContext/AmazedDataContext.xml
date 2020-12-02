@@ -1028,267 +1028,191 @@
             <param name="dbContext">数据库上下文</param>
             <param name="modelBuilder">模型构造器</param>
         </member>
-        <member name="T:AmazedDataContext.EFCore.Repository.EFRepository`1">
+        <member name="T:AmazedDataContext.EFCore.Extension.PaginationExtension">
+            <summary>
+            分页扩展
+            </summary>
+        </member>
+        <member name="M:AmazedDataContext.EFCore.Extension.PaginationExtension.ToPagination``1(System.Linq.IQueryable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            分页
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="queryable">可查询</param>
+            <param name="pageIndex">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedDataContext.EFCore.Repository.BaseRepository`1">
             <summary>
             仓储基类
             </summary>
             <typeparam name="TEntity"></typeparam>
         </member>
-        <member name="P:AmazedDataContext.EFCore.Repository.EFRepository`1.UOW">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
             <summary>
-            工作单元
+            初始化
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Dispose">
+            <summary>
+            清理函数
             </summary>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            构造函数，初始化上下文
-            </summary>
-            <param name="context">SQLServer数据库上下文</param>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.GetEntity">
-            <summary>
-            获取实体
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Count(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            统计
-            </summary>
-            <param name="condition">条件表达式</param>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.CountAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
-            <summary>
-            异步统计
-            </summary>
-            <param name="condition">条件表达式</param>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Delete(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Delete(`0)">
             <summary>
             删除一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Delete(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Delete(System.Collections.Generic.IList{`0})">
             <summary>
             删除多条实体
             </summary>
             <param name="entities">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.DeleteAsync(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.DeleteAsync(`0)">
             <summary>
             异步删除一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步删除多条实体
             </summary>
             <param name="entities">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Find(System.Object[])">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Find(System.Object[])">
             <summary>
             查询一条实体
             </summary>
-            <param name="primaryKey">主键值</param>
+            <param name="primaryKeys">主键值</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.FindAsync(System.Object[])">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.FindAsync(System.Object[])">
             <summary>
             异步查询一条实体
             </summary>
             <param name="primaryKey">主键值</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},AmazedDataContext.EnumSequence,System.Int32,System.Int32)">
-            <summary>
-            异步查询多条实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <param name="pageIndex">页面索引</param>
-            <param name="pageSize">页面大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.FindAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},AmazedDataContext.EnumSequence,System.Int32,System.Int32)">
-            <summary>
-            异步查询多条实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <param name="pageIndex">页面索引</param>
-            <param name="pageSize">页面大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.FindAll(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},AmazedDataContext.EnumSequence)">
-            <summary>
-            查询所有的实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.FindAllAsync(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{`0,System.Object}},AmazedDataContext.EnumSequence)">
-            <summary>
-            异步查询所有的实体
-            </summary>
-            <param name="condition">条件表达式</param>
-            <param name="keySelector">排序关键字（根据某个关键字排序）</param>
-            <param name="sortMode">排序方式，默认顺序</param>
-            <returns></returns>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Insert(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Insert(`0)">
             <summary>
             插入一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Insert(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Insert(System.Collections.Generic.IList{`0})">
             <summary>
             插入多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.InsertAsync(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.InsertAsync(`0)">
             <summary>
             异步插入一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.InsertAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步插入多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.MarkDelete(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.MarkDelete(`0)">
             <summary>
             修改一条实体的删除标识，改为true
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.MarkDelete(System.Collections.Generic.IList{`0})">
             <summary>
             修改多条实体的删除标识，改为true
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.MarkDeleteAsync(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.MarkDeleteAsync(`0)">
             <summary>
             异步修改一条实体的删除标识，改为true
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步修改多条实体的删除标识，改为true
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.UnmarkDelete(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.UnmarkDelete(`0)">
             <summary>
             修改一条实体的删除标识，改为false
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
             <summary>
             修改多条实体的删除标识，改为false
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.UnmarkDeleteAsync(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.UnmarkDeleteAsync(`0)">
             <summary>
             异步修改一条实体的删除标识，改为false
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步修改多条实体的删除标识，改为false
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Update(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Update(`0)">
             <summary>
             更新一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.Update(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.Update(System.Collections.Generic.IList{`0})">
             <summary>
             更新多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.UpdateAsync(`0)">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.UpdateAsync(`0)">
             <summary>
             异步更新一条实体
             </summary>
             <param name="entity">实体</param>
             <returns></returns>
         </member>
-        <member name="M:AmazedDataContext.EFCore.Repository.EFRepository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+        <member name="M:AmazedDataContext.EFCore.Repository.BaseRepository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
             <summary>
             异步更新多条实体
             </summary>
             <param name="entities">多条实体</param>
             <returns></returns>
-        </member>
-        <member name="T:AmazedDataContext.EFCore.UnitOfWork.UOW">
-            <summary>
-            工作单元
-            </summary>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.UnitOfWork.UOW.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            工作单元构造函数
-            </summary>
-            <param name="context">sqlserver数据库上下文</param>
-        </member>
-        <member name="P:AmazedDataContext.EFCore.UnitOfWork.UOW.DbContext">
-            <summary>
-            sqlserver数据库上下文
-            </summary>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.UnitOfWork.UOW.Commit">
-            <summary>
-            提交事务
-            </summary>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.UnitOfWork.UOW.Rollback">
-            <summary>
-            回滚事务
-            </summary>
-        </member>
-        <member name="M:AmazedDataContext.EFCore.UnitOfWork.UOW.Transaction">
-            <summary>
-            事务开始
-            </summary>
         </member>
         <member name="T:AmazedDataContext.Entity">
             <summary>
@@ -1353,6 +1277,31 @@
         <member name="T:AmazedDataContext.Model.DBViewAttribute">
             <summary>
             视图特性
+            </summary>
+        </member>
+        <member name="T:AmazedDataContext.Model.EntityProfile">
+            <summary>
+            继承<see cref="T:AutoMapper.Profile"/>的实体基类
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.EntityProfile.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.EntityProfile.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.EntityProfile.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:AmazedDataContext.Model.EntityProfile.UpdateTime">
+            <summary>
+            更新时间
             </summary>
         </member>
         <member name="T:AmazedDataContext.Model.IBaseQueryModel">
