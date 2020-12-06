@@ -27,7 +27,7 @@ namespace Test.AmazedExtension
         [Test]
         public void TestEnumList()
         {
-           var enums= EnumHelper.GetEnumList(typeof(TestEnum));
+           var enums= EnumOperation.GetEnumList(typeof(TestEnum));
             if(enums[0].EnumDescription== "星期一" && enums[1].EnumDescription == "星期二" && enums[2].EnumDescription == "星期三")
             {
                 Assert.IsTrue(true);

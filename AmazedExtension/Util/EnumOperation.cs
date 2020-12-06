@@ -1,15 +1,16 @@
-﻿using System;
+﻿using AmazedExtension.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Text;
 
-namespace AmazedExtension
+namespace AmazedExtension.Util
 {
     /// <summary>
     /// 枚举操作类
     /// </summary>
-    public static class EnumHelper
+    public static class EnumOperation
     {
         /// <summary>
         /// 获取枚举列表

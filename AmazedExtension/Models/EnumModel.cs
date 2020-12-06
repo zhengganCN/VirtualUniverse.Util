@@ -1,4 +1,4 @@
-﻿namespace AmazedExtension
+﻿namespace AmazedExtension.Models
 {
     /// <summary>
     /// 枚举模型

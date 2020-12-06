@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace AmazedExtension
+namespace AmazedExtension.Extensions
 { 
     /// <summary>
     /// 枚举扩展类

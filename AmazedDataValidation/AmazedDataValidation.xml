@@ -170,14 +170,111 @@
             移动电话验证
             </summary>
         </member>
+        <member name="M:AmazedDataValidation.VerifyAttribute.ChineseAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.FileSizeAttribute">
+            <summary>
+            文件大小验证特性
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.Unit">
+            <summary>
+            大小单位，默认值为KB
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.ValidFileSize(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            验证文件大小是否符合要求
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.EnumSizeUnit">
+            <summary>
+            文件大小单位枚举
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.EnumSizeUnit.UnitByte">
+            <summary>
+            Byte
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.EnumSizeUnit.UnitKB">
+            <summary>
+            KB
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.FileSizeAttribute.EnumSizeUnit.UnitMB">
+            <summary>
+            MB
+            </summary>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.FileTypeAttribute">
+            <summary>
+            文件类型验证特性
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.FileTypeAttribute.FileType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.VerifyAttribute.FileTypeAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedDataValidation.VerifyAttribute.FileTypeAttribute.ValidFileType(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            验证文件类型
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
         <member name="T:AmazedDataValidation.VerifyAttribute.IDCardAttribute">
             <summary>
             ID卡格式验证
             </summary>
         </member>
-        <member name="T:AmazedDataValidation.VerifyAttribute.IDCardType">
+        <member name="F:AmazedDataValidation.VerifyAttribute.IDCardAttribute.CardType">
+            <summary>
+            卡类型（默认值为身份证）
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.VerifyAttribute.IDCardAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedDataValidation.VerifyAttribute.EnumIDCardType">
             <summary>
             ID卡类型
+            </summary>
+        </member>
+        <member name="F:AmazedDataValidation.VerifyAttribute.EnumIDCardType.IdentityNumber">
+            <summary>
+            身份证
             </summary>
         </member>
         <member name="T:AmazedDataValidation.VerifyAttribute.MailAttribute">
@@ -207,15 +304,36 @@
             字符串没有空格验证特性
             </summary>
         </member>
+        <member name="M:THBankAccount.Util.DataAnnotations.NoSpaceAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value">验证值</param>
+            <returns></returns>
+        </member>
         <member name="T:THBankAccount.Util.DataAnnotations.OnlyNumberAttribute">
             <summary>
             字符串只能包含数字特性
             </summary>
         </member>
+        <member name="M:THBankAccount.Util.DataAnnotations.OnlyNumberAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
         <member name="T:THBankAccount.Util.DataAnnotations.StringConvertLongAttribute">
             <summary>
             字符串转换成长整型数据验证特性
             </summary>
+        </member>
+        <member name="M:THBankAccount.Util.DataAnnotations.StringConvertLongAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
         </member>
     </members>
 </doc>

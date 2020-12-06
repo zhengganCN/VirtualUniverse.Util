@@ -12,6 +12,11 @@ namespace THBankAccount.Util.DataAnnotations
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class OnlyNumberAttribute : ValidationAttribute
     {
+        /// <summary>
+        /// 是否验证通过
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public override bool IsValid(object value)
         {
             if (value is string)

@@ -11,26 +11,50 @@ namespace AmazedDataValidation.VerifyAttribute
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class IDCardAttribute : ValidationAttribute
     {
-        public IDCardAttribute()
-        {
-        }
-
-        public override string FormatErrorMessage(string name)
-        {
-            return base.FormatErrorMessage(name);
-        }
-
+        /// <summary>
+        /// 卡类型（默认值为身份证）
+        /// </summary>
+        public EnumIDCardType CardType = EnumIDCardType.IdentityNumber;
+        /// <summary>
+        /// 是否验证通过
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public override bool IsValid(object value)
         {
-            return base.IsValid(value);
+            if (value is string)
+            {
+                var number= value as string;
+                var result = false;
+                switch (CardType)
+                {
+                    case EnumIDCardType.IdentityNumber:
+                        result = ValidIdentityNumber(number);
+                        break;
+                    default:
+                        break;
+                }
+                return result;
+            }
+            else
+            {
+                return true;
+            }
         }
 
+        private bool ValidIdentityNumber(string number)
+        {
+            return IDNumberVerification.ValidIDNumber(number);
+        }
     }
     /// <summary>
     /// ID卡类型
     /// </summary>
-    public enum IDCardType
+    public enum EnumIDCardType
     {
-        IdentityNumber=1
+        /// <summary>
+        /// 身份证
+        /// </summary>
+        IdentityNumber = 1
     }
 }

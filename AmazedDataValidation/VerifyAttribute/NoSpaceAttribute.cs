@@ -11,13 +11,18 @@ namespace THBankAccount.Util.DataAnnotations
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class NoSpaceAttribute : ValidationAttribute
     {
+        /// <summary>
+        /// 是否验证通过
+        /// </summary>
+        /// <param name="value">验证值</param>
+        /// <returns></returns>
         public override bool IsValid(object value)
         {
             if (value is string)
             {
                 return !((string)value).Contains(' ');
             }
-            return false;
+            return true;
         }
     }
 }

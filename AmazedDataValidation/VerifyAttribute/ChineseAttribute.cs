@@ -10,11 +10,11 @@ namespace AmazedDataValidation.VerifyAttribute
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public class ChineseAttribute : ValidationAttribute
     {
-        public ChineseAttribute()
-        {
-            ErrorMessage = "请输入中文";
-        }
-
+        /// <summary>
+        /// 是否验证通过
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public override bool IsValid(object value)
         {
             var pattern = "[\u4e00-\u9fa5]";
