@@ -36,6 +36,7 @@ namespace AmazedDataContext.EFCore.Repository
         {
             _context.Dispose();
         }
+
         #region 删除
         /// <summary>
         /// 删除一条实体
@@ -290,6 +291,7 @@ namespace AmazedDataContext.EFCore.Repository
             GetDbSet().UpdateRange(entities);
             return _context.SaveChangesAsync();
         }
+        
         #endregion
     }
 }

@@ -148,6 +148,101 @@
             如果启动时间不为空，则表示程序会在当天的启动时间之后执行
             </summary>
         </member>
+        <member name="T:AmazedService.ConsulService.BaseConsulServiceConfig">
+            <summary>
+            基本配置
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.ServiceName">
+            <summary>
+            服务名称，必填
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.ConsulAddress">
+            <summary>
+            Consul服务地址，必填
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.ServiceIpAddress">
+            <summary>
+            服务IP地址，如为空则IP地址自动获取本机的IPV4地址
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.ServiceListenPorts">
+            <summary>
+            服务监听端口，必填
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.DeregisterCriticalServiceAfter">
+            <summary>
+            取消注册关键服务后
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.Interval">
+            <summary>
+            健康检查时间间隔
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.HTTP">
+            <summary>
+            健康检查地址
+            <br></br>
+            默认为：$"http://{consulServiceConfig.ServiceIpAddress}:{consulServiceConfig.ServiceListenPorts[i]}/healthcheck"
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.BaseConsulServiceConfig.Timeout">
+            <summary>
+            健康检查超时时间
+            </summary>
+        </member>
+        <member name="T:AmazedService.ConsulService.ConsulServiceExtension">
+            <summary>
+            Consul服务扩展
+            </summary>
+        </member>
+        <member name="M:AmazedService.ConsulService.ConsulServiceExtension.AddConsul(Microsoft.Extensions.DependencyInjection.IServiceCollection,AmazedService.ConsulService.ConsulServiceRegisterConfig)">
+            <summary>
+            添加并注册服务至Consul
+            </summary>
+            <param name="services"></param>
+            <param name="consulServiceRegisterConfig"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AmazedService.ConsulService.ConsulServiceExtension.AddConsul(Microsoft.Extensions.DependencyInjection.IServiceCollection,AmazedService.ConsulService.BaseConsulServiceConfig)">
+            <summary>
+            添加Consul服务
+            </summary>
+            <param name="services"></param>
+            <param name="config">配置</param>
+            <returns></returns>
+        </member>
+        <member name="T:AmazedService.ConsulService.ConsulServiceRegisterConfig">
+            <summary>
+            Consul服务配置
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.ConsulServiceRegisterConfig.AgentServiceRegistrations">
+            <summary>
+            服务注册配置
+            </summary>
+        </member>
+        <member name="P:AmazedService.ConsulService.ConsulServiceRegisterConfig.ConsulAddress">
+            <summary>
+            Consul服务地址
+            </summary>
+        </member>
+        <member name="M:AmazedService.ConsulService.ConsulServiceRegisterConfig.#ctor(System.Collections.Generic.IEnumerable{Consul.AgentServiceRegistration})">
+            <summary>
+            初始化
+            </summary>
+            <param name="agentServiceRegistrations">服务注册配置</param>
+        </member>
+        <member name="M:AmazedService.ConsulService.IpAddressOperation.GetLanIPAddress">
+            <summary>
+            获取局域网IP地址
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:AmazedService.FtpOperationUtil.FtpOperation">
             <summary>
             ftp操作类
