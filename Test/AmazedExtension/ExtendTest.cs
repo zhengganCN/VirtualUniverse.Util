@@ -1,4 +1,6 @@
 ﻿using AmazedExtension;
+using AmazedExtension.Extensions;
+using AmazedExtension.Util;
 using NUnit.Framework;
 using System;
 

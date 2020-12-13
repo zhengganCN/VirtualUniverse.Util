@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.21</Version>
+    <Version>1.0.24</Version>
     <Description>Id池，后台服务基类，目录操作，ftp操作，自动依赖注入、Consul服务注册</Description>
     <PackageReleaseNotes>Id池，后台服务基类，目录操作，ftp操作</PackageReleaseNotes>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -13,6 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AmazedConfiguration" Version="1.0.2" />
     <PackageReference Include="Consul" Version="1.6.1.1" />
     <PackageReference Include="FluentFTP" Version="33.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />

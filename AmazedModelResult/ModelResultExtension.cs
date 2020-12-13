@@ -1,4 +1,5 @@
 ﻿using AmazedExtension;
+using AmazedExtension.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Text;

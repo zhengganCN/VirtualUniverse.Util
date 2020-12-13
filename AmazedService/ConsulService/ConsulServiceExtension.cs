@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Routing;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using AmazedService.ConsulService.Models;
 
 namespace AmazedService.ConsulService
 {
@@ -15,26 +16,6 @@ namespace AmazedService.ConsulService
     /// </summary>
     public static class ConsulServiceExtension
     {
-        /// <summary>
-        /// 添加并注册服务至Consul
-        /// </summary>
-        /// <param name="services"></param>
-        /// <param name="consulServiceRegisterConfig"></param>
-        /// <returns></returns>
-        public static IServiceCollection AddConsul(this IServiceCollection services, ConsulServiceRegisterConfig consulServiceRegisterConfig)
-        {
-            var client = new ConsulClient(options =>
-            {
-                options.Address = new Uri(consulServiceRegisterConfig.ConsulAddress);
-            });
-            foreach (var registration in consulServiceRegisterConfig.AgentServiceRegistrations)
-            {
-                // 注册服务
-                client.Agent.ServiceRegister(registration).Wait();
-            }
-            return services;
-        }
-
         /// <summary>
         /// 添加Consul服务
         /// </summary>
@@ -51,7 +32,7 @@ namespace AmazedService.ConsulService
             var registers = new List<AgentServiceRegistration>();
             foreach (var listenPort in config.ServiceListenPorts)
             {
-                var http = string.IsNullOrWhiteSpace(config.HTTP) ? $"http://{config.ServiceIpAddress}:{listenPort}/healthcheck" : config.HTTP;
+                var http = string.IsNullOrWhiteSpace(config.ServiceCheckConfig.HTTP) ? $"http://{config.ServiceIpAddress}:{listenPort}/healthcheck" : config.ServiceCheckConfig.HTTP;
                 registers.Add(new AgentServiceRegistration
                 {
                     ID = $"{config.ServiceIpAddress}:{listenPort}",
@@ -60,11 +41,13 @@ namespace AmazedService.ConsulService
                     Port = listenPort,
                     Check = new AgentServiceCheck
                     {
-                        DeregisterCriticalServiceAfter = config.DeregisterCriticalServiceAfter,
-                        Interval = config.Interval,
+                        DeregisterCriticalServiceAfter = config.ServiceCheckConfig.DeregisterCriticalServiceAfter,
+                        Interval = config.ServiceCheckConfig.Interval,
                         HTTP = http,
-                        Timeout = config.Timeout
-                    }
+                        Timeout = config.ServiceCheckConfig.Timeout
+                    },
+                    Tags = config.ConsulServiceTags,
+                    Meta = config.Meta
                 });
             }
             foreach (var register in registers)

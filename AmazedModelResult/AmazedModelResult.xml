@@ -113,20 +113,5 @@
             页面总数
             </summary>
         </member>
-        <member name="T:AmazedModelResult.ResultEnum">
-            <summary>
-            结果枚举
-            </summary>
-        </member>
-        <member name="T:AmazedModelResult.ResultEnum.ModelVaildEnum">
-            <summary>
-            模型验证结果提示枚举
-            </summary>
-        </member>
-        <member name="F:AmazedModelResult.ResultEnum.ModelVaildEnum.ModelVaildFaild">
-            <summary>
-            模型验证失败
-            </summary>
-        </member>
     </members>
 </doc>

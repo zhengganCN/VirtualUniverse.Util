@@ -61,6 +61,17 @@
             手机号验证
             </summary>
         </member>
+        <member name="T:AmazedDataValidation.ValidationFilter.ValidationModelFilter">
+            <summary>
+            模型验证拦截器
+            </summary>
+        </member>
+        <member name="M:AmazedDataValidation.ValidationFilter.ValidationModelFilter.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            在函数执行前验证
+            </summary>
+            <param name="context">上下文</param>
+        </member>
         <member name="T:AmazedDataValidation.ValidationModel.AmazedValidationResult">
             <summary>
             验证结果
