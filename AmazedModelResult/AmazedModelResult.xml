@@ -86,12 +86,13 @@
             分页
             </summary>
         </member>
-        <member name="M:AmazedModelResult.Pagination.#ctor(System.Int32,System.Int32)">
+        <member name="M:AmazedModelResult.Pagination.#ctor(System.Int32,System.Int32,System.Int32)">
             <summary>
-            构造函数
+            初始化
             </summary>
-            <param name="pageIndex">页面索引，默认为1</param>
-            <param name="pageSize">页面大小，默认为10</param>
+            <param name="count">项总数</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">页面大小</param>
         </member>
         <member name="P:AmazedModelResult.Pagination.PageIndex">
             <summary>

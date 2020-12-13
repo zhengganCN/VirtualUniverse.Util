@@ -10,30 +10,32 @@ namespace AmazedModelResult
     public class Pagination
     {
         /// <summary>
-        /// 构造函数
+        /// 初始化
         /// </summary>
-        /// <param name="pageIndex">页面索引，默认为1</param>
-        /// <param name="pageSize">页面大小，默认为10</param>
-        public Pagination(int pageIndex = 1, int pageSize = 10)
+        /// <param name="count">项总数</param>
+        /// <param name="pageIndex">页码</param>
+        /// <param name="pageSize">页面大小</param>
+        public Pagination(int count, int pageIndex = 1, int pageSize = 10)
         {
             PageIndex = pageIndex;
             PageSize = pageSize;
+            PageCount = (int)Math.Ceiling((double)count / pageSize);
         }
         /// <summary>
         /// 页面索引
         /// </summary>
-        public int PageIndex { get; set; }
+        public int PageIndex { get; private set; }
         /// <summary>
         /// 页面大小
         /// </summary>
-        public int PageSize { get; set; }
+        public int PageSize { get; private set; }
         /// <summary>
         /// 项总数
         /// </summary>
-        public int Count { get; set; }
+        public int Count { get; private set; }
         /// <summary>
         /// 页面总数
         /// </summary>
-        public int PageCount { get; set; }
+        public int PageCount { get; private set; }
     }
 }
