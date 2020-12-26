@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.ID3Analysis", "VirtualUniverse.ID3Analysis\VirtualUniverse.ID3Analysis.csproj", "{B0D0ED2C-EB9B-457B-8E73-63B3D43C2A63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{3BD373B5-4E98-4274-8CFD-4A8210334B46}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B0D0ED2C-EB9B-457B-8E73-63B3D43C2A63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0D0ED2C-EB9B-457B-8E73-63B3D43C2A63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0D0ED2C-EB9B-457B-8E73-63B3D43C2A63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0D0ED2C-EB9B-457B-8E73-63B3D43C2A63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BD373B5-4E98-4274-8CFD-4A8210334B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BD373B5-4E98-4274-8CFD-4A8210334B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BD373B5-4E98-4274-8CFD-4A8210334B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BD373B5-4E98-4274-8CFD-4A8210334B46}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1DF0E1E1-B9DF-4917-8C42-CC6F3A94F4F6}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,168 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.IRepository</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.IRepository.IBaseRepository`1">
+            <summary>
+            仓储基类接口
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Delete(System.Collections.Generic.IList{`0})">
+            <summary>
+            删除多条实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Delete(`0)">
+            <summary>
+            删除一条实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步删除多条实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.DeleteAsync(`0)">
+            <summary>
+            异步删除一条实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Find(System.Object[])">
+            <summary>
+            查询一条实体
+            </summary>
+            <param name="primaryKeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.FindAsync(System.Object[])">
+            <summary>
+            异步查询一条实体
+            </summary>
+            <param name="primaryKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Insert(System.Collections.Generic.IList{`0})">
+            <summary>
+            插入多条实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Insert(`0)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.InsertAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步插入多条实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.InsertAsync(`0)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.MarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.MarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为true
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.MarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为true
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
+            <summary>
+            修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.UnmarkDelete(`0)">
+            <summary>
+            修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步修改多条实体的删除标识，改为false
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.UnmarkDeleteAsync(`0)">
+            <summary>
+            异步修改一条实体的删除标识，改为false
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Update(System.Collections.Generic.IList{`0})">
+            <summary>
+            更新多条实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.Update(`0)">
+            <summary>
+            更新一条实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
+            <summary>
+            异步更新多条实体
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.IRepository.IBaseRepository`1.UpdateAsync(`0)">
+            <summary>
+            异步更新一条实体
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

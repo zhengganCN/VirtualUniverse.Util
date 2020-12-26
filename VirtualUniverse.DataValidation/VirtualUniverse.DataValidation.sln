@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{DA736676-FB8D-488F-9603-4C35800FC6C9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.DataValidation", "VirtualUniverse.DataValidation\VirtualUniverse.DataValidation.csproj", "{D2C750CA-3309-4C2B-8A78-A8519680B5E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DA736676-FB8D-488F-9603-4C35800FC6C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA736676-FB8D-488F-9603-4C35800FC6C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA736676-FB8D-488F-9603-4C35800FC6C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA736676-FB8D-488F-9603-4C35800FC6C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2C750CA-3309-4C2B-8A78-A8519680B5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2C750CA-3309-4C2B-8A78-A8519680B5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2C750CA-3309-4C2B-8A78-A8519680B5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2C750CA-3309-4C2B-8A78-A8519680B5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AD3FE58-2DEE-4007-B208-39800D3C263B}
+	EndGlobalSection
+EndGlobal

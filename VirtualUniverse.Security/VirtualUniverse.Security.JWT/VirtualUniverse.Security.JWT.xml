@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Security.JWT</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Security.JWT.Models.JWTParamModel">
+            <summary>
+            jwt参数模型
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Security.JWT.Models.JWTParamModel.Issuer">
+            <summary>
+            JWT的签发者
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Security.JWT.Models.JWTParamModel.Expires">
+            <summary>
+            过期时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Security.JWT.Models.JWTParamModel.Key">
+            <summary>
+            密钥
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Security.JWT.Models.JWTParamModel.Audience">
+            <summary>
+            接受token者
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Security.JWT.Services.JsonWebToken">
+            <summary>
+            jwt帮助类
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Security.JWT.Services.JsonWebToken.#ctor(System.String,System.Int32,System.Byte[],System.String)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="issuer">JWT的签发者</param>
+            <param name="expires">过期时间间隔</param>
+            <param name="key">加密密钥</param>
+            <param name="audience"></param>
+        </member>
+        <member name="M:VirtualUniverse.Security.JWT.Services.JsonWebToken.SetUserId(System.String)">
+            <summary>
+            设置用户唯一标识
+            </summary>
+            <param name="userId"></param>
+        </member>
+        <member name="M:VirtualUniverse.Security.JWT.Services.JsonWebToken.SetAuthorities(System.String)">
+            <summary>
+            设置用户权限列表
+            </summary>
+            <param name="authorities"></param>
+        </member>
+        <member name="M:VirtualUniverse.Security.JWT.Services.JsonWebToken.GetUserId(System.String)">
+            <summary>
+            获取token中的用户ID
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Security.JWT.Services.JsonWebToken.GetAuthorities(System.String)">
+            <summary>
+            获取token中的权限ID列表
+            </summary>
+            <param name="token"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Security.JWT.Services.JsonWebToken.GenerateToken">
+            <summary>
+            生成Token
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>算法集合：
+唯一ID算法：雪花算法、随机数生成算法</Description>
+    <Copyright>VirtualUniverse</Copyright>
+    <PackageReleaseNotes>算法集合：
+唯一ID算法：雪花算法</PackageReleaseNotes>
+    <Company>ZG</Company>
+    <Authors>ZG</Authors>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Algorithm\VirtualUniverse.Algorithm\VirtualUniverse.Algorithm.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="VirtualUniverse.Algorithm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

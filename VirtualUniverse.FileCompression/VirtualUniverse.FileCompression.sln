@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{9B109951-0E23-455C-826D-4BAA70C30F5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.FileCompression", "VirtualUniverse.FileCompression\VirtualUniverse.FileCompression.csproj", "{A60486E6-1C55-47E7-9446-3389BB2676A1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9B109951-0E23-455C-826D-4BAA70C30F5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B109951-0E23-455C-826D-4BAA70C30F5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B109951-0E23-455C-826D-4BAA70C30F5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B109951-0E23-455C-826D-4BAA70C30F5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A60486E6-1C55-47E7-9446-3389BB2676A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A60486E6-1C55-47E7-9446-3389BB2676A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A60486E6-1C55-47E7-9446-3389BB2676A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A60486E6-1C55-47E7-9446-3389BB2676A1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B701BBDD-2420-4659-BB1C-70E281241B2E}
+	EndGlobalSection
+EndGlobal

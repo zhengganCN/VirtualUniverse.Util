@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.AssemblyOperation", "VirtualUniverse.Service.AssemblyOperation\VirtualUniverse.Service.AssemblyOperation.csproj", "{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.AutoDependencyInjection", "VirtualUniverse.Service.AutoDependencyInjection\VirtualUniverse.Service.AutoDependencyInjection.csproj", "{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.Consul", "VirtualUniverse.Service.Consul\VirtualUniverse.Service.Consul.csproj", "{6C5523ED-B149-4C62-BF98-BC44956A8559}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.FtpOperation", "VirtualUniverse.Service.FtpOperation\VirtualUniverse.Service.FtpOperation.csproj", "{6D52B703-BACE-4F83-AD80-53910D40547D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.IdPool", "VirtualUniverse.Service.IdPool\VirtualUniverse.Service.IdPool.csproj", "{6276D969-E7CD-44EB-A23A-201252F8F532}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.TimedTask", "VirtualUniverse.Service.TimedTask\VirtualUniverse.Service.TimedTask.csproj", "{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D52B703-BACE-4F83-AD80-53910D40547D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D52B703-BACE-4F83-AD80-53910D40547D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D52B703-BACE-4F83-AD80-53910D40547D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D52B703-BACE-4F83-AD80-53910D40547D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6276D969-E7CD-44EB-A23A-201252F8F532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6276D969-E7CD-44EB-A23A-201252F8F532}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6276D969-E7CD-44EB-A23A-201252F8F532}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6276D969-E7CD-44EB-A23A-201252F8F532}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A149FCD2-4E6B-4B8B-9CA1-C987B57C1AC1}
+	EndGlobalSection
+EndGlobal

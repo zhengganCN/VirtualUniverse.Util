@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Authors>ZG</Authors>
+    <Copyright>VirtualUniverse.Service.Consul</Copyright>
+    <Description>Consul服务注册、发现、配置中心</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Service\VirtualUniverse.Service.Consul\VirtualUniverse.Service.Consul.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consul" Version="1.6.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="VirtualUniverse.Configuration" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

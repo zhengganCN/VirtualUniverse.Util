@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Service.IdPool</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Service.IdPool.IdPool">
+            <summary>
+            Id池
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.Service.IdPool.IdPool.ObjectLock">
+            <summary>
+            对象锁
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Service.IdPool.IdPool.Seed">
+            <summary>
+            触发补充Id池的种子；当Id池中id的数量小于 IdPoolSize * Seed 时，触发补充Id操作
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Service.IdPool.IdPool.IdPoolSize">
+            <summary>
+            Id池大小
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.Service.IdPool.IdPool.Ids">
+            <summary>
+            id队列
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Service.IdPool.IdPool.GainId(System.Func{System.Collections.Generic.List{System.Int64}})">
+            <summary>
+            获取id池的第一个id，当id池不足时，通过匿名委托函数获取新生成的ID，补充Id池
+            </summary>
+            <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.IdPool.IdPool.EnterIdsQueue(System.Func{System.Collections.Generic.List{System.Int64}})">
+            <summary>
+            入队
+            </summary>
+            <param name="gainIdsFunc">当Id池中的Id数量不够，执行该匿名委托，该匿名委托用于生成id，补充id池的id数量</param>
+        </member>
+    </members>
+</doc>

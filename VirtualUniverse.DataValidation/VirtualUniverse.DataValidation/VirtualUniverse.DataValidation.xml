@@ -1,0 +1,357 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.DataValidation</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.CellPhoneAttribute">
+            <summary>
+            移动电话验证
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.ChineseAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute">
+            <summary>
+            文件大小验证特性
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.Size">
+            <summary>
+            文件大小
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.Unit">
+            <summary>
+            大小单位，默认值为KB
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.ValidFileSize(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            验证文件大小是否符合要求
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.EnumSizeUnit">
+            <summary>
+            文件大小单位枚举
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.EnumSizeUnit.UnitByte">
+            <summary>
+            Byte
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.EnumSizeUnit.UnitKB">
+            <summary>
+            KB
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.FileSizeAttribute.EnumSizeUnit.UnitMB">
+            <summary>
+            MB
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.FileTypeAttribute">
+            <summary>
+            文件类型验证特性
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.FileTypeAttribute.FileType">
+            <summary>
+            文件类型
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FileTypeAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FileTypeAttribute.ValidFileType(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            验证文件类型
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.FixLengthAttribute">
+            <summary>
+            固定长度验证特性
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.DataValidation.ValidationAttributes.FixLengthAttribute.Lengths">
+            <summary>
+            字符串长度
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FixLengthAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.IDCardAttribute">
+            <summary>
+            ID卡格式验证
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.IDCardAttribute.CardType">
+            <summary>
+            卡类型（默认值为身份证）
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.IDCardAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.EnumIDCardType">
+            <summary>
+            ID卡类型
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationAttributes.EnumIDCardType.IdentityNumber">
+            <summary>
+            身份证
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.MailAttribute">
+            <summary>
+            邮箱验证
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.NoSpaceAttribute">
+            <summary>
+            字符串没有空格验证特性
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.NoSpaceAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value">验证值</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.NotNull">
+            <summary>
+            类 描 述：
+            <br></br>
+            作    者 ：zhenggan ；创建时间 ：2020/12/24 17:05:47 ；更新时间 ：
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.OnlyNumberAttribute">
+            <summary>
+            字符串只能包含数字特性
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.OnlyNumberAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.StringConvertLongAttribute">
+            <summary>
+            字符串转换成长整型数据验证特性
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.StringConvertLongAttribute.IsValid(System.Object)">
+            <summary>
+            是否验证通过
+            </summary>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationFilter.ValidationModelFilterAttribute">
+            <summary>
+            模型验证拦截器
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationFilter.ValidationModelFilterAttribute.OnActionExecuting(Microsoft.AspNetCore.Mvc.Filters.ActionExecutingContext)">
+            <summary>
+            在函数执行前验证
+            </summary>
+            <param name="context">上下文</param>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult">
+            <summary>
+            验证结果
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult.FieldName">
+            <summary>
+            字段名称
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult.FieldVerifyResult">
+            <summary>
+            字段验证结果
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState">
+            <summary>
+            验证模型状态
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState._model">
+            <summary>
+            要验证的模型，不能为空
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.#ctor(System.Object)">
+            <summary>
+            验证模型状态
+            </summary>
+            <param name="model">要验证的模型，不能为空</param>
+        </member>
+        <member name="P:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.IsValid">
+            <summary>
+            模型是否验证通过
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.ValidResult">
+            <summary>
+            模型验证结果
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.VerifyModel">
+            <summary>
+            验证模型
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.GetPropertyInfosIncludeChildrenPropertyInfos(System.Object)">
+            <summary>
+            获取对象的所有属性
+            </summary>
+            <param name="model">验证结果</param>
+            <returns><see cref="T:VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult"/></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.DistinguishCustomType(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            分类（值类型属性、字符串类型属性）和（自定义类型属性）
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <returns><see cref="T:VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult"/></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.AttributeIsNotValueTypeOrIsEnumerable(System.Object,System.Reflection.PropertyInfo,VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult)">
+            <summary>
+            判断非值类型属性属性是否继承了IEnumerable接口，是，则表示该属性是一个可枚举列表，否，则表示该属性是一个非值类型对象
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="result">验证结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.HandleNotValueTypeAttribute(System.Object,System.Reflection.PropertyInfo,VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult)">
+            <summary>
+            处理属性为非值类型的属性
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="result">验证结果</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.HandleEnumrableAttribute(System.Object,System.Reflection.PropertyInfo,VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult)">
+            <summary>
+            处理属性类型为可枚举的属性
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="result">验证结果</param>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.GetAttributeValidationResult(System.Object,System.Reflection.PropertyInfo)">
+            <summary>
+            获取属性的验证结果
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <returns><see cref="T:VirtualUniverse.DataValidation.ValidationModel.AmazedValidationResult"/></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationModel.ValidationModelState.GetValidationAttributeResult(System.Object,System.Reflection.PropertyInfo,System.Attribute)">
+            <summary>
+            验证具有继承自<see cref="T:System.ComponentModel.DataAnnotations.ValidationAttribute"/>特性的属性，并返回验证结果
+            </summary>
+            <param name="model">包含属性的对象</param>
+            <param name="propertyInfo">要验证的属性</param>
+            <param name="attribute">属性的特性</param>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification">
+            <summary>
+            身份证号验证
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.ProvinceCode">
+            <summary>
+            省份代码
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.ValidIDNumber(System.String)">
+            <summary>
+            验证身份证号
+            </summary>
+            <param name="idNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.ValidIDNumber18(System.String)">
+            <summary> 
+            验证18位身份证号
+            </summary>
+            <param name="idNumber">身份证号</param>
+            <returns>验证成功为True，否则为False</returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.ValidIDNumber15(System.String)">
+            <summary> 
+            验证15位身份证号 
+            </summary> 
+            <param name="idNumber">身份证号</param> 
+            <returns>验证成功为True，否则为False</returns> 
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.Valid18Code(System.String)">
+            <summary>
+            验证18位身份证的第18位的合法性
+            </summary>
+            <param name="idNumber">身份证号</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.VaildDate(System.String)">
+            <summary>
+            验证日期格式是否正确
+            </summary>
+            <param name="date">日期</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationServices.IDNumberVerification.ValidProvince(System.String)">
+            <summary>
+            省份验证
+            </summary>
+            <param name="idNumber">身份证号</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.DataValidation.ValidationServices.PhoneNumberVerification">
+            <summary>
+            手机号验证
+            </summary>
+        </member>
+    </members>
+</doc>

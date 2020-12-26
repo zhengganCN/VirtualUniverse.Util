@@ -1,0 +1,261 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.ModelResultStandard</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension">
+            <summary>
+            模型结果扩展
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.SuccessResult``1(VirtualUniverse.ModelResultStandard.ModelResult{``0},``0,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
+            <summary>
+            成功结果
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="result">扩展类</param>
+            <param name="data">数据</param>
+            <param name="code">成功/错误代码</param>
+            <param name="pagination">分页信息</param>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.SuccessResult(VirtualUniverse.ModelResultStandard.ModelResult,System.Object,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
+            <summary>
+            成功结果
+            </summary>
+            <param name="result">扩展类</param>
+            <param name="data">数据</param>
+            <param name="code">成功/错误代码</param>
+            <param name="pagination">分页信息</param>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.FailedResult``1(VirtualUniverse.ModelResultStandard.ModelResult{``0},System.Enum,System.Object)">
+            <summary>
+            失败结果
+            </summary>
+            <typeparam name="T">数据类型</typeparam>
+            <param name="result">扩展类</param>
+            <param name="code">成功/错误代码</param>
+            <param name="errorInfo">错误信息</param>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.FailedResult(VirtualUniverse.ModelResultStandard.ModelResult,System.Enum,System.Object)">
+            <summary>
+            失败结果
+            </summary>
+            <param name="result">扩展类</param>
+            <param name="code">成功/错误代码</param>
+            <param name="errorInfo">错误信息</param>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.ModelResult">
+            <summary>
+            返回的视图模型以及结果信息
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult.Pagination">
+            <summary>
+            分页信息
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult.Message">
+            <summary>
+            提示信息
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult.ErrorInfo">
+            <summary>
+            错误信息
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult.Code">
+            <summary>
+            成功/错误代码
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult.Success">
+            <summary>
+            成功标识,操作执行是否成功
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.SuccessResult(System.Object,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
+            <summary>
+            返回成功时调用
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">成功代码</param>
+            <param name="pagination">分页信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.FailedResult(System.Enum,System.String)">
+            <summary>
+            返回失败时调用
+            </summary>
+            <param name="code">错误代码</param>
+            <param name="errorInfo">错误信息</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.GetCodeInfo(System.Enum)">
+            <summary>
+            获取Code信息
+            </summary>
+            <param name="code">成功/错误枚举</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.ModelResult`1">
+            <summary>
+            返回的视图模型以及结果信息
+            </summary>
+            <typeparam name="T">返回的数据类型</typeparam>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.ModelResult`1.Data">
+            <summary>
+            返回数据
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult`1.SuccessResult(`0,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
+            <summary>
+            返回成功时调用
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">成功代码</param>
+            <param name="pagination">分页信息</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.Models.EnumAuthError">
+            <summary>
+            枚举授权错误
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumAuthError.LoginFailed">
+            <summary>
+            账号或密码验证不通过
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumAuthError.InsufficientAuthoritys">
+            <summary>
+            权限不足
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation">
+            <summary>
+            数据操作结果枚举
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.InsertSucceed">
+            <summary>
+            数据添加成功
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.InsertFaild">
+            <summary>
+            数据添加失败
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.DeleteSucceed">
+            <summary>
+            数据删除成功
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.DeleteFaild">
+            <summary>
+            数据删除失败
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.UpdateSucceed">
+            <summary>
+            数据更新成功
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.UpdateFaild">
+            <summary>
+            数据更新失败
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.SelectSucceed">
+            <summary>
+            数据查询成功
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumDataOperation.SelectFaild">
+            <summary>
+            数据查询失败
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.Models.EnumException">
+            <summary>
+            枚举服务异常
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumException.ServerError">
+            <summary>
+            服务器异常，请稍后再试
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumException.ServerBusy">
+            <summary>
+            服务器繁忙，请稍后再试
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.Models.EnumModelError">
+            <summary>
+            模型验证结果提示枚举
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumModelError.ModelVaildFaild">
+            <summary>
+            模型验证失败
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.Models.EnumResult">
+            <summary>
+            枚举结果
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumResult.Error">
+            <summary>
+            调用失败
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.ModelResultStandard.Models.EnumResult.Success">
+            <summary>
+            调用成功
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.ModelResultStandard.Services.Pagination">
+            <summary>
+            分页
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.Services.Pagination.#ctor(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            初始化
+            </summary>
+            <param name="count">项总数</param>
+            <param name="pageIndex">页码</param>
+            <param name="pageSize">页面大小</param>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.Services.Pagination.PageIndex">
+            <summary>
+            页面索引
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.Services.Pagination.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.Services.Pagination.Count">
+            <summary>
+            项总数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.ModelResultStandard.Services.Pagination.PageCount">
+            <summary>
+            页面总数
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>ZG</Authors>
+    <Description>模型结果：API统一返回结果</Description>
+    <Copyright>VirtualUniverse</Copyright>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <Version>1.0.3</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.ModelResultStandard\VirtualUniverse.ModelResultStandardStandard\VirtualUniverse.ModelResultStandard.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="VirtualUniverse.Extension" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="VirtualUniverse.ModelResultStandard.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Description>加解密算法：AES、DES、MD5、RSA、SHA</Description>
+    <Copyright>VirtualUniverse</Copyright>
+    <Authors>ZG</Authors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Security\VirtualUniverse.Security.Cryptography\VirtualUniverse.Security.Cryptography.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="VirtualUniverse.ModelResultStandard" Version="1.0.3" />
+  </ItemGroup>
+
+</Project>

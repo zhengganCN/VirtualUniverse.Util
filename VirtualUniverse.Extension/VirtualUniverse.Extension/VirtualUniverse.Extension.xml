@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Extension</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Extension.Extensions.EnumExtension">
+            <summary>
+            枚举扩展类
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Extensions.EnumExtension.GetDescription(System.Enum)">
+            <summary>
+            获取枚举描述
+            </summary>
+            <param name="value">枚举值</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.Extension.Extensions.ExpressionExtension">
+            <summary>
+            表达式树扩展
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Extensions.ExpressionExtension.And``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            且操作
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Extensions.ExpressionExtension.Or``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            或操作
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="left"></param>
+            <param name="right"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.Extension.Extensions.RebuildExpression">
+            <summary>
+            重建表达式树（替换表达式参数）
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Extensions.RebuildExpression.#ctor(System.Linq.Expressions.ParameterExpression,System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="left"></param>
+            <param name="right"></param>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Extensions.RebuildExpression.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            重写
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.Extension.Extensions.IEnumerableExtension">
+            <summary>
+            枚举接口扩展
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Extensions.IEnumerableExtension.ToPagination``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>
+            分页
+            </summary>
+            <typeparam name="TSource">实体类型</typeparam>
+            <param name="sources">数据源</param>
+            <param name="pageIndex">分页索引</param>
+            <param name="pageSize">分页大小</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.Extension.Models.EnumModel">
+            <summary>
+            枚举模型
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Extension.Models.EnumModel.EnumKey">
+            <summary>
+            枚举Key
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Extension.Models.EnumModel.EnumValue">
+            <summary>
+            枚举值
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Extension.Models.EnumModel.EnumDescription">
+            <summary>
+            枚举描述
+            </summary>
+        </member>
+    </members>
+</doc>

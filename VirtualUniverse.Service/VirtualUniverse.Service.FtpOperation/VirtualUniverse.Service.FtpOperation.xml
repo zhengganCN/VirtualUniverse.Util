@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Service.FtpOperation</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Service.FtpOperation.FtpOperation">
+            <summary>
+            ftp操作类
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpClient(VirtualUniverse.Service.FtpOperation.FtpStratupParam)">
+            <summary>
+            获取FTP客户端
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpDirectories(FluentFTP.FtpClient,System.String,System.Boolean)">
+            <summary>
+            获取指定路径下的所有的文件夹
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpDirectories(FluentFTP.FtpClient,System.String,System.Func{FluentFTP.FtpListItem,System.Boolean},System.Boolean)">
+            <summary>
+            获取路径下的所有的文件夹
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="dirCond">目录过滤条件</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpFiles(FluentFTP.FtpClient,System.String,System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(不包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpFiles(FluentFTP.FtpClient,System.String,System.Func{FluentFTP.FtpListItem,System.Boolean},System.Func{FluentFTP.FtpListItem,System.Boolean},System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(不包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="dirCond">目录过滤条件</param>
+            <param name="fileCond">文件过滤条件</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpListItems(FluentFTP.FtpClient,System.String,System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Service.FtpOperation.FtpOperation.GetFtpFilesDirectory(FluentFTP.FtpClient,System.String,System.Func{FluentFTP.FtpListItem,System.Boolean},System.Boolean)">
+            <summary>
+            获取路径下的所有的文件(包括目录)
+            </summary>
+            <param name="ftpClient">ftp客户端</param>
+            <param name="path">路径</param>
+            <param name="dirCond">目录过滤条件</param>
+            <param name="isRecursion">是否递归获取</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.Service.FtpOperation.FtpStratupParam">
+            <summary>
+            ftp启动参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Service.FtpOperation.FtpStratupParam.Host">
+            <summary>
+            主机地址
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Service.FtpOperation.FtpStratupParam.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Service.FtpOperation.FtpStratupParam.Password">
+            <summary>
+            密码
+            </summary>
+        </member>
+    </members>
+</doc>

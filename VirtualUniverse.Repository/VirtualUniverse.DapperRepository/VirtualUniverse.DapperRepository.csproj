@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>ZG</Authors>
+    <Description>Dapper仓储</Description>
+    <Copyright>VirtualUniverse</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Repository\VirtualUniverse.DapperRepository\VirtualUniverse.DapperRepository.xml</DocumentationFile>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>数据转换：进制转换、时间转换</Description>
+    <PackageReleaseNotes>数据转换：进制转换、时间转换</PackageReleaseNotes>
+    <Authors>ZG</Authors>
+    <Company>ZG</Company>
+    <Copyright>VirtualUniverse</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Convert\VirtualUniverse.Convert\VirtualUniverse.Convert.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="VirtualUniverse.Convert.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
