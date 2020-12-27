@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
 using System.Text;
-using VirtualUniverse.EFCoreRepository.Attributes;
+using VirtualUniverse.Repository.EFCore.Attributes;
 
-namespace VirtualUniverse.EFCoreRepository.Extensions
+namespace VirtualUniverse.Repository.EFCore.Extensions
 {
     /// <summary>
     /// 创建模型说明

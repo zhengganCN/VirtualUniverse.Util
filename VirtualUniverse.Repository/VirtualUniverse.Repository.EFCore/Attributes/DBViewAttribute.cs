@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VirtualUniverse.EFCoreRepository.Attributes
+namespace VirtualUniverse.Repository.EFCore.Attributes
 {
     /// <summary>
     /// 视图特性

@@ -37,6 +37,8 @@ namespace VirtualUniverse.IRepository
         /// <param name="entity"></param>
         /// <returns></returns>
         Task<int> DeleteAsync(TEntity entity);
+        void Dispose();
+
         /// <summary>
         /// 查询一条实体
         /// </summary>

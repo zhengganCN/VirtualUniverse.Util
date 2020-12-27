@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VirtualUniverse.RedisRepository.Repository
+namespace VirtualUniverse.Repository.Redis.Repository
 {
     /// <summary>
     /// Redis操作类

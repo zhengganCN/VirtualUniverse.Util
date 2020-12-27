@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace VirtualUniverse.EFCoreRepository.Extensions
+namespace VirtualUniverse.Repository.EFCore.Extensions
 {
     /// <summary>
     /// 分页扩展

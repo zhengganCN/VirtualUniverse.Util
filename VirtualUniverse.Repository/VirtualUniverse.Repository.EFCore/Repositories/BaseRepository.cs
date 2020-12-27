@@ -9,20 +9,20 @@ using VirtualUniverse.IRepository;
 using VirtualUniverse.Repository.Model;
 using VirtualUniverse.Repository.Model.Models;
 
-namespace VirtualUniverse.EFCoreRepository.Repository
+namespace VirtualUniverse.Repository.EFCore.Repositor
 {
     /// <summary>
     /// 仓储基类
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
-    public abstract class EFCoreRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity, new()
+    public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity, new()
     {
         private readonly DbContext _context;
         /// <summary>
         /// 初始化
         /// </summary>
         /// <param name="context"></param>
-        protected EFCoreRepository(DbContext context)
+        protected BaseRepository(DbContext context)
         {
             _context = context;
         }

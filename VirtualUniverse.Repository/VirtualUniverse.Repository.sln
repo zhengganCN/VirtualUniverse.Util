@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{8A7368BB-B4E3-47B5-A397-968855DC1F3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{8A7368BB-B4E3-47B5-A397-968855DC1F3B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.EFCoreRepository", "VirtualUniverse.EFCoreRepository\VirtualUniverse.EFCoreRepository.csproj", "{DB73978F-D464-435C-A230-A239A1A55F0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Repository.Model", "VirtualUniverse.Repository.Model\VirtualUniverse.Repository.Model.csproj", "{E97311CF-E31D-44CC-AA99-F83192ED73BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.DapperRepository", "VirtualUniverse.DapperRepository\VirtualUniverse.DapperRepository.csproj", "{7FA600AD-17CB-4586-B9EB-BD06A8B8DF57}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.Dapper", "VirtualUniverse.Repository.Dapper\VirtualUniverse.Repository.Dapper.csproj", "{FF266E44-7744-4DC3-8D74-23036876EB53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.MongoRepository", "VirtualUniverse.MongoRepository\VirtualUniverse.MongoRepository.csproj", "{892293C2-564D-4959-83E3-8CCD12DE9F71}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.EFCore", "VirtualUniverse.Repository.EFCore\VirtualUniverse.Repository.EFCore.csproj", "{B94C462E-77F1-4B59-BC1E-47C2AFD4A772}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.SqlSugarRepository", "VirtualUniverse.SqlSugarRepository\VirtualUniverse.SqlSugarRepository.csproj", "{B639344E-C39D-4B7A-9443-DC042B9BCBA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.IRepository", "VirtualUniverse.Repository.IRepository\VirtualUniverse.Repository.IRepository.csproj", "{080647DB-9206-4B33-AFA2-50DD6765B677}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.RedisRepository", "VirtualUniverse.RedisRepository\VirtualUniverse.RedisRepository.csproj", "{54C5A07D-CC0C-4493-9D19-61D0305BF193}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.Mongo", "VirtualUniverse.Repository.Mongo\VirtualUniverse.Repository.Mongo.csproj", "{097DFBBE-02B9-4A2A-9DB9-710AEEC13992}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.Model", "VirtualUniverse.Repository.Model\VirtualUniverse.Repository.Model.csproj", "{E97311CF-E31D-44CC-AA99-F83192ED73BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.Redis", "VirtualUniverse.Repository.Redis\VirtualUniverse.Repository.Redis.csproj", "{A814CD36-5736-415C-949E-BF2B2C4980DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.IRepository", "VirtualUniverse.IRepository\VirtualUniverse.IRepository.csproj", "{8EDEF64A-F6FB-4C2B-B75E-A62E2FF10D94}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.SqlSugar", "VirtualUniverse.Repository.SqlSugar\VirtualUniverse.Repository.SqlSugar.csproj", "{6825EA1C-7EEB-4295-A71E-2118FA2B613A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,34 +29,34 @@ Global
 		{8A7368BB-B4E3-47B5-A397-968855DC1F3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8A7368BB-B4E3-47B5-A397-968855DC1F3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8A7368BB-B4E3-47B5-A397-968855DC1F3B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DB73978F-D464-435C-A230-A239A1A55F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DB73978F-D464-435C-A230-A239A1A55F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DB73978F-D464-435C-A230-A239A1A55F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DB73978F-D464-435C-A230-A239A1A55F0B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7FA600AD-17CB-4586-B9EB-BD06A8B8DF57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7FA600AD-17CB-4586-B9EB-BD06A8B8DF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7FA600AD-17CB-4586-B9EB-BD06A8B8DF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7FA600AD-17CB-4586-B9EB-BD06A8B8DF57}.Release|Any CPU.Build.0 = Release|Any CPU
-		{892293C2-564D-4959-83E3-8CCD12DE9F71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{892293C2-564D-4959-83E3-8CCD12DE9F71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{892293C2-564D-4959-83E3-8CCD12DE9F71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{892293C2-564D-4959-83E3-8CCD12DE9F71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B639344E-C39D-4B7A-9443-DC042B9BCBA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B639344E-C39D-4B7A-9443-DC042B9BCBA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B639344E-C39D-4B7A-9443-DC042B9BCBA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B639344E-C39D-4B7A-9443-DC042B9BCBA7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54C5A07D-CC0C-4493-9D19-61D0305BF193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54C5A07D-CC0C-4493-9D19-61D0305BF193}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54C5A07D-CC0C-4493-9D19-61D0305BF193}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54C5A07D-CC0C-4493-9D19-61D0305BF193}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E97311CF-E31D-44CC-AA99-F83192ED73BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E97311CF-E31D-44CC-AA99-F83192ED73BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E97311CF-E31D-44CC-AA99-F83192ED73BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E97311CF-E31D-44CC-AA99-F83192ED73BD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EDEF64A-F6FB-4C2B-B75E-A62E2FF10D94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EDEF64A-F6FB-4C2B-B75E-A62E2FF10D94}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EDEF64A-F6FB-4C2B-B75E-A62E2FF10D94}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EDEF64A-F6FB-4C2B-B75E-A62E2FF10D94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF266E44-7744-4DC3-8D74-23036876EB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF266E44-7744-4DC3-8D74-23036876EB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF266E44-7744-4DC3-8D74-23036876EB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF266E44-7744-4DC3-8D74-23036876EB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94C462E-77F1-4B59-BC1E-47C2AFD4A772}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94C462E-77F1-4B59-BC1E-47C2AFD4A772}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94C462E-77F1-4B59-BC1E-47C2AFD4A772}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94C462E-77F1-4B59-BC1E-47C2AFD4A772}.Release|Any CPU.Build.0 = Release|Any CPU
+		{080647DB-9206-4B33-AFA2-50DD6765B677}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{080647DB-9206-4B33-AFA2-50DD6765B677}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{080647DB-9206-4B33-AFA2-50DD6765B677}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{080647DB-9206-4B33-AFA2-50DD6765B677}.Release|Any CPU.Build.0 = Release|Any CPU
+		{097DFBBE-02B9-4A2A-9DB9-710AEEC13992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{097DFBBE-02B9-4A2A-9DB9-710AEEC13992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{097DFBBE-02B9-4A2A-9DB9-710AEEC13992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{097DFBBE-02B9-4A2A-9DB9-710AEEC13992}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A814CD36-5736-415C-949E-BF2B2C4980DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A814CD36-5736-415C-949E-BF2B2C4980DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A814CD36-5736-415C-949E-BF2B2C4980DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A814CD36-5736-415C-949E-BF2B2C4980DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6825EA1C-7EEB-4295-A71E-2118FA2B613A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6825EA1C-7EEB-4295-A71E-2118FA2B613A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6825EA1C-7EEB-4295-A71E-2118FA2B613A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6825EA1C-7EEB-4295-A71E-2118FA2B613A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
