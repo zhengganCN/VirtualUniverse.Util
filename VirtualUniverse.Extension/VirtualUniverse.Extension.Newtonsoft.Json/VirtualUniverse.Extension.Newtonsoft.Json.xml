@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Extension.Newtonsoft.Json</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Extension.Newtonsoft.Json.ContractResolvers.LimitPropsContractResolver">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Newtonsoft.Json.ContractResolvers.LimitPropsContractResolver.#ctor(System.String[],System.Boolean)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="props">传入的属性数组</param>
+            <param name="retain">true:表示props是需要保留的字段  false：表示props是要排除的字段</param>
+        </member>
+        <member name="T:VirtualUniverse.Extension.Newtonsoft.Json.JsonConvertExtension">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Newtonsoft.Json.JsonConvertExtension.SerializeObject``1(``0,System.Func{``0,System.Object},System.Boolean,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            排除或保留特定字段后序列化对象
+            </summary>
+            <typeparam name="T">对象类型</typeparam>
+            <param name="value">要序列化的对象</param>
+            <param name="paramsObject">要保留或排除的参数对象</param>
+            <param name="retain">true:表示props是需要保留的字段  false：表示props是要排除的字段</param>
+            <param name="settings">序列化设置</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Extension.Newtonsoft.Json.JsonConvertExtension.SerializeObject(System.Object,System.String[],System.Boolean,Newtonsoft.Json.JsonSerializerSettings)">
+            <summary>
+            排除或保留特定字段后序列化对象
+            </summary>
+            <param name="value">要序列化的对象</param>
+            <param name="propertyNames">要保留或排除的属性名</param>
+            <param name="retain">true:表示props是需要保留的字段  false：表示props是要排除的字段</param>
+            <param name="settings">序列化设置</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

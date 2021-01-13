@@ -1,46 +1,69 @@
 ﻿using Consul;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading;
 using VirtualUniverse.Configuration.Models;
+using VirtualUniverse.Service.Consul.Models;
 
 namespace VirtualUniverse.Service.Consul.Services
 {
     /// <summary>
     /// Consul键值对读取扩展
     /// </summary>
-    public static class ConsulConfigRead
+    public class ConsulConfigRead : IDisposable
     {
+        private readonly string consulAddress;
+        private readonly ConsulConfigOptions consulConfigOptions = new ConsulConfigOptions();
+        private bool disposedValue;
+        private Timer timer;
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="consulAddress">Consul地址</param>
+        public ConsulConfigRead(string consulAddress)
+        {
+            this.consulAddress = consulAddress;
+            IntervalRead();
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="consulAddress">Consul地址</param>
+        /// <param name="options">读取配置的设置</param>
+        public ConsulConfigRead(string consulAddress, Action<ConsulConfigOptions> options)
+        {
+            this.consulAddress = consulAddress;
+            options.Invoke(consulConfigOptions);
+            IntervalRead();
+        }
+
+        private void IntervalRead()
+        {
+            timer = new Timer(ReadConfig, null, 1000, consulConfigOptions.Interval);
+        }
+
         /// <summary>
         /// 从Consul读取配置
-        /// <br></br>
-        /// “prod”读取键为Production的值
-        /// <br></br>
-        /// “dev”读取键为Development的值
-        /// <br></br>
-        /// “test”读取键为Test的值
         /// </summary>
-        /// <param name="consulAddress"></param>
-        /// <param name="env">环境值，只能是“prod”，“dev”，“test”这三个值之一，如果env的值与上述的任意一个不匹配，则env默认为“dev”</param>
-        /// <param name="dirPath">配置目录路径，如果有，则必须以“/”结尾</param>
-        public static void ReadConfig(string consulAddress, string env, string dirPath = null)
+        public void ReadConfig(object value = null)
         {
-            if (env == "dev")
+            switch (consulConfigOptions.Environment)
             {
-                ReadConfigAndSaveToConfig(consulAddress, GetEnvKeyName(EnumConfigEnvironment.Development), dirPath);
-            }
-            else if (env == "test")
-            {
-                ReadConfigAndSaveToConfig(consulAddress, GetEnvKeyName(EnumConfigEnvironment.Test), dirPath);
-            }
-            else if (env == "prod")
-            {
-                ReadConfigAndSaveToConfig(consulAddress, GetEnvKeyName(EnumConfigEnvironment.Production), dirPath);
-            }
-            else
-            {
-                ReadConfigAndSaveToConfig(consulAddress, GetEnvKeyName(EnumConfigEnvironment.Development), dirPath);
+                case "dev":
+                    ReadConfigAndSaveToConfig(GetEnvKeyName(EnumConfigEnvironment.Development));
+                    break;
+                case "test":
+                    ReadConfigAndSaveToConfig(GetEnvKeyName(EnumConfigEnvironment.Test));
+                    break;
+                case "prod":
+                    ReadConfigAndSaveToConfig(GetEnvKeyName(EnumConfigEnvironment.Production));
+                    break;
+                default:
+                    ReadConfigAndSaveToConfig(GetEnvKeyName(EnumConfigEnvironment.Development));
+                    break;
             }
         }
 
@@ -56,21 +79,19 @@ namespace VirtualUniverse.Service.Consul.Services
         /// <summary>
         /// 读取配置并把配置写入配置文件
         /// </summary>
-        /// <param name="consulAddress"></param>
-        /// <param name="env"></param>
-        /// <param name="dirPath"></param>
-        private static void ReadConfigAndSaveToConfig(string consulAddress, string env, string dirPath)
+        /// <param name="key">键</param>
+        private void ReadConfigAndSaveToConfig(string key)
         {
             var client = new ConsulClient(options =>
             {
                 options.Address = new Uri(consulAddress);
             });
-            var config = Encoding.UTF8.GetString(client.KV.Get($"{dirPath}{env}").Result.Response.Value);
+            var config = Encoding.UTF8.GetString(client.KV.Get($"{consulConfigOptions.ConfigDirectoryPath}{key}").Result.Response.Value);
             if (!string.IsNullOrWhiteSpace(config))
             {
-                using var sw = new StreamWriter($"appsettings.{env}.json");
+                using var sw = new StreamWriter($"appsettings.{key}.json");
                 sw.Write(config);
-                WriterCurrentEnvironmentValue(env);
+                WriterCurrentEnvironmentValue(key);
             }
         }
 
@@ -82,6 +103,32 @@ namespace VirtualUniverse.Service.Consul.Services
         {
             using var sw = new StreamWriter(ConstConfigPath.Environment);
             sw.Write($"{{\"CurrentEnvironment\" : \"{env}\"}}");
+        }
+        /// <summary>
+        /// 清理
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // 释放托管状态(托管对象)
+                }
+
+                timer.Dispose();
+                disposedValue = true;
+            }
+        }
+        /// <summary>
+        /// 清理
+        /// </summary>
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

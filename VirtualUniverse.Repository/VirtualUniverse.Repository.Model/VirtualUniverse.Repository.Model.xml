@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Repository.Model</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Repository.Model.Interfaces.IQueryBaseModel">
+            <summary>
+            查询模型基类接口
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Interfaces.IQueryBaseModel.Keyword">
+            <summary>
+            关键字
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Interfaces.IQueryBaseModel.PageIndex">
+            <summary>
+            页面索引
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Interfaces.IQueryBaseModel.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Repository.Model.Models.Entity">
+            <summary>
+            实体基类
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.Entity.IsDeleted">
+            <summary>
+            删除标识
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.Entity.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.Entity.DeleteTime">
+            <summary>
+            删除时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.Entity.UpdateTime">
+            <summary>
+            更新时间
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Repository.Model.Models.QueryBaseModel">
+            <summary>
+            查询模型基类
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.QueryBaseModel.Keyword">
+            <summary>
+            关键字
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.QueryBaseModel.PageIndex">
+            <summary>
+            页面索引
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Model.Models.QueryBaseModel.PageSize">
+            <summary>
+            页面大小
+            </summary>
+        </member>
+    </members>
+</doc>

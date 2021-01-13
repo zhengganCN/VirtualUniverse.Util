@@ -5,6 +5,7 @@
     <Copyright>VirtualUniverse</Copyright>
     <Authors>ZG</Authors>
     <Description>依赖注入自动注册</Description>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

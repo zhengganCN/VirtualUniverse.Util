@@ -4,6 +4,9 @@ using System.Text.RegularExpressions;
 
 namespace VirtualUniverse.DataValidation.ValidationAttributes
 {
+    /// <summary>
+    /// 中文验证
+    /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
     public sealed class ChineseAttribute : ValidationAttribute
     {

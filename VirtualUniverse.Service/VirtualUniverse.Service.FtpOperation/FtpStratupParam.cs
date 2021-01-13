@@ -1,9 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VirtualUniverse.Service.FtpOperation
+﻿namespace VirtualUniverse.Service.FtpOperation
 {
     /// <summary>
     /// ftp启动参数

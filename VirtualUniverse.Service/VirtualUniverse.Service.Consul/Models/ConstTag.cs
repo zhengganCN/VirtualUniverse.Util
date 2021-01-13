@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VirtualUniverse.Service.Consul.Models
+﻿namespace VirtualUniverse.Service.Consul.Models
 {
     /// <summary>
     /// 常量标签

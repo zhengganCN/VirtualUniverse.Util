@@ -14,7 +14,7 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <summary>
         /// 文件类型
         /// </summary>
-        public string[] FileType;
+        public string[] FileType { get; set; }
         /// <summary>
         /// 是否验证通过
         /// </summary>
@@ -51,7 +51,7 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
             var splits = file.FileName.Split('.');
             if (splits.Length >= 2)
             {
-                string fileType = splits[splits.Length - 1].ToUpper();
+                string fileType = splits[^1].ToUpper();
                 if (FileType.Any(entity => entity.ToUpper() == fileType))
                 {
                     return true;

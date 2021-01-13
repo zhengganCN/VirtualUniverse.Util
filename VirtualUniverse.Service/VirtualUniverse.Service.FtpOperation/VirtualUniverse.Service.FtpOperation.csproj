@@ -5,6 +5,7 @@
     <Authors>ZG</Authors>
     <Copyright>VirtualUniverse</Copyright>
     <Description>FTP操作</Description>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

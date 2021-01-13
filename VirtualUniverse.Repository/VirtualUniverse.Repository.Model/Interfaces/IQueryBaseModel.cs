@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VirtualUniverse.Repository.Model.Interfaces
+﻿namespace VirtualUniverse.Repository.Model.Interfaces
 {
     /// <summary>
     /// 查询模型基类接口

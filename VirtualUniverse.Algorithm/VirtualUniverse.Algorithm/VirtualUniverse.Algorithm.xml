@@ -4,6 +4,34 @@
         <name>VirtualUniverse.Algorithm</name>
     </assembly>
     <members>
+        <member name="T:VirtualUniverse.Algorithm.CRC.Crc64">
+            <summary>
+            类说明：CRC64算法
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Algorithm.CRC.Crc64.ComputeBySeparator(System.String,System.String[])">
+            <summary>
+            使用指定的分隔符分隔value后拼接成字符串生成CRC64
+            </summary>
+            <param name="splitString">分隔符</param>
+            <param name="values">字符串</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Algorithm.CRC.Crc64.Compute(System.Byte[])">
+            <summary>
+            计算CRC64
+            </summary>
+            <param name="data">数据</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Algorithm.CRC.Crc64.Compute(System.String,System.Text.Encoding)">
+            <summary>
+            计算CRC64
+            </summary>
+            <param name="text">数据</param>
+            <param name="encoding">编码方式</param>
+            <returns></returns>
+        </member>
         <member name="T:VirtualUniverse.Algorithm.MathComputer.Exceptions.RandomRangeException">
             <summary>
             随机数生成异常

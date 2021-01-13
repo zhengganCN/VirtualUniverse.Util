@@ -11,13 +11,13 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
     public sealed class FileSizeAttribute : ValidationAttribute
     {
         /// <summary>
-        /// 文件大小
+        /// 文件大小验证特性
         /// </summary>
-        public int Size = 1000;
+        public int Size { get; set; } = 1000;
         /// <summary>
         /// 大小单位，默认值为KB
         /// </summary>
-        public EnumSizeUnit Unit = EnumSizeUnit.UnitKB;
+        public EnumSizeUnit Unit { get; set; } = EnumSizeUnit.UnitKB;
         /// <summary>
         /// 是否验证通过
         /// </summary>

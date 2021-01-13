@@ -3,7 +3,7 @@
     /// <summary>
     /// 验证结果
     /// </summary>
-    public class AmazedValidationResult
+    public class ValidationResult
     {
         /// <summary>
         /// 字段名称

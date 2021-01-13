@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Reflection;
-using System.Text;
 using VirtualUniverse.Repository.EFCore.Attributes;
 
 namespace VirtualUniverse.Repository.EFCore.Extensions
@@ -20,7 +17,7 @@ namespace VirtualUniverse.Repository.EFCore.Extensions
         /// </summary>
         /// <param name="dbContext">数据库上下文</param>
         /// <param name="modelBuilder">模型构造器</param>
-        public static void ColumnCommentCreating(DbContext dbContext, ModelBuilder modelBuilder)
+        public static void ColumnCommentCreating(this ModelBuilder modelBuilder, DbContext dbContext)
         {
             var tablesOrViews = dbContext.GetType().GetProperties();//获取DbContext的所有属性
             foreach (var tableOrView in tablesOrViews)
@@ -54,7 +51,7 @@ namespace VirtualUniverse.Repository.EFCore.Extensions
         /// </summary>
         /// <param name="dbContext">数据库上下文</param>
         /// <param name="modelBuilder">模型构造器</param>
-        public static void TableOrViewCommentCreating(DbContext dbContext, ModelBuilder modelBuilder)
+        public static void TableOrViewCommentCreating(this ModelBuilder modelBuilder, DbContext dbContext)
         {
             var tablesOrViews = dbContext.GetType().GetProperties();//获取DbContext的所有属性
             foreach (var tableOrView in tablesOrViews)

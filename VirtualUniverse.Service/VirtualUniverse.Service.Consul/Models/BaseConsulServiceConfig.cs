@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace VirtualUniverse.Service.Consul.Models
 {
@@ -40,10 +38,10 @@ namespace VirtualUniverse.Service.Consul.Models
         /// <summary>
         /// 服务具有的标签
         /// </summary>
-        public string[] ConsulServiceTags{get;set;}
+        public string[] ConsulServiceTags { get; set; }
         /// <summary>
         /// 元数据
         /// </summary>
-        public Dictionary<string,string> Meta { get; set; }
+        public Dictionary<string, string> Meta { get; set; }
     }
 }

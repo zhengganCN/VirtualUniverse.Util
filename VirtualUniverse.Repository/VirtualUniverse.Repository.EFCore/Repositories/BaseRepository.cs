@@ -1,12 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
 using System.Threading.Tasks;
 using VirtualUniverse.IRepository;
-using VirtualUniverse.Repository.Model;
 using VirtualUniverse.Repository.Model.Models;
 
 namespace VirtualUniverse.Repository.EFCore.Repositor
@@ -181,7 +177,7 @@ namespace VirtualUniverse.Repository.EFCore.Repositor
         {
             typeof(TEntity).GetProperty(nameof(Entity.IsDeleted)).SetValue(entity, true);
             typeof(TEntity).GetProperty(nameof(Entity.DeleteTime)).SetValue(entity, DateTime.Now);
-            GetDbSet().Update(entity).State = EntityState.Detached; 
+            GetDbSet().Update(entity).State = EntityState.Detached;
             return _context.SaveChangesAsync();
         }
         /// <summary>
@@ -293,7 +289,7 @@ namespace VirtualUniverse.Repository.EFCore.Repositor
             GetDbSet().UpdateRange(entities);
             return _context.SaveChangesAsync();
         }
-        
+
         #endregion
     }
 }

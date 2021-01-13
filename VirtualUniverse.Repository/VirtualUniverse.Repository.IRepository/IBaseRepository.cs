@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
-using VirtualUniverse.Repository.Model;
 using VirtualUniverse.Repository.Model.Models;
 
 namespace VirtualUniverse.IRepository
@@ -37,8 +35,6 @@ namespace VirtualUniverse.IRepository
         /// <param name="entity"></param>
         /// <returns></returns>
         Task<int> DeleteAsync(TEntity entity);
-        void Dispose();
-
         /// <summary>
         /// 查询一条实体
         /// </summary>

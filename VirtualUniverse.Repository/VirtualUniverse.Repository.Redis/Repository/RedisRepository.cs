@@ -2,38 +2,52 @@
 using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
+using VirtualUniverse.Repository.Redis.Interfaces;
 
+/***********************************************************************************
+****作者：zhenggan；创建时间：2021/1/2 12:48:26；更新时间：
+************************************************************************************/
 namespace VirtualUniverse.Repository.Redis.Repository
 {
     /// <summary>
-    /// Redis操作类
+    /// 类说明：Redis仓储
     /// </summary>
-    public class RedisRepository
+    public class RedisRepository : IDisposable, IRedisRepository
     {
         private ConnectionMultiplexer connection;
-        private readonly Func<ConfigurationOptions> _func;
-        private readonly Func<int> _db;
+        private ConfigurationOptions _configurationOptions;
+        private int _db;
+        private bool disposedValue;
         /// <summary>
-        /// 构造函数
+        /// Redis仓储构造函数
         /// </summary>
-        public RedisRepository(Func<ConfigurationOptions> func, Func<int> db)
+        /// <param name="configurationOptions">配置项</param>
+        /// <param name="db">数据库序号，默认为 0 </param>
+        public RedisRepository(ConfigurationOptions configurationOptions, int db = 0)
         {
-            _func = func;
+            _configurationOptions = configurationOptions;
             _db = db;
         }
-
         /// <summary>
-        /// 数据库连接
+        /// 配置
         /// </summary>
-        public ConnectionMultiplexer CacheConnection
+        /// <param name="configurationOptions">配置选项</param>
+        /// <param name="db">数据库号</param>
+        public virtual void OnConfiguring(ConfigurationOptions configurationOptions, int db = 0)
+        {
+            _configurationOptions = configurationOptions;
+            _db = db;
+        }
+        /// <summary>
+        /// 缓存数据库，数据库连接
+        /// </summary>
+        private ConnectionMultiplexer CacheConnection
         {
             get
             {
                 if (connection == null || !connection.IsConnected)
                 {
-                    connection = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(_func.Invoke())).Value;
+                    connection = new Lazy<ConnectionMultiplexer>(() => ConnectionMultiplexer.Connect(_configurationOptions)).Value;
                 }
                 return connection;
             }
@@ -42,8 +56,10 @@ namespace VirtualUniverse.Repository.Redis.Repository
         /// <summary>
         /// 缓存数据库
         /// </summary>
-        public IDatabase CacheRedis => CacheConnection.GetDatabase(_db.Invoke());
+        private IDatabase CacheRedis => CacheConnection.GetDatabase(_db);
+
         #region String的增、改、查操作
+
         /// <summary>
         /// 保存一条记录
         /// </summary>
@@ -55,6 +71,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.StringSet(key, value, expiry);
         }
+
         /// <summary>
         /// 保存一条记录
         /// </summary>
@@ -68,6 +85,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             string json = JsonConvert.SerializeObject(value);
             return CacheRedis.StringSet(key, json, expiry);
         }
+
         /// <summary>
         /// 保存多条记录
         /// </summary>
@@ -95,6 +113,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.StringAppend(key, value);
         }
+
         /// <summary>
         /// 获取单条记录
         /// </summary>
@@ -104,6 +123,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.StringGet(key);
         }
+
         /// <summary>
         /// 获取一个key的对象
         /// </summary>
@@ -139,7 +159,9 @@ namespace VirtualUniverse.Repository.Redis.Repository
         }
 
         #endregion
+
         #region List的增、删、改、查操作
+
         /// <summary>
         /// 获取List列表
         /// </summary>
@@ -155,6 +177,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return values;
         }
+
         /// <summary>
         /// 获取List列表
         /// </summary>
@@ -171,6 +194,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return values;
         }
+
         /// <summary>
         /// 获取List列表中指定索引处的值
         /// </summary>
@@ -181,6 +205,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.ListGetByIndex(key, index);
         }
+
         /// <summary>
         /// 获取List列表中指定索引处的对象
         /// </summary>
@@ -192,6 +217,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return JsonConvert.DeserializeObject<T>(CacheRedis.ListGetByIndex(key, index));
         }
+
         /// <summary>
         /// 替换List列表中指定索引处的值
         /// </summary>
@@ -202,6 +228,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             CacheRedis.ListSetByIndex(key, index, value);
         }
+
         /// <summary>
         /// 替换List列表中指定索引处的对象
         /// </summary>
@@ -213,11 +240,12 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             CacheRedis.ListSetByIndex(key, index, JsonConvert.SerializeObject(value));
         }
+
         /// <summary>
-        /// 移除列表中与value匹配的值
-        /// 当 count 大于 0 时：从头到尾移除列表中与value匹配的值，移除数量为count的绝对值。
+        /// 移除列表中与value匹配的值<br></br>
+        /// 当 count 大于 0 时：从头到尾移除列表中与value匹配的值，移除数量为count的绝对值。<br></br>
         /// 当 count 小于 0 时：从尾到头移除列表中与value匹配的值，移除数量为count的绝对值。
-        /// 当 count 等于 0 时：移除列表中所有与value匹配的值
+        /// 当 count 等于 0 时：移除列表中所有与value匹配的值<br></br>
         /// </summary>
         /// <param name="key">键</param>
         /// <param name="value">值</param>
@@ -227,11 +255,12 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.ListRemove(key, value, count);
         }
+
         /// <summary>
-        /// 移除列表中与value匹配的对象
-        /// 当 count 大于 0 时：从头到尾移除列表中与value匹配的值，移除数量为count的绝对值。
-        /// 当 count 小于 0 时：从尾到头移除列表中与value匹配的值，移除数量为count的绝对值。
-        /// 当 count 等于 0 时：移除列表中所有与value匹配的值
+        /// 移除列表中与value匹配的对象<br></br>
+        /// 当 count 大于 0 时：从头到尾移除列表中与value匹配的值，移除数量为count的绝对值。<br></br>
+        /// 当 count 小于 0 时：从尾到头移除列表中与value匹配的值，移除数量为count的绝对值。<br></br>
+        /// 当 count 等于 0 时：移除列表中所有与value匹配的值<br></br>
         /// </summary>
         /// <typeparam name="T">保存对象的类型</typeparam>
         /// <param name="key">键</param>
@@ -244,7 +273,19 @@ namespace VirtualUniverse.Repository.Redis.Repository
         }
 
         #endregion
+
         #region Hash的增、删、改、查操作
+
+        /// <summary>
+        /// 获取Hash表
+        /// </summary>
+        /// <param name="key">键</param>
+        /// <returns></returns>
+        public HashEntry[] HashGetAll(string key)
+        {
+            return CacheRedis.HashGetAll(key);
+        }
+
         /// <summary>
         /// 获取Hash表
         /// </summary>
@@ -260,6 +301,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return pairs;
         }
+
         /// <summary>
         /// 获取Hash表
         /// </summary>
@@ -284,6 +326,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return pairs;
         }
+
         /// <summary>
         /// 获取hash表中指定字段的值
         /// </summary>
@@ -294,6 +337,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.HashGet(key, field);
         }
+
         /// <summary>
         /// 获取hash表中指定字段的对象
         /// </summary>
@@ -306,6 +350,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             var value = CacheRedis.HashGet(key, field);
             return JsonConvert.DeserializeObject<T>(value.ToString());
         }
+
         /// <summary>
         /// 保存Hash表
         /// </summary>
@@ -322,6 +367,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             CacheRedis.HashSet(key, hashEntries);
         }
+
         /// <summary>
         /// 保存Hash表
         /// </summary>
@@ -339,6 +385,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             CacheRedis.HashSet(key, hashEntries);
         }
+
         /// <summary>
         /// 删除Hash表中指定字段的值
         /// </summary>
@@ -349,6 +396,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.HashDelete(key, field);
         }
+
         /// <summary>
         /// 判断Hash表中是否存在指定字段
         /// </summary>
@@ -359,8 +407,11 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.HashExists(key, field);
         }
+
         #endregion
+
         #region Set的增、删、改、查操作
+
         /// <summary>
         /// 向Set集合中添加值
         /// </summary>
@@ -371,6 +422,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetAdd(key, value);
         }
+
         /// <summary>
         /// 向Set集合中添加值
         /// </summary>
@@ -382,6 +434,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetAdd(key, JsonConvert.SerializeObject(value));
         }
+
         /// <summary>
         /// 删除Set集合中的匹配值
         /// </summary>
@@ -392,6 +445,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetRemove(key, value);
         }
+
         /// <summary>
         /// 删除Set集合中的匹配值
         /// </summary>
@@ -403,6 +457,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetRemove(key, JsonConvert.SerializeObject(value));
         }
+
         /// <summary>
         /// Set集合大小
         /// </summary>
@@ -412,6 +467,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetLength(key);
         }
+
         /// <summary>
         /// 判断Set集合中是否存在指定的值
         /// </summary>
@@ -422,6 +478,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetContains(key, value);
         }
+
         /// <summary>
         /// 判断Set集合中是否存在指定的值
         /// </summary>
@@ -433,6 +490,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SetContains(key, JsonConvert.SerializeObject(value));
         }
+
         /// <summary>
         /// 获取Set集合中所有匹配的值
         /// </summary>
@@ -450,6 +508,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return result;
         }
+
         /// <summary>
         /// 获取Set集合中所有匹配的值
         /// </summary>
@@ -468,6 +527,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return result;
         }
+
         /// <summary>
         /// 获取Set集合中所有值
         /// </summary>
@@ -483,6 +543,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return result;
         }
+
         /// <summary>
         /// 获取Set集合中所有值
         /// </summary>
@@ -499,8 +560,11 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return result;
         }
+
         #endregion
+
         #region ZSet的增、删、改、查操作
+
         /// <summary>
         /// 向ZSet集合中添加值
         /// </summary>
@@ -512,6 +576,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SortedSetAdd(key, value, score);
         }
+
         /// <summary>
         /// 向ZSet集合中添加值
         /// </summary>
@@ -524,6 +589,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SortedSetAdd(key, JsonConvert.SerializeObject(value), score);
         }
+
         /// <summary>
         /// 删除ZSet集合中匹配的值
         /// </summary>
@@ -534,6 +600,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SortedSetRemove(key, value);
         }
+
         /// <summary>
         /// 删除ZSet集合中匹配的值
         /// </summary>
@@ -545,6 +612,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SortedSetRemove(key, value);
         }
+
         /// <summary>
         /// 计算ZSet集合的大小
         /// </summary>
@@ -554,6 +622,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.SortedSetLength(key);
         }
+
         /// <summary>
         /// 获取ZSet集合中所有匹配的值
         /// </summary>
@@ -571,6 +640,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return result;
         }
+
         /// <summary>
         /// 获取ZSet集合中所有匹配的值
         /// </summary>
@@ -589,8 +659,11 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return result;
         }
+
         #endregion
+
         #region 删除操作
+
         /// <summary>
         /// 删除单个key
         /// </summary>
@@ -600,6 +673,7 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.KeyDelete(key);
         }
+
         /// <summary>
         /// 删除多个key
         /// </summary>
@@ -616,8 +690,11 @@ namespace VirtualUniverse.Repository.Redis.Repository
             }
             return CacheRedis.KeyDelete(redisKeys);
         }
+
         #endregion
+
         #region 重命名操作
+
         /// <summary>
         /// 重新命名key
         /// </summary>
@@ -628,8 +705,11 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.KeyRename(oldKey, newKey);
         }
+
         #endregion
+
         #region 缓存过期时间设置
+
         /// <summary>
         /// 设置缓存过期
         /// </summary>
@@ -639,8 +719,11 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             CacheRedis.KeyExpire(key, datetime);
         }
+
         #endregion
+
         #region 判断Key是否存在
+
         /// <summary>
         /// 判断key是否存在
         /// </summary>
@@ -650,7 +733,34 @@ namespace VirtualUniverse.Repository.Redis.Repository
         {
             return CacheRedis.KeyExists(key);
         }
+
         #endregion
 
+        /// <summary>
+        /// 清理
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // 释放托管状态(托管对象)
+                }
+                CacheConnection.CloseAsync();
+                disposedValue = true;
+            }
+        }
+
+        /// <summary>
+        /// 清理
+        /// </summary>
+        public void Dispose()
+        {
+            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
     }
 }

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.BackgroundService</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.BackgroundService.BaseBackgroundService">
+            <summary>
+            后台服务基类
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.OnConfiguration(VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder)">
+            <summary>
+            后台服务配置
+            </summary>
+            <param name="backgroundServiceBuilder"></param>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.Execute">
+            <summary>
+            执行用户重写的耗时任务ExecuteAsync()与定时器的启动/停止操作
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.CanExecute">
+            <summary>
+            判断是否能够执行
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.StartAsync(System.Threading.CancellationToken)">
+            <summary>
+            启动任务是执行
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.StopAsync(System.Threading.CancellationToken)">
+            <summary>
+            结束任务是执行
+            </summary>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.ExecuteAsync">
+            <summary>
+            用户需重写的函数，业务逻辑在本函数中实现
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.Dispose(System.Boolean)">
+            <summary>
+            销毁
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.Dispose">
+            <summary>
+            销毁
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder">
+            <summary>
+            类说明：后台服务配置构造器
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.StartNow">
+            <summary>
+            是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.ExecutionTimes">
+            <summary>
+            执行次数，默认值为 -1，表示不限制执行次数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.Interval">
+            <summary>
+            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.StartTime">
+            <summary>
+            启动时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.EndTime">
+            <summary>
+            结束时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartNow(System.Boolean)">
+            <summary>
+            是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
+            </summary>
+            <param name="startNow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetExecutionTimes(System.Int64)">
+            <summary>
+            执行次数，默认值为 -1，表示不限制执行次数
+            </summary>
+            <param name="executionTimes"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetInterval(System.Int32)">
+            <summary>
+            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
+            </summary>
+            <param name="interval"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartTime(System.Nullable{System.DateTime})">
+            <summary>
+            启动时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+            <param name="startTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetEndTime(System.Nullable{System.DateTime})">
+            <summary>
+            结束时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+            <param name="endTime"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

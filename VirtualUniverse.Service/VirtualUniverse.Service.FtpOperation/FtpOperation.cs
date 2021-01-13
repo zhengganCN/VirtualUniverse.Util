@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace VirtualUniverse.Service.FtpOperation
 {
@@ -28,7 +25,7 @@ namespace VirtualUniverse.Service.FtpOperation
         /// <param name="path">路径</param>
         /// <param name="isRecursion">是否递归获取</param>
         /// <returns></returns>
-        public static  IList<FtpListItem> GetFtpDirectories(FtpClient ftpClient, string path, bool isRecursion)
+        public static IList<FtpListItem> GetFtpDirectories(FtpClient ftpClient, string path, bool isRecursion)
         {
             return GetFtpListItems(ftpClient, path, isRecursion).Where(entity => entity.Type == FtpFileSystemObjectType.Directory).ToList();
         }
@@ -40,7 +37,7 @@ namespace VirtualUniverse.Service.FtpOperation
         /// <param name="dirCond">目录过滤条件</param>
         /// <param name="isRecursion">是否递归获取</param>
         /// <returns></returns>
-        public static  IList<FtpListItem> GetFtpDirectories(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, bool isRecursion)
+        public static IList<FtpListItem> GetFtpDirectories(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, bool isRecursion)
         {
             var result = GetFtpListItems(ftpClient, path, dirCond, isRecursion).Where(entity => entity.Type == FtpFileSystemObjectType.Directory).ToList();
             return result;
@@ -52,7 +49,7 @@ namespace VirtualUniverse.Service.FtpOperation
         /// <param name="path">路径</param>
         /// <param name="isRecursion">是否递归获取</param>
         /// <returns></returns>
-        public static  IList<FtpListItem> GetFtpFiles(FtpClient ftpClient, string path, bool isRecursion)
+        public static IList<FtpListItem> GetFtpFiles(FtpClient ftpClient, string path, bool isRecursion)
         {
             return GetFtpListItems(ftpClient, path, isRecursion).Where(entity => entity.Type == FtpFileSystemObjectType.File).ToList();
         }
@@ -66,7 +63,7 @@ namespace VirtualUniverse.Service.FtpOperation
         /// <param name="fileCond">文件过滤条件</param>
         /// <param name="isRecursion">是否递归获取</param>
         /// <returns></returns>
-        public static  IList<FtpListItem> GetFtpFiles(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, Func<FtpListItem, bool> fileCond, bool isRecursion)
+        public static IList<FtpListItem> GetFtpFiles(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, Func<FtpListItem, bool> fileCond, bool isRecursion)
         {
             var result = GetFtpListItems(ftpClient, path, dirCond, isRecursion).Where(entity => entity.Type == FtpFileSystemObjectType.File).Where(fileCond).ToList();
             return result;
@@ -79,7 +76,7 @@ namespace VirtualUniverse.Service.FtpOperation
         /// <param name="path">路径</param>
         /// <param name="isRecursion">是否递归获取</param>
         /// <returns></returns>
-        public static  IList<FtpListItem> GetFtpListItems(FtpClient ftpClient, string path, bool isRecursion)
+        public static IList<FtpListItem> GetFtpListItems(FtpClient ftpClient, string path, bool isRecursion)
         {
             var result = GetFtpListItems(ftpClient, path, null, isRecursion);
             return result;
@@ -93,13 +90,13 @@ namespace VirtualUniverse.Service.FtpOperation
         /// <param name="dirCond">目录过滤条件</param>
         /// <param name="isRecursion">是否递归获取</param>
         /// <returns></returns>
-        public static  IList<FtpListItem> GetFtpFilesDirectory(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, bool isRecursion)
+        public static IList<FtpListItem> GetFtpFilesDirectory(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, bool isRecursion)
         {
             var result = GetFtpListItems(ftpClient, path, dirCond, isRecursion);
             return result;
         }
 
-         private static IList<FtpListItem> GetFtpListItems(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, bool isRecursion)
+        private static IList<FtpListItem> GetFtpListItems(FtpClient ftpClient, string path, Func<FtpListItem, bool> dirCond, bool isRecursion)
         {
             var ftpListItems = ftpClient.GetListing(path);
             var result = new List<FtpListItem>(ftpListItems);

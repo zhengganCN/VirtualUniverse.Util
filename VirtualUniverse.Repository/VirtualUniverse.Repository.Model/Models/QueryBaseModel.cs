@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using VirtualUniverse.Repository.Model.Interfaces;
+﻿using VirtualUniverse.Repository.Model.Interfaces;
 
 namespace VirtualUniverse.Repository.Model.Models
 {

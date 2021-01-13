@@ -5,10 +5,10 @@ using System.Linq;
 namespace VirtualUniverse.DataValidation.ValidationAttributes
 {
     /// <summary>
-    /// 固定长度验证特性
+    /// 字符串固定长度验证特性
     /// </summary>
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = false)]
-    public sealed class FixLengthAttribute : ValidationAttribute
+    public sealed class FixedLengthAttribute : ValidationAttribute
     {
         /// <summary>
         /// 字符串长度

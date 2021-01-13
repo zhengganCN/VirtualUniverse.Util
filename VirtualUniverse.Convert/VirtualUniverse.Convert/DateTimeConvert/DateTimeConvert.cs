@@ -32,6 +32,7 @@ namespace VirtualUniverse.Convert.DateTimeConvert
             }
             return weeksCount;
         }
+
         /// <summary>
         /// 获取给定月份的周索引，从1开始
         /// </summary>
@@ -59,6 +60,7 @@ namespace VirtualUniverse.Convert.DateTimeConvert
             }
             return weekIndex;
         }
+
         /// <summary>
         /// 获取给定年月的给定周的起止日期
         /// </summary>
@@ -121,6 +123,21 @@ namespace VirtualUniverse.Convert.DateTimeConvert
                     break;
                 }
             }
+        }
+
+        /// <summary>
+        /// 把字符串转换成可为空的时间格式
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static DateTime? ToDateTimeNullable(string value)
+        {
+            DateTime? result = null;
+            if (DateTime.TryParse(value,out DateTime dateTime))
+            {
+                result = dateTime;
+            }
+            return result;
         }
     }
 }

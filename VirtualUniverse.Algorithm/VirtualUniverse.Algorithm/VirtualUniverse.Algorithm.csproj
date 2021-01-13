@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Description>算法集合：
-唯一ID算法：雪花算法、随机数生成算法</Description>
+唯一ID算法：雪花算法、随机数生成算法、CRC算法</Description>
     <Copyright>VirtualUniverse</Copyright>
-    <PackageReleaseNotes>算法集合：
-唯一ID算法：雪花算法</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <Company>ZG</Company>
     <Authors>ZG</Authors>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

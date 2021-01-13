@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 
 namespace VirtualUniverse.DataValidation.ValidationAttributes
 {
@@ -17,7 +16,11 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            return !(value is string @string) || !@string.Contains(' ');
+            if (value is string @string)
+            {
+                return !@string.Contains(' ');
+            }
+            return true;
         }
     }
 }

@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using VirtualUniverse.Service.Consul.Models;
 
 namespace VirtualUniverse.Service.Consul.Services

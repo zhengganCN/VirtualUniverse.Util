@@ -1,16 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>ZG</Authors>
+    <Description>EFCore仓储、EFCore表说明及字段说明创建</Description>
+    <Copyright>VirtualUniverse</Copyright>
+    <Version>1.0.1</Version>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Repository\VirtualUniverse.Repository.EFCore\VirtualUniverse.Repository.EFCore.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.10" />
+    <PackageReference Include="VirtualUniverse.Repository.IRepository" Version="1.0.0" />
+    <PackageReference Include="VirtualUniverse.Repository.Model" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VirtualUniverse.Repository.IRepository\VirtualUniverse.Repository.IRepository.csproj" />
+    <None Update="VirtualUniverse.Repository.EFCore.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

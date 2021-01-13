@@ -13,7 +13,7 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <summary>
         /// 卡类型（默认值为身份证）
         /// </summary>
-        public EnumIDCardType CardType = EnumIDCardType.IdentityNumber;
+        public EnumIDCardType CardType { get; set; } = EnumIDCardType.IdentityNumber;
         /// <summary>
         /// 是否验证通过
         /// </summary>

@@ -5,6 +5,7 @@
     <Authors>ZG</Authors>
     <Copyright>VirtualUniverse.Service.Consul</Copyright>
     <Description>Consul服务注册、发现、配置中心</Description>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

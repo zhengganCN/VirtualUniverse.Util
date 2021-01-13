@@ -5,6 +5,7 @@
     <Description>加解密算法：AES、DES、MD5、RSA、SHA</Description>
     <Copyright>VirtualUniverse</Copyright>
     <Authors>ZG</Authors>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -12,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="VirtualUniverse.ModelResultStandard" Version="1.0.3" />
+    <PackageReference Include="VirtualUniverse.ModelResultStandard" Version="1.0.2" />
   </ItemGroup>
 
 </Project>

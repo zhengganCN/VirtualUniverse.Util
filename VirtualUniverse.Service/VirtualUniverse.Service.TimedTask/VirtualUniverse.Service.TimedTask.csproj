@@ -5,6 +5,7 @@
     <Authors>ZG</Authors>
     <Description>定时任务</Description>
     <Copyright>VirtualUniverse</Copyright>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

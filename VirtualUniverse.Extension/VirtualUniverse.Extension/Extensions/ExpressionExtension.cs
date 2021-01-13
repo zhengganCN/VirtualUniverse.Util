@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
 
 namespace VirtualUniverse.Extension.Extensions
 {
@@ -42,7 +38,7 @@ namespace VirtualUniverse.Extension.Extensions
                 throw new ArgumentNullException(nameof(right));
             }
             var rightBody = new RebuildExpression(right.Parameters[0], left.Parameters[0]).Visit(right.Body);
-            return Expression.Lambda<Func<T, bool>>(Expression.OrElse(left.Body, rightBody), left.Parameters); 
+            return Expression.Lambda<Func<T, bool>>(Expression.OrElse(left.Body, rightBody), left.Parameters);
         }
     }
     /// <summary>
