@@ -84,7 +84,14 @@ namespace VirtualUniverse.DataValidation.ValidationServices
             var sum = 0;
             for (int i = 0; i < 17; i++)
             {
-                sum += int.Parse(Wi[i]) * int.Parse(ai[i].ToString());
+                if (int.TryParse(Wi[i],out int param_1)&& int.TryParse(ai[i].ToString(), out int param_2))
+                {
+                    sum += param_1 * param_2;
+                }
+                else
+                {
+                    return false;
+                }
             }
             Math.DivRem(sum, 11, out int y);
             if (ArrVarifyCode[y] != idNumber.Substring(17, 1).ToLower())
@@ -104,7 +111,7 @@ namespace VirtualUniverse.DataValidation.ValidationServices
         /// <returns></returns>
         private static bool VaildDate(string date)
         {
-            return DateTime.TryParse(date, out _);
+            return DateTime.TryParse(date.Insert(6,"-").Insert(4,"-"), out _);
         }
 
         /// <summary>

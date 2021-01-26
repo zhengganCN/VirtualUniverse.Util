@@ -8,8 +8,15 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <Company>ZG</Company>
     <Authors>ZG</Authors>
-    <Version>1.0.2</Version>
+    <Version>1.0.0</Version>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageIcon>tool.png</PackageIcon>
+	  <NeutralLanguage>zh-CN</NeutralLanguage>
+	  <PackageProjectUrl>https://github.com/zhengganCN/VirtualUniverse.Util/tree/master/VirtualUniverse.Algorithm</PackageProjectUrl>
+	  <PackageTags>Algorithm、VirtualUniverse</PackageTags>
+	  <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -19,6 +26,14 @@
   <ItemGroup>
     <None Update="VirtualUniverse.Algorithm.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\tool.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 

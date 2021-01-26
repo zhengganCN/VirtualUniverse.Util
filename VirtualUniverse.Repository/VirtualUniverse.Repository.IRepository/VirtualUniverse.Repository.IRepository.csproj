@@ -7,6 +7,10 @@
     <Copyright>VirtualUniverse</Copyright>
     <Version>1.0.0</Version>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<PackageTags>VirtualUniverse、Repository、IRepository</PackageTags>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<PackageIcon>tool.png</PackageIcon>
+	<PackageProjectUrl>https://github.com/zhengganCN/VirtualUniverse.Util/tree/master/VirtualUniverse.Repository/VirtualUniverse.Repository.IRepository</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -15,6 +19,17 @@
 
   <ItemGroup>
     <PackageReference Include="VirtualUniverse.Repository.Model" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\tool.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

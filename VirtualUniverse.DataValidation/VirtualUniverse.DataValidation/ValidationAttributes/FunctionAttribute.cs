@@ -32,6 +32,7 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
             ClassName = className;
             MethodName = methodName;
         }
+
         /// <summary>
         /// 重写验证逻辑
         /// </summary>
@@ -71,25 +72,48 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
             }
             return result;
         }
+        /// <summary>
+        /// 加载程序集
+        /// </summary>
+        /// <returns></returns>
+        private Assembly GetAssembly()
+        {
+            try
+            {
+                return Assembly.Load(AssemblyName);
+            }
+            catch (Exception)
+            {
+                throw new ArgumentException($"程序集{AssemblyName}找不到");
+            }
+        }
 
+        /// <summary>
+        /// 执行通过反射获取的验证方法
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
         private bool ValidValue(object value, bool result)
         {
             var param = new object[] { value };
-            try
+            var assembly = GetAssembly();
+            MethodInfo method = GetMethod(assembly);
+            if (method.IsStatic)
             {
-                var type = Assembly.Load(AssemblyName).GetType(AssemblyName + "." + ClassName);
-                var method = type.GetMethod(MethodName);
-                if (method.IsStatic)
-                {
-                    result = (method.Invoke(null, param) as bool?).GetValueOrDefault(false);
-                }
+                result = (method.Invoke(null, param) as bool?).GetValueOrDefault(false);
             }
-            catch (Exception ex)
-            {
-                throw new ArgumentException($"程序集或类或方法找不到，详细错误：{ex}");
-            }
-
             return result;
+        }
+
+        private MethodInfo GetMethod(Assembly assembly)
+        {
+            return GetClass(assembly).GetMethod(MethodName) ?? throw new ArgumentException($"方法{MethodName}找不到");
+        }
+
+        private Type GetClass(Assembly assembly)
+        {
+            return assembly.GetType(AssemblyName + "." + ClassName) ?? throw new ArgumentException($"类{AssemblyName + "." + ClassName}找不到");
         }
     }
 }

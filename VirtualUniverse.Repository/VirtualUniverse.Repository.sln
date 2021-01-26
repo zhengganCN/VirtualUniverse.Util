@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Repository.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Repository.SqlSugar", "VirtualUniverse.Repository.SqlSugar\VirtualUniverse.Repository.SqlSugar.csproj", "{48797288-7BDD-450A-A844-2E92AFB93258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.Redis.Test", "VirtualUniverse.Repository.Redis.Test\VirtualUniverse.Repository.Redis.Test.csproj", "{0CA4A9C5-33DC-4F12-84BB-46F3D860293B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Repository.Redis.Test", "VirtualUniverse.Repository.Redis.Test\VirtualUniverse.Repository.Redis.Test.csproj", "{0CA4A9C5-33DC-4F12-84BB-46F3D860293B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Repository.SqlSugarTest", "VirtualUniverse.Repository.SqlSugarTest\VirtualUniverse.Repository.SqlSugarTest.csproj", "{796312F8-71FB-447A-A092-8EFCCB58E1A5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{0CA4A9C5-33DC-4F12-84BB-46F3D860293B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CA4A9C5-33DC-4F12-84BB-46F3D860293B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CA4A9C5-33DC-4F12-84BB-46F3D860293B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{796312F8-71FB-447A-A092-8EFCCB58E1A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796312F8-71FB-447A-A092-8EFCCB58E1A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796312F8-71FB-447A-A092-8EFCCB58E1A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796312F8-71FB-447A-A092-8EFCCB58E1A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

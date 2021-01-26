@@ -30,14 +30,12 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
                     case EnumIDCardType.IdentityNumber:
                         result = ValidIdentityNumber(number);
                         break;
-                    default:
-                        break;
                 }
                 return result;
             }
             else
             {
-                return true;
+                return false;
             }
         }
 
@@ -45,15 +43,15 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         {
             return IDNumberVerification.ValidIDNumber(number);
         }
-    }
-    /// <summary>
-    /// ID卡类型
-    /// </summary>
-    public enum EnumIDCardType
-    {
         /// <summary>
-        /// 身份证
+        /// ID卡类型
         /// </summary>
-        IdentityNumber = 1
+        public enum EnumIDCardType
+        {
+            /// <summary>
+            /// 身份证
+            /// </summary>
+            IdentityNumber = 1
+        }
     }
 }

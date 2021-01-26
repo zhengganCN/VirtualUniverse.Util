@@ -27,7 +27,7 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
                 var file = value as IFormFile;
                 return ValidFileType(file);
             }
-            else if (value is IFormCollection)
+            else if (value is IFormFileCollection)
             {
                 var files = value as IFormFileCollection;
                 foreach (var file in files)

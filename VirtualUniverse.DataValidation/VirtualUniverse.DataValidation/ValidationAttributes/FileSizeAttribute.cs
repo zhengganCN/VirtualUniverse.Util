@@ -62,8 +62,6 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
                 case EnumSizeUnit.UnitMB:
                     maxBytes = Size * 1024 * 1024;
                     break;
-                default:
-                    break;
             }
             return file.Length <= maxBytes;
         }

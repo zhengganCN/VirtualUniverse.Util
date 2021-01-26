@@ -4,10 +4,14 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Authors>ZG</Authors>
     <Description>数据验证：验证特性，模型验证类，验证拦截器</Description>
-    <PackageReleaseNotes>数据验证：</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>VirtualUniverse</Copyright>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	  <Version>1.0.7</Version>
+	  <Version>1.0.3</Version>
+	  <PackageTags>VirtualUniverse、DataValidation</PackageTags>
+	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
+	  <PackageIcon>tool.png</PackageIcon>
+	  <PackageProjectUrl>https://github.com/zhengganCN/VirtualUniverse.Util/tree/master/VirtualUniverse.DataValidation</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,12 +22,20 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Formatters.Json" Version="2.2.0" />
-    <PackageReference Include="VirtualUniverse.ModelResultStandard" Version="1.0.2" />
+    <PackageReference Include="VirtualUniverse.ModelResultStandard" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="VirtualUniverse.DataValidation.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\tool.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 

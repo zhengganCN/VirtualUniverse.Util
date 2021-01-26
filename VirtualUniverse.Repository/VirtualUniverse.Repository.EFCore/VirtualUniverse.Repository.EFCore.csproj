@@ -5,9 +5,13 @@
     <Authors>ZG</Authors>
     <Description>EFCore仓储、EFCore表说明及字段说明创建</Description>
     <Copyright>VirtualUniverse</Copyright>
-    <Version>1.0.1</Version>
+    <Version>1.0.0</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>tool.png</PackageIcon>
+    <PackageTags>VirtualUniverse、Repository、EFCore</PackageTags>
+    <PackageProjectUrl>https://github.com/zhengganCN/VirtualUniverse.Util/tree/master/VirtualUniverse.Repository/VirtualUniverse.Repository.EFCore</PackageProjectUrl>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,6 +28,14 @@
   <ItemGroup>
     <None Update="VirtualUniverse.Repository.EFCore.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\tool.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
