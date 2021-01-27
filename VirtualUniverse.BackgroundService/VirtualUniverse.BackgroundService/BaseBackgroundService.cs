@@ -18,9 +18,7 @@ namespace VirtualUniverse.BackgroundService
         /// 后台服务配置
         /// </summary>
         /// <param name="backgroundServiceBuilder"></param>
-        protected virtual void OnConfiguration(BackgroundServiceBuilder backgroundServiceBuilder)
-        {
-        }
+        protected abstract void OnConfiguration(BackgroundServiceBuilder backgroundServiceBuilder);
 
         /// <summary>
         /// 执行用户重写的耗时任务ExecuteAsync()与定时器的启动/停止操作
