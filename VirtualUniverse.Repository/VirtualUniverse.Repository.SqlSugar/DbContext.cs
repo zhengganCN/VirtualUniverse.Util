@@ -15,7 +15,10 @@ namespace VirtualUniverse.Repository.SqlSugar
     {
         private bool disposedValue;
         private readonly DbContextOptionsBuilder builder = new DbContextOptionsBuilder();
-        internal SqlSugarClient SugarClient { get; set; }
+        /// <summary>
+        /// SqlSugar客户端
+        /// </summary>
+        public SqlSugarClient SugarClient { get; set; }
 
         /// <summary>
         /// 初始化
@@ -31,12 +34,18 @@ namespace VirtualUniverse.Repository.SqlSugar
         /// </summary>
         /// <param name="builder"></param>
         protected internal abstract void OnConfiguring(DbContextOptionsBuilder builder);
-
+        
+        /// <summary>
+        /// 加载配置
+        /// </summary>
         private void LoadConfiguration()
         {
             OnConfiguring(builder);
         }
-
+        
+        /// <summary>
+        /// 初始化
+        /// </summary>
         private void Init()
         {
             SugarClient = new SqlSugarClient(SetConnectionConfig());
@@ -64,6 +73,10 @@ namespace VirtualUniverse.Repository.SqlSugar
             }
         }
         
+        /// <summary>
+        /// 设置连接
+        /// </summary>
+        /// <returns></returns>
         private ConnectionConfig SetConnectionConfig()
         {
             return new ConnectionConfig
