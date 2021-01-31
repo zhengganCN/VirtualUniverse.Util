@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.HttpOperation</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.HttpOperation.EnumContentType">
+            <summary>
+            类 描 述：提交数据内容格式类型
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.HttpOperation.EnumContentType.ApplicationJson">
+            <summary>
+            application/json
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.HttpOperation.EnumContentType.MultipartFormData">
+            <summary>
+            multipart/form-data
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.HttpOperation.HttpContentOperation">
+            <summary>
+            类 描 述：HttpContent操作
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.HttpOperation.HttpContentOperation.GainHttpContent(System.Object,VirtualUniverse.HttpOperation.EnumContentType)">
+            <summary>
+            HttpContent组装
+            </summary>
+            <param name="data">数据</param>
+            <param name="type">content-type</param>
+            <returns><see cref="T:System.Net.Http.HttpContent"/></returns>
+        </member>
+    </members>
+</doc>

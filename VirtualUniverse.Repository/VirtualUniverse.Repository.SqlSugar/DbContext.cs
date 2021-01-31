@@ -68,7 +68,14 @@ namespace VirtualUniverse.Repository.SqlSugar
                     var genericType = typeof(SugarDbSet<>);
                     type = genericType.MakeGenericType(type);
                     var instanceObject = Activator.CreateInstance(type, SugarClient);
-                    property.SetValue(this, instanceObject);
+                    try
+                    {
+                        property.SetValue(this, instanceObject);
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new ArgumentException(ex.Message);
+                    }
                 }
             }
         }
