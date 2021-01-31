@@ -9,21 +9,43 @@
             后台服务基类
             </summary>
         </member>
+        <member name="P:VirtualUniverse.BackgroundService.BaseBackgroundService.ExecutionTimes">
+            <summary>
+            任务执行次数
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.#ctor">
+            <summary>
+            构造器
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
         <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.OnConfiguration(VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder)">
             <summary>
             后台服务配置
             </summary>
-            <param name="backgroundServiceBuilder"></param>
+            <param name="backgroundServiceBuilder">配置项</param>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.Execute">
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.ExecutionTask">
             <summary>
             执行用户重写的耗时任务ExecuteAsync()与定时器的启动/停止操作
             </summary>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.CanExecute">
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.ExecutionTaskAndRecordExecutionInfo(System.DateTime)">
+            <summary>
+            执行任务并记录执行信息
+            </summary>
+            <param name="now">执行任务的时间</param>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.WhenNotStartNowTheTaskCanExecutionTask(System.DateTime)">
             <summary>
             判断是否能够执行
             </summary>
+            <param name="currentDatetime"></param>
             <returns></returns>
         </member>
         <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.StartAsync(System.Threading.CancellationToken)">
@@ -69,22 +91,12 @@
         </member>
         <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.ExecutionTimes">
             <summary>
-            执行次数，默认值为 -1，表示不限制执行次数
+            允许执行的次数，默认值为 -1，表示不限制执行次数
             </summary>
         </member>
         <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.Interval">
             <summary>
             执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.StartTime">
-            <summary>
-            启动时间，如果设置了StartNow为true，则StartTime无效
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.EndTime">
-            <summary>
-            结束时间，如果设置了StartNow为true，则StartTime无效
             </summary>
         </member>
         <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartNow(System.Boolean)">
@@ -94,33 +106,266 @@
             <param name="startNow"></param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetExecutionTimes(System.Int64)">
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetExecutionTimes(System.Int64,System.Boolean)">
             <summary>
-            执行次数，默认值为 -1，表示不限制执行次数
+            设置执行次数和
             </summary>
-            <param name="executionTimes"></param>
+            <param name="executionTimes">执行次数，默认值为 -1，表示不限制执行次数</param>
+            <param name="isRefreshIfExecutionEnough">是否自动刷新执行次数</param>
+            <remarks>
+            参数： IsRefreshIfExecutionEnough <br></br>
+                如果 启动模式为立即启动（StartNow = true），则此参数无效 <br></br>
+                否则 每当当前时间与启动时间相等且 IsRefreshIfExecutionEnough 等于 True 时，ExecutionTimes 参数会自动刷新为 0
+            </remarks>
             <returns></returns>
         </member>
         <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetInterval(System.Int32)">
             <summary>
-            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
+            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值
+            来计算下一次任务的启动时间）,默认值 1000 ms
             </summary>
             <param name="interval"></param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartTime(System.Nullable{System.DateTime})">
+        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartUpDateTime(VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode,System.String,System.String)">
+            <summary>
+            设置启动模式
+            </summary>
+            <param name="startUpMode">启动模式</param>
+            <param name="startTime">启动时间</param>
+            <param name="endTime">结束时间</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.DayStartUpDateTimeMode">
+            <summary>
+            类说明：按天启动模式
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.DayStartUpDateTimeMode.StartTime">
+            <summary>
+            启动时间；格式 HH:mm:ss
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.DayStartUpDateTimeMode.EndTime">
+            <summary>
+            结束时间；格式 HH:mm:ss
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.DayStartUpDateTimeMode.SetStartTime">
             <summary>
             启动时间，如果设置了StartNow为true，则StartTime无效
             </summary>
-            <param name="startTime"></param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetEndTime(System.Nullable{System.DateTime})">
+        <member name="M:VirtualUniverse.BackgroundService.Models.DayStartUpDateTimeMode.SetEndTime">
             <summary>
-            结束时间，如果设置了StartNow为true，则StartTime无效
+            结束时间，如果设置了StartNow为true，则EndTime无效
             </summary>
-            <param name="endTime"></param>
             <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode">
+            <summary>
+            类说明：枚举启动模式
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode.Day">
+            <summary>
+            天；启动时间和结束时间的格式为：HH:mm:ss;
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode.Week">
+            <summary>
+            周；启动时间和结束时间的格式为：dayOfWeek;HH:mm:ss，且 dayOfWeek为 1&lt;=int&lt;=7
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode.Month">
+            <summary>
+            月；启动时间和结束时间的格式为：dayOfMonth;HH:mm:ss，且 dayOfMonth为 1&lt;=int&lt;=28
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode.Year">
+            <summary>
+            年；启动时间和结束时间的格式为：MM-dd;HH:mm:ss
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode">
+            <summary>
+            类说明：按月启动模式
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode.StartTime">
+            <summary>
+            启动时间；格式 dayOfMonth;HH:mm:ss，且 dayOfMonth为 1&lt;=int&lt;=28
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode.StartTimeInMonth">
+            <summary>
+            在每月的固定时间启动
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode.EndTime">
+            <summary>
+            结束时间；格式 dayOfMonth;HH:mm:ss，且 dayOfMonth为 1&lt;=int&lt;=28
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode.EndTimeInMonth">
+            <summary>
+            在每月的固定时间结束
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode.SetStartTime">
+            <summary>
+            启动时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpModes.MonthStartUpDateTimeMode.SetEndTime">
+            <summary>
+            结束时间，如果设置了StartNow为true，则EndTime无效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode">
+            <summary>
+            类说明：按周启动模式
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode.StartTime">
+            <summary>
+            启动时间；格式 dayOfWeek;HH:mm:ss，且 1&lt;=int&lt;=7
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode.StartTimeInWeek">
+            <summary>
+            在每周的固定时间启动
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode.EndTime">
+            <summary>
+            结束时间；格式 dayOfWeek;HH:mm:ss，且 1&lt;=int&lt;=7
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode.EndTimeInWeek">
+            <summary>
+            在每周的固定时间结束
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode.SetStartTime">
+            <summary>
+            启动时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpModes.WeekStartUpDateTimeMode.SetEndTime">
+            <summary>
+            结束时间，如果设置了StartNow为true，则EndTime无效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode">
+            <summary>
+            类说明：按年启动模式
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode.StartTime">
+            <summary>
+            启动时间；格式 MM-dd;HH:mm:ss
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode.StartTimeInYear">
+            <summary>
+            在每月的固定时间启动
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode.EndTime">
+            <summary>
+            结束时间；格式 MM-dd;HH:mm:ss
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode.EndTimeInYear">
+            <summary>
+            在每月的固定时间结束
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode.SetStartTime">
+            <summary>
+            启动时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpModes.YearStartUpDateTimeMode.SetEndTime">
+            <summary>
+            结束时间，如果设置了StartNow为true，则EndTime无效
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode">
+            <summary>
+            类说明：启动时间模式
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode.StartTime">
+            <summary>
+            启动时间，如果设置了StartNow为true，则StartTime无效
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode.EndTime">
+            <summary>
+            结束时间，如果设置了StartNow为true，则EndTime无效
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode.Init">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode.ValidParams">
+            <summary>
+            参数验证
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode.IsCurrentTimeBetweenStartTimeAndEndTime(System.DateTime)">
+            <summary>
+            当前时间是否在启动时间和结束时间之间
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.StartUpDateTimeMode.IsOtherDateTimeLoop(System.DateTime,System.DateTime)">
+            <summary>
+            判断当前时间是否是处于其他时间循环中
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes">
+            <summary>
+            类说明：任务执行次数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.FirstExecutionTaskTime">
+            <summary>
+            第一次执行任务的时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.FirstExecutionTaskTimeInLoop">
+            <summary>
+            时间循环内第一次执行任务的时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.ExecutionTimesInLoop">
+            <summary>
+            时间循环内执行次数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.HistoryExecutionTimes">
+            <summary>
+            历史执行次数
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.IncreraseOneTimes">
+            <summary>
+            增加一次执行次数
+            </summary>
         </member>
     </members>
 </doc>

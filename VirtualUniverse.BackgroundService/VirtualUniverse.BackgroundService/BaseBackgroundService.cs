@@ -12,100 +12,145 @@ namespace VirtualUniverse.BackgroundService
     public abstract class BaseBackgroundService : IHostedService, IDisposable
     {
         private bool disposedValue;
-        private readonly BackgroundServiceBuilder backgroundServiceBuilder =new BackgroundServiceBuilder();
-        private long ExecutionTimes { get; set; } = 0;
+        private readonly BackgroundServiceBuilder backgroundServiceBuilder = new BackgroundServiceBuilder();
+
+        /// <summary>
+        /// 任务执行次数
+        /// </summary>
+        public TaskExecutionTimes ExecutionTimes { get; } = new TaskExecutionTimes();
+
+        /// <summary>
+        /// 构造器
+        /// </summary>
+        protected BaseBackgroundService()
+        {
+            Init();
+        }
+
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        private void Init()
+        {
+            OnConfiguration(backgroundServiceBuilder);
+            if (!backgroundServiceBuilder.StartNow)
+            {
+                backgroundServiceBuilder.StartUpDateTimeMode.Init();
+            }
+        }
+
         /// <summary>
         /// 后台服务配置
         /// </summary>
-        /// <param name="backgroundServiceBuilder"></param>
+        /// <param name="backgroundServiceBuilder">配置项</param>
         protected abstract void OnConfiguration(BackgroundServiceBuilder backgroundServiceBuilder);
 
         /// <summary>
         /// 执行用户重写的耗时任务ExecuteAsync()与定时器的启动/停止操作
         /// </summary>
-        private void Execute()
+        private void ExecutionTask()
         {
             while (true)
             {
+                var now = DateTime.Now;
                 OnConfiguration(backgroundServiceBuilder);
-                if (backgroundServiceBuilder.ExecutionTimes >= 0 )
+                if (backgroundServiceBuilder.StartNow)
                 {
-                    if (backgroundServiceBuilder.ExecutionTimes > ExecutionTimes)
+                    if (WhenIsStartNowTheTaskCanExecutionTask())
                     {
-                        if (CanExecute())
-                        {
-                            ExecuteAsync().Wait();//等待耗时任务执行完毕
-                            ExecutionTimes++;
-                            Task.Delay(backgroundServiceBuilder.Interval).Wait();//用户设置的间隔时间
-                        }
-                        else
-                        {
-                            Task.Delay(1000).Wait();//等待一秒后执行
-                        }
+                        ExecutionTaskAndRecordExecutionInfo(now);
                     }
                     else
                     {
-                        Task.Delay(1000).Wait();//等待一秒后执行
+                        Task.Delay(1000).Wait();
                     }
                 }
                 else
                 {
-                    if (CanExecute())
+                    backgroundServiceBuilder.StartUpDateTimeMode.Init();
+                    if (backgroundServiceBuilder.IsRefreshIfExecutionEnough &&
+                       ExecutionTimes.FirstExecutionTaskTimeInLoop.HasValue &&
+                       backgroundServiceBuilder.StartUpDateTimeMode.IsOtherDateTimeLoop(
+                           ExecutionTimes.FirstExecutionTaskTimeInLoop.Value, now))
                     {
-                        ExecuteAsync().Wait();//等待耗时任务执行完毕
-                        Task.Delay(backgroundServiceBuilder.Interval).Wait();//用户设置的间隔时间
+                        ExecutionTimes.ResetTimes();
+                    }
+                    if (WhenNotStartNowTheTaskCanExecutionTask(now))
+                    {
+                        ExecutionTaskAndRecordExecutionInfo(now);
                     }
                     else
                     {
-                        Task.Delay(1000).Wait();//等待一秒后执行
+                        Task.Delay(1000).Wait();
                     }
                 }
             }
         }
+
         /// <summary>
-        /// 判断是否能够执行
+        /// 执行任务并记录执行信息
         /// </summary>
-        /// <returns></returns>
-        private bool CanExecute()
+        /// <param name="now">执行任务的时间</param>
+        private void ExecutionTaskAndRecordExecutionInfo(DateTime now)
         {
-            var now = DateTime.Now;
-            if (backgroundServiceBuilder.StartNow)
+            ExecuteAsync().Wait();
+            if (ExecutionTimes.HistoryExecutionTimes == 0)
             {
-                return true;
+                ExecutionTimes.FirstExecutionTaskTime = now;
             }
-            else if (backgroundServiceBuilder.StartTime.HasValue && backgroundServiceBuilder.EndTime.HasValue)
+            if (ExecutionTimes.ExecutionTimesInLoop == 0)
             {
-                if (backgroundServiceBuilder.StartTime >= backgroundServiceBuilder.EndTime)
+                ExecutionTimes.FirstExecutionTaskTimeInLoop = now;
+            }
+            ExecutionTimes.IncreraseOneTimes();
+            Task.Delay(backgroundServiceBuilder.Interval).Wait();
+        }
+
+        private bool WhenIsStartNowTheTaskCanExecutionTask()
+        {
+            if (backgroundServiceBuilder.ExecutionTimes >= 0)
+            {
+                if ((long)ExecutionTimes.ExecutionTimesInLoop < backgroundServiceBuilder.ExecutionTimes)
                 {
-                    throw new ArgumentException($"参数{nameof(backgroundServiceBuilder.StartTime)}不能大于或等于{nameof(backgroundServiceBuilder.EndTime)}");
+                    return true;
                 }
-                return backgroundServiceBuilder.StartTime <= now && now <= backgroundServiceBuilder.EndTime;
-            }
-            else if (backgroundServiceBuilder.StartTime.HasValue && (!backgroundServiceBuilder.EndTime.HasValue))
-            {
-                backgroundServiceBuilder.StartTime = DateTime.Today
-                    .AddHours(backgroundServiceBuilder.StartTime.Value.Hour)
-                    .AddMinutes(backgroundServiceBuilder.StartTime.Value.Minute)
-                    .AddSeconds(backgroundServiceBuilder.StartTime.Value.Second);
-                return now >= backgroundServiceBuilder.StartTime.Value;
-            }
-            else if ((!backgroundServiceBuilder.StartTime.HasValue) && backgroundServiceBuilder.EndTime.HasValue)
-            {
-                backgroundServiceBuilder.EndTime = DateTime.Today
-                    .AddHours(backgroundServiceBuilder.EndTime.Value.Hour)
-                    .AddMinutes(backgroundServiceBuilder.EndTime.Value.Minute)
-                    .AddSeconds(backgroundServiceBuilder.EndTime.Value.Second);
-                return now <= backgroundServiceBuilder.EndTime.Value;
-            }
-            else if ((!backgroundServiceBuilder.StartTime.HasValue) && (!backgroundServiceBuilder.EndTime.HasValue))
-            {
-                return backgroundServiceBuilder.StartNow;
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                return true;
             }
         }
+
+        /// <summary>
+        /// 判断是否能够执行
+        /// </summary>
+        /// <param name="currentDatetime"></param>
+        /// <returns></returns>
+        private bool WhenNotStartNowTheTaskCanExecutionTask(DateTime currentDatetime)
+        {
+            if (backgroundServiceBuilder.ExecutionTimes >= 0)
+            {
+                if ((long)ExecutionTimes.ExecutionTimesInLoop < backgroundServiceBuilder.ExecutionTimes)
+                {
+                    return backgroundServiceBuilder.StartUpDateTimeMode
+                        .IsCurrentTimeBetweenStartTimeAndEndTime(currentDatetime);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return backgroundServiceBuilder.StartUpDateTimeMode
+                        .IsCurrentTimeBetweenStartTimeAndEndTime(currentDatetime);
+            }
+        }
+
         /// <summary>
         /// 启动任务是执行
         /// </summary>
@@ -113,9 +158,9 @@ namespace VirtualUniverse.BackgroundService
         /// <returns></returns>
         public virtual Task StartAsync(CancellationToken cancellationToken)
         {
-            Task.Run(() => Execute()).ConfigureAwait(false);
-            return Task.CompletedTask;
+            return Task.Run(() => ExecutionTask());
         }
+
         /// <summary>
         /// 结束任务是执行
         /// </summary>
