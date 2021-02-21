@@ -102,6 +102,25 @@
             释放资源
             </summary>
         </member>
+        <member name="T:VirtualUniverse.Configuration.Services.HostingHostBuilderExtensions">
+            <summary>
+            类说明：主机构建扩展类
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Configuration.Services.HostingHostBuilderExtensions.LoadCurrentEnvironmentFromEnvironmentVariable(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            加载环境变量env的参数值,用以设置当前环境
+            </summary>
+            <param name="hostBuilder">hostBuilder</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Configuration.Services.HostingHostBuilderExtensions.LoadCurrentEnvironmentFromCommandLine(Microsoft.Extensions.Hosting.IHostBuilder)">
+            <summary>
+            加载命令行参数env的参数值,用以设置当前环境
+            </summary>
+            <param name="hostBuilder">hostBuilder</param>
+            <returns></returns>
+        </member>
         <member name="T:VirtualUniverse.Configuration.Services.JsonConfiguration">
             <summary>
             Json配置文件操作类
