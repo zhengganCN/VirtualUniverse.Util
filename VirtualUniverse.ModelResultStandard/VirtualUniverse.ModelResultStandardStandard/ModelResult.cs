@@ -40,7 +40,7 @@ namespace VirtualUniverse.ModelResultStandard
         /// <param name="code">成功代码</param>
         /// <param name="pagination">分页信息</param>
         /// <returns></returns>
-        public ModelResult SuccessResult(object data, Enum code, Pagination pagination = null)
+        public static ModelResult SuccessResult(object data, Enum code, Pagination pagination = null)
         {
             var model = new ModelResult
             {
@@ -58,7 +58,7 @@ namespace VirtualUniverse.ModelResultStandard
         /// <param name="code">错误代码</param>
         /// <param name="errorInfo">错误信息</param>
         /// <returns></returns>
-        public ModelResult FailedResult(Enum code, string errorInfo = "")
+        public static ModelResult FailedResult(Enum code, string errorInfo = "")
         {
             var model = new ModelResult
             {
