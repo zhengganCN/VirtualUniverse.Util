@@ -10,7 +10,6 @@ namespace VirtualUniverse.Repository.EFCore
     /// <summary>
     /// 仓储基类
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
     public static class BaseRepository
     {
         #region 删除
