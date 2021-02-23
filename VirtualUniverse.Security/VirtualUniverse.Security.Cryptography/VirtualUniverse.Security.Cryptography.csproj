@@ -1,11 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <Description>加解密算法：AES、DES、MD5、RSA、SHA</Description>
     <Copyright>VirtualUniverse</Copyright>
     <Authors>ZG</Authors>
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<PackageIcon>tool.png</PackageIcon>
+	<RepositoryUrl></RepositoryUrl>
+	<LangVersion>8.0</LangVersion>
+	<PackageTags>VirtualUniverse、Cryptography</PackageTags>
+	<Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -13,7 +19,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="VirtualUniverse.ModelResultStandard" Version="1.0.2" />
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\tool.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
