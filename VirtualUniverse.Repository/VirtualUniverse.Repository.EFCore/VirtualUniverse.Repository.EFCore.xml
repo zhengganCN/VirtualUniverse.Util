@@ -9,6 +9,224 @@
             视图特性
             </summary>
         </member>
+        <member name="T:VirtualUniverse.Repository.EFCore.BaseRepository">
+            <summary>
+            仓储基类
+            </summary>
+            <typeparam name="TEntity"></typeparam>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Delete``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            删除一条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Delete``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            删除多条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.DeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            异步删除一条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.DeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            异步删除多条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Insert``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            插入一条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Insert``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            插入多条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.InsertAsync``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            异步插入一条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.InsertAsync``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            异步插入多条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDelete``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            修改一条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDelete``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.String,System.String,System.Boolean)">
+            <summary>
+            修改一条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="deleteFlagName">删除标记</param>
+            <param name="deleteTimeAttrName">删除时间字段名</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDelete``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            修改多条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDelete``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0},System.String,System.String)">
+            <summary>
+            修改多条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <param name="deleteFlagName">删除标记</param>
+            <param name="deleteTimeAttrName">删除时间字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            异步修改一条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.String,System.String,System.Boolean)">
+            <summary>
+            异步修改一条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="deleteFlagName">删除标记</param>
+            <param name="deleteTimeAttrName">删除时间字段名</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            异步修改多条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.MarkDeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0},System.String,System.String)">
+            <summary>
+            异步修改多条实体的删除标识，改为true
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <param name="deleteFlagName">删除标记</param>
+            <param name="deleteTimeAttrName">删除时间字段名</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.UnmarkDelete``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            修改一条实体的删除标识，改为false
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.UnmarkDelete``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            修改多条实体的删除标识，改为false
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.UnmarkDeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            异步修改一条实体的删除标识，改为false
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.UnmarkDeleteAsync``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            异步修改多条实体的删除标识，改为false
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Update``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            更新一条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Update``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            更新多条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.UpdateAsync``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
+            <summary>
+            异步更新一条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entity">实体</param>
+            <param name="tracking">是否跟踪</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.UpdateAsync``1(Microsoft.EntityFrameworkCore.DbContext,System.Collections.Generic.IList{``0})">
+            <summary>
+            异步更新多条实体
+            </summary>
+            <param name="context">上下文</param>
+            <param name="entities">多条实体</param>
+            <returns></returns>
+        </member>
         <member name="T:VirtualUniverse.Repository.EFCore.Extensions.ModelCommentCreating">
             <summary>
             创建模型说明
@@ -43,177 +261,6 @@
             <param name="queryable">可查询</param>
             <param name="pageIndex">分页索引</param>
             <param name="pageSize">分页大小</param>
-            <returns></returns>
-        </member>
-        <member name="T:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1">
-            <summary>
-            仓储基类
-            </summary>
-            <typeparam name="TEntity"></typeparam>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.#ctor(Microsoft.EntityFrameworkCore.DbContext)">
-            <summary>
-            初始化
-            </summary>
-            <param name="context"></param>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Dispose">
-            <summary>
-            清理函数
-            </summary>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Delete(`0)">
-            <summary>
-            删除一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Delete(System.Collections.Generic.IList{`0})">
-            <summary>
-            删除多条实体
-            </summary>
-            <param name="entities">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.DeleteAsync(`0)">
-            <summary>
-            异步删除一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.DeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步删除多条实体
-            </summary>
-            <param name="entities">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Find(System.Object[])">
-            <summary>
-            查询一条实体
-            </summary>
-            <param name="primaryKeys">主键值</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.FindAsync(System.Object[])">
-            <summary>
-            异步查询一条实体
-            </summary>
-            <param name="primaryKey">主键值</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Insert(`0)">
-            <summary>
-            插入一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Insert(System.Collections.Generic.IList{`0})">
-            <summary>
-            插入多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.InsertAsync(`0)">
-            <summary>
-            异步插入一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.InsertAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步插入多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.MarkDelete(`0)">
-            <summary>
-            修改一条实体的删除标识，改为true
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.MarkDelete(System.Collections.Generic.IList{`0})">
-            <summary>
-            修改多条实体的删除标识，改为true
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.MarkDeleteAsync(`0)">
-            <summary>
-            异步修改一条实体的删除标识，改为true
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.MarkDeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步修改多条实体的删除标识，改为true
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.UnmarkDelete(`0)">
-            <summary>
-            修改一条实体的删除标识，改为false
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.UnmarkDelete(System.Collections.Generic.IList{`0})">
-            <summary>
-            修改多条实体的删除标识，改为false
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.UnmarkDeleteAsync(`0)">
-            <summary>
-            异步修改一条实体的删除标识，改为false
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.UnmarkDeleteAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步修改多条实体的删除标识，改为false
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Update(`0)">
-            <summary>
-            更新一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.Update(System.Collections.Generic.IList{`0})">
-            <summary>
-            更新多条实体
-            </summary>
-            <param name="entities">多条实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.UpdateAsync(`0)">
-            <summary>
-            异步更新一条实体
-            </summary>
-            <param name="entity">实体</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.Repository.EFCore.Repositor.BaseRepository`1.UpdateAsync(System.Collections.Generic.IList{`0})">
-            <summary>
-            异步更新多条实体
-            </summary>
-            <param name="entities">多条实体</param>
             <returns></returns>
         </member>
     </members>
