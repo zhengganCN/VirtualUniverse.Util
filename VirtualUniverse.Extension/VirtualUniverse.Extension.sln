@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension", "VirtualUniverse.Extension\VirtualUniverse.Extension.csproj", "{B5D642B4-50D8-4B4F-8762-4A92D07A9F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.Newtonsoft.Json", "VirtualUniverse.Extension.Newtonsoft.Json\VirtualUniverse.Extension.Newtonsoft.Json.csproj", "{8AF5D1CD-69F8-41B7-8389-3C93195B8007}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.Newtonsoft.Json", "VirtualUniverse.Extension.Newtonsoft.Json\VirtualUniverse.Extension.Newtonsoft.Json.csproj", "{8AF5D1CD-69F8-41B7-8389-3C93195B8007}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.Newtonsoft.Json.Test", "VirtualUniverse.Extension.Newtonsoft.Json.Test\VirtualUniverse.Extension.Newtonsoft.Json.Test.csproj", "{32ED6F9E-2DFB-4708-B27C-ED1EF7825E97}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.Newtonsoft.Json.Test", "VirtualUniverse.Extension.Newtonsoft.Json.Test\VirtualUniverse.Extension.Newtonsoft.Json.Test.csproj", "{32ED6F9E-2DFB-4708-B27C-ED1EF7825E97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.DependencyInjection", "VirtualUniverse.Extension.DependencyInjection\VirtualUniverse.Extension.DependencyInjection.csproj", "{861D7195-9A3D-462A-A043-91A2B5A63DF0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{32ED6F9E-2DFB-4708-B27C-ED1EF7825E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{32ED6F9E-2DFB-4708-B27C-ED1EF7825E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{32ED6F9E-2DFB-4708-B27C-ED1EF7825E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

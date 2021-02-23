@@ -8,10 +8,6 @@ namespace Test.UniqueGenerate
 {
     class TestSnowflakeAlgorithm
     {
-        [SetUp]
-        public void Setup()
-        {
-        }
 
         [Test]
         public void SnowflakeAlgorithmTest()
