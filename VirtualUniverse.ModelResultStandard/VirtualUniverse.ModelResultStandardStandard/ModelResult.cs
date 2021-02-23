@@ -33,6 +33,35 @@ namespace VirtualUniverse.ModelResultStandard
         /// 成功标识,操作执行是否成功
         /// </summary>
         public bool Success { get; internal set; }
+
+        /// <summary>
+        /// 成功结果
+        /// </summary>
+        /// <param name="data">数据</param>
+        /// <param name="code">成功/错误代码</param>
+        /// <param name="pagination">分页信息</param>
+        public void SuccessResult(object data, Enum code, Pagination pagination = null)
+        {
+            Data = data;
+            Message = code.GetDescription();
+            Success = true;
+            Pagination = pagination;
+            Code = GetCodeInfo(code);
+        }
+
+        /// <summary>
+        /// 失败结果
+        /// </summary>
+        /// <param name="code">成功/错误代码</param>
+        /// <param name="errorInfo">错误信息</param>
+        public void FailedResult(Enum code, object errorInfo = null)
+        {
+            Message = code.GetDescription();
+            ErrorInfo = errorInfo;
+            Success = false;
+            Code = GetCodeInfo(code);
+        }
+
         /// <summary>
         /// 返回成功时调用
         /// </summary>
@@ -40,7 +69,7 @@ namespace VirtualUniverse.ModelResultStandard
         /// <param name="code">成功代码</param>
         /// <param name="pagination">分页信息</param>
         /// <returns></returns>
-        public static ModelResult SuccessResult(object data, Enum code, Pagination pagination = null)
+        public static ModelResult SuccessResultStatic(object data, Enum code, Pagination pagination = null)
         {
             var model = new ModelResult
             {
@@ -52,13 +81,14 @@ namespace VirtualUniverse.ModelResultStandard
             };
             return model;
         }
+
         /// <summary>
         /// 返回失败时调用
         /// </summary>
         /// <param name="code">错误代码</param>
         /// <param name="errorInfo">错误信息</param>
         /// <returns></returns>
-        public static ModelResult FailedResult(Enum code, string errorInfo = "")
+        public static ModelResult FailedResultStatic(Enum code, object errorInfo = null)
         {
             var model = new ModelResult
             {
@@ -94,23 +124,18 @@ namespace VirtualUniverse.ModelResultStandard
         /// </summary>
         public new T Data { get; internal set; }
         /// <summary>
-        /// 返回成功时调用
+        /// 成功结果
         /// </summary>
         /// <param name="data">数据</param>
-        /// <param name="code">成功代码</param>
+        /// <param name="code">成功/错误代码</param>
         /// <param name="pagination">分页信息</param>
-        /// <returns></returns>
-        public ModelResult<T> SuccessResult(T data, Enum code, Pagination pagination = null)
+        public void SuccessResult(T data, Enum code, Pagination pagination = null)
         {
-            var model = new ModelResult<T>
-            {
-                Data = data,
-                Message = code.GetDescription(),
-                Success = true,
-                Pagination = pagination,
-                Code = GetCodeInfo(code)
-            };
-            return model;
+            Data = data;
+            Message = code.GetDescription();
+            Success = true;
+            Pagination = pagination;
+            Code = GetCodeInfo(code);
         }
     }
 }

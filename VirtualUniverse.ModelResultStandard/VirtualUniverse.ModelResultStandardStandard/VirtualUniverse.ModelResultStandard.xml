@@ -4,47 +4,6 @@
         <name>VirtualUniverse.ModelResultStandard</name>
     </assembly>
     <members>
-        <member name="T:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension">
-            <summary>
-            模型结果扩展
-            </summary>
-        </member>
-        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.SuccessResult``1(VirtualUniverse.ModelResultStandard.ModelResult{``0},``0,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
-            <summary>
-            成功结果
-            </summary>
-            <typeparam name="T">数据类型</typeparam>
-            <param name="result">扩展类</param>
-            <param name="data">数据</param>
-            <param name="code">成功/错误代码</param>
-            <param name="pagination">分页信息</param>
-        </member>
-        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.SuccessResult(VirtualUniverse.ModelResultStandard.ModelResult,System.Object,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
-            <summary>
-            成功结果
-            </summary>
-            <param name="result">扩展类</param>
-            <param name="data">数据</param>
-            <param name="code">成功/错误代码</param>
-            <param name="pagination">分页信息</param>
-        </member>
-        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.FailedResult``1(VirtualUniverse.ModelResultStandard.ModelResult{``0},System.Enum,System.Object)">
-            <summary>
-            失败结果
-            </summary>
-            <typeparam name="T">数据类型</typeparam>
-            <param name="result">扩展类</param>
-            <param name="code">成功/错误代码</param>
-            <param name="errorInfo">错误信息</param>
-        </member>
-        <member name="M:VirtualUniverse.ModelResultStandard.Extensions.ModelResultExtension.FailedResult(VirtualUniverse.ModelResultStandard.ModelResult,System.Enum,System.Object)">
-            <summary>
-            失败结果
-            </summary>
-            <param name="result">扩展类</param>
-            <param name="code">成功/错误代码</param>
-            <param name="errorInfo">错误信息</param>
-        </member>
         <member name="T:VirtualUniverse.ModelResultStandard.ModelResult">
             <summary>
             返回的视图模型以及结果信息
@@ -82,6 +41,21 @@
         </member>
         <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.SuccessResult(System.Object,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
             <summary>
+            成功结果
+            </summary>
+            <param name="data">数据</param>
+            <param name="code">成功/错误代码</param>
+            <param name="pagination">分页信息</param>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.FailedResult(System.Enum,System.Object)">
+            <summary>
+            失败结果
+            </summary>
+            <param name="code">成功/错误代码</param>
+            <param name="errorInfo">错误信息</param>
+        </member>
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.SuccessResultStatic(System.Object,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
+            <summary>
             返回成功时调用
             </summary>
             <param name="data">数据</param>
@@ -89,7 +63,7 @@
             <param name="pagination">分页信息</param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.FailedResult(System.Enum,System.String)">
+        <member name="M:VirtualUniverse.ModelResultStandard.ModelResult.FailedResultStatic(System.Enum,System.Object)">
             <summary>
             返回失败时调用
             </summary>
@@ -117,12 +91,11 @@
         </member>
         <member name="M:VirtualUniverse.ModelResultStandard.ModelResult`1.SuccessResult(`0,System.Enum,VirtualUniverse.ModelResultStandard.Services.Pagination)">
             <summary>
-            返回成功时调用
+            成功结果
             </summary>
             <param name="data">数据</param>
-            <param name="code">成功代码</param>
+            <param name="code">成功/错误代码</param>
             <param name="pagination">分页信息</param>
-            <returns></returns>
         </member>
         <member name="T:VirtualUniverse.ModelResultStandard.Models.EnumAuthError">
             <summary>
