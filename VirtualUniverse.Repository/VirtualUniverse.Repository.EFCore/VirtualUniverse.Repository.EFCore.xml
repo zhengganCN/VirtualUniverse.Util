@@ -13,7 +13,6 @@
             <summary>
             仓储基类
             </summary>
-            <typeparam name="TEntity"></typeparam>
         </member>
         <member name="M:VirtualUniverse.Repository.EFCore.BaseRepository.Delete``1(Microsoft.EntityFrameworkCore.DbContext,``0,System.Boolean)">
             <summary>
