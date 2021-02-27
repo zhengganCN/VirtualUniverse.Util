@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Copyright>VirtualUniverse</Copyright>
+    <Description>扩展类集合：枚举扩展、枚举接口扩展、表达式树扩展</Description>
+    <PackageReleaseNotes>扩展类集合：枚举扩展、枚举接口扩展、表达式树扩展</PackageReleaseNotes>
+    <SignAssembly>false</SignAssembly>
+    <Authors>ZG</Authors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageIcon>tool.png</PackageIcon>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/zhengganCN/VirtualUniverse.Util/tree/master/VirtualUniverse.Extension.System</PackageProjectUrl>
+    <PackageTags>VirtualUniverse、Extension、System</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="..\..\tool.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
