@@ -1,0 +1,119 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Export.HtmlExport</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Export.HtmlExport.EnumHtmlNodeType">
+            summary
+            类 描 述：枚举Html节点类型
+            /summary
+        </member>
+        <member name="F:VirtualUniverse.Export.HtmlExport.EnumHtmlNodeType.UserDefine">
+            <summary>
+            用户自定义标签
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Export.HtmlExport.HtmlDocument">
+            <summary>
+            类 描 述：Html文档
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlDocument.Html">
+            <summary>
+            Html节点
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlDocument.Head">
+            <summary>
+            Head节点
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlDocument.Body">
+            <summary>
+            Body节点
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.InitHtml">
+            <summary>
+            初始化Html
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.Write">
+            <summary>
+            导出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.Write(System.String)">
+            <summary>
+            导出
+            </summary>
+            <param name="path"></param>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.AddStyleNode">
+            <summary>
+            添加样式
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.AddScriptNode">
+            <summary>
+            添加脚本
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.AddHtmlNode">
+            <summary>
+            添加&lt;Html&gt;标签节点
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlDocument.AddHtmlNode(VirtualUniverse.Export.HtmlExport.HtmlNodeObject,VirtualUniverse.Export.HtmlExport.HtmlNodeObject)">
+            <summary>
+            添加节点
+            </summary>
+            <param name="parant">父节点</param>
+            <param name="node">子节点</param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.Export.HtmlExport.HtmlNodeObject">
+            <summary>
+            类 描 述：Html节点对象
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlNodeObject.NodeProperties">
+            <summary>
+            节点属性
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlNodeObject.NodeContent">
+            <summary>
+            节点内容
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlNodeObject.NodeName">
+            <summary>
+            节点类型
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlNodeObject.ChildrenHtmlNodeObject">
+            <summary>
+            子节点
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Export.HtmlExport.HtmlNodeObject.UserDefineNode">
+            <summary>
+            自定义节点名称
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Export.HtmlExport.HtmlNodeObject.Export">
+            <summary>
+            导出
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
