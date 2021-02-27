@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Repository.Mongo</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Repository.Mongo.DbContext">
+            <summary>
+            类 描 述：上下文
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Mongo.DbContext.MongoClient">
+            <summary>
+            客户端
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.Repository.Mongo.DbContext.MongoDatabase">
+            <summary>
+            数据库
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.#ctor">
+            <summary>
+            初始化
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.OnConfiguring(VirtualUniverse.Repository.Mongo.DbContextOptionsBuilder)">
+            <summary>
+            配置构造
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.GetMongoCollection``1(MongoDB.Driver.MongoCollectionSettings)">
+            <summary>
+            获取表对象
+            </summary>
+            <typeparam name="TEntity">实体</typeparam>
+            <param name="settings">设置</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.GetMongoCollection``1(System.String,MongoDB.Driver.MongoDatabaseSettings,MongoDB.Driver.MongoCollectionSettings)">
+            <summary>
+            获取表对象
+            </summary>
+            <typeparam name="TEntity">实体</typeparam>
+            <param name="databaseName">数据库名称</param>
+            <param name="mongoDatabaseSettings">数据库设置</param>
+            <param name="mongoCollectionSettings">表设置</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.InstantiationDbSet">
+            <summary>
+            实例化DbSet
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.Dispose(System.Boolean)">
+            <summary>
+            释放
+            </summary>
+            <param name="disposing"></param>
+        </member>
+        <member name="M:VirtualUniverse.Repository.Mongo.DbContext.Dispose">
+            <summary>
+            释放
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Repository.Mongo.DbContextOptionsBuilder">
+            <summary>
+            类 描 述：Db配置
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Repository.Mongo.DbSet`1">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.Repository.Mongo.MongoDbSet`1">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+    </members>
+</doc>
