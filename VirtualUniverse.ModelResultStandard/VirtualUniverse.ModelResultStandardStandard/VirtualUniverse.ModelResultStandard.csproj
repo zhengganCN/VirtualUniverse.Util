@@ -6,7 +6,7 @@
     <Description>模型结果：API统一返回结果</Description>
     <Copyright>VirtualUniverse</Copyright>
     <PackageReleaseNotes></PackageReleaseNotes>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
 	  <PackageProjectUrl>https://github.com/zhengganCN/VirtualUniverse.Util/tree/master/VirtualUniverse.ModelResultStandard</PackageProjectUrl>
