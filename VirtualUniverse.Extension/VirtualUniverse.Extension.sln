@@ -5,13 +5,13 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{B91C121D-29FA-4288-85DB-2B9B3BB4DB23}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension", "VirtualUniverse.Extension\VirtualUniverse.Extension.csproj", "{B5D642B4-50D8-4B4F-8762-4A92D07A9F11}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.Newtonsoft.Json", "VirtualUniverse.Extension.Newtonsoft.Json\VirtualUniverse.Extension.Newtonsoft.Json.csproj", "{8AF5D1CD-69F8-41B7-8389-3C93195B8007}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.Newtonsoft.Json.Test", "VirtualUniverse.Extension.Newtonsoft.Json.Test\VirtualUniverse.Extension.Newtonsoft.Json.Test.csproj", "{32ED6F9E-2DFB-4708-B27C-ED1EF7825E97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.DependencyInjection", "VirtualUniverse.Extension.DependencyInjection\VirtualUniverse.Extension.DependencyInjection.csproj", "{861D7195-9A3D-462A-A043-91A2B5A63DF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.DependencyInjection", "VirtualUniverse.Extension.DependencyInjection\VirtualUniverse.Extension.DependencyInjection.csproj", "{861D7195-9A3D-462A-A043-91A2B5A63DF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.System", "VirtualUniverse.Extension.System\VirtualUniverse.Extension.System.csproj", "{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{B91C121D-29FA-4288-85DB-2B9B3BB4DB23}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B91C121D-29FA-4288-85DB-2B9B3BB4DB23}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B91C121D-29FA-4288-85DB-2B9B3BB4DB23}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5D642B4-50D8-4B4F-8762-4A92D07A9F11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5D642B4-50D8-4B4F-8762-4A92D07A9F11}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5D642B4-50D8-4B4F-8762-4A92D07A9F11}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5D642B4-50D8-4B4F-8762-4A92D07A9F11}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8AF5D1CD-69F8-41B7-8389-3C93195B8007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8AF5D1CD-69F8-41B7-8389-3C93195B8007}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AF5D1CD-69F8-41B7-8389-3C93195B8007}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{861D7195-9A3D-462A-A043-91A2B5A63DF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
