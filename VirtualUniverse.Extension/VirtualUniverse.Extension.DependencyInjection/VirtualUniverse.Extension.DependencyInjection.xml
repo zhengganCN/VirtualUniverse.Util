@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VirtualUniverse.Extension.DependencyInjection</name>
+    </assembly>
+    <members>
+        <member name="T:VirtualUniverse.Extension.DependencyInjection.DependencyInjectionRegister">
+            <summary>
+            依赖注入注册
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.Extension.DependencyInjection.DependencyInjectionRegister.AddDependencyInjectionRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.String[])">
+            <summary>
+            自动注入
+            要自动注入的接口必须继承<see cref="T:VirtualUniverse.Extension.DependencyInjection.Interfaces.ITransientDI"/>，<see cref="T:VirtualUniverse.Extension.DependencyInjection.Interfaces.IScopedDI"/>，<see cref="T:VirtualUniverse.Extension.DependencyInjection.Interfaces.ISingletonDI"/>这三个接口之中的一个，且只能继承其中一个，不能继承多个
+            如果继承了多个，则按 ITransientDI、IScopedDI、ISingletonDI 的顺序按找到的第一个来注入相应的类型
+            </summary>
+            <param name="services">服务集合</param>
+            <param name="assemblyNames">扫描特定的程序集名称，左匹配</param>
+        </member>
+        <member name="M:VirtualUniverse.Extension.DependencyInjection.DependencyInjectionRegister.DIRegister(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            依赖注入
+            </summary>
+            <param name="services"></param>
+            <param name="entityClass"></param>
+            <param name="interfaces"></param>
+        </member>
+        <member name="M:VirtualUniverse.Extension.DependencyInjection.DependencyInjectionRegister.GetDIInterfaces(System.Collections.Generic.IEnumerable{System.Type},System.String)">
+            <summary>
+            获取所有继承了 ITransientDI、IScopedDI、ISingletonDI 这三个接口的接口
+            </summary>
+            <param name="interfaces"></param>
+            <param name="dIType"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

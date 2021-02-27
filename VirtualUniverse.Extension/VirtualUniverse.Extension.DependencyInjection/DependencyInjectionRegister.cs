@@ -25,19 +25,20 @@ namespace VirtualUniverse.Extension.DependencyInjection
         /// 如果继承了多个，则按 ITransientDI、IScopedDI、ISingletonDI 的顺序按找到的第一个来注入相应的类型
         /// </summary>
         /// <param name="services">服务集合</param>
+        /// <param name="assemblyNames">扫描特定的程序集名称，左匹配</param>
         public static IServiceCollection AddDependencyInjectionRegister(this IServiceCollection services,params string[] assemblyNames)
         {
-            var assemblies = new List<Assembly>();
-            var files = Directory.GetFiles(AppDomain.CurrentDomain.BaseDirectory, @"*.dll");
-            foreach (var file in files)
-            {
-#pragma warning disable S3885 // "Assembly.Load" should be used
-                assemblies.Add(Assembly.LoadFile(file));
-#pragma warning restore S3885 // "Assembly.Load" should be used
-            }
+            var runtimeLibraries = DependencyContext.Default.RuntimeLibraries
+                .Where(lib => !lib.Serviceable && lib.Type != "package");
             foreach (var assemblyName in assemblyNames)
             {
-                assemblies = assemblies.Where(entity => entity.FullName.StartsWith(assemblyName)).ToList();
+                runtimeLibraries = runtimeLibraries.Where(entity => entity.Name.StartsWith(assemblyName)).ToList();
+            }
+            var assemblies = new List<Assembly>();
+            foreach (var runtimeLibrary in runtimeLibraries)
+            {
+                assemblies.Add(AssemblyLoadContext.Default
+                    .LoadFromAssemblyName(new AssemblyName(runtimeLibrary.Name)));
             }
             if (assemblies.Any())
             {
