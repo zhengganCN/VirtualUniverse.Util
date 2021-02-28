@@ -11,6 +11,7 @@ namespace VirtualUniverse.BackgroundService
     /// </summary>
     public abstract class BaseBackgroundService : IHostedService, IDisposable
     {
+        private Task _executeTask;
         private bool disposedValue;
         private readonly BackgroundServiceBuilder backgroundServiceBuilder = new BackgroundServiceBuilder();
 
@@ -158,7 +159,13 @@ namespace VirtualUniverse.BackgroundService
         /// <returns></returns>
         public virtual Task StartAsync(CancellationToken cancellationToken)
         {
-            return Task.Run(() => ExecutionTask());
+            _executeTask = Task.Run(() => ExecutionTask());
+            // If the task is completed then return it, this will bubble cancellation and failure to the caller
+            if (_executeTask.IsCompleted)
+            {
+                return _executeTask;
+            }
+            return Task.CompletedTask;
         }
 
         /// <summary>
