@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <Copyright>VirtualUniverse</Copyright>
-    <Description>扩展类集合：枚举扩展、枚举接口扩展、表达式树扩展</Description>
+    <Description>扩展类：枚举扩展、目录扩展</Description>
     <PackageReleaseNotes>扩展类集合：枚举扩展、枚举接口扩展、表达式树扩展</PackageReleaseNotes>
     <SignAssembly>false</SignAssembly>
     <Authors>ZG</Authors>

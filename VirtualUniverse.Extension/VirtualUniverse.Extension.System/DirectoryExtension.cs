@@ -23,6 +23,25 @@ namespace VirtualUniverse.Extension.System
             var directoryPaths = Directory.GetDirectories(path);
             return GetDirectories(directoryPaths, deep);
         }
+
+        /// <summary>
+        /// 递归获取目录
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static IList<string> GetDirectoriesByRecursive(string path)
+        {
+            var paths = new List<string>();
+            var directories = Directory.GetDirectories(path);
+            paths.AddRange(directories);
+            foreach (var directory in directories)
+            {
+                paths.AddRange(GetDirectoriesByRecursive(directory));
+            }
+            return paths;
+        }
+
+       
         /// <summary>
         /// 获取文件夹路径
         /// </summary>

@@ -15,9 +15,15 @@ namespace Test
     class DirectoryExtensionTest
     {
         [Test]
-        public void ReadDirectoriesTest()
+        public void GetDirectoriesTest()
         {
-            var s = DirectoryExtension.GetDirectories(@"G:\Softwares\VirtualUniverse.Util", 1);
+            DirectoryExtension.GetDirectories(@"G:\Softwares\VirtualUniverse.Util", 0);
+        }
+
+        [Test]
+        public void GetDirectoriesByRecursiveTest()
+        {
+           DirectoryExtension.GetDirectoriesByRecursive(@"G:\Softwares\VirtualUniverse.Util\VirtualUniverse.Extension\Test\bin\Debug");
         }
     }
 }
