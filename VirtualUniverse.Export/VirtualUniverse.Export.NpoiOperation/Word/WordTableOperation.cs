@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using VirtualUniverse.NpoiOperation.Models.WordModels;
+using VirtualUniverse.Export.NpoiOperation.Models.WordModels;
 
 /***********************************************************************************
 ****作者：zhenggan；创建时间：2020/12/30 23:20:43；更新时间：
 ************************************************************************************/
-namespace VirtualUniverse.NpoiOperation.Word
+namespace VirtualUniverse.Export.NpoiOperation.Word
 {
     /// <summary>
     /// 类说明：Word表格操作

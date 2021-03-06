@@ -1,7 +1,7 @@
 ﻿/***********************************************************************************
 ****作者：zhenggan；创建时间：2020/12/30 23:17:05；更新时间：
 ************************************************************************************/
-namespace VirtualUniverse.NpoiOperation.Models.WordModels
+namespace VirtualUniverse.Export.NpoiOperation.Models.WordModels
 {
     /// <summary>
     /// 类说明：表格单元格的水平对齐方式
