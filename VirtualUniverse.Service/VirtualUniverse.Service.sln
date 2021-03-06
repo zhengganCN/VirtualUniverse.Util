@@ -5,25 +5,15 @@ VisualStudioVersion = 16.0.30717.126
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.AssemblyOperation", "VirtualUniverse.Service.AssemblyOperation\VirtualUniverse.Service.AssemblyOperation.csproj", "{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.AutoDependencyInjection", "VirtualUniverse.Service.AutoDependencyInjection\VirtualUniverse.Service.AutoDependencyInjection.csproj", "{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.Consul", "VirtualUniverse.Service.Consul\VirtualUniverse.Service.Consul.csproj", "{6C5523ED-B149-4C62-BF98-BC44956A8559}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.FtpOperation", "VirtualUniverse.Service.FtpOperation\VirtualUniverse.Service.FtpOperation.csproj", "{6D52B703-BACE-4F83-AD80-53910D40547D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.IdPool", "VirtualUniverse.Service.IdPool\VirtualUniverse.Service.IdPool.csproj", "{6276D969-E7CD-44EB-A23A-201252F8F532}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.TimedTask", "VirtualUniverse.Service.TimedTask\VirtualUniverse.Service.TimedTask.csproj", "{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.Consul.Test", "VirtualUniverse.Service.Consul.Test\VirtualUniverse.Service.Consul.Test.csproj", "{D3833E21-A357-47C4-A5AB-884205B15270}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.Nacos", "VirtualUniverse.Service.Nacos\VirtualUniverse.Service.Nacos.csproj", "{CC7FF2FD-D665-4802-9D4B-D278898A6C09}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.Nacos.Test", "VirtualUniverse.Service.Nacos.Test\VirtualUniverse.Service.Nacos.Test.csproj", "{17E23D70-5B30-4DEB-A78C-17DC3AF88B90}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Service.RabbitMQ", "VirtualUniverse.Service.RabbitMQ\VirtualUniverse.Service.RabbitMQ.csproj", "{B9A7F5BE-4F9D-447C-9600-580C0632AC03}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Service.RabbitMQ.Test", "VirtualUniverse.Service.RabbitMQ.Test\VirtualUniverse.Service.RabbitMQ.Test.csproj", "{DE6AA34F-103D-48D2-B94B-702A30B5138E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +25,6 @@ Global
 		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{70D049BC-5D5D-45DD-8E5F-40577E45DFF6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26EDB233-3F3F-4D35-95BA-09EA8C9030E9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C5523ED-B149-4C62-BF98-BC44956A8559}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,14 +33,6 @@ Global
 		{6D52B703-BACE-4F83-AD80-53910D40547D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D52B703-BACE-4F83-AD80-53910D40547D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D52B703-BACE-4F83-AD80-53910D40547D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6276D969-E7CD-44EB-A23A-201252F8F532}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6276D969-E7CD-44EB-A23A-201252F8F532}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6276D969-E7CD-44EB-A23A-201252F8F532}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6276D969-E7CD-44EB-A23A-201252F8F532}.Release|Any CPU.Build.0 = Release|Any CPU
-		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{85A2B5F5-FE7C-4E86-8485-FCD1BCABAA20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D3833E21-A357-47C4-A5AB-884205B15270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D3833E21-A357-47C4-A5AB-884205B15270}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3833E21-A357-47C4-A5AB-884205B15270}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -67,14 +45,6 @@ Global
 		{17E23D70-5B30-4DEB-A78C-17DC3AF88B90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17E23D70-5B30-4DEB-A78C-17DC3AF88B90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17E23D70-5B30-4DEB-A78C-17DC3AF88B90}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B9A7F5BE-4F9D-447C-9600-580C0632AC03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B9A7F5BE-4F9D-447C-9600-580C0632AC03}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B9A7F5BE-4F9D-447C-9600-580C0632AC03}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B9A7F5BE-4F9D-447C-9600-580C0632AC03}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE6AA34F-103D-48D2-B94B-702A30B5138E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE6AA34F-103D-48D2-B94B-702A30B5138E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE6AA34F-103D-48D2-B94B-702A30B5138E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE6AA34F-103D-48D2-B94B-702A30B5138E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

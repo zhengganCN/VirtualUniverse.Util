@@ -1,9 +1,9 @@
-﻿using VirtualUniverse.BackgroundService.Models.StartUpModes;
+﻿using ThSoft.Package.BackgroundService.Models.StartUpModes;
 
 /***********************************************************************************
 ****作者：zhenggan；创建时间：2021/1/10 23:15:45；更新时间：
 ************************************************************************************/
-namespace VirtualUniverse.BackgroundService.Models
+namespace ThSoft.Package.BackgroundService.Models
 {
     /// <summary>
     /// 类说明：后台服务配置构造器

@@ -3,7 +3,7 @@
 /***********************************************************************************
 ****作者：zhenggan；创建时间：2021/1/27 23:14:29；更新时间：
 ************************************************************************************/
-namespace VirtualUniverse.BackgroundService.Models
+namespace ThSoft.Package.BackgroundService.Models
 {
     /// <summary>
     /// 类说明：任务执行次数
