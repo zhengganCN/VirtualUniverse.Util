@@ -6,15 +6,17 @@ using System.Net.Http.Json;
 using System.Text;
 
 /***********************************************************************************
-****作者：zhenggan；创建时间：2021/1/27 9:26:29；更新时间：
+****作者：zhenggan；创建时间：2021/3/6 20:57:07；更新时间：
 ************************************************************************************/
-namespace VirtualUniverse.HttpOperation
+namespace VirtualUniverse.Extension.AspNetCore.HttpContentOperation
 {
     /// <summary>
-    /// 类 描 述：HttpContent操作
+    /// 类说明：Htt
+    /// pContent扩展
     /// </summary>
-    public static class HttpContentOperation
+    public static class HttpContentExtension
     {
+
         /// <summary>
         /// HttpContent组装
         /// </summary>
@@ -32,8 +34,6 @@ namespace VirtualUniverse.HttpOperation
                 case EnumContentType.MultipartFormData:
                     content = SetUpMultipartFormDataContent(data);
                     break;
-                default:
-                    break;
             }
             return content;
         }
@@ -41,12 +41,6 @@ namespace VirtualUniverse.HttpOperation
         private static HttpContent SetUpMultipartFormDataContent(object data)
         {
             var content = new MultipartFormDataContent();
-            HandlePropertity(data, content);
-            return content;
-        }
-
-        private static void HandlePropertity(object data, MultipartFormDataContent content)
-        {
             var properties = data.GetType().GetProperties();
             foreach (var property in properties)
             {
@@ -71,6 +65,7 @@ namespace VirtualUniverse.HttpOperation
                     content.Add(stream, property.Name);
                 }
             }
+            return content;
         }
 
         private static HttpContent SendJsonContent(object data)

@@ -1,18 +1,19 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Authors>ZG</Authors>
+    <PackageTags>VirtualUniverse、Extension、AspNetCore、HttpContentOperation</PackageTags>
     <Copyright>VirtualUniverse</Copyright>
+    <Description>HttpContent生成</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>tool.png</PackageIcon>
-    <PackageTags>VirtualUniverse、FTP、FluentFTP</PackageTags>
-    <Description>FluentFtp操作类</Description>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentFTP" Version="33.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.3" />
+    <PackageReference Include="System.Net.Http.Json" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>

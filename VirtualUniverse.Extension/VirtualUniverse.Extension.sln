@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.DependencyInjection", "VirtualUniverse.Extension.DependencyInjection\VirtualUniverse.Extension.DependencyInjection.csproj", "{861D7195-9A3D-462A-A043-91A2B5A63DF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.System", "VirtualUniverse.Extension.System\VirtualUniverse.Extension.System.csproj", "{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.System", "VirtualUniverse.Extension.System\VirtualUniverse.Extension.System.csproj", "{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.AspNetCore.HttpContentOperation", "VirtualUniverse.Extension.AspNetCore.HttpContentOperation\VirtualUniverse.Extension.AspNetCore.HttpContentOperation.csproj", "{AC6F0082-084F-4C79-AD8B-771411722F2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
