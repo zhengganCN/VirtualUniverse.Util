@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing.Imaging;
-using System.Text;
+﻿using System.Drawing.Imaging;
 
 namespace VirtualUniverse.PictureProcessing.Models
 {
-    public class EncoderParameterModel
+    /// <summary>
+    /// 编码参数
+    /// </summary>
+    public class EncoderParameterBuilder
     {
         /// <summary>
         /// 向图像编码器传递参数时，该参数将封装在 EncoderParameter 对象中。 

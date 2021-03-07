@@ -5,7 +5,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using VirtualUniverse.PictureProcessing.Models;
 
-namespace VirtualUniverse.PictureProcessing.Compression
+namespace VirtualUniverse.PictureProcessing
 {
     /// <summary>
     /// 图片压缩
@@ -24,7 +24,7 @@ namespace VirtualUniverse.PictureProcessing.Compression
         /// <param name="model">图像编码参数模型</param>
         /// <param name="imageFormat">图像的保存格式</param>
         /// <returns></returns>
-        public Stream PicCompression(Stream imageStream, Size destSize, EncoderParameterModel model, ImageFormat imageFormat)
+        public Stream PicCompression(Stream imageStream, Size destSize, Models.EncoderParameterBuilder model, ImageFormat imageFormat)
         {
             var image = Image.FromStream(imageStream);
             image = GenerateSizePic(image, destSize);
@@ -51,7 +51,7 @@ namespace VirtualUniverse.PictureProcessing.Compression
         /// <param name="model">图像编码参数模型</param>
         /// <param name="imageFormat">图像的保存格式</param>
         /// <returns></returns>
-        public Stream PicCompression(Image image, Size destSize, EncoderParameterModel model, ImageFormat imageFormat)
+        public Stream PicCompression(Image image, Size destSize, Models.EncoderParameterBuilder model, ImageFormat imageFormat)
         {
             image = GenerateSizePic(image, destSize);
             if (model == null)
@@ -74,7 +74,7 @@ namespace VirtualUniverse.PictureProcessing.Compression
         /// </summary>
         /// <param name="model">图像编码参数模型</param>
         /// <param name="encoderParameters">图像编码参数</param>
-        private void ConstructorEncoderParameters(EncoderParameterModel model, EncoderParameters encoderParameters)
+        private void ConstructorEncoderParameters(EncoderParameterBuilder model, EncoderParameters encoderParameters)
         {
             int index = 0;
             Encoder encoder;
@@ -95,51 +95,51 @@ namespace VirtualUniverse.PictureProcessing.Compression
             if (model.ColorDepth.HasValue)
             {
                 encoder = Encoder.ColorDepth;
-                EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.ColorDepth.Value);
-                encoderParameters.Param[index] = encoderParameter; 
+                EncoderParameter encoderParameter = new EncoderParameter(encoder, model.ColorDepth.Value);
+                encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.Compression.HasValue)
             {
                 encoder = Encoder.Compression;
                 EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.Compression.Value);
-                encoderParameters.Param[index] = encoderParameter; 
+                encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.LuminanceTable.HasValue)
             {
                 encoder = Encoder.LuminanceTable;
                 EncoderParameter encoderParameter = new EncoderParameter(encoder, model.LuminanceTable.Value);
-                encoderParameters.Param[index] = encoderParameter; 
+                encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.RenderMethod.HasValue)
             {
                 encoder = Encoder.RenderMethod;
                 EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.RenderMethod.Value);
-                encoderParameters.Param[index] = encoderParameter; 
+                encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.SaveFlag.HasValue)
             {
                 encoder = Encoder.SaveFlag;
                 EncoderParameter encoderParameter = new EncoderParameter(encoder, model.SaveFlag.Value);
-                encoderParameters.Param[index] = encoderParameter; 
-                
+                encoderParameters.Param[index] = encoderParameter;
+
                 index++;
             }
             if (model.ScanMethod.HasValue)
             {
                 encoder = Encoder.ScanMethod;
                 EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.ScanMethod.Value);
-                encoderParameters.Param[index] = encoderParameter; 
+                encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.Transformation.HasValue)
             {
                 encoder = Encoder.Transformation;
                 EncoderParameter encoderParameter = new EncoderParameter(encoder, (long)model.Transformation.Value);
-                encoderParameters.Param[index] = encoderParameter; 
+                encoderParameters.Param[index] = encoderParameter;
                 index++;
             }
             if (model.Version.HasValue)
@@ -154,27 +154,27 @@ namespace VirtualUniverse.PictureProcessing.Compression
         /// </summary>
         /// <param name="model">图像编码参数模型</param>
         /// <returns></returns>
-        private int GetEncoderParameterModelValueNumbers(EncoderParameterModel model)
+        private int GetEncoderParameterModelValueNumbers(Models.EncoderParameterBuilder model)
         {
             var result = 0;
             var propertyInfos = model.GetType().GetProperties();
             foreach (var propertyInfo in propertyInfos)
             {
-                if (propertyInfo.GetValue(model)!=null)
+                if (propertyInfo.GetValue(model) != null)
                 {
                     result++;
                 }
             }
             return result;
         }
-        
+
         /// <summary>
         /// 按比例放大缩小图像
         /// </summary>
         /// <param name="image">原图</param>
         /// <param name="destSize">输出图像的大小</param>
         /// <returns></returns>
-        private Bitmap GenerateSizePic(Image image,Size destSize)
+        private Bitmap GenerateSizePic(Image image, Size destSize)
         {
             var srcRectangle = new Rectangle(0, 0, image.Width, image.Height);
             Rectangle destRectangle = GenerateDestRectangle(ref destSize, image.Size);
@@ -202,16 +202,16 @@ namespace VirtualUniverse.PictureProcessing.Compression
                 Width = destSize.Width,
                 Height = destSize.Height
             };
-            if (destSize.Width == 0 & destSize.Height != 0)
+            if (destSize.Width == 0 && destSize.Height != 0)
             {
                 rectangle.Width = (destSize.Height * imageSize.Width) / imageSize.Height;
             }
-            else if (destSize.Width != 0 & destSize.Height != 0)
+            else if (destSize.Width != 0 && destSize.Height != 0)
             {
                 rectangle.Height = destSize.Height;
                 rectangle.Width = destSize.Width;
             }
-            else if (destSize.Width != 0 & destSize.Height == 0)
+            else if (destSize.Width != 0 && destSize.Height == 0)
             {
                 rectangle.Height = (destSize.Width * imageSize.Height) / imageSize.Width;
             }

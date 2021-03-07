@@ -4,114 +4,60 @@
         <name>VirtualUniverse.PictureProcessing</name>
     </assembly>
     <members>
-        <member name="T:VirtualUniverse.PictureProcessing.Compression.PictureCompression">
+        <member name="T:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder">
             <summary>
-            图片压缩
-            GDI + 具有内置编码器和解码器支持以下文件类型：
-            BMP、GIF、JPEG、PNG、TIFF
-            GDI + 还提供了支持以下文件类型的内置解码器：
-            WMF、EMF、ICON
+            编码参数
             </summary>
         </member>
-        <member name="M:VirtualUniverse.PictureProcessing.Compression.PictureCompression.PicCompression(System.IO.Stream,System.Drawing.Size,VirtualUniverse.PictureProcessing.Models.EncoderParameterModel,System.Drawing.Imaging.ImageFormat)">
-            <summary>
-            图片压缩
-            </summary>
-            <param name="imageStream">原图流</param>
-            <param name="destSize">输出图像的大小，当width为0，height不为0时，根据height的值与原图按比例设置width的值；当height为0，width不为0时，根据width的值与原图按比例设置height的值；当height为0，width为0时，直接取原图的width和height</param>
-            <param name="model">图像编码参数模型</param>
-            <param name="imageFormat">图像的保存格式</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.PictureProcessing.Compression.PictureCompression.PicCompression(System.Drawing.Image,System.Drawing.Size,VirtualUniverse.PictureProcessing.Models.EncoderParameterModel,System.Drawing.Imaging.ImageFormat)">
-            <summary>
-            图片压缩
-            </summary>
-            <param name="image">原图</param>
-            <param name="destSize">输出图像的大小，当width为0，height不为0时，根据height的值与原图按比例设置width的值；当height为0，width不为0时，根据width的值与原图按比例设置height的值；当height为0，width为0时，直接取原图的width和height</param>
-            <param name="model">图像编码参数模型</param>
-            <param name="imageFormat">图像的保存格式</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.PictureProcessing.Compression.PictureCompression.ConstructorEncoderParameters(VirtualUniverse.PictureProcessing.Models.EncoderParameterModel,System.Drawing.Imaging.EncoderParameters)">
-            <summary>
-            构造图像编码参数
-            </summary>
-            <param name="model">图像编码参数模型</param>
-            <param name="encoderParameters">图像编码参数</param>
-        </member>
-        <member name="M:VirtualUniverse.PictureProcessing.Compression.PictureCompression.GetEncoderParameterModelValueNumbers(VirtualUniverse.PictureProcessing.Models.EncoderParameterModel)">
-            <summary>
-            获取图像编码参数模型有值的个数
-            </summary>
-            <param name="model">图像编码参数模型</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.PictureProcessing.Compression.PictureCompression.GenerateSizePic(System.Drawing.Image,System.Drawing.Size)">
-            <summary>
-            按比例放大缩小图像
-            </summary>
-            <param name="image">原图</param>
-            <param name="destSize">输出图像的大小</param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.PictureProcessing.Compression.PictureCompression.GenerateDestRectangle(System.Drawing.Size@,System.Drawing.Size)">
-            <summary>
-            生成目标图像的矩形大小
-            </summary>
-            <param name="destSize">输出图像的大小</param>
-            <param name="imageSize">原图大小</param>
-            <returns></returns>
-        </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.ChrominanceTable">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.ChrominanceTable">
             <summary>
             向图像编码器传递参数时，该参数将封装在 EncoderParameter 对象中。 
             EncoderParameter 对象的一个字段是 GUID，用于指定参数的类别。
             使用 Encoder 类的静态字段来检索包含所需类别的参数 Encoder。
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.ColorDepth">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.ColorDepth">
             <summary>
             颜色深度，24L，32L
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.Compression">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.Compression">
             <summary>
             压缩参数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.LuminanceTable">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.LuminanceTable">
             <summary>
             亮度表参数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.Quality">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.Quality">
             <summary>
             质量参数。质量参数的有用值范围是从0到100。 指定的数字越小，压缩就越高，
             因此图像的质量越低。 0和100会向你显示最高质量的图像。
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.RenderMethod">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.RenderMethod">
             <summary>
             渲染方法参数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.SaveFlag">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.SaveFlag">
             <summary>
             保存标志参数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.ScanMethod">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.ScanMethod">
             <summary>
             扫描方法参数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.Transformation">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.Transformation">
             <summary>
             转换参数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterModel.Version">
+        <member name="P:VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder.Version">
             <summary>
             版本参数
             </summary>
@@ -219,6 +165,65 @@
             <summary>
             在 GDI+ 1.0 版中不使用。
             </summary>
+        </member>
+        <member name="T:VirtualUniverse.PictureProcessing.PictureCompression">
+            <summary>
+            图片压缩
+            GDI + 具有内置编码器和解码器支持以下文件类型：
+            BMP、GIF、JPEG、PNG、TIFF
+            GDI + 还提供了支持以下文件类型的内置解码器：
+            WMF、EMF、ICON
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.PictureProcessing.PictureCompression.PicCompression(System.IO.Stream,System.Drawing.Size,VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            图片压缩
+            </summary>
+            <param name="imageStream">原图流</param>
+            <param name="destSize">输出图像的大小，当width为0，height不为0时，根据height的值与原图按比例设置width的值；当height为0，width不为0时，根据width的值与原图按比例设置height的值；当height为0，width为0时，直接取原图的width和height</param>
+            <param name="model">图像编码参数模型</param>
+            <param name="imageFormat">图像的保存格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.PictureProcessing.PictureCompression.PicCompression(System.Drawing.Image,System.Drawing.Size,VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder,System.Drawing.Imaging.ImageFormat)">
+            <summary>
+            图片压缩
+            </summary>
+            <param name="image">原图</param>
+            <param name="destSize">输出图像的大小，当width为0，height不为0时，根据height的值与原图按比例设置width的值；当height为0，width不为0时，根据width的值与原图按比例设置height的值；当height为0，width为0时，直接取原图的width和height</param>
+            <param name="model">图像编码参数模型</param>
+            <param name="imageFormat">图像的保存格式</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.PictureProcessing.PictureCompression.ConstructorEncoderParameters(VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder,System.Drawing.Imaging.EncoderParameters)">
+            <summary>
+            构造图像编码参数
+            </summary>
+            <param name="model">图像编码参数模型</param>
+            <param name="encoderParameters">图像编码参数</param>
+        </member>
+        <member name="M:VirtualUniverse.PictureProcessing.PictureCompression.GetEncoderParameterModelValueNumbers(VirtualUniverse.PictureProcessing.Models.EncoderParameterBuilder)">
+            <summary>
+            获取图像编码参数模型有值的个数
+            </summary>
+            <param name="model">图像编码参数模型</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.PictureProcessing.PictureCompression.GenerateSizePic(System.Drawing.Image,System.Drawing.Size)">
+            <summary>
+            按比例放大缩小图像
+            </summary>
+            <param name="image">原图</param>
+            <param name="destSize">输出图像的大小</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.PictureProcessing.PictureCompression.GenerateDestRectangle(System.Drawing.Size@,System.Drawing.Size)">
+            <summary>
+            生成目标图像的矩形大小
+            </summary>
+            <param name="destSize">输出图像的大小</param>
+            <param name="imageSize">原图大小</param>
+            <returns></returns>
         </member>
     </members>
 </doc>
