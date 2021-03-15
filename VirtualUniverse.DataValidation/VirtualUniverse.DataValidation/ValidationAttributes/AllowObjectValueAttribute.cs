@@ -35,6 +35,10 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
+            if (value is null)
+            {
+                return true;
+            }
             return ValidObject(value);
         }
 
@@ -126,6 +130,7 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
             }
             return result;
         }
+
         /// <summary>
         /// 枚举允许验证的对象类型
         /// </summary>

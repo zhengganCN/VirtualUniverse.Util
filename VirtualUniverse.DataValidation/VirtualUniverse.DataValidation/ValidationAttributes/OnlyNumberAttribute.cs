@@ -17,11 +17,16 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
+            if (value is null)
+            {
+                return true;
+            }
+            var result = false;
             if (value is string @string)
             {
-                return !Regex.IsMatch(@string, @"[^0-9]");
+                result = !Regex.IsMatch(@string, @"[^0-9]");
             }
-            return true;
+            return result;
         }
     }
 }

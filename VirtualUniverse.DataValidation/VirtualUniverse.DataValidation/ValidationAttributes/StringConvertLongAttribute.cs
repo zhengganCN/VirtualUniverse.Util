@@ -16,11 +16,16 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
+            if (value is null)
+            {
+                return true;
+            }
+            var result = false;
             if (value is string @string)
             {
-                return long.TryParse(@string, out _);
+                result = long.TryParse(@string, out _);
             }
-            return true;
+            return result;
         }
     }
 }

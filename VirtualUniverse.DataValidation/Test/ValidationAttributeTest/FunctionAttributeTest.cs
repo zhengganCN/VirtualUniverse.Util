@@ -18,10 +18,7 @@ namespace Test.ValidationAttributeTest
         [Test]
         public void FunctionAllowNullOrEmptyValid()
         {
-            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest", "AllowNullTest")
-            {
-                AllowNullOrEmpty = true
-            };
+            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest", "AllowNullTest");
             var model = new ValidModel
             {
                 SchoolName = "名字",
@@ -37,10 +34,7 @@ namespace Test.ValidationAttributeTest
         [Test]
         public void FunctionDotAllowNullOrEmptyValid()
         {
-            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest", "DontAllowNullTest")
-            {
-                AllowNullOrEmpty = false
-            };
+            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest", "DontAllowNullTest");
             var model = new ValidModel
             {
                 SchoolName = "名字"
@@ -61,10 +55,7 @@ namespace Test.ValidationAttributeTest
 
         private static void FunctionAssemblyException()
         {
-            FunctionAttribute functionAttribute = new FunctionAttribute("Test1", "Services.ValidTest", "DontAllowNullTest")
-            {
-                AllowNullOrEmpty = false
-            };
+            FunctionAttribute functionAttribute = new FunctionAttribute("Test1", "Services.ValidTest", "DontAllowNullTest");
             var model = new ValidModel
             {
                 SchoolName = "名字"
@@ -74,10 +65,7 @@ namespace Test.ValidationAttributeTest
 
         private static void FunctionClassException()
         {
-            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest_1", "DontAllowNullTest")
-            {
-                AllowNullOrEmpty = false
-            };
+            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest_1", "DontAllowNullTest");
             var model = new ValidModel
             {
                 SchoolName = "名字"
@@ -87,10 +75,7 @@ namespace Test.ValidationAttributeTest
 
         private static void FunctionMethodException()
         {
-            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest", "DontAllowNullTest_1")
-            {
-                AllowNullOrEmpty = false
-            };
+            FunctionAttribute functionAttribute = new FunctionAttribute("Test", "Services.ValidTest", "DontAllowNullTest_1");
             var model = new ValidModel
             {
                 SchoolName = "名字"

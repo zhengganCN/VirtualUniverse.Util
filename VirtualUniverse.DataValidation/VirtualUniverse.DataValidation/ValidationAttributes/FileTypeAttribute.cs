@@ -22,24 +22,31 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            if (value is IFormFile)
+            if (value is null)
             {
-                var file = value as IFormFile;
-                return ValidFileType(file);
-            }
-            else if (value is IFormFileCollection)
-            {
-                var files = value as IFormFileCollection;
-                foreach (var file in files)
-                {
-                    if (!ValidFileType(file))
-                    {
-                        return false;
-                    }
-                }
                 return true;
             }
-            return true;
+            bool result = false;
+            if (value is IFormFile file)
+            {
+                result = ValidFileType(file);
+            }
+            else if (value is IFormFileCollection files)
+            {
+                foreach (IFormFile fileItem in files)
+                {
+                    result = ValidFileType(fileItem);
+                    if (!result)
+                    {
+                        result = false;
+                    }
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
         }
         /// <summary>
         /// 验证文件类型

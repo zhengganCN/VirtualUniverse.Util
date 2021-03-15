@@ -21,11 +21,20 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
+            if (value is null)
+            {
+                return true;
+            }
+            bool result;
             if (value is string @string)
             {
-                return Lengths.Contains(@string.Length);
+                result= Lengths.Contains(@string.Length);
             }
-            return true;
+            else
+            {
+                result = false;
+            }
+            return result;
         }
     }
 }

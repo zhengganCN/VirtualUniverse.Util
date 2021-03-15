@@ -21,22 +21,32 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            if (value is string)
+            if (value is null)
             {
-                var number = value as string;
-                var result = false;
-                switch (CardType)
+                return true;
+            }
+            var result = false;
+            if (value is string number)
+            {
+                if (string.IsNullOrWhiteSpace(number))
                 {
-                    case EnumIDCardType.IdentityNumber:
-                        result = ValidIdentityNumber(number);
-                        break;
+                    result = false;
                 }
-                return result;
+                else
+                {
+                    switch (CardType)
+                    {
+                        case EnumIDCardType.IdentityNumber:
+                            result = ValidIdentityNumber(number);
+                            break;
+                    }
+                }
             }
             else
             {
-                return false;
+                result = false;
             }
+            return result;
         }
 
         private bool ValidIdentityNumber(string number)

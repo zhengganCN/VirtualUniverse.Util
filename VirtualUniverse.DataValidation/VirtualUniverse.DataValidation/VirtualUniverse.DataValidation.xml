@@ -80,6 +80,13 @@
             <param name="value"></param>
             <returns></returns>
         </member>
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.ChineseAttribute.ValidChinese(System.String)">
+            <summary>
+            验证中文
+            </summary>
+            <param name="chinese"></param>
+            <returns></returns>
+        </member>
         <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.ChineseAttribute.EnumChineseContainer">
             <summary>
             枚举包含设置
@@ -242,11 +249,6 @@
             类说明：函数验证（调用自定义函数验证，自定义函数返回类型必须为布尔类型,且函数必须为静态函数）
             </summary>
         </member>
-        <member name="P:VirtualUniverse.DataValidation.ValidationAttributes.FunctionAttribute.AllowNullOrEmpty">
-            <summary>
-            验证值是否允许Null或者空字符，默认值为 false
-            </summary>
-        </member>
         <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FunctionAttribute.#ctor(System.String,System.String,System.String)">
             <summary>
             构造函数
@@ -268,12 +270,11 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FunctionAttribute.ValidValue(System.Object,System.Boolean)">
+        <member name="M:VirtualUniverse.DataValidation.ValidationAttributes.FunctionAttribute.ValidValue(System.Object)">
             <summary>
             执行通过反射获取的验证方法
             </summary>
             <param name="value"></param>
-            <param name="result"></param>
             <returns></returns>
         </member>
         <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.IDCardAttribute">

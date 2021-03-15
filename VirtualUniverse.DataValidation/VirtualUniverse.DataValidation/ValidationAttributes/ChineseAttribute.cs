@@ -21,22 +21,45 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            var result = false;
-            if (value is string)
+            if (value is null)
             {
-                switch (ChineseContainer)
+                return true;
+            }
+            bool result;
+            if (value is string chinese)
+            {
+                if (string.IsNullOrEmpty(chinese))
                 {
-                    case EnumChineseContainer.Container:
-                        result = IsContainerChineseAtLeastOne(value as string);
-                        break;
-                    case EnumChineseContainer.All:
-                        result = IsAllChinese(value as string);
-                        break;
+                    result = false;
+                }
+                else
+                {
+                    result = ValidChinese(chinese);
                 }
             }
             else
             {
-                result = true;
+                result = false;
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 验证中文
+        /// </summary>
+        /// <param name="chinese"></param>
+        /// <returns></returns>
+        private bool ValidChinese(string chinese)
+        {
+            bool result = false;
+            switch (ChineseContainer)
+            {
+                case EnumChineseContainer.Container:
+                    result = IsContainerChineseAtLeastOne(chinese);
+                    break;
+                case EnumChineseContainer.All:
+                    result = IsAllChinese(chinese);
+                    break;
             }
             return result;
         }

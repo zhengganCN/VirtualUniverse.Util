@@ -25,23 +25,31 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            if (value is IFormFile)
+            if (value is null)
             {
-                var file = value as IFormFile;
-                return ValidFileSize(file);
-            }
-            else if (value is IFormFileCollection)
-            {
-                foreach (var file in value as IFormFileCollection)
-                {
-                    if (!ValidFileSize(file))
-                    {
-                        return false;
-                    }
-                }
                 return true;
             }
-            return true;
+            bool result = false;
+            if (value is IFormFile file)
+            {
+                result = ValidFileSize(file);
+            }
+            else if (value is IFormFileCollection files)
+            {
+                foreach (IFormFile fileItem in files)
+                {
+                    result = ValidFileSize(fileItem);
+                    if (!result)
+                    {
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                result = false;
+            }
+            return result;
         }
         /// <summary>
         /// 验证文件大小是否符合要求

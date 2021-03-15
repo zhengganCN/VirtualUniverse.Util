@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Test.Models;
 using VirtualUniverse.DataValidation.ValidationAttributes;
+using VirtualUniverse.DataValidation.ValidationModel;
 
 /***********************************************************************************
 ****作者：zhenggan；创建时间：2021/1/18 11:42:11；更新时间：
@@ -54,6 +56,17 @@ namespace Test.ValidationAttributeTest
             AllowObjectValueAttribute allowObjectValueAttribute = new AllowObjectValueAttribute(new object[] { 12.12 }, AllowObjectValueAttribute.EnumObjectType.Double);
             Assert.IsFalse(allowObjectValueAttribute.IsValid("123"));
             Assert.IsTrue(allowObjectValueAttribute.IsValid(double.Parse("12.12")));
+        }
+
+        [Test]
+        public void Allow()
+        {
+            var model = new AllowObjectValueValid
+            {
+                Account = 12
+            };
+            ValidationModelState validation = new ValidationModelState(model);
+            var s = validation.VerifyModel();
         }
     }
 }

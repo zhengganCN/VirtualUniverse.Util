@@ -23,21 +23,24 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            if (value is string)
+            if (value is null)
             {
-                var dateTimeString = value as string;
-                if (string.IsNullOrEmpty(dateTimeString))
+                return true;
+            }
+            if (value is string datatime)
+            {
+                if (string.IsNullOrEmpty(datatime))
                 {
-                    return true;
+                    return false;
                 }
                 else
                 {
-                    return DateTimeValid(dateTimeString);
+                    return DateTimeValid(datatime);
                 }
             }
             else
             {
-                return true;
+                return false;
             }
         }
 

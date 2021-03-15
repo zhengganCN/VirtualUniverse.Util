@@ -7,7 +7,7 @@
     <PackageReleaseNotes></PackageReleaseNotes>
     <Copyright>VirtualUniverse</Copyright>
 	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	  <Version>1.0.3</Version>
+	  <Version>1.0.4</Version>
 	  <PackageTags>VirtualUniverse、DataValidation</PackageTags>
 	  <PackageLicenseFile>LICENSE</PackageLicenseFile>
 	  <PackageIcon>tool.png</PackageIcon>
@@ -37,6 +37,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ValidationAttributes\" />
   </ItemGroup>
 
 </Project>

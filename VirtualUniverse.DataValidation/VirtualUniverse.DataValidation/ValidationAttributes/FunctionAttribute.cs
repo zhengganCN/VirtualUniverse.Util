@@ -17,10 +17,6 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         private string ClassName { get; set; }
         private string MethodName { get; set; }
         /// <summary>
-        /// 验证值是否允许Null或者空字符，默认值为 false
-        /// </summary>
-        public bool AllowNullOrEmpty { get; set; } = false;
-        /// <summary>
         /// 构造函数
         /// </summary>
         /// <param name="assemblyName">程序集名称</param>
@@ -40,36 +36,11 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// <returns></returns>
         public override bool IsValid(object value)
         {
-            var result = false;
-            if (AllowNullOrEmpty)
+            if (value is null)
             {
-                if (value is string)
-                {
-                    if (string.IsNullOrEmpty(value as string))
-                    {
-                        result = true;
-                    }
-                    else
-                    {
-                        result = ValidValue(value, result);
-                    }
-                }
-                else
-                {
-                    if (value is null)
-                    {
-                        result = true;
-                    }
-                    else
-                    {
-                        result = ValidValue(value, result);
-                    }
-                }
+                return true;
             }
-            else
-            {
-                result = ValidValue(value, result);
-            }
+            bool result = ValidValue(value);
             return result;
         }
         /// <summary>
@@ -92,10 +63,10 @@ namespace VirtualUniverse.DataValidation.ValidationAttributes
         /// 执行通过反射获取的验证方法
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="result"></param>
         /// <returns></returns>
-        private bool ValidValue(object value, bool result)
+        private bool ValidValue(object value)
         {
+            var result = false;
             var param = new object[] { value };
             var assembly = GetAssembly();
             MethodInfo method = GetMethod(assembly);
