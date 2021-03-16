@@ -11,8 +11,7 @@ using System.Text;
 namespace VirtualUniverse.Extension.AspNetCore.HttpContentOperation
 {
     /// <summary>
-    /// 类说明：Htt
-    /// pContent扩展
+    /// 类说明：HttpContent扩展
     /// </summary>
     public static class HttpContentExtension
     {
