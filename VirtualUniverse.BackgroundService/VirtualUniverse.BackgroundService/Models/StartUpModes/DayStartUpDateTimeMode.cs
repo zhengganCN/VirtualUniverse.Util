@@ -34,7 +34,7 @@ namespace VirtualUniverse.BackgroundService.Models
         /// <returns></returns>
         private void SetStartTime()
         {
-            StartTimeInDay = TimeConvertDateTime(StartTime)?? DateTime.Parse(DateTime.Now.ToShortDateString());
+            StartTimeInDay = TimeConvertDateTime(StartTime) ?? DateTime.Parse(DateTime.Now.ToShortDateString());
         }
 
         /// <summary>

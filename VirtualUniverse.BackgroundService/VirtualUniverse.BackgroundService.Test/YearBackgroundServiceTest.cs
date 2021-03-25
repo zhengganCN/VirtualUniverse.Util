@@ -27,7 +27,7 @@ namespace VirtualUniverse.BackgroundService.Test
                 Directory.Delete(YearBackgroundService.FileDirectory, true);
             }
             YearBackgroundService helloBackgroundService = new YearBackgroundService();
-            helloBackgroundService.StartAsync(CancellationToken.None); 
+            helloBackgroundService.StartAsync(CancellationToken.None);
             semaphore.Release();
             Assert.Pass();
         }

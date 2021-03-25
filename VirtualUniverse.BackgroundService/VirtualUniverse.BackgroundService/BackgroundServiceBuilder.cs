@@ -1,33 +1,35 @@
-﻿using ThSoft.Package.BackgroundService.Models.StartUpModes;
+﻿using VirtualUniverse.BackgroundService.Models;
+using VirtualUniverse.BackgroundService.Models.StartUpModes;
 
 /***********************************************************************************
 ****作者：zhenggan；创建时间：2021/1/10 23:15:45；更新时间：
 ************************************************************************************/
-namespace ThSoft.Package.BackgroundService.Models
+namespace VirtualUniverse.BackgroundService
 {
     /// <summary>
     /// 类说明：后台服务配置构造器
     /// </summary>
     public class BackgroundServiceBuilder
     {
-
         /// <summary>
         /// 是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
         /// </summary>
         internal bool StartNow { get; private set; } = true;
-
         /// <summary>
         /// 允许执行的次数，默认值为 -1，表示不限制执行次数
         /// </summary>
         internal long ExecutionTimes { get; private set; } = -1;
-
+        /// <summary>
+        /// 是否刷新，如果执行次数已达到最大值
+        /// </summary>
         internal bool IsRefreshIfExecutionEnough { get; private set; } = true;
-
         /// <summary>
         /// 执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
         /// </summary>
         internal int Interval { get; private set; } = 100;
-
+        /// <summary>
+        /// 启动模式
+        /// </summary>
         internal StartUpDateTimeMode StartUpDateTimeMode { get; private set; }
 
         /// <summary>

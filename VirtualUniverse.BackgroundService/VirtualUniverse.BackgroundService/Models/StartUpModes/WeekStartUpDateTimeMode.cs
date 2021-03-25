@@ -63,7 +63,7 @@ namespace VirtualUniverse.BackgroundService.Models.StartUpModes
             {
                 throw new ArgumentException("请按格式填写时间参数，缺少符号“;”");
             }
-            if (!int.TryParse(splits[0], out int dayOfWeek) || !( 0 < dayOfWeek && dayOfWeek < 8))
+            if (!int.TryParse(splits[0], out int dayOfWeek) || !(0 < dayOfWeek && dayOfWeek < 8))
             {
                 throw new ArgumentException("符号“;”前的参数必须为数字；且值必须大于等于1，小于等于7");
             }

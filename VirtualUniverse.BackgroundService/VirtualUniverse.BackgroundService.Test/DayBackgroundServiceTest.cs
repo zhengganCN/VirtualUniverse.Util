@@ -107,7 +107,7 @@ namespace VirtualUniverse.BackgroundService.Test
         [Order(6)]
         public void EndTimeIsEmptyTest()
         {
-            semaphore.Wait(); 
+            semaphore.Wait();
             DayBackgroundService.FileDirectory = "day_tasks6";
             DayBackgroundService.StartTime = "12:12:12";
             DayBackgroundService.EndTime = string.Empty;

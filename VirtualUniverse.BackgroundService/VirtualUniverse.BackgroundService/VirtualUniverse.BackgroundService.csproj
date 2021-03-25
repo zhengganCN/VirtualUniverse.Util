@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.BackgroundService\VirtualUniverse.BackgroundService\VirtualUniverse.BackgroundService.xml</DocumentationFile>
+    <DocumentationFile>VirtualUniverse.BackgroundService.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -94,6 +94,11 @@
             允许执行的次数，默认值为 -1，表示不限制执行次数
             </summary>
         </member>
+        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.IsRefreshIfExecutionEnough">
+            <summary>
+            是否刷新，如果执行次数已达到最大值
+            </summary>
+        </member>
         <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.Interval">
             <summary>
             执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
@@ -365,6 +370,11 @@
         <member name="M:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.IncreraseOneTimes">
             <summary>
             增加一次执行次数
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.StartParamConfig">
+            <summary>
+            类 描 述：启动参数配置
             </summary>
         </member>
     </members>

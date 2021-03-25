@@ -141,7 +141,7 @@ namespace VirtualUniverse.BackgroundService.Test
             }
             WeekBackgroundService helloBackgroundService = new WeekBackgroundService();
             helloBackgroundService.StartAsync(CancellationToken.None);
-            Task.Delay(1000 * 20).Wait(); 
+            Task.Delay(1000 * 20).Wait();
             semaphore.Release();
             Assert.Pass();
         }
