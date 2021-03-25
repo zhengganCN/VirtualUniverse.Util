@@ -4,6 +4,73 @@
         <name>VirtualUniverse.BackgroundService</name>
     </assembly>
     <members>
+        <member name="T:VirtualUniverse.BackgroundService.BackgroundServiceBuilder">
+            <summary>
+            类说明：后台服务配置构造器
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.StartNow">
+            <summary>
+            是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.ExecutionTimes">
+            <summary>
+            允许执行的次数，默认值为 -1，表示不限制执行次数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.IsRefreshIfExecutionEnough">
+            <summary>
+            是否刷新，如果执行次数已达到最大值
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.Interval">
+            <summary>
+            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.StartUpDateTimeMode">
+            <summary>
+            启动模式
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.SetStartNow(System.Boolean)">
+            <summary>
+            是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
+            </summary>
+            <param name="startNow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.SetExecutionTimes(System.Int64,System.Boolean)">
+            <summary>
+            设置执行次数和
+            </summary>
+            <param name="executionTimes">执行次数，默认值为 -1，表示不限制执行次数</param>
+            <param name="isRefreshIfExecutionEnough">是否自动刷新执行次数</param>
+            <remarks>
+            参数： IsRefreshIfExecutionEnough <br></br>
+                如果 启动模式为立即启动（StartNow = true），则此参数无效 <br></br>
+                否则 每当当前时间与启动时间相等且 IsRefreshIfExecutionEnough 等于 True 时，ExecutionTimes 参数会自动刷新为 0
+            </remarks>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.SetInterval(System.Int32)">
+            <summary>
+            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值
+            来计算下一次任务的启动时间）,默认值 1000 ms
+            </summary>
+            <param name="interval"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.BackgroundService.BackgroundServiceBuilder.SetStartUpDateTime(VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode,System.String,System.String)">
+            <summary>
+            设置启动模式
+            </summary>
+            <param name="startUpMode">启动模式</param>
+            <param name="startTime">启动时间</param>
+            <param name="endTime">结束时间</param>
+            <returns></returns>
+        </member>
         <member name="T:VirtualUniverse.BackgroundService.BaseBackgroundService">
             <summary>
             后台服务基类
@@ -24,7 +91,7 @@
             初始化
             </summary>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.OnConfiguration(VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder)">
+        <member name="M:VirtualUniverse.BackgroundService.BaseBackgroundService.OnConfiguration(VirtualUniverse.BackgroundService.BackgroundServiceBuilder)">
             <summary>
             后台服务配置
             </summary>
@@ -78,68 +145,6 @@
             <summary>
             销毁
             </summary>
-        </member>
-        <member name="T:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder">
-            <summary>
-            类说明：后台服务配置构造器
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.StartNow">
-            <summary>
-            是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.ExecutionTimes">
-            <summary>
-            允许执行的次数，默认值为 -1，表示不限制执行次数
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.IsRefreshIfExecutionEnough">
-            <summary>
-            是否刷新，如果执行次数已达到最大值
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.Interval">
-            <summary>
-            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
-            </summary>
-        </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartNow(System.Boolean)">
-            <summary>
-            是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
-            </summary>
-            <param name="startNow"></param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetExecutionTimes(System.Int64,System.Boolean)">
-            <summary>
-            设置执行次数和
-            </summary>
-            <param name="executionTimes">执行次数，默认值为 -1，表示不限制执行次数</param>
-            <param name="isRefreshIfExecutionEnough">是否自动刷新执行次数</param>
-            <remarks>
-            参数： IsRefreshIfExecutionEnough <br></br>
-                如果 启动模式为立即启动（StartNow = true），则此参数无效 <br></br>
-                否则 每当当前时间与启动时间相等且 IsRefreshIfExecutionEnough 等于 True 时，ExecutionTimes 参数会自动刷新为 0
-            </remarks>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetInterval(System.Int32)">
-            <summary>
-            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值
-            来计算下一次任务的启动时间）,默认值 1000 ms
-            </summary>
-            <param name="interval"></param>
-            <returns></returns>
-        </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.BackgroundServiceBuilder.SetStartUpDateTime(VirtualUniverse.BackgroundService.Models.StartUpModes.EnumStartUpMode,System.String,System.String)">
-            <summary>
-            设置启动模式
-            </summary>
-            <param name="startUpMode">启动模式</param>
-            <param name="startTime">启动时间</param>
-            <param name="endTime">结束时间</param>
-            <returns></returns>
         </member>
         <member name="T:VirtualUniverse.BackgroundService.Models.DayStartUpDateTimeMode">
             <summary>
@@ -342,39 +347,69 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="T:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes">
+        <member name="T:VirtualUniverse.BackgroundService.StartParamConfig">
+            <summary>
+            类 描 述：启动参数配置
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.StartParamConfig.StartNow">
+            <summary>
+            是否立即启动
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.StartParamConfig.ExecutionTimes">
+            <summary>
+            执行次数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.StartParamConfig.IsRefreshIfExecutionEnough">
+            <summary>
+            是否刷新，如果执行次数已达到最大值
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.StartParamConfig.Interval">
+            <summary>
+            执行间隔，单位毫秒（只有上一个任务执行完毕后才会使用Interval的值来计算下一次任务的启动时间）,默认值 100 ms
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.StartParamConfig.StartTime">
+            <summary>
+            启动时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.BackgroundService.StartParamConfig.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.BackgroundService.TaskExecutionTimes">
             <summary>
             类说明：任务执行次数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.FirstExecutionTaskTime">
+        <member name="P:VirtualUniverse.BackgroundService.TaskExecutionTimes.FirstExecutionTaskTime">
             <summary>
             第一次执行任务的时间
             </summary>
         </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.FirstExecutionTaskTimeInLoop">
+        <member name="P:VirtualUniverse.BackgroundService.TaskExecutionTimes.FirstExecutionTaskTimeInLoop">
             <summary>
             时间循环内第一次执行任务的时间
             </summary>
         </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.ExecutionTimesInLoop">
+        <member name="P:VirtualUniverse.BackgroundService.TaskExecutionTimes.ExecutionTimesInLoop">
             <summary>
             时间循环内执行次数
             </summary>
         </member>
-        <member name="P:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.HistoryExecutionTimes">
+        <member name="P:VirtualUniverse.BackgroundService.TaskExecutionTimes.HistoryExecutionTimes">
             <summary>
             历史执行次数
             </summary>
         </member>
-        <member name="M:VirtualUniverse.BackgroundService.Models.TaskExecutionTimes.IncreraseOneTimes">
+        <member name="M:VirtualUniverse.BackgroundService.TaskExecutionTimes.IncreraseOneTimes">
             <summary>
             增加一次执行次数
-            </summary>
-        </member>
-        <member name="T:VirtualUniverse.BackgroundService.StartParamConfig">
-            <summary>
-            类 描 述：启动参数配置
             </summary>
         </member>
     </members>
