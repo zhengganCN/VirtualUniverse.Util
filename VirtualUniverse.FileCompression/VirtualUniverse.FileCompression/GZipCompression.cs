@@ -5,35 +5,35 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 using VirtualUniverse.FileCompression.Models;
+using VirtualUniverse.FileCompression.Utils;
 
-namespace VirtualUniverse.FileCompression.Services
+namespace VirtualUniverse.FileCompression
 {
     /// <summary>
     /// GZip压缩与解压缩（单文件压缩）
     /// </summary>
-    public class GZipCompression
+    public static class GZipCompression
     {
-
         /// <summary>
         /// 压缩
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <param name="gZipParamterModel"></param>
+        /// <param name="path"></param>
+        /// <param name="gZipCompressParamter"></param>
         /// <returns></returns>
-        public bool Compression(string filePath,GZipCompressParamterModel gZipParamterModel)
+        public static bool Compression(string path, GZipCompressParamter gZipCompressParamter)
         {
             var result = false;
-            var pathType = GetPathType(filePath);
+            var pathType = PathType.GetPathType(path);
             switch (pathType)
             {
-                case PathType.FilePath:
-                    CompressionFile(filePath, gZipParamterModel);
+                case EnumPathType.FilePath:
+                    CompressionFile(path, gZipCompressParamter);
                     result = true;
                     break;
-                case PathType.DirectoryPath:
-                    throw new ArgumentException($"参数{nameof(filePath)}不能为目录");
-                case PathType.NoExits:
-                    throw new ArgumentException($"参数{nameof(filePath)}所指向的文件不存在");
+                case EnumPathType.DirectoryPath:
+                    throw new ArgumentException($"参数{nameof(path)}不能为目录");
+                case EnumPathType.NoExits:
+                    throw new ArgumentException($"参数{nameof(path)}所指向的文件不存在");
             }
             return result;
         }
@@ -43,7 +43,7 @@ namespace VirtualUniverse.FileCompression.Services
         /// <param name="gzipPath">gzip压缩文件路径</param>
         /// <param name="gZipDecompressParamter">GZip解压参数</param>
         /// <returns></returns>
-        public bool Decompress(string gzipPath, GZipDecompressParamterModel gZipDecompressParamter)
+        public static bool Decompress(string gzipPath, GZipDecompressParamter gZipDecompressParamter)
         {
 
             bool result;
@@ -73,17 +73,23 @@ namespace VirtualUniverse.FileCompression.Services
         /// </summary>
         /// <param name="filePath"></param>
         /// <param name="gZipParamterModel"></param>
-        private void CompressionFile(string filePath,GZipCompressParamterModel gZipParamterModel)
+        private static void CompressionFile(string filePath, GZipCompressParamter gZipParamterModel)
         {
             FileInfo fileInfo = new FileInfo(filePath);
-            var path = GenerateOutputPath(filePath,gZipParamterModel);
+            var path = GenerateOutputPath(filePath, gZipParamterModel);
             using FileStream originalFileStream = fileInfo.OpenRead();
             using FileStream compressedFileStream = File.Create(path);
             using GZipStream gZipStream = new GZipStream(compressedFileStream, gZipParamterModel.CompressionLevel);
             originalFileStream.CopyTo(gZipStream);
         }
 
-        private string GenerateOutputPath(string filePath,GZipCompressParamterModel gZipParamterModel)
+        /// <summary>
+        /// 生成输出路径
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="gZipParamterModel"></param>
+        /// <returns></returns>
+        private static string GenerateOutputPath(string filePath, GZipCompressParamter gZipParamterModel)
         {
             string extension = ".gz";
             string path;
@@ -102,7 +108,7 @@ namespace VirtualUniverse.FileCompression.Services
         /// </summary>
         /// <param name="gzipPath"></param>
         /// <param name="outputDirectory"></param>
-        private void DecompressFile(string gzipPath, string outputDirectory)
+        private static void DecompressFile(string gzipPath, string outputDirectory)
         {
             FileInfo fileInfo = new FileInfo(gzipPath);
             using FileStream fs = fileInfo.OpenRead();
@@ -111,35 +117,6 @@ namespace VirtualUniverse.FileCompression.Services
             using FileStream decompressedFS = File.Create(outputFileName);
             using GZipStream decompressionStream = new GZipStream(fs, CompressionMode.Decompress);
             decompressionStream.CopyTo(decompressedFS);
-        }
-
-        /// <summary>
-        /// 获取路径指向的是文件还是目录
-        /// </summary>
-        /// <param name="path"></param>
-        /// <returns></returns>
-        private PathType GetPathType(string path)
-        {
-            var pathType = PathType.NoExits;
-            if (Directory.Exists(path))
-            {
-                pathType = PathType.DirectoryPath;
-            }
-            else if(File.Exists(path))
-            {
-                pathType = PathType.FilePath;
-            }
-            return pathType;
-        }
-
-        private enum PathType
-        {
-            [Description("文件路径")]
-            FilePath=1,
-            [Description("目录路径")]
-            DirectoryPath=2,
-            [Description("路径不存在")]
-            NoExits=3
         }
     }
 }

@@ -4,45 +4,20 @@
         <name>VirtualUniverse.FileCompression</name>
     </assembly>
     <members>
-        <member name="T:VirtualUniverse.FileCompression.Models.GZipCompressParamterModel">
-            <summary>
-            GZip压缩参数
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.FileCompression.Models.GZipCompressParamterModel.CompressedFilePath">
-            <summary>
-            压缩文件的输出路径，会自动在文件的末尾添加.gz扩展名；如（CompressedFilePath属性值为“C:\temp\demo”,则输出的压缩文件名称为“C:\temp\demo.gz”）
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.FileCompression.Models.GZipCompressParamterModel.CompressionLevel">
-            <summary>
-            压缩等级，默认Optimal以最佳方式完成压缩操作，不过，需要耗费更长的时间
-            </summary>
-        </member>
-        <member name="T:VirtualUniverse.FileCompression.Models.GZipDecompressParamterModel">
-            <summary>
-            GZip解压参数
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.FileCompression.Models.GZipDecompressParamterModel.DecompressdDirectoryPath">
-            <summary>
-            解压文件的输出目录，可为空字符床，如果为空字符串，则解压缩文件的输出目录为压缩文件所在目录
-            </summary>
-        </member>
-        <member name="T:VirtualUniverse.FileCompression.Services.GZipCompression">
+        <member name="T:VirtualUniverse.FileCompression.GZipCompression">
             <summary>
             GZip压缩与解压缩（单文件压缩）
             </summary>
         </member>
-        <member name="M:VirtualUniverse.FileCompression.Services.GZipCompression.Compression(System.String,VirtualUniverse.FileCompression.Models.GZipCompressParamterModel)">
+        <member name="M:VirtualUniverse.FileCompression.GZipCompression.Compression(System.String,VirtualUniverse.FileCompression.Models.GZipCompressParamter)">
             <summary>
             压缩
             </summary>
-            <param name="filePath"></param>
-            <param name="gZipParamterModel"></param>
+            <param name="path"></param>
+            <param name="gZipCompressParamter"></param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.FileCompression.Services.GZipCompression.Decompress(System.String,VirtualUniverse.FileCompression.Models.GZipDecompressParamterModel)">
+        <member name="M:VirtualUniverse.FileCompression.GZipCompression.Decompress(System.String,VirtualUniverse.FileCompression.Models.GZipDecompressParamter)">
             <summary>
             解压缩
             </summary>
@@ -50,25 +25,119 @@
             <param name="gZipDecompressParamter">GZip解压参数</param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.FileCompression.Services.GZipCompression.CompressionFile(System.String,VirtualUniverse.FileCompression.Models.GZipCompressParamterModel)">
+        <member name="M:VirtualUniverse.FileCompression.GZipCompression.CompressionFile(System.String,VirtualUniverse.FileCompression.Models.GZipCompressParamter)">
             <summary>
             压缩文件
             </summary>
             <param name="filePath"></param>
             <param name="gZipParamterModel"></param>
         </member>
-        <member name="M:VirtualUniverse.FileCompression.Services.GZipCompression.DecompressFile(System.String,System.String)">
+        <member name="M:VirtualUniverse.FileCompression.GZipCompression.GenerateOutputPath(System.String,VirtualUniverse.FileCompression.Models.GZipCompressParamter)">
+            <summary>
+            生成输出路径
+            </summary>
+            <param name="filePath"></param>
+            <param name="gZipParamterModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.FileCompression.GZipCompression.DecompressFile(System.String,System.String)">
             <summary>
             解压文件
             </summary>
             <param name="gzipPath"></param>
             <param name="outputDirectory"></param>
         </member>
-        <member name="M:VirtualUniverse.FileCompression.Services.GZipCompression.GetPathType(System.String)">
+        <member name="T:VirtualUniverse.FileCompression.Models.EnumPathType">
+            <summary>
+            类 描 述：枚举路径类型
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.FileCompression.Models.GZipCompressParamter">
+            <summary>
+            GZip压缩参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.GZipCompressParamter.CompressedFilePath">
+            <summary>
+            压缩文件的输出路径，会自动在文件的末尾添加.gz扩展名；如（CompressedFilePath属性值为“C:\temp\demo”,则输出的压缩文件名称为“C:\temp\demo.gz”）
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.GZipCompressParamter.CompressionLevel">
+            <summary>
+            压缩等级，默认Optimal以最佳方式完成压缩操作，不过，需要耗费更长的时间
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.FileCompression.Models.GZipDecompressParamter">
+            <summary>
+            GZip解压参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.GZipDecompressParamter.DecompressdDirectoryPath">
+            <summary>
+            解压文件的输出目录，可为空字符床，如果为空字符串，则解压缩文件的输出目录为压缩文件所在目录
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.FileCompression.Models.ZipCompressParamter">
+            <summary>
+            类 描 述：Zip压缩参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.ZipCompressParamter.CompressedFilePath">
+            <summary>
+            压缩文件的输出路径，会自动在文件的末尾添加.zip扩展名；如（CompressedFilePath属性值为“C:\temp\demo”,则输出的压缩文件名称为“C:\temp\demo.zip”）
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.ZipCompressParamter.CompressionLevel">
+            <summary>
+            压缩等级，默认Optimal以最佳方式完成压缩操作，不过，需要耗费更长的时间
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.ZipCompressParamter.CreateDirectoryInCompressionFile">
+            <summary>
+            是否在压缩文件中创建源目录
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.FileCompression.Models.ZipDecompressParamter">
+            <summary>
+            类 描 述：Zip解压参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.FileCompression.Models.ZipDecompressParamter.DecompressdDirectoryPath">
+            <summary>
+            解压文件的输出目录，可为空字符床，如果为空字符串，则解压缩文件的输出目录为压缩文件所在目录
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.FileCompression.Utils.PathType">
+            <summary>
+            类 描 述：路径类型
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.FileCompression.Utils.PathType.GetPathType(System.String)">
             <summary>
             获取路径指向的是文件还是目录
             </summary>
             <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.FileCompression.ZipCompression">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.FileCompression.ZipCompression.Compression(System.String,VirtualUniverse.FileCompression.Models.ZipCompressParamter)">
+            <summary>
+            压缩
+            </summary>
+            <param name="path"></param>
+            <param name="zipCompressParamter"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.FileCompression.ZipCompression.Decompress(System.String,VirtualUniverse.FileCompression.Models.ZipDecompressParamter)">
+            <summary>
+            解压缩
+            </summary>
+            <param name="zipPath">zip压缩文件路径</param>
+            <param name="zipDecompressParamter">Zip解压参数</param>
             <returns></returns>
         </member>
     </members>

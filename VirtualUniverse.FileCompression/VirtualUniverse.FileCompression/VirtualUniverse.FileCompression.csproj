@@ -6,11 +6,11 @@
     <Authors>ZG</Authors>
     <Description>文件压缩</Description>
     <Copyright>VirtualUniverse</Copyright>
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>G:\Softwares\VirtualUniverse.Util\VirtualUniverse.FileCompression\VirtualUniverse.FileCompression\VirtualUniverse.FileCompression.xml</DocumentationFile>
+    <DocumentationFile>VirtualUniverse.FileCompression.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

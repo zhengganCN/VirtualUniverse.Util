@@ -8,7 +8,7 @@ namespace VirtualUniverse.FileCompression.Models
     /// <summary>
     /// GZip压缩参数
     /// </summary>
-    public class GZipCompressParamterModel
+    public class GZipCompressParamter
     {
         /// <summary>
         /// 压缩文件的输出路径，会自动在文件的末尾添加.gz扩展名；如（CompressedFilePath属性值为“C:\temp\demo”,则输出的压缩文件名称为“C:\temp\demo.gz”）
