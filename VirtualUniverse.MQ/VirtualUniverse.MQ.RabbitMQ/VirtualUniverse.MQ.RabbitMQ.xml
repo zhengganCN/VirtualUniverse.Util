@@ -4,91 +4,471 @@
         <name>VirtualUniverse.MQ.RabbitMQ</name>
     </assembly>
     <members>
-        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType">
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.ChannelCreate">
             <summary>
             类 描 述：
             </summary>
         </member>
-        <member name="F:VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType.Direct">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ChannelCreate.CreateChannel(System.String,System.String@)">
+            <summary>
+            创建通道
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.ConnectionCreate">
+            <summary>
+            类 描 述：连接器创建
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.ConnectionCreate.ConnectionFactory">
+            <summary>
+            连接工厂
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ConnectionCreate.AddConnectionToMqOptionBuilder(System.String@,RabbitMQ.Client.IConnection)">
+            <summary>
+            添加连接器和通道与连接器的关系到Mq的配置类中
+            </summary>
+            <param name="connectionId">连接器Id</param>
+            <param name="connection">连接器</param>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.EnumExchangeType">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="F:VirtualUniverse.MQ.RabbitMQ.EnumExchangeType.Direct">
             <summary>
             直接
             </summary>
         </member>
-        <member name="F:VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType.Fanout">
+        <member name="F:VirtualUniverse.MQ.RabbitMQ.EnumExchangeType.Fanout">
             <summary>
             发布订阅模式
             </summary>
         </member>
-        <member name="F:VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType.Headers">
+        <member name="F:VirtualUniverse.MQ.RabbitMQ.EnumExchangeType.Headers">
             <summary>
             消息头
             </summary>
         </member>
-        <member name="F:VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType.Topic">
+        <member name="F:VirtualUniverse.MQ.RabbitMQ.EnumExchangeType.Topic">
             <summary>
             匹配订阅模式
             </summary>
         </member>
-        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.MQContextOptionsBuilder">
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate">
             <summary>
-            类说明：
+            类 描 述：交换机操作
             </summary>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.Models.MQContextOptionsBuilder.SetConnection(System.String,System.String,System.String,System.Int32)">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeBind(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
             <summary>
-            设置连接配置
+            绑定两个交换机
             </summary>
-            <param name="hostName">主机地址</param>
-            <param name="userName">用户名</param>
-            <param name="password">密码</param>
-            <param name="port">端口</param>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeBindNoWait(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            绑定两个交换机，但是把nowait设置为true
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeDeclare(VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig)">
+            <summary>
+            定义一个交换机（The exchange is declared non-passive and non-internal. The "nowait" option is not exercised.）
+            </summary>
+            <param name="exchangeConfig">交换机配置</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeDeclareNoWait(VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig)">
+            <summary>
+            定义一个交换机，但是把nowait设置为true
+            </summary>
+            <param name="exchangeConfig">交换机配置</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeDeclarePassive(System.String)">
+            <summary>
+            被动定义一个交换机
+            此方法在交换机上执行“被动声明”，以验证是否。
+            如果交换已经存在，它将什么也不做；如果不存在，它将导致通道级协议异常（通道关闭）。
+            </summary>
+            <param name="exchange">交换机名称</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeDelete(System.String,System.Boolean)">
+            <summary>
+            删除一个交换机
+            </summary>
+            <param name="exchange">交换机名称</param>
+            <param name="ifUnused">如果未使用</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeDeleteNoWait(System.String,System.Boolean)">
+            <summary>
+            删除一个交换机，但是把nowait设置为true
+            </summary>
+            <param name="exchange">交换机名称</param>
+            <param name="ifUnused">如果未使用</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeUnbind(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            解绑两个交换机
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.ExchangeCreate.ExchangeUnbindNoWait(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            解绑两个交换机，但是把nowait设置为true
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Interfaces.IChannelCreate">
+            <summary>
+            类 描 述：通道创建接口
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Interfaces.IConnectionCreate">
+            <summary>
+            类 描 述：连接器创建接口
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IConnectionCreate.CreateConnection(System.Collections.Generic.IList{System.String},System.String,System.String@)">
+            <summary>
+            根据提供的主机名列表尝试创建一个可用连接
+            </summary>
+            <param name="hostnames">主机名列表</param>
+            <param name="clientProvidedName">客户端提供的连接名</param>
+            <param name="connectionId">连接器的唯一标识，如果为空，则随机生成一个id用于标识</param>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.Models.MQContextOptionsBuilder.AddExchange(System.Collections.Generic.HashSet{VirtualUniverse.MQ.RabbitMQ.Models.MQExchange})">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IConnectionCreate.CreateConnection(System.Collections.Generic.IList{System.String},System.String@)">
             <summary>
-            添加交换机
+            根据提供的主机名列表尝试创建一个可用连接
+            </summary>
+            <param name="hostnames">主机名列表</param>
+            <param name="connectionId">连接器的唯一标识，如果为空，则随机生成一个id用于标识</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IConnectionCreate.CreateConnection(System.String,System.String@)">
+            <summary>
+            根据初始化配置的主机名尝试创建一个可用连接
+            </summary>
+            <param name="clientProvidedName">客户端提供的连接名</param>
+            <param name="connectionId">连接器的唯一标识，如果为空，则随机生成一个id用于标识</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IConnectionCreate.CreateConnection(System.String@)">
+            <summary>
+            根据初始化配置的主机名尝试创建一个可用连接
+            <param name="connectionId">连接器的唯一标识，如果为空，则随机生成一个id用于标识</param>
             </summary>
             <returns></returns>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.Models.MQContextOptionsBuilder.AddQueue(System.Collections.Generic.HashSet{VirtualUniverse.MQ.RabbitMQ.Models.MQQueue})">
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate">
             <summary>
-            添加队列
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.MQExchange">
-            <summary>
-            类 描 述：
+            类 描 述：交换机操作接口
             </summary>
         </member>
-        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.MQExchange.ExchangeName">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeBind(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            绑定两个交换机
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeBindNoWait(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            绑定两个交换机，但是把nowait设置为true
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeDeclare(VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig)">
+            <summary>
+            定义一个交换机（The exchange is declared non-passive and non-internal. The "nowait" option is not exercised.）
+            </summary>
+            <param name="exchangeConfig">交换机配置</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeDeclareNoWait(VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig)">
+            <summary>
+            定义一个交换机，但是把nowait设置为true
+            </summary>
+            <param name="exchangeConfig">交换机配置</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeDeclarePassive(System.String)">
+            <summary>
+            被动定义一个交换机
+            此方法在交换机上执行“被动声明”，以验证是否。
+            如果交换已经存在，它将什么也不做；如果不存在，它将导致通道级协议异常（通道关闭）。
+            </summary>
+            <param name="exchange">交换机名称</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeDelete(System.String,System.Boolean)">
+            <summary>
+            删除一个交换机
+            </summary>
+            <param name="exchange">交换机名称</param>
+            <param name="ifUnused">如果未使用</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeDeleteNoWait(System.String,System.Boolean)">
+            <summary>
+            删除一个交换机，但是把nowait设置为true
+            </summary>
+            <param name="exchange">交换机名称</param>
+            <param name="ifUnused">如果未使用</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeUnbind(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            解绑两个交换机
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IExchangeCreate.ExchangeUnbindNoWait(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            解绑两个交换机，但是把nowait设置为true
+            </summary>
+            <param name="destination">目标交换机</param>
+            <param name="source">源交换机</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Interfaces.IMessageOperation">
+            <summary>
+            类 描 述：消息操作接口
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Interfaces.IMQContext">
+            <summary>
+            类 描 述：MQ上下文接口
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate">
+            <summary>
+            类 描 述：队列创建
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueBind(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            绑定队列到交换机
+            </summary>
+            <param name="queue">队列名称</param>
+            <param name="exchange">交换机名称</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueBindNoWait(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            绑定队列到交换机（但是把nowait设置为true）
+            </summary>
+            <param name="queue">队列名称</param>
+            <param name="exchange">交换机名称</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueDeclare(VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig)">
+            <summary>
+            定义一个队列
+            </summary>
+            <param name="queueDeclare">声明队列配置</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueDeclareNoWait(VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig)">
+            <summary>
+            定义一个队列，但是把nowait设置为true
+            </summary>
+            <param name="queueDeclare">声明队列配置</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueDeclarePassive(System.String)">
+            <summary>
+            被动定义一个队列
+            此方法在队列上执行“被动声明”，以验证是否。
+            如果交换已经存在，它将什么也不做；如果不存在，它将导致通道级协议异常（通道关闭）。
+            </summary>
+            <param name="queue">交换机名称</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueDelete(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            删除一个队列
+            </summary>
+            <param name="queue">队列名称</param>
+            <param name="ifUnused">如果未使用</param>
+            <param name="ifEmpty">如果队列为空</param>
+            <returns>删除队列时被清除的消息数量</returns>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueDeleteNoWait(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            删除一个队列,但是把nowait设置为true
+            </summary>
+            <param name="queue">队列名称</param>
+            <param name="ifUnused">如果未使用</param>
+            <param name="ifEmpty">如果队列为空</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueuePurge(System.String)">
+            <summary>
+            清除消息队列
+            </summary>
+            <param name="queue">队列名称</param>
+            <returns>清除的消息数量</returns>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.Interfaces.IQueueCreate.QueueUnbind(System.String,System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            解绑队列
+            </summary>
+            <param name="queue">队列名称</param>
+            <param name="exchange">交换机名称</param>
+            <param name="routingKey">必须少于255个字节</param>
+            <param name="arguments">参数</param>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.MessageOperation">
+            <summary>
+            类 描 述：消息操作类
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MessageOperation.MessageHandle">
+            <summary>
+            消息处理函数
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MessageOperation.PublishMessage(VirtualUniverse.MQ.RabbitMQ.Models.PublishMessageConfig,System.ReadOnlyMemory{System.Byte})">
+            <summary>
+            发布消息
+            </summary>
+            <param name="publishMessageConfig"></param>
+            <param name="body"></param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MessageOperation.ConsumeMessage(VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig)">
+            <summary>
+            消费消息
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig">
+            <summary>
+            类 描 述：消费消息配置
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig.Exclusive">
+            <summary>
+            排它性
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig.Arguments">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig.Consumer">
+            <summary>
+            消费者
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig.MessageHandle">
+            <summary>
+            消息处理函数
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig">
+            <summary>
+            类 描 述：交换机配置
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig.Exchange">
             <summary>
             交换机名称
             </summary>
         </member>
-        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.MQExchange.ExchangeType">
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig.Type">
             <summary>
             交换机类型
             </summary>
         </member>
-        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.MQQueue">
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig.Durable">
             <summary>
-            类 描 述：
+            持久化
             </summary>
         </member>
-        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.MQQueue.QueueName">
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig.AutoDelete">
+            <summary>
+            自动删除
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig.Arguments">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig.Declare">
+            <summary>
+            是否已声明
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.PublishMessageConfig">
+            <summary>
+            类 描 述：消息发布配置
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig">
+            <summary>
+            类 描 述：队列配置
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig.Queue">
+            <summary>
+            队列
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig.Durable">
+            <summary>
+            持久化
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig.Exclusive">
+            <summary>
+            排外的
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig.AutoDelete">
+            <summary>
+            自动删除
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig.Arguments">
+            <summary>
+            参数
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig.Declare">
+            <summary>
+            是否已声明
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.Models.QueueExchangeRelation">
+            <summary>
+            类 描 述：队列和交换机的关系
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueExchangeRelation.QueueName">
             <summary>
             队列名称
             </summary>
         </member>
-        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.MQQueue.ExchangeName">
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.QueueExchangeRelation.ExchangeName">
             <summary>
             交换机名称
-            </summary>
-        </member>
-        <member name="P:VirtualUniverse.MQ.RabbitMQ.Models.MQQueue.RoutingKey">
-            <summary>
-            路由键
             </summary>
         </member>
         <member name="T:VirtualUniverse.MQ.RabbitMQ.MQContext">
@@ -101,75 +481,166 @@
             构造器
             </summary>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.OpenAutoAsk">
-            <summary>
-            开启自动应答
-            </summary>
-        </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.OnConfiguration(VirtualUniverse.MQ.RabbitMQ.Models.MQContextOptionsBuilder)">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.OnConfiguration(VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder)">
             <summary>
             配置MQ
             </summary>
             <param name="builder"></param>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.PublishMessage(System.String,System.Byte[])">
-            <summary>
-            使用MQ默认的Direct Exchange发送消息
-            </summary>
-            <param name="queueName"></param>
-            <param name="message"></param>
-        </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.PublishMessage(System.String,System.String,VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType,System.Byte[])">
-            <summary>
-            发布消息
-            </summary>
-            <param name="exchangeName">交换机名称</param>
-            <param name="routeKey">路由键</param>
-            <param name="exchangeType">交换机类型</param>
-            <param name="message">消息</param>
-        </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.CreateExchange(System.String,VirtualUniverse.MQ.RabbitMQ.Models.EnumExchangeType)">
-            <summary>
-            创建交换机
-            </summary>
-            <param name="exchangeName"></param>
-            <param name="exchangeType"></param>
-        </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.ConsumeMessage(System.String,System.Func{System.Byte[],System.Boolean})">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.ConsumeMessage(VirtualUniverse.MQ.RabbitMQ.Models.ConsumeMessageConfig)">
             <summary>
             消费消息
             </summary>
-            <param name="queueName">队列名称</param>
-            <param name="action">处理消息</param>
+            <param name="channelId">通道id</param>
+            <param name="queue"></param>
+            <param name="autoAck"></param>
+            <param name="consumerTag"></param>
+            <param name="noLocal"></param>
+            <param name="exclusive">排它性</param>
+            <param name="arguments">参数</param>
+            <param name="consumer">消费者<see cref="T:RabbitMQ.Client.Events.EventingBasicConsumer"/>或<see cref="T:RabbitMQ.Client.DefaultBasicConsumer"/></param>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.ConsumeMessage(System.String,System.String,System.String,System.Func{System.Byte[],System.Boolean})">
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder">
             <summary>
-            消费消息
-            </summary>
-            <param name="queueName">队列名称</param>
-            <param name="exchangeName">交换机名称</param>
-            <param name="routingKey">路由键</param>
-            <param name="action">处理消息</param>
-        </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.CreateCunsume">
-            <summary>
-            事件基本消费者
+            类说明：
             </summary>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.Dispose(System.Boolean)">
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.Connections">
             <summary>
-            清理
-            </summary>
-            <param name="disposing"></param>
-        </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.Dispose">
-            <summary>
-            清理
+            连接器
             </summary>
         </member>
-        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContext.Finalize">
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddConnection(System.String,RabbitMQ.Client.IConnection)">
             <summary>
-            仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
+            添加连接器
+            </summary>
+            <param name="connectionId">连接器Id</param>
+            <param name="connection">连接器</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.DeleteConnection(System.String)">
+            <summary>
+            删除连接器
+            </summary>
+            <param name="connectionId">连接器Id</param>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.ChannelConnectionRelations">
+            <summary>
+            通道和连接器之间的关系，key为通道Id，值为连接器Id
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddChannelConnectionRelation(System.String,System.String)">
+            <summary>
+            添加通道和连接器之间的关系
+            </summary>
+            <param name="channelId">通道Id</param>
+            <param name="connectionId">连接器Id</param>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.Channels">
+            <summary>
+            通道
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddChannel(System.String,RabbitMQ.Client.IModel)">
+            <summary>
+            添加通道
+            </summary>
+            <param name="channelId">通道Id</param>
+            <param name="channel"></param>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.Exchanges">
+            <summary>
+            交换器
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddExchange(VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig)">
+            <summary>
+            添加交换器
+            </summary>
+            <param name="exchange">交换机</param>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.Queues">
+            <summary>
+            队列
+            </summary>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.DeleteQueue(System.String)">
+            <summary>
+            删除队列
+            </summary>
+            <param name="queue">队列</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddQueue(VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig)">
+            <summary>
+            添加队列
+            </summary>
+            <param name="queue">队列</param>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.SetConnection(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            设置连接配置
+            </summary>
+            <param name="hostName">主机地址</param>
+            <param name="userName">用户名</param>
+            <param name="password">密码</param>
+            <param name="port">端口</param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddExchangeConfig(VirtualUniverse.MQ.RabbitMQ.Models.ExchangeConfig)">
+            <summary>
+            添加交换机
+            </summary>
+            <param name="exchange"></param>
+            <returns></returns>
+        </member>
+        <member name="M:VirtualUniverse.MQ.RabbitMQ.MQContextOptionsBuilder.AddQueueDeclareConfig(VirtualUniverse.MQ.RabbitMQ.Models.QueueDeclareConfig)">
+            <summary>
+            添加队列
+            </summary>
+            <param name="queue"></param>
+            <param name="durable"></param>
+            <param name="exclusive"></param>
+            <param name="autoDelete"></param>
+            <param name="arguments"></param>
+            <returns></returns>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.MQExchange">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQExchange.ExchangeName">
+            <summary>
+            交换机名称
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQExchange.ExchangeType">
+            <summary>
+            交换机类型
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.MQQueue">
+            <summary>
+            类 描 述：
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQQueue.QueueName">
+            <summary>
+            队列名称
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQQueue.ExchangeName">
+            <summary>
+            交换机名称
+            </summary>
+        </member>
+        <member name="P:VirtualUniverse.MQ.RabbitMQ.MQQueue.RoutingKey">
+            <summary>
+            路由键
+            </summary>
+        </member>
+        <member name="T:VirtualUniverse.MQ.RabbitMQ.QueueCreate">
+            <summary>
+            类 描 述：队列创建
             </summary>
         </member>
     </members>

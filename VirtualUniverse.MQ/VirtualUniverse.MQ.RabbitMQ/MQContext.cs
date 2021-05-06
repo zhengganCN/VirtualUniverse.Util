@@ -3,6 +3,8 @@ using RabbitMQ.Client.Events;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
+using VirtualUniverse.MQ.RabbitMQ.Interfaces;
 using VirtualUniverse.MQ.RabbitMQ.Models;
 
 /***********************************************************************************
@@ -13,17 +15,12 @@ namespace VirtualUniverse.MQ.RabbitMQ
     /// <summary>
     /// 类说明：MQ上下文
     /// </summary>
-    public abstract class MQContext
+    public abstract class MQContext : IMQContext, IDisposable
     {
+        private IConnectionCreate ConnectionCreate { get; set; } = new ConnectionCreate();
+
         private static readonly MQContextOptionsBuilder builder = new MQContextOptionsBuilder();
-        private static ConnectionFactory factory = new ConnectionFactory();
-        private static IConnection Connection;
-        private IModel Channel { get; set; }
-        private static ImmutableHashSet<string> Exchanges { get; set; } = ImmutableHashSet.Create<string>();
-        private static ImmutableDictionary<string, QueueDeclareOk> QueueDictionaries { get; set; } = ImmutableDictionary.Create<string, QueueDeclareOk>();
-        private EventingBasicConsumer Consumer { get; set; }
-        private bool IsConsumerEnventBinded { get; set; } = false;
-        private bool AutoAsk { get; set; } = false;
+
         private bool disposedValue;
         /// <summary>
         /// 构造器
@@ -36,272 +33,219 @@ namespace VirtualUniverse.MQ.RabbitMQ
         private void InitConfiguration()
         {
             OnConfiguration(builder);
-            CreateConnectionFactory();
-            CreateConnection();
-            CreateChannel();
-            CreateExchanges(MQContextOptionsBuilder.Exchanges);
-            CreateQueues(MQContextOptionsBuilder.Queues);
-        }
-        /// <summary>
-        /// 开启自动应答
-        /// </summary>
-        public void OpenAutoAsk()
-        {
-            AutoAsk = true;
+            string connectionId = default;
+            CreateConnection(ref connectionId);
+            string channelId = default;
+            CreateChannel(connectionId, ref channelId);
+            foreach (var exchange in MQContextOptionsBuilder.Exchanges.ToImmutableDictionary())
+            {
+                ExchangeDeclare(channelId, exchange.Value);
+            }
+            foreach (var queue in MQContextOptionsBuilder.Queues.ToImmutableDictionary())
+            {
+                QueueDeclare(channelId, queue.Value);
+            }
+
         }
 
-        private void CreateExchanges(HashSet<MQExchange> exchanges)
-        {
-            if (!MQContextOptionsBuilder.IsExchangesCreated)
-            {
-                foreach (var exchange in exchanges)
-                {
-                    CreateExchange(exchange.ExchangeName, exchange.ExchangeType);
-                }
-                MQContextOptionsBuilder.IsExchangesCreated = true;
-            }
-        }
-
-        private void CreateQueues(HashSet<MQQueue> queues)
-        {
-            if (!MQContextOptionsBuilder.IsQueuesCreated)
-            {
-                foreach (var queue in queues)
-                {
-                    CreateQueue(queue.QueueName);
-                    if (!string.IsNullOrEmpty(queue.ExchangeName) && !string.IsNullOrEmpty(queue.RoutingKey))
-                    {
-                        QueueBind(queue.QueueName, queue.ExchangeName, queue.RoutingKey);
-                    }
-                }
-                MQContextOptionsBuilder.IsQueuesCreated = true;
-            }
-        }
         /// <summary>
         /// 配置MQ
         /// </summary>
         /// <param name="builder"></param>
         public abstract void OnConfiguration(MQContextOptionsBuilder builder);
 
-        private static void CreateConnectionFactory()
+        #region  连接器创建
+        public IConnection CreateConnection(IList<string> hostnames, string clientProvidedName, ref string connectionId)
         {
-            if (!(builder.HostName == factory.HostName &&
-                builder.UserName == factory.UserName &&
-                builder.Password == factory.Password &&
-                builder.Port == factory.Port))
-            {
-                //创建连接工厂
-                factory = new ConnectionFactory
-                {
-                    UserName = builder.UserName,
-                    Password = builder.Password,
-                    HostName = builder.HostName,
-                    Port = builder.Port
-                };
-            }
+            ConnectionCreate.SetConnectionFactory(builder.HostName, builder.UserName, builder.Password, builder.Port);
+            return ConnectionCreate.CreateConnection(hostnames, clientProvidedName, ref connectionId);
         }
 
-        private static void CreateConnection()
+        public IConnection CreateConnection(IList<string> hostnames, ref string connectionId)
         {
-            if (Connection == null || !Connection.IsOpen)
-            {
-                //创建连接
-                Connection = factory.CreateConnection();
-            }
-        }
-        private void CreateChannel()
-        {
-            if (Channel == null || !Channel.IsOpen)
-            {
-                //创建通道
-                Channel = Connection.CreateModel();
-                Channel.CreateBasicProperties().DeliveryMode = 2;
-                Channel.BasicQos(0, 1, false);
-            }
+            ConnectionCreate.SetConnectionFactory(builder.HostName, builder.UserName, builder.Password, builder.Port);
+            return ConnectionCreate.CreateConnection(hostnames, ref connectionId);
         }
 
-        private void CreateQueue(string queueName)
+        public IConnection CreateConnection(string clientProvidedName, ref string connectionId)
         {
-            //声明一个队列
-            if (!QueueDictionaries.ContainsKey(queueName))
-            {
-                var queue = Channel.QueueDeclare(queueName, false, false, false, null);
-                QueueDictionaries = QueueDictionaries.Add(queueName, queue);
-            }
-        }
-        /// <summary>
-        /// 使用MQ默认的Direct Exchange发送消息
-        /// </summary>
-        /// <param name="queueName"></param>
-        /// <param name="message"></param>
-        public void PublishMessage(string queueName, byte[] message)
-        {
-            CreateChannel();
-            CreateQueue(queueName);
-            Channel.BasicPublish(string.Empty, queueName, null, message);
-        }
-        /// <summary>
-        /// 发布消息
-        /// </summary>
-        /// <param name="exchangeName">交换机名称</param>
-        /// <param name="routeKey">路由键</param>
-        /// <param name="exchangeType">交换机类型</param>
-        /// <param name="message">消息</param>
-        public void PublishMessage(string exchangeName, string routeKey, EnumExchangeType exchangeType, byte[] message)
-        {
-            CreateChannel();
-            CreateExchange(exchangeName, exchangeType);
-            Channel.BasicPublish(exchangeName, routeKey, null, message);
+            ConnectionCreate.SetConnectionFactory(builder.HostName, builder.UserName, builder.Password, builder.Port);
+            return ConnectionCreate.CreateConnection(clientProvidedName, ref connectionId);
         }
 
-        /// <summary>
-        /// 创建交换机
-        /// </summary>
-        /// <param name="exchangeName"></param>
-        /// <param name="exchangeType"></param>
-        private void CreateExchange(string exchangeName, EnumExchangeType exchangeType)
+        public IConnection CreateConnection(ref string connectionId)
         {
-            switch (exchangeType)
-            {
-                case EnumExchangeType.Direct:
-                    CreateExchange(exchangeName, ExchangeType.Direct);
-                    break;
-                case EnumExchangeType.Fanout:
-                    CreateExchange(exchangeName, ExchangeType.Fanout);
-                    break;
-                case EnumExchangeType.Headers:
-                    CreateExchange(exchangeName, ExchangeType.Headers);
-                    break;
-                case EnumExchangeType.Topic:
-                    CreateExchange(exchangeName, ExchangeType.Topic);
-                    break;
-                default:
-                    break;
-            }
+            ConnectionCreate.SetConnectionFactory(builder.HostName, builder.UserName, builder.Password, builder.Port);
+            return ConnectionCreate.CreateConnection(ref connectionId);
         }
+        #endregion
 
-        private void CreateExchange(string exchangeName, string exchangeType)
+        #region 通道创建
+        public IModel CreateChannel(string connectionId,ref string channelId)
         {
-            if (!Exchanges.TryGetValue(exchangeName, out _))
-            {
-                Channel.ExchangeDeclare(exchangeName, exchangeType, false, false, null);
-            }
+            IChannelCreate channelCreate = new ChannelCreate();
+            return channelCreate.CreateChannel(connectionId,ref channelId);
         }
+        #endregion
 
+        #region 消息发送
+        public void PublishMessage(PublishMessageConfig publishMessageConfig, ReadOnlyMemory<byte> body)
+        {
+            IMessageOperation messageOperation = new MessageOperation();
+            messageOperation.PublishMessage(publishMessageConfig, body);
+        }
         /// <summary>
         /// 消费消息
         /// </summary>
-        /// <param name="queueName">队列名称</param>
-        /// <param name="action">处理消息</param>
-        public void ConsumeMessage(string queueName, Func<byte[], bool> action)
+        /// <param name="channelId">通道id</param>
+        /// <param name="queue"></param>
+        /// <param name="autoAck"></param>
+        /// <param name="consumerTag"></param>
+        /// <param name="noLocal"></param>
+        /// <param name="exclusive">排它性</param>
+        /// <param name="arguments">参数</param>
+        /// <param name="consumer">消费者<see cref="EventingBasicConsumer"/>或<see cref="DefaultBasicConsumer"/></param>
+        public string ConsumeMessage(ConsumeMessageConfig consumeMessageConfig)
         {
-            CreateQueue(queueName);
-            CreateCunsume();
-            if (!IsConsumerEnventBinded)
-            {
-                //接收到消息事件
-                Consumer.Received += (ch, ea) =>
-                {
-                    HandleMessage(action, ea);
-                };
-                //启动消费者 设置为手动应答消息
-                Channel.BasicConsume(queueName, AutoAsk, Consumer);
-            }
+            IMessageOperation messageOperation = new MessageOperation();
+            return messageOperation.ConsumeMessage(consumeMessageConfig);
+        }
+        #endregion
+
+        #region 交换机操作
+        public void ExchangeBind(string channelId, string destination, string source, string routingKey, IDictionary<string, object> arguments)
+        {
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeBind(destination, source, routingKey, arguments);
         }
 
-        /// <summary>
-        /// 消费消息
-        /// </summary>
-        /// <param name="queueName">队列名称</param>
-        /// <param name="exchangeName">交换机名称</param>
-        /// <param name="routingKey">路由键</param>
-        /// <param name="action">处理消息</param>
-        public void ConsumeMessage(string queueName, string exchangeName, string routingKey, Func<byte[], bool> action)
+        public void ExchangeBindNoWait(string channelId, string destination, string source, string routingKey, IDictionary<string, object> arguments)
         {
-            CreateQueue(queueName);
-            QueueBind(queueName, exchangeName, routingKey);
-            CreateCunsume();
-            if (!IsConsumerEnventBinded)
-            {
-                //接收到消息事件
-                Consumer.Received += (ch, ea) =>
-                {
-                    HandleMessage(action, ea);
-                };
-                //启动消费者 设置为手动应答消息
-                Channel.BasicConsume(queueName, AutoAsk, Consumer);
-            }
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeBindNoWait(destination, source, routingKey, arguments);
         }
 
-        private void HandleMessage(Func<byte[], bool> action, BasicDeliverEventArgs ea)
+        public void ExchangeDeclare(string channelId, ExchangeConfig exchangeConfig)
         {
-            if (AutoAsk)
-            {
-                action.Invoke(ea.Body.ToArray());
-            }
-            else
-            {
-                var messageDealResult = action.Invoke(ea.Body.ToArray());//消息处理结果
-                if (messageDealResult)
-                {
-                    //确认该消息已被消费
-                    Channel.BasicAck(ea.DeliveryTag, false);
-                }
-            }
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeDeclare(exchangeConfig);
         }
 
-        private void QueueBind(string queueName, string exchangeName, string routingKey)
+        public void ExchangeDeclareNoWait(string channelId, ExchangeConfig exchangeConfig)
         {
-            Channel.QueueBind(queueName, exchangeName, routingKey);
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeDeclareNoWait(exchangeConfig);
         }
 
-        /// <summary>
-        /// 事件基本消费者
-        /// </summary>
-        private void CreateCunsume()
+        public void ExchangeDeclarePassive(string channelId, string exchange)
         {
-            while (Consumer is null)
-            {
-                Consumer = new EventingBasicConsumer(Channel);
-            }
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeDeclarePassive(exchange);
         }
-        /// <summary>
-        /// 清理
-        /// </summary>
-        /// <param name="disposing"></param>
-#pragma warning disable S2953 // Methods named "Dispose" should implement "IDisposable.Dispose"
-        private void Dispose(bool disposing)
-#pragma warning restore S2953 // Methods named "Dispose" should implement "IDisposable.Dispose"
+
+        public void ExchangeDelete(string channelId, string exchange, bool ifUnused)
+        {
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeDelete(exchange, ifUnused);
+        }
+
+        public void ExchangeDeleteNoWait(string channelId, string exchange, bool ifUnused)
+        {
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeDeleteNoWait(exchange, ifUnused);
+        }
+
+        public void ExchangeUnbind(string channelId, string destination, string source, string routingKey, IDictionary<string, object> arguments)
+        {
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeUnbind(destination, source, routingKey, arguments);
+        }
+
+        public void ExchangeUnbindNoWait(string channelId, string destination, string source, string routingKey, IDictionary<string, object> arguments)
+        {
+            IExchangeCreate exchangeCreate = new ExchangeCreate(channelId);
+            exchangeCreate.ExchangeUnbindNoWait(destination, source, routingKey, arguments);
+        }
+        #endregion
+
+        #region 队列操作
+        public void QueueBind(string channelId,string queue, string exchange, string routingKey, IDictionary<string, object> arguments)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            queueCreate.QueueBind(queue, exchange, routingKey, arguments);
+        }
+
+        public void QueueBindNoWait(string channelId, string queue, string exchange, string routingKey, IDictionary<string, object> arguments)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            queueCreate.QueueBindNoWait(queue, exchange, routingKey, arguments);
+        }
+
+        public QueueDeclareOk QueueDeclare(string channelId, QueueDeclareConfig queueDeclare)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+          return  queueCreate.QueueDeclare(queueDeclare);
+        }
+
+        public void QueueDeclareNoWait(string channelId, QueueDeclareConfig queueDeclare)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            queueCreate.QueueDeclareNoWait(queueDeclare);
+        }
+
+        public QueueDeclareOk QueueDeclarePassive(string channelId, string queue)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            return queueCreate.QueueDeclarePassive(queue);
+        }
+
+        public uint QueueDelete(string channelId, string queue, bool ifUnused, bool ifEmpty)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            return queueCreate.QueueDelete(queue,ifUnused,ifEmpty);
+        }
+
+        public void QueueDeleteNoWait(string channelId, string queue, bool ifUnused, bool ifEmpty)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            queueCreate.QueueDeleteNoWait(queue, ifUnused, ifEmpty);
+        }
+
+        public uint QueuePurge(string channelId, string queue)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            return queueCreate.QueuePurge(queue);
+        }
+
+        public void QueueUnbind(string channelId, string queue, string exchange, string routingKey, IDictionary<string, object> arguments)
+        {
+            IQueueCreate queueCreate = new QueueCreate(channelId);
+            queueCreate.QueueUnbind(queue,exchange,routingKey,arguments);
+        }
+        #endregion 
+
+        #region 销毁
+        protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
             {
                 if (disposing)
                 {
-                    // 释放托管状态(托管对象)
+                    // TODO: 释放托管状态(托管对象)
                 }
-                Channel.Dispose();
+
+                // TODO: 释放未托管的资源(未托管的对象)并替代终结器
+                // TODO: 将大型字段设置为 null
                 disposedValue = true;
             }
         }
-        /// <summary>
-        /// 清理
-        /// </summary>
-#pragma warning disable S2953 // Methods named "Dispose" should implement "IDisposable.Dispose"
+
         public void Dispose()
-#pragma warning restore S2953 // Methods named "Dispose" should implement "IDisposable.Dispose"
         {
             // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
             Dispose(disposing: true);
             GC.SuppressFinalize(this);
         }
-
-        /// <summary>
-        /// 仅当“Dispose(bool disposing)”拥有用于释放未托管资源的代码时才替代终结器
-        /// </summary>
-        ~MQContext()
-        {
-            // 不要更改此代码。请将清理代码放入“Dispose(bool disposing)”方法中
-            Dispose(disposing: false);
-        }
+        #endregion
     }
 }
