@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.System", "VirtualUniverse.Extension.System\VirtualUniverse.Extension.System.csproj", "{AF1D920D-5C65-4A4F-AD07-93DA1D044A43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.AspNetCore.HttpContentOperation", "VirtualUniverse.Extension.AspNetCore.HttpContentOperation\VirtualUniverse.Extension.AspNetCore.HttpContentOperation.csproj", "{AC6F0082-084F-4C79-AD8B-771411722F2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VirtualUniverse.Extension.AspNetCore.HttpContentOperation", "VirtualUniverse.Extension.AspNetCore.HttpContentOperation\VirtualUniverse.Extension.AspNetCore.HttpContentOperation.csproj", "{AC6F0082-084F-4C79-AD8B-771411722F2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualUniverse.Extension.UniqueIdentity", "VirtualUniverse.Extension.UniqueIdentity\VirtualUniverse.Extension.UniqueIdentity.csproj", "{102EE527-0425-4262-9E81-78348CFF2ADE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC6F0082-084F-4C79-AD8B-771411722F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{102EE527-0425-4262-9E81-78348CFF2ADE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{102EE527-0425-4262-9E81-78348CFF2ADE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{102EE527-0425-4262-9E81-78348CFF2ADE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{102EE527-0425-4262-9E81-78348CFF2ADE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
