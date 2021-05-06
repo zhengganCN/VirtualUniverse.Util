@@ -58,11 +58,6 @@
             双精度浮点数
             </summary>
         </member>
-        <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.CellPhoneAttribute">
-            <summary>
-            移动电话格式验证
-            </summary>
-        </member>
         <member name="T:VirtualUniverse.DataValidation.ValidationAttributes.ChineseAttribute">
             <summary>
             中文验证
@@ -520,11 +515,6 @@
             </summary>
             <param name="idNumber">身份证号</param>
             <returns></returns>
-        </member>
-        <member name="T:VirtualUniverse.DataValidation.ValidationServices.PhoneNumberVerification">
-            <summary>
-            手机号验证
-            </summary>
         </member>
     </members>
 </doc>

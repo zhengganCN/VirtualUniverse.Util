@@ -42,7 +42,7 @@ namespace VirtualUniverse.DataValidation.ValidationServices
         private static bool ValidIDNumber18(string idNumber)
         {
             var result = true;
-            if (long.TryParse(idNumber.Remove(17), out long n) == false || n < Math.Pow(10, 16) || long.TryParse(idNumber.Replace('x', '0').Replace('X', '0'), out _) == false)//数字验证 
+            if (!long.TryParse(idNumber.Remove(17), out long n) || n < Math.Pow(10, 16) || !long.TryParse(idNumber.Replace('x', '0').Replace('X', '0'), out _))//数字验证 
             {
                 result = false;
             }
@@ -61,7 +61,7 @@ namespace VirtualUniverse.DataValidation.ValidationServices
         private static bool ValidIDNumber15(string idNumber)
         {
             bool result = true;
-            if (long.TryParse(idNumber, out long n) == false || n < Math.Pow(10, 14))//数字验证 
+            if (!long.TryParse(idNumber, out long n) || n < Math.Pow(10, 14))//数字验证 
             {
                 result = false;
             }
