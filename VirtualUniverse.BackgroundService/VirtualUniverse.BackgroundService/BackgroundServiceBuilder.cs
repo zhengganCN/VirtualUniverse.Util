@@ -33,6 +33,20 @@ namespace VirtualUniverse.BackgroundService
         internal StartUpDateTimeMode StartUpDateTimeMode { get; private set; }
 
         /// <summary>
+        /// 通过配置实体模型设置启动参数
+        /// </summary>
+        /// <param name="startParamConfig"></param>
+        /// <returns></returns>
+        public BackgroundServiceBuilder SetStartParamConfig(StartParamConfig startParamConfig)
+        {
+            SetStartNow(startParamConfig.StartNow);
+            SetExecutionTimes(startParamConfig.ExecutionTimes, startParamConfig.IsRefreshIfExecutionEnough);
+            SetStartUpDateTime((EnumStartUpMode)startParamConfig.StartUpDateTimeMode, startParamConfig.StartTime, startParamConfig.EndTime);
+            SetInterval(startParamConfig.Interval);
+            return this;
+        }
+
+        /// <summary>
         /// 是否立即启动，如果设置为true，则只有Interval和ExecutionTimes参数有效，默认值为 true
         /// </summary>
         /// <param name="startNow"></param>

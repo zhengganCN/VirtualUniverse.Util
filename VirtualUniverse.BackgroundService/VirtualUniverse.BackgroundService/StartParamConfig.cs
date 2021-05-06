@@ -17,6 +17,10 @@ namespace VirtualUniverse.BackgroundService
         /// </summary>
         public long ExecutionTimes { get; set; } = -1;
         /// <summary>
+        /// 启动模式（1：天，2：周，3：月，4：年）
+        /// </summary>
+        public int StartUpDateTimeMode { get; set; }
+        /// <summary>
         /// 是否刷新，如果执行次数已达到最大值
         /// </summary>
         public bool IsRefreshIfExecutionEnough { get; set; } = true;
