@@ -83,6 +83,10 @@ namespace VirtualUniverse.Export.HtmlExport
         {
             foreach (var htmlNodeObject in htmlNodeObjects)
             {
+                if (htmlNodeObject is null)
+                {
+                    continue;
+                }
                 if (htmlNodeObject.NodeName == EnumHtmlNodeType.UserDefine)
                 {
                     builder.Append(htmlNodeObject.UserDefineNode);
